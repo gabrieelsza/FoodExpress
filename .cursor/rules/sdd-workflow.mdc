@@ -1,0 +1,16 @@
+---
+description: Governança Vibe Coding Sensato & Spec Driven Development (SDD) e atalhos /passo1, /passo2 e /passo3
+globs: *
+alwaysApply: true
+---
+
+# Governança SDD & Comandos `/passo1`, `/passo2`, `/passo3`
+
+Siga sempre as regras definidas em `AGENTS.md`:
+
+1. **Fonte de Contexto:** Consulte `docs/contexto.md`, `docs/arquitetura.md`, `docs/brd.md`, `docs/trd.md` e `docs/sessao_agente.md`.
+2. **Atalhos de Comando (Slash Commands):**
+   - Quando o usuário digitar `/passo1`: Leia e siga `.agents/skills/passo1/SKILL.md` (Analista de Sistemas Experiente — levantamento de regras de negócio e geração do BRD).
+   - Quando o usuário digitar `/passo2`: Leia e siga `.agents/skills/passo2/SKILL.md` (Profissional Técnico de Arquitetura — viabilidade técnica, escolha de stack e geração do TRD).
+   - Quando o usuário digitar `/passo3`: Leia e siga `.agents/skills/passo3/SKILL.md` (Configuração de Ambiente e Codificação — ambiente local, subida de servidores e implementação guiada pelo TRD).
+3. **Guardrail SDD:** Nunca gere código da aplicação antes que os artefatos `docs/brd.md` (`/passo1`) e `docs/trd.md` (`/passo2`) estejam preenchidos e aprovados.
