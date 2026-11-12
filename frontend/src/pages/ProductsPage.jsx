@@ -167,7 +167,7 @@ export default function ProductsPage() {
 
       if (orderType === 'DELIVERY') {
         const message = generateWhatsAppMessage(newOrder);
-        const whatsAppUrl = generateWhatsAppUrl(RESTAURANTE_CONFIG?.whatsappNumber || '5511999999999', message);
+        const whatsAppUrl = generateWhatsAppUrl(RESTAURANT_CONFIG?.whatsappNumber || '5511999999999', message);
         window.open(whatsAppUrl, '_blank');
       }
 

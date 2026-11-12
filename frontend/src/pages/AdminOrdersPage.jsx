@@ -80,7 +80,9 @@ export default function AdminOrdersPage() {
       if (saved && setAdminOrders) {
         setAdminOrders(JSON.parse(saved));
       }
-    } catch {}
+    } catch {
+      // Ignora erro de parsing no refresh do localStorage
+    }
     setTimeout(() => setRefreshing(false), 500);
   }, [setAdminOrders]);
 
