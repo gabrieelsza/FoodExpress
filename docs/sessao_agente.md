@@ -67,7 +67,19 @@
 
 ---
 
-### [2026-11-12 13:14] — Implementação Integral do Front-End React + Vite + Tailwind CSS (`/passo3`)
+### [2026-11-12 20:55] — Correção de Linter CI/CD e Restauração da Tela de Login do Atendente
+- **Papel Ativo:** Engenheiro de Confiabilidade & Arquiteto Front-End
+- **Etapa SDD:** `Fase 3 — CI/CD, Manutenibilidade e Interface do Operador`
+- **Diagnóstico da Causa Raiz:**
+  1. O pipeline de CI/CD do GitHub Actions (`.github/workflows/node.js.yml`) falhou na etapa `npm run lint` devido a 31 inconsistências de tipagem e variáveis não utilizadas. Isso impediu que o GitHub Pages publicasse o novo código, mantendo a versão antiga da tela de login ativa na URL pública.
+  2. O servidor Vite local estava rodando dentro de sandbox isolada, impedindo requisições externas do navegador.
+- **Ações Executadas:**
+  1. Correção completa de todas as pendências de lint em `App.jsx`, `AdminLoginPage.jsx`, `AdminOrdersPage.jsx`, `ProductsPage.jsx` e `eslint.config.js`.
+  2. Sucesso em `npm run lint` (0 erros) e `npm run build` (geração de bundle 100% limpa).
+  3. Commit e push para o repositório remoto `https://github.com/gabrieelsza/FoodExpress.git` (branch `main`).
+  4. Reinicialização do servidor de desenvolvimento Vite fora da sandbox na porta `5173`.
+  5. Inspeção visual via agente de navegador comprovando a nova tela de login Steakhouse (Navbar completo, foto lateral com fade sutil, credenciais de teste com 1 clique e tema Outback).
+- **Status:** Concluído com sucesso.
 - **Papel Ativo:** Engenheiro de Software Front-End & Especialista em Arquitetura UI
 - **Etapa SDD:** `Fase 3 — Implementação do Front-End (SPA Mobile-First)`
 - **Ações Executadas:**
