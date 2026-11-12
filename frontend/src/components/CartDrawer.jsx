@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { X, Plus, Minus, Trash2 } from 'lucide-react';
+import { X, Plus, Minus, Trash2, Utensils, Bike } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 import { formatPrice } from '../utils/helpers';
 
@@ -167,23 +167,25 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     onClick={() => setOrderType('DINE_IN')}
-                    className={`flex h-12 items-center justify-center rounded-xl border-2 text-sm font-medium transition-colors ${
+                    className={`flex h-12 items-center justify-center gap-2 rounded-xl border-2 text-sm font-semibold transition-colors ${
                       isDineIn
                         ? 'border-orange-500 bg-orange-50 text-orange-700'
                         : 'border-gray-200 text-gray-600 hover:border-gray-300'
                     }`}
                   >
-                    🍽️ Consumo no local
+                    <Utensils size={18} />
+                    <span>Consumo no local</span>
                   </button>
                   <button
                     onClick={() => setOrderType('DELIVERY')}
-                    className={`flex h-12 items-center justify-center rounded-xl border-2 text-sm font-medium transition-colors ${
+                    className={`flex h-12 items-center justify-center gap-2 rounded-xl border-2 text-sm font-semibold transition-colors ${
                       isDelivery
                         ? 'border-orange-500 bg-orange-50 text-orange-700'
                         : 'border-gray-200 text-gray-600 hover:border-gray-300'
                     }`}
                   >
-                    🛵 Entrega
+                    <Bike size={18} />
+                    <span>Entrega</span>
                   </button>
                 </div>
 

@@ -32,7 +32,7 @@ export function calculateCartTotal(items) {
  */
 export function generateWhatsAppMessage(order) {
   const lines = [
-    `*🍔 NOVO PEDIDO #${order.id} — FoodExpress*`,
+    `*NOVO PEDIDO #${order.id} — FoodExpress*`,
     `*Modalidade:* ${order.orderType === 'DELIVERY' ? 'Entrega' : 'Consumo no local'}`,
   ];
 

@@ -11,8 +11,13 @@ export default function Navbar({ isAdmin = false, cartItemCount = 0, cartCount, 
     <nav className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="mx-auto flex h-14 max-w-lg items-center justify-between px-4">
         {/* Logo */}
-        <Link to={isAdmin ? '/admin/pedidos' : '/'} className="flex items-center gap-2">
-          <span className="text-xl font-bold text-orange-500">🍔 FoodExpress</span>
+        <Link to={isAdmin ? '/admin/pedidos' : '/'} className="flex items-center gap-2.5 group">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-orange-500 text-white shadow-sm shadow-orange-500/30 transition-transform group-hover:scale-105">
+            <UtensilsCrossed size={19} strokeWidth={2.5} />
+          </div>
+          <span className="text-xl font-extrabold tracking-tight text-gray-900">
+            Food<span className="text-orange-500">Express</span>
+          </span>
         </Link>
 
         {/* Right side actions */}

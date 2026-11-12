@@ -8,6 +8,9 @@ import {
   RefreshCw,
   Timer,
   X,
+  Utensils,
+  Bike,
+  MapPin,
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useOrders } from '../contexts/OrderContext';
@@ -254,15 +257,24 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
               <span className="font-bold text-gray-900">#{order.id}</span>
               <span className="text-xs text-gray-400">{formatRelativeTime(order.createdAt)}</span>
             </div>
-            <div className="text-sm text-gray-600 mt-0.5">
+            <div className="text-sm text-gray-600 mt-0.5 flex items-center gap-1.5">
               {order.orderType === 'DINE_IN' ? (
-                <span>🍽️ Mesa {order.tableNumber}</span>
+                <span className="inline-flex items-center gap-1.5 font-medium">
+                  <Utensils className="w-3.5 h-3.5 text-orange-500" />
+                  Mesa {order.tableNumber}
+                </span>
               ) : (
-                <span>🛵 Entrega - {order.customerName}</span>
+                <span className="inline-flex items-center gap-1.5 font-medium">
+                  <Bike className="w-3.5 h-3.5 text-blue-500" />
+                  Entrega - {order.customerName}
+                </span>
               )}
             </div>
             {order.deliveryAddress && (
-              <p className="text-xs text-gray-400 mt-0.5">📍 {order.deliveryAddress}</p>
+              <p className="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1">
+                <MapPin className="w-3 h-3 text-gray-400 shrink-0" />
+                {order.deliveryAddress}
+              </p>
             )}
           </div>
           <span
