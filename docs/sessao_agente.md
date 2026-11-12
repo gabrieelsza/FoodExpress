@@ -109,14 +109,12 @@
   4. Validação de build e criação do commit `ef47fd5`.
 
 
+
 ---
 
-### [2026-11-12 13:46] — Redesign Visual Premium Completo (`/passo3`)
+### [2026-11-12 14:15] — Banner Customizado FoodExpress e Avatar Sobreposto (`/passo3`)
 - **Ações Executadas:**
-  1. Redesenho da Barra de Navegação (`Navbar.jsx`): ampliada para largura responsiva (`max-w-6xl`), com badge de status ao vivo ("Aberto agora • 30-45 min"), botão estilizado de sacola e atalho para a área do atendente.
-  2. Implementação do Hero Section do Restaurante: banner com avatar de alta definição, selo verificado, avaliação de 4.9 estrelas, tempo estimado e campo de busca instantânea no cardápio.
-  3. Abas de Categorias Modernizadas: botões em formato de pílula (pill chips) com ícones vetoriais dinâmicos por categoria e contador de itens disponíveis.
-  4. Cards de Produtos Redesenhados (`ProductCard.jsx`): imagens em proporção 16:10 com zoom suave no hover, badges de "Opções" e "+ Adicionais", tipografia apurada e botão "Pedir" intuitivo.
-  5. Layout Adaptativo: modal de personalização centralizado em desktops e drawer lateral deslizante a partir da direita na sacola.
-  6. Painel do Atendente (`AdminOrdersPage.jsx`): inclusão de cards com indicadores operacionais (Novos, Em Preparo, Prontos, Finalizados) e grid responsivo de 2 colunas.
-  7. Validação de build com `npm run build` e criação do commit `7e243fb`.
+  1. Aplicação do banner customizado fornecido pelo usuário (`banner.jpg`) com a arte oficial de hamburgueria artesanal.
+  2. Ajuste fino de posicionamento do avatar sobreposto (`-mt-12 sm:-mt-14`) sobre a borda inferior esquerda do banner, mantendo o anel branco (`ring-4 ring-white`) e sombra.
+  3. Reorganização dos metadados da loja (descrição da categoria, avaliação 4.9 com 500+ avaliações, tempo estimado 30-45 min, badge "Salão & Entrega" e status "Aberto hoje até 23:30") 100% sobre o fundo branco, eliminando sobreposições inadequadas de texto sobre o banner escuro.
+  4. Validação completa de compilação com `npm run build` e verificação visual em navegador.
