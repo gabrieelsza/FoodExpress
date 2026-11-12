@@ -112,14 +112,10 @@
 
 ---
 
-### [2026-11-12 14:30] — Implementação do Tema Dark (Dark Mode Completo) (`/passo3`)
+### [2026-11-12 14:40] — Refinamento de Banner, Logotipo Oficial e Correção do Rodapé (`/passo3`)
 - **Ações Executadas:**
-  1. Configuração global de tema escuro (`class="dark"` em `<html>`, `bg-[#0f0f11]` e paleta obsidian/grafite profundo).
-  2. Redesign escuro da Barra de Navegação (`Navbar.jsx`): fundo translúcido `bg-[#121215]/95`, campo de busca escuro com foco em laranja e botão da sacola estilizado.
-  3. Adaptação do Header e Banner (`CustomerMenuPage.jsx`): integração perfeita do banner escuro com a base do restaurante, avatar com anel em contraste e metadados com tipografia em alta legibilidade.
-  4. Barra de Abas de Categorias (`CustomerMenuPage.jsx`): botões em pílula escuros com destaque ativo em gradiente laranja vibrante e contadores dinâmicos.
-  5. Cards de Produtos (`ProductCard.jsx`): superfície `bg-[#18181c]`, bordas sutis `border-neutral-800`, tipografia clara e botões de ação "+ Pedir" com hover destacados.
-  6. Modal de Customização (`ProductModal.jsx`): painel escuro, caixas de variação e adicionais escuras com destaque ativo em laranja e verde, campo de observações e contador contrastantes.
-  7. Gaveta da Sacola (`CartDrawer.jsx`): gaveta em `bg-[#18181c]`, remoção total de emojis (substituído por `ShoppingBag` vetorial), seletores de mesa/entrega adaptados e totalizador de destaque.
-  8. Telas Operacionais e de Acompanhamento: `OrderTrackingPage.jsx`, `AdminLoginPage.jsx`, `AdminOrdersPage.jsx` e `AdminMenuPage.jsx` adaptadas com superfícies escuras de alta precisão.
-  9. Validação técnica com `npm run build` passando com 100% de sucesso em 957ms.
+  1. Aplicação definitiva do banner oficial de hamburgueria artesanal com alta resolução e ajuste de proporção sem corte indevido (`aspect-[1024/340] max-h-80 sm:max-h-96`).
+  2. Implementação do emblema oficial (`logo.jpg`) no Avatar sobreposto à esquerda e na Barra de Navegação (`Navbar.jsx`), substituindo ícones genéricos por arte de marca exclusiva.
+  3. Realce visual nos botões de ação "+ Pedir" com preenchimento em laranja vivo (`bg-orange-500 hover:bg-orange-600 text-white font-bold`) e elevação no hover.
+  4. Correção estrutural do rodapé (`CustomerMenuPage.jsx`): remoção do `pb-28` do contêiner raiz para eliminar a fenda vazia sob os direitos reservados, mantendo o espaçamento responsivo do mobile.
+  5. Validação com `npm run build` passando em 926ms.

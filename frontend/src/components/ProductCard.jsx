@@ -69,7 +69,7 @@ export default function ProductCard({ product, onAdd }) {
             e.stopPropagation();
             onAdd(product);
           }}
-          className="inline-flex items-center gap-1 rounded-xl bg-orange-500/15 hover:bg-orange-500 text-orange-400 hover:text-white border border-orange-500/30 px-3 py-1.5 text-xs sm:text-sm font-semibold transition-all active:scale-95 cursor-pointer"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white px-3.5 py-1.5 text-xs sm:text-sm font-bold shadow-sm shadow-orange-500/20 transition-all active:scale-95 cursor-pointer"
         >
           <Plus size={15} strokeWidth={2.5} />
           <span>Pedir</span>

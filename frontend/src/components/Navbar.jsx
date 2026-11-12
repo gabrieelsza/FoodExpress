@@ -23,8 +23,8 @@ export default function Navbar({
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 gap-4">
         {/* Brand / Logo */}
         <Link to={isAdmin ? '/admin/pedidos' : '/'} className="flex items-center gap-2.5 shrink-0 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 border border-neutral-800 text-white transition-transform group-hover:scale-105">
-            <UtensilsCrossed size={19} strokeWidth={2.5} className="text-orange-500" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 border border-neutral-800 text-white transition-transform group-hover:scale-105 overflow-hidden shadow-sm">
+            <img src="/logo.jpg" alt="FoodExpress" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-extrabold tracking-tight text-white leading-none">
