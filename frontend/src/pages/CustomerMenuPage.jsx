@@ -197,23 +197,13 @@ export default function CustomerMenuPage() {
           onSearchChange={setSearchQuery}
         />
 
-        {/* Restaurant Header Section: Full-Width Cover Banner with Overlapping Avatar */}
-        <div className="relative bg-[#141417] border-b border-neutral-800/80">
-          {/* Cover Photo Banner (Using custom banner.jpg, full height preserved so no text is chopped) */}
-          <div className="w-full overflow-hidden relative bg-neutral-950 flex justify-center">
-            <img
-              src="/banner.jpg"
-              alt="FoodExpress Banner"
-              className="w-full h-auto max-h-[380px] sm:max-h-[460px] object-cover object-center"
-            />
-          </div>
-
-          {/* Store Info Profile (Avatar overlaps the bottom-left tables, details cleanly below) */}
+        {/* Restaurant Header Profile Section (No Banner) */}
+        <div className="relative bg-[#141417] border-b border-neutral-800/80 py-6 sm:py-8">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 pt-2">
-              <div className="flex items-end gap-4 sm:gap-5">
-                {/* Store Avatar Badge (Overlapping bottom-left of the banner) */}
-                <div className="-mt-10 sm:-mt-14 relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-full bg-black border-4 border-[#141417] text-white shadow-2xl ring-2 ring-orange-500/50 overflow-hidden z-10">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+              <div className="flex items-center gap-4 sm:gap-5">
+                {/* Store Avatar Badge */}
+                <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-full bg-black border-2 border-neutral-800 text-white shadow-xl ring-2 ring-orange-500/50 overflow-hidden">
                   <img
                     src="/logo.jpg"
                     alt="FoodExpress"
@@ -221,8 +211,8 @@ export default function CustomerMenuPage() {
                   />
                 </div>
 
-                {/* Store Info (Cleanly positioned on dark background) */}
-                <div className="min-w-0 pb-0.5">
+                {/* Store Info */}
+                <div className="min-w-0">
                   <div className="flex items-center gap-2">
                     <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
                       FoodExpress
@@ -237,7 +227,7 @@ export default function CustomerMenuPage() {
                   </p>
 
                   {/* Key Metrics */}
-                  <div className="mt-2 flex flex-wrap items-center gap-2 text-xs sm:text-sm">
+                  <div className="mt-2.5 flex flex-wrap items-center gap-2.5 text-xs sm:text-sm">
                     <span className="inline-flex items-center gap-1 font-bold text-white">
                       <Star size={14} className="fill-amber-400 text-amber-400" />
                       4.9
@@ -253,15 +243,13 @@ export default function CustomerMenuPage() {
 
                     <span className="text-neutral-700">•</span>
 
-                    <span className="inline-flex items-center gap-1 font-medium text-emerald-400 bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-800/60 text-xs">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold border border-emerald-500/20">
                       <Bike size={13} />
                       Salão &amp; Entrega
                     </span>
 
-                    <span className="text-neutral-700">•</span>
-
-                    <span className="inline-flex items-center gap-1.5 font-medium text-neutral-300 text-xs">
-                      <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neutral-800 text-neutral-300 text-xs">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                       Aberto hoje até 23:30
                     </span>
                   </div>

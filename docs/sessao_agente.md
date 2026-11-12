@@ -143,3 +143,14 @@
      - **Formas de Pagamento & Gestão:** Formas aceitas (Pix instantâneo, Cartões, Dinheiro) e botão estilizado `Painel do Atendente` com ícone de escudo protetor.
   3. Eliminação completa do espaçamento excessivo/vazio no fundo da página, assegurando encaixe perfeito no viewport.
   4. Validação visual com captura em subagente de browser e build aprovado com 100% de sucesso.
+
+---
+
+### [2026-11-12 15:11] — Remoção do Banner Fotográfico e Otimização do Cabeçalho Compacto (`/passo3`)
+- **Ações Executadas:**
+  1. Remoção do banner fotográfico pesado em `CustomerMenuPage.jsx`, atendendo à solicitação direta do usuário.
+  2. Ajuste do cabeçalho da loja para um formato compacto, veloz e moderno:
+     - Emblema circular da hamburgueria (`logo.jpg`) alinhado com o nome `FoodExpress`, selo verificado, avaliação 4.9, tempo estimado e badges operacionais.
+     - Barra de pesquisa mobile integrada.
+  3. Foco imediato nos produtos do cardápio: os hambúrgueres e categorias agora carregam acima da dobra da página com acesso instantâneo aos clientes.
+  4. Validação com `npm run build` (sucesso em 987ms) e inspeção visual via subagente de browser.
