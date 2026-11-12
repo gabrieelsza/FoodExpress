@@ -97,3 +97,13 @@
   - Implementado roteamento com `HashRouter` para compatibilidade total tanto com servidores estáticos quanto GitHub Pages.
   - Todos os fluxos operacionais (consumo local, entrega via WhatsApp, trava de 5 min, máquina de estados do atendente) foram 100% contemplados no front-end.
 - **Próximos Passos:** Subir todas as alterações para o repositório remoto no GitHub (`git push`).
+
+
+---
+
+### [2026-11-12 13:37] — Substituição de Emojis por Ícones Vetoriais SVG (`/passo3`)
+- **Ações Executadas:**
+  1. Remoção de todos os emojis da aplicação (`Navbar.jsx`, `CartDrawer.jsx`, `AdminOrdersPage.jsx`, `helpers.js` e `favicon.svg`).
+  2. Substituição pelo padrão de design moderno com ícones vetoriais **Lucide React** (`UtensilsCrossed`, `Utensils`, `Bike`, `MapPin`) e badge estilizado no logotipo.
+  3. Atualização do `favicon.svg` com desenho vetorial limpo.
+  4. Validação de build e criação do commit `ef47fd5`.
