@@ -191,7 +191,19 @@
 
 ---
 
-### [2026-11-12 16:17] — Aprimoramento Interativo da Seção "Nossos Produtos" (`/passo3`)
+### [2026-11-12 16:26] — Arquitetura de Abas Dedicadas (Estilo Outback) (`/passo3`)
+- **Ações Executadas:**
+  1. **Arquitetura de Navegação em Abas:**
+     - Cada item do menu principal agora é uma **aba dedicada** com visual autêntico do Outback Steakhouse Dark:
+       - **`INÍCIO` (`/`):** Tela demonstrativa inicial com o banner hero split 50/50, vitrine e novidades.
+       - **`NOSSOS PRODUTOS` (`/nossos-produtos` / [`ProductsPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/ProductsPage.jsx)):** Aba dedicada com os blocos heróis de categorias, abas interativas de filtragem, busca e cards detalhados com tags de ingredientes e botão de adicionar à sacola.
+       - **`RESTAURANTE & SALÃO` (`/restaurante` / [`RestaurantPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/RestaurantPage.jsx)):** Aba dedicada à experiência presencial: fotos do salão climatizado, grelha ao vivo, chopp na caneca congelada (-2°C), endereço, horários e botão para pedir na mesa.
+       - **`DELIVERY` (`/delivery` / [`CustomerMenuPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/CustomerMenuPage.jsx)):** Aba dedicada aos pedidos para entrega com sacola, carrinho flutuante e envio ao WhatsApp.
+       - **`ACESSO DO ATENDENTE` (`/admin/login`):** Aba de acesso operacional e login.
+  2. **Destaque Visual da Aba Ativa:**
+     - A barra de navegação superior ([`Navbar.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/Navbar.jsx)) destaca a aba atual em **âmbar/ouro com borda inferior de brasa**, exatamente conforme solicitado na referência visual.
+  3. **Build de Produção e Validação:**
+     - `npm run build` executado com sucesso em 2.89s e commit `e893e95`.
 - **Ações Executadas:**
   1. **Tiles de Categorias Icônicas (Outback Style):**
      - Adicionados 4 cards heróis com fotos de fundo, badges de corte e descrição sensorial:
