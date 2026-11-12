@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, LogOut, ClipboardList, UtensilsCrossed, Clock } from 'lucide-react';
+import { ShoppingBag, LogOut, ClipboardList, UtensilsCrossed } from 'lucide-react';
 
 export default function Navbar({ isAdmin = false, cartItemCount = 0, cartCount, onCartClick, onLogout }) {
   const count = cartCount ?? cartItemCount;
@@ -25,18 +25,6 @@ export default function Navbar({ isAdmin = false, cartItemCount = 0, cartCount, 
               </span>
             </div>
           </Link>
-
-          {/* Restaurant Status (Client View Only) */}
-          {!isAdmin && (
-            <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-xs font-semibold border border-emerald-200/60">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Aberto agora</span>
-              <span className="text-emerald-400">•</span>
-              <span className="text-emerald-600 font-medium flex items-center gap-1">
-                <Clock size={12} /> 30-45 min
-              </span>
-            </div>
-          )}
         </div>
 
         {/* Right side actions (Right Edge / No Final) */}
