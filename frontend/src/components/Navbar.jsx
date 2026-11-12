@@ -22,8 +22,8 @@ export default function Navbar({
   };
 
   const navTabs = [
-    { label: 'RESTAURANTE & SALÃO', path: '/restaurante', altPaths: ['/salao'] },
     { label: 'NOSSOS PRODUTOS', path: '/nossos-produtos', altPaths: ['/delivery', '/cardapio', '/produtos'] },
+    { label: 'RESTAURANTE & SALÃO', path: '/restaurante', altPaths: ['/salao'] },
     { label: 'ACESSO DO ATENDENTE', path: '/admin/login', altPaths: [] },
   ];
 

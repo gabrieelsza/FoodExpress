@@ -339,6 +339,8 @@
      - A barra de navegação agora exibe estritamente: `INÍCIO` | `RESTAURANTE & SALÃO` | `NOSSOS PRODUTOS` | `ACESSO DO ATENDENTE`.
   3. **Roteamento Unificado:**
      - Rotas `/nossos-produtos`, `/delivery` e `/cardapio` unificadas em [`frontend/src/App.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/App.jsx) apontando diretamente para o cardápio interativo `CustomerMenuPage`.
-  4. **Validação Visual:**
+  4. **Posicionamento Prioritário na Barra de Navegação:**
+     - A aba **`NOSSOS PRODUTOS`** foi posicionada como a primeira opção do catálogo (`INÍCIO` | `NOSSOS PRODUTOS` | `RESTAURANTE & SALÃO` | `ACESSO DO ATENDENTE`), alinhando-se exatamente ao padrão dos grandes steakhouses.
+  5. **Validação Visual:**
      - Verificado via subagente de browser tanto na página inicial quanto dentro de `#/nossos-produtos`.
      - Build de produção validado com `npm run build` com sucesso.
