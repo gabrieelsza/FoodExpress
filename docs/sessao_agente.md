@@ -191,7 +191,13 @@
 
 ---
 
-### [2026-11-12 15:58] — Identidade Outback Steakhouse na Pegada Dark (`/passo3`)
+### [2026-11-12 16:01] — Remoção da Duplicidade de Carrossel no Topo (`/passo3`)
+- **Ações Executadas:**
+  1. Remoção do primeiro carrossel que estava posicionado acima do perfil do restaurante.
+  2. Mantido apenas um único carrossel posicionado estrategicamente entre o perfil do restaurante e as abas de categorias:
+     - `Navbar` → `Perfil & Status do FoodExpress` → `Carrossel de Ofertas & Combos` → `Abas de Categorias` → `Cards de Produtos`.
+  3. Removido o primeiro slide redundante de banner institucional, iniciando diretamente com o destaque do *Combo Especial do Chef (X-Burger + Fritas + Refri)*.
+  4. Build de produção validado (`npm run build` em 1.65s) e commit `24d791f`.
 - **Ações Executadas:**
   1. **Redesign Visual Integrado (Outback Dark Vibe):**
      - Base ultra dark em madeira carbonizada e acabamento em bronze escuro (`#0b0908` / `#100e0c` / `#26201b`).
