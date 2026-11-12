@@ -212,11 +212,11 @@ export default function CustomerMenuPage() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 pt-2">
               <div className="flex items-end gap-4 sm:gap-5">
                 {/* Store Avatar Badge (Overlapping bottom-left of the banner) */}
-                <div className="-mt-10 sm:-mt-14 relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-2xl sm:rounded-3xl bg-neutral-950 border-4 border-[#141417] text-white shadow-2xl ring-2 ring-white/10 overflow-hidden z-10">
+                <div className="-mt-10 sm:-mt-14 relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-full bg-black border-4 border-[#141417] text-white shadow-2xl ring-2 ring-orange-500/50 overflow-hidden z-10">
                   <img
                     src="/logo.jpg"
                     alt="FoodExpress"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover scale-105"
                   />
                 </div>
 
@@ -445,8 +445,8 @@ export default function CustomerMenuPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 border border-neutral-800 text-white overflow-hidden shadow-sm">
-                  <img src="/logo.jpg" alt="FoodExpress" className="w-full h-full object-cover" />
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-black border border-orange-500/40 text-white overflow-hidden shadow-sm ring-1 ring-orange-500/20">
+                  <img src="/logo.jpg" alt="FoodExpress" className="w-full h-full object-cover scale-105" />
                 </div>
                 <span className="font-bold text-white text-sm">FoodExpress</span>
                 <span className="text-xs text-neutral-400">• Hamburgueria Artesanal</span>

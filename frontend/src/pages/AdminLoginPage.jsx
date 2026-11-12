@@ -43,14 +43,13 @@ export default function AdminLoginPage() {
         <div className="bg-[#18181c] border border-neutral-800 rounded-2xl shadow-2xl p-8">
           {/* Logo / Heading */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-500/10 border border-orange-500/20 mb-4">
-              <Lock className="w-8 h-8 text-orange-500" />
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-neutral-900 border border-neutral-800 p-1 mb-4 shadow-xl ring-2 ring-orange-500/20 overflow-hidden">
+              <img src="/logo.jpg" alt="FoodExpress" className="w-full h-full object-cover rounded-xl" />
             </div>
-            <h1 className="text-2xl font-bold text-white flex items-center justify-center gap-2">
-              <UtensilsCrossed className="w-6 h-6 text-orange-500" />
-              FoodExpress
+            <h1 className="text-2xl font-bold text-white tracking-tight">
+              Food<span className="text-orange-500">Express</span>
             </h1>
-            <p className="text-neutral-400 mt-1 text-sm">Área do Restaurante</p>
+            <p className="text-neutral-400 mt-1 text-sm">Painel Operacional do Restaurante</p>
           </div>
 
           {/* Form */}

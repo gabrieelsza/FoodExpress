@@ -118,3 +118,16 @@
   2. Ajuste do posicionamento do avatar (`-mt-10 sm:-mt-14`): o emblema agora sobrepõe exclusivamente a área de mesas no canto inferior esquerdo, sem encobrir nenhuma palavra ou elemento textual do banner.
   3. Inclusão explícita do título da loja `FoodExpress` em `<h1>` estilizado com selo verificado ao lado do avatar, seguido da linha descritiva e dos badges operacionais, garantindo legibilidade perfeita e hierarquia visual completa.
   4. Validação com `npm run build` passando em 1.01s.
+
+---
+
+### [2026-11-12 14:56] — Aplicação Global do Novo Emblema/Ícone Circular FoodExpress (`/passo3`)
+- **Ações Executadas:**
+  1. Configuração do novo ícone circular da marca (`logo.jpg` e geração de favicons em alta resolução `favicon.png` de 64x64 e `apple-touch-icon.png` de 180x180 via Pillow).
+  2. Atualização do `index.html` vinculando os novos favicons oficiais no cabeçalho da página.
+  3. Aplicação do emblema circular com bordas e glow neon suave nos pontos de contato da marca:
+     - **Navbar Superior (`Navbar.jsx`):** Brand avatar circular com aro âmbar (`rounded-full ring-1 ring-orange-500/30`).
+     - **Avatar de Perfil do Restaurante (`CustomerMenuPage.jsx`):** Badge circular com borda contrastante e anel neon (`rounded-full ring-2 ring-orange-500/50`).
+     - **Rodapé Institucional (`CustomerMenuPage.jsx`):** Selo circular da hamburgueria.
+     - **Tela de Login do Atendente (`AdminLoginPage.jsx`):** Emblema principal centralizado com acabamento premium.
+  4. Validação completa via `npm run build` (sucesso em 971ms).
