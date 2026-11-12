@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 import {
   ChevronLeft,
   ChevronRight,
@@ -269,91 +270,8 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#0b0908] text-stone-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-orange-600 flex flex-col">
-      {/* 1. TOP NAVBAR (Outback Style in Dark Theme) */}
-      <header className="sticky top-0 z-50 bg-[#0e0c0a]/95 backdrop-blur-md border-b border-[#26201b] shadow-2xl w-full">
-        <div className="w-full flex h-18 items-center justify-between px-4 sm:px-6 lg:px-10 gap-4">
-          {/* Logo */}
-          <div
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-3 shrink-0 cursor-pointer group"
-          >
-            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-black border-2 border-orange-500/50 text-white transition-transform group-hover:scale-105 overflow-hidden shadow-xl ring-2 ring-orange-500/20">
-              <img src="/logo.jpg" alt="FoodExpress" className="w-full h-full object-cover scale-105" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-2xl font-black tracking-tight text-white leading-none font-['Oswald',sans-serif]">
-                Food<span className="bg-gradient-to-r from-orange-500 via-amber-400 to-red-500 bg-clip-text text-transparent">Express</span>
-              </span>
-              <span className="text-[10px] font-bold text-amber-500/90 tracking-widest uppercase mt-0.5 font-['Oswald',sans-serif]">
-                Steakhouse &amp; Artisan Burgers
-              </span>
-            </div>
-          </div>
-
-          {/* Search Bar (Outback PESQUISAR) */}
-          <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-sm mx-4">
-            <div className="relative w-full">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="PESQUISAR CARDÁPIO..."
-                className="w-full rounded-full border border-[#332a23] bg-[#161210] pl-4 pr-10 py-2 text-xs font-semibold text-stone-100 placeholder-stone-500 focus:border-orange-500 focus:outline-none uppercase tracking-wider font-['Oswald',sans-serif]"
-              />
-              <button
-                type="submit"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-orange-400 cursor-pointer"
-                aria-label="Pesquisar"
-              >
-                <Search size={15} />
-              </button>
-            </div>
-          </form>
-
-          {/* Outback Nav Links & Main Action */}
-          <nav className="flex items-center gap-2 sm:gap-6">
-            <button
-              onClick={scrollToProducts}
-              className="text-xs font-bold uppercase tracking-wider text-amber-400 hover:text-white transition-colors font-['Oswald',sans-serif] cursor-pointer"
-            >
-              Nossos Produtos
-            </button>
-
-            <button
-              onClick={() => {
-                const el = document.getElementById('experiencia-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="hidden lg:inline-block text-xs font-bold uppercase tracking-wider text-stone-300 hover:text-amber-400 transition-colors font-['Oswald',sans-serif] cursor-pointer"
-            >
-              Restaurante &amp; Salão
-            </button>
-
-            <button
-              onClick={() => handleNavigateToMenu()}
-              className="hidden sm:inline-block text-xs font-bold uppercase tracking-wider text-stone-300 hover:text-amber-400 transition-colors font-['Oswald',sans-serif] cursor-pointer"
-            >
-              Delivery
-            </button>
-
-            <button
-              onClick={() => navigate('/admin/login')}
-              className="hidden md:inline-block text-xs font-bold uppercase tracking-wider text-stone-400 hover:text-stone-200 transition-colors font-['Oswald',sans-serif] cursor-pointer"
-            >
-              Acesso do Atendente
-            </button>
-
-            {/* Direct CTA: Ver Cardápio / Fazer Pedido */}
-            <button
-              onClick={() => handleNavigateToMenu()}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white px-4 sm:px-5 py-2 text-xs sm:text-sm font-black shadow-lg shadow-orange-950/60 uppercase font-['Oswald',sans-serif] tracking-wider transition-all cursor-pointer"
-            >
-              <ShoppingBag size={15} />
-              <span>Fazer Pedido</span>
-            </button>
-          </nav>
-        </div>
-      </header>
+      {/* 1. TOP NAVBAR (Outback Tabs: INÍCIO | NOSSOS PRODUTOS | RESTAURANTE & SALÃO | DELIVERY | ACESSO DO ATENDENTE) */}
+      <Navbar isAdmin={false} />
 
       {/* 2. HUGE SPLIT HERO BANNER (Directly Emulating the Outback Screenshot) */}
       <section

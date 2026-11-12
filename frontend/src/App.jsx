@@ -1,5 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage'
+import ProductsPage from './pages/ProductsPage'
+import RestaurantPage from './pages/RestaurantPage'
 import CustomerMenuPage from './pages/CustomerMenuPage'
 import OrderTrackingPage from './pages/OrderTrackingPage'
 import AdminLoginPage from './pages/AdminLoginPage'
@@ -10,13 +12,21 @@ import NotFoundPage from './pages/NotFoundPage'
 function App() {
   return (
     <Routes>
-      {/* Customer Routes */}
-      {/* Outback Style Demonstrative Home Landing Page */}
+      {/* 1. ABA INÍCIO (Tela Demonstrativa Inicial Outback) */}
       <Route path="/" element={<HomePage />} />
-      {/* Full Ordering Customer Menu Page */}
+
+      {/* 2. ABA NOSSOS PRODUTOS (Página Dedicada ao Catálogo de Produtos) */}
+      <Route path="/nossos-produtos" element={<ProductsPage />} />
+      <Route path="/produtos" element={<Navigate to="/nossos-produtos" replace />} />
+
+      {/* 3. ABA RESTAURANTE & SALÃO (Página Dedicada ao Espaço Presencial) */}
+      <Route path="/restaurante" element={<RestaurantPage />} />
+      <Route path="/salao" element={<Navigate to="/restaurante" replace />} />
+
+      {/* 4. ABA DELIVERY & CARDÁPIO OPERACIONAL */}
+      <Route path="/delivery" element={<CustomerMenuPage />} />
       <Route path="/cardapio" element={<CustomerMenuPage />} />
-      <Route path="/produtos" element={<Navigate to="/cardapio" replace />} />
-      <Route path="/menu" element={<Navigate to="/cardapio" replace />} />
+      <Route path="/menu" element={<Navigate to="/delivery" replace />} />
       <Route path="/pedido/:orderId" element={<OrderTrackingPage />} />
 
       {/* Admin Routes */}
