@@ -12,9 +12,11 @@ export function formatPrice(value) {
  * Calculate item unit price based on variation and addons
  * unitPrice = (variationPrice ?? productBasePrice) + sum(addonsPrices)
  */
-export function calculateItemPrice(product, selectedVariation, selectedAddons) {
-  const basePrice = selectedVariation ? selectedVariation.price : product.basePrice;
-  const addonsTotal = selectedAddons.reduce((sum, addon) => sum + addon.price, 0);
+export function calculateItemPrice(product, selectedVariation, selectedAddons = []) {
+  if (!product) return 0;
+  const basePrice = selectedVariation ? selectedVariation.price : (product.basePrice || 0);
+  const addons = Array.isArray(selectedAddons) ? selectedAddons : [];
+  const addonsTotal = addons.reduce((sum, addon) => sum + (addon?.price || 0), 0);
   return basePrice + addonsTotal;
 }
 

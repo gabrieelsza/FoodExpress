@@ -91,15 +91,24 @@ export default function CustomerMenuPage() {
   }, []);
 
   const handleModalAdd = useCallback(
-    (product, variation, addons, notes, quantity) => {
-      cart.addItem(product, variation, addons, notes, quantity);
+    (itemData) => {
+      if (itemData && itemData.product) {
+        cart.addItem(itemData.product, itemData.variation, itemData.addons, itemData.notes, itemData.quantity);
+      } else {
+        cart.addItem(itemData);
+      }
       setSelectedProduct(null);
     },
     [cart]
   );
 
   const handleCheckout = useCallback(
-    (orderType, tableNumber, customerName, deliveryAddress) => {
+    (checkoutData) => {
+      const orderType = checkoutData?.orderType || 'DINE_IN';
+      const tableNumber = checkoutData?.tableNumber || null;
+      const customerName = checkoutData?.customerName || null;
+      const deliveryAddress = checkoutData?.deliveryAddress || null;
+
       // Build items structure matching order schema
       const orderItems = cart.items.map((item, idx) => ({
         id: idx + 1,

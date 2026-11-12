@@ -93,8 +93,26 @@ function cartReducer(state, action) {
 export function CartProvider({ children }) {
   const [items, dispatch] = useReducer(cartReducer, null, loadCart);
 
-  const addItem = useCallback((product, variation, addons, notes, quantity = 1) => {
-    dispatch({ type: 'ADD_ITEM', payload: { product, variation, addons, notes, quantity } });
+  const addItem = useCallback((productOrData, variation, addons, notes, quantity = 1) => {
+    let payload;
+    if (productOrData && productOrData.product) {
+      payload = {
+        product: productOrData.product,
+        variation: productOrData.variation || null,
+        addons: productOrData.addons || [],
+        notes: productOrData.notes || '',
+        quantity: productOrData.quantity || 1,
+      };
+    } else {
+      payload = {
+        product: productOrData,
+        variation: variation || null,
+        addons: addons || [],
+        notes: notes || '',
+        quantity: quantity || 1,
+      };
+    }
+    dispatch({ type: 'ADD_ITEM', payload });
   }, []);
 
   const updateQuantity = useCallback((cartItemId, quantity) => {
