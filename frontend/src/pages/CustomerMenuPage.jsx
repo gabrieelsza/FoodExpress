@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   Search,
   Star,
@@ -25,6 +25,7 @@ import PromoCarousel from '../components/PromoCarousel';
 
 export default function CustomerMenuPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const cart = useCart();
   const orders = useOrders();
 
@@ -109,6 +110,21 @@ export default function CustomerMenuPage() {
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }, []);
+
+  // Handle URL query parameters from HomePage (e.g. ?categoria=2 or ?busca=smash)
+  useEffect(() => {
+    const catParam = searchParams.get('categoria');
+    const searchParam = searchParams.get('busca');
+
+    if (searchParam) {
+      setSearchQuery(searchParam);
+    } else if (catParam) {
+      const parsedId = parseInt(catParam, 10);
+      if (!isNaN(parsedId)) {
+        handleCategoryClick(parsedId);
+      }
+    }
+  }, [searchParams, handleCategoryClick]);
 
   const handleProductClick = useCallback((product) => {
     setSelectedProduct(product);

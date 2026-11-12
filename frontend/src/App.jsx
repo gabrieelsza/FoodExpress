@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import HomePage from './pages/HomePage'
 import CustomerMenuPage from './pages/CustomerMenuPage'
 import OrderTrackingPage from './pages/OrderTrackingPage'
 import AdminLoginPage from './pages/AdminLoginPage'
@@ -10,7 +11,12 @@ function App() {
   return (
     <Routes>
       {/* Customer Routes */}
-      <Route path="/" element={<CustomerMenuPage />} />
+      {/* Outback Style Demonstrative Home Landing Page */}
+      <Route path="/" element={<HomePage />} />
+      {/* Full Ordering Customer Menu Page */}
+      <Route path="/cardapio" element={<CustomerMenuPage />} />
+      <Route path="/produtos" element={<Navigate to="/cardapio" replace />} />
+      <Route path="/menu" element={<Navigate to="/cardapio" replace />} />
       <Route path="/pedido/:orderId" element={<OrderTrackingPage />} />
 
       {/* Admin Routes */}

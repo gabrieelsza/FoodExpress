@@ -22,19 +22,31 @@ export default function Navbar({
     <header className="sticky top-0 z-50 bg-[#0e0c0a]/95 backdrop-blur-md border-b border-[#26201b] shadow-xl w-full">
       <div className="w-full flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8 gap-4">
         {/* Brand / Logo */}
-        <Link to={isAdmin ? '/admin/pedidos' : '/'} className="flex items-center gap-3 shrink-0 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black border border-orange-500/50 text-white transition-transform group-hover:scale-105 overflow-hidden shadow-lg ring-2 ring-orange-500/20">
-            <img src="/logo.jpg" alt="FoodExpress" className="w-full h-full object-cover scale-105" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-black tracking-tight text-white leading-none">
-              Food<span className="bg-gradient-to-r from-orange-500 via-amber-400 to-red-500 bg-clip-text text-transparent">Express</span>
-            </span>
-            <span className="text-[10px] font-bold text-amber-500/90 tracking-widest uppercase mt-0.5 font-['Oswald',sans-serif]">
-              {isAdmin ? 'Painel Operacional' : 'Steakhouse & Artisan Burgers'}
-            </span>
-          </div>
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link to={isAdmin ? '/admin/pedidos' : '/'} className="flex items-center gap-3 shrink-0 group">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black border border-orange-500/50 text-white transition-transform group-hover:scale-105 overflow-hidden shadow-lg ring-2 ring-orange-500/20">
+              <img src="/logo.jpg" alt="FoodExpress" className="w-full h-full object-cover scale-105" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl font-black tracking-tight text-white leading-none">
+                Food<span className="bg-gradient-to-r from-orange-500 via-amber-400 to-red-500 bg-clip-text text-transparent">Express</span>
+              </span>
+              <span className="text-[10px] font-bold text-amber-500/90 tracking-widest uppercase mt-0.5 font-['Oswald',sans-serif]">
+                {isAdmin ? 'Painel Operacional' : 'Steakhouse & Artisan Burgers'}
+              </span>
+            </div>
+          </Link>
+
+          {!isAdmin && location.pathname !== '/' && (
+            <Link
+              to="/"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-stone-300 hover:text-amber-400 hover:bg-[#181411] transition-colors font-['Oswald',sans-serif] uppercase tracking-wider border border-transparent hover:border-[#382b22]"
+              title="Voltar para a página inicial"
+            >
+              Início
+            </Link>
+          )}
+        </div>
 
         {/* Center Search Bar (Client View Only - Desktop) */}
         {!isAdmin && onSearchChange && (
