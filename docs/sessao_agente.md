@@ -154,3 +154,20 @@
      - Barra de pesquisa mobile integrada.
   3. Foco imediato nos produtos do cardápio: os hambúrgueres e categorias agora carregam acima da dobra da página com acesso instantâneo aos clientes.
   4. Validação com `npm run build` (sucesso em 987ms) e inspeção visual via subagente de browser.
+
+---
+
+### [2026-11-12 15:25] — Implementação do Carrossel de Destaques e Promoções (`PromoCarousel.jsx`) (`/passo3`)
+- **Ações Executadas:**
+  1. Criação do componente interativo [`PromoCarousel.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/PromoCarousel.jsx) posicionado estrategicamente entre o cabeçalho da loja e as abas de categorias.
+  2. Implementação de 4 slides promocionais ricos:
+     - **Slide 1 (Combo Especial do Chef):** X-Burger + Fritas + Refri com desconto exclusivo e CTA *"Pedir Este Combo"*.
+     - **Slide 2 (Vantagem Exclusiva):** Frete Grátis em pedidos acima de R$ 60 com badge temático esmeralda.
+     - **Slide 3 (Lançamento da Brasa):** Smash Burger com queijo duplo e crosta artesanal.
+     - **Slide 4 (Doce Perfeito):** Brownie quente com sorvete artesanal.
+  3. Recursos e Interatividades:
+     - Auto-play suave a cada 5 segundos com pausa ao passar o mouse ou segurar na tela mobile.
+     - Suporte a toque e deslizamento (Swipe touch) nativo no mobile.
+     - Setas laterais translúcidas e barra de indicadores (*dots*) expandidos.
+     - Ação de clique conectada ao modal de customização do produto (`setSelectedProduct`).
+  4. Validação técnica via `npm run build` (sucesso em 1.22s) e inspeção visual comprovada via subagente de browser.

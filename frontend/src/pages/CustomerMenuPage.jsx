@@ -19,6 +19,7 @@ import ProductCard from '../components/ProductCard';
 import ProductModal from '../components/ProductModal';
 import CartDrawer from '../components/CartDrawer';
 import FloatingCartBar from '../components/FloatingCartBar';
+import PromoCarousel from '../components/PromoCarousel';
 
 export default function CustomerMenuPage() {
   const navigate = useNavigate();
@@ -110,6 +111,28 @@ export default function CustomerMenuPage() {
   const handleProductClick = useCallback((product) => {
     setSelectedProduct(product);
   }, []);
+
+  const handlePromoAction = useCallback((slide) => {
+    if (slide.productId) {
+      let foundProduct = null;
+      for (const cat of categories) {
+        const prod = (cat.products || []).find((p) => p.id === slide.productId && p.active);
+        if (prod) {
+          foundProduct = prod;
+          break;
+        }
+      }
+      if (foundProduct) {
+        setSelectedProduct(foundProduct);
+        return;
+      }
+    }
+    if (slide.categoryId) {
+      handleCategoryClick(slide.categoryId);
+    } else if (categories.length > 0) {
+      handleCategoryClick(categories[0].id);
+    }
+  }, [categories, handleCategoryClick]);
 
   const handleModalAdd = useCallback(
     (itemData) => {
@@ -280,6 +303,11 @@ export default function CustomerMenuPage() {
             </div>
           </div>
         </div>
+
+        {/* Promotional Highlights Carousel */}
+        {!searchQuery && (
+          <PromoCarousel onActionClick={handlePromoAction} />
+        )}
 
         {/* Sticky Category Tabs Bar */}
         {!filteredProductsBySearch && (
