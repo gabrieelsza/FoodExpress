@@ -23,13 +23,23 @@ export default function CustomerMenuPage() {
   const sectionRefs = useRef({});
   const tabsBarRef = useRef(null);
 
-  // Active categories from mock data
+  // Menu data (stored in localStorage by Admin or fallback to MOCK_MENU)
+  const menuData = useMemo(() => {
+    try {
+      const saved = localStorage.getItem('foodexpress_admin_menu_data');
+      return saved ? JSON.parse(saved) : MOCK_MENU;
+    } catch {
+      return MOCK_MENU;
+    }
+  }, []);
+
+  // Active categories
   const categories = useMemo(
     () =>
-      MOCK_MENU.categories
+      (menuData.categories || [])
         .filter((c) => c.active)
         .sort((a, b) => a.displayOrder - b.displayOrder),
-    []
+    [menuData]
   );
 
   // Set default selected category

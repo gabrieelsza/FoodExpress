@@ -53,7 +53,7 @@ const statusSortOrder = { RECEIVED: 0, PREPARING: 1, READY: 2, DELIVERED: 3, CAN
 
 export default function AdminOrdersPage() {
   const { isAuthenticated, logout } = useAuth();
-  const { adminOrders, advanceOrderStatus, cancelOrder } = useOrders();
+  const { adminOrders, setAdminOrders, advanceOrderStatus, cancelOrder } = useOrders();
   const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState('active');
@@ -72,12 +72,17 @@ export default function AdminOrdersPage() {
     }
   }, [isAuthenticated, navigate]);
 
-  // Polling
+  // Polling / Refresh from localStorage
   const doRefresh = useCallback(() => {
     setRefreshing(true);
-    // Simulate refresh (no real API)
-    setTimeout(() => setRefreshing(false), 600);
-  }, []);
+    try {
+      const saved = localStorage.getItem('foodexpress_orders');
+      if (saved && setAdminOrders) {
+        setAdminOrders(JSON.parse(saved));
+      }
+    } catch {}
+    setTimeout(() => setRefreshing(false), 500);
+  }, [setAdminOrders]);
 
   useEffect(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);

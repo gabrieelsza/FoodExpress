@@ -1,31 +1,48 @@
-import { createContext, useCallback, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { MOCK_ORDERS } from '../data/mockData';
 
 const OrderContext = createContext(null);
 
+const ORDERS_STORAGE_KEY = 'foodexpress_orders';
 const LAST_ORDER_KEY = 'foodexpress_last_order_id';
 
-export function OrderProvider({ children }) {
-  const [currentOrder, setCurrentOrder] = useState(null);
-  const [adminOrders, setAdminOrders] = useState(MOCK_ORDERS);
+function loadInitialOrders() {
+  try {
+    const saved = localStorage.getItem(ORDERS_STORAGE_KEY);
+    return saved ? JSON.parse(saved) : MOCK_ORDERS;
+  } catch {
+    return MOCK_ORDERS;
+  }
+}
 
-  // Simulated order ID counter
-  const [nextId, setNextId] = useState(200);
+export function OrderProvider({ children }) {
+  const [adminOrders, setAdminOrders] = useState(loadInitialOrders);
+  const [currentOrder, setCurrentOrder] = useState(null);
+
+  // Sync orders to localStorage whenever updated
+  useEffect(() => {
+    try {
+      localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(adminOrders));
+    } catch {
+      // Storage full or unavailable
+    }
+  }, [adminOrders]);
 
   const createOrder = useCallback((orderData) => {
+    const newId = Date.now() % 100000;
     const newOrder = {
-      id: nextId,
+      id: newId,
       ...orderData,
       status: 'RECEIVED',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
-    setNextId((prev) => prev + 1);
+
     setCurrentOrder(newOrder);
     setAdminOrders((prev) => [newOrder, ...prev]);
     localStorage.setItem(LAST_ORDER_KEY, String(newOrder.id));
     return newOrder;
-  }, [nextId]);
+  }, []);
 
   const getOrder = useCallback((orderId) => {
     return adminOrders.find((o) => o.id === Number(orderId)) || null;
