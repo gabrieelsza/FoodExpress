@@ -344,3 +344,20 @@
   5. **Validação Visual:**
      - Verificado via subagente de browser tanto na página inicial quanto dentro de `#/nossos-produtos`.
      - Build de produção validado com `npm run build` com sucesso.
+
+
+---
+
+### [2026-11-12 17:26] — Correção de Sobreposição dos Indicadores de Slide sobre os Botões do Hero
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** `Fase 3 — Correção de Layout e Responsividade do Banner`
+- **Ações Executadas:**
+  1. **Diagnóstico da Falha Visual:**
+     - O container de bolinhas de navegação possuía posicionamento absoluto centralizado (`absolute bottom-6 left-1/2`), colidindo verticalmente e sobrepondo o botão *"VER CARDÁPIO COMPLETO"* em telas menores ou intermediárias.
+  2. **Integração no Fluxo do Card:**
+     - Removido o overlay absoluto desordenado.
+     - O controle em pill com setas anterior/próxima (`ChevronLeft` / `ChevronRight`) e indicadores de slide foi integrado de forma limpa na barra inferior do card, alinhado à assinatura `FOODEXPRESS STEAKHOUSE BRASIL`.
+     - Garantida distância vertical segura de 40px abaixo dos botões principais.
+  3. **Validação Visual:**
+     - Verificado no navegador através de screenshot automatizado confirmando desobstrução total dos botões `VER CARDÁPIO COMPLETO` e `EXPLORAR PRODUTOS`.
+     - Build de produção validado com `npm run build`.

@@ -11,6 +11,8 @@ import {
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { formatPrice } from '../utils/helpers';
 
@@ -261,14 +263,62 @@ export default function HomePage() {
                       </button>
                     </div>
 
-                    {/* Outback Signature Seal */}
-                    <div className="pt-3 border-t border-[#241d18]/70 flex items-center justify-center lg:justify-start gap-3 text-stone-500">
-                      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black border border-orange-500/40 text-orange-500">
-                        <UtensilsCrossed size={13} />
+                    {/* Carousel Navigation Indicators & Outback Signature Seal */}
+                    <div className="pt-3 border-t border-[#241d18]/70 flex flex-col sm:flex-row items-center justify-between gap-3 text-stone-500">
+                      <div className="flex items-center gap-2.5">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black border border-orange-500/40 text-orange-500 shrink-0">
+                          <UtensilsCrossed size={13} />
+                        </div>
+                        <span className="text-xs font-bold uppercase tracking-widest text-stone-400 font-['Oswald',sans-serif]">
+                          FOODEXPRESS STEAKHOUSE BRASIL
+                        </span>
                       </div>
-                      <span className="text-xs font-bold uppercase tracking-widest text-stone-400 font-['Oswald',sans-serif]">
-                        FOODEXPRESS STEAKHOUSE BRASIL
-                      </span>
+
+                      {/* Integrated Slider Dots & Controls (Never overlaps buttons!) */}
+                      <div className="flex items-center gap-2 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#382b22] shadow-lg">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentSlideIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+                          }}
+                          className="text-stone-400 hover:text-amber-400 transition-colors p-0.5 cursor-pointer"
+                          aria-label="Slide anterior"
+                        >
+                          <ChevronLeft size={14} />
+                        </button>
+
+                        <div className="flex items-center gap-1.5 px-1">
+                          {HERO_SLIDES.map((s, sIdx) => (
+                            <button
+                              key={s.id}
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setCurrentSlideIndex(sIdx);
+                              }}
+                              className={`h-2 transition-all duration-300 rounded-full cursor-pointer ${
+                                sIdx === currentSlideIndex
+                                  ? 'w-7 bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 shadow-md shadow-orange-500/50'
+                                  : 'w-2 bg-stone-700 hover:bg-stone-500'
+                              }`}
+                              aria-label={`Ir para slide ${sIdx + 1}`}
+                            />
+                          ))}
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+                          }}
+                          className="text-stone-400 hover:text-amber-400 transition-colors p-0.5 cursor-pointer"
+                          aria-label="Próximo slide"
+                        >
+                          <ChevronRight size={14} />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -276,22 +326,6 @@ export default function HomePage() {
             </div>
           );
         })}
-
-        {/* Global Slider Navigation Dots */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-16 z-30 flex items-center gap-2.5 bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-stone-800/60">
-          {HERO_SLIDES.map((slide, idx) => (
-            <button
-              key={slide.id}
-              onClick={() => setCurrentSlideIndex(idx)}
-              className={`h-2 transition-all duration-300 rounded-full cursor-pointer ${
-                idx === currentSlideIndex
-                  ? 'w-8 bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 shadow-md shadow-orange-500/50'
-                  : 'w-2 bg-stone-700 hover:bg-stone-500'
-              }`}
-              aria-label={`Ir para slide ${idx + 1}`}
-            />
-          ))}
-        </div>
 
         {/* Soft Bottom Gradient Transition into Section 3 (Melts into page seamlessly!) */}
         <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#0b0908] via-[#0b0908]/90 to-transparent pointer-events-none z-20" />
