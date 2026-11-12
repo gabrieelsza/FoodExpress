@@ -443,3 +443,20 @@
   5. **Validação Visual:**
      - Screenshot automatizado no navegador confirmando o salto de qualidade estética e consistência visual com a proposta do FoodExpress.
      - Build de produção validado com `npm run build`.
+
+
+---
+
+### [2026-11-12 18:10] — Inclusão da Imagem de Hambúrguer na Lateral do Login com Opacidade Suave
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** `Fase 3 — Customização Visual da Área de Login`
+- **Ações Executadas:**
+  1. **Upload e Integração da Imagem (`/login-burger.jpg`):**
+     - A foto enviada pelo usuário (hambúrguer artesanal com bacon e cheddar derretido) foi copiada para `frontend/public/login-burger.jpg` e integrada na lateral esquerda do card de login em [`AdminLoginPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/AdminLoginPage.jsx).
+  2. **Efeito Visual Semitransparente ("Um Pouco Invisível"):**
+     - Aplicada opacidade controlada (`opacity-40`) e camadas de degradê escuro em fade progressivo (`bg-gradient-to-r from-transparent to-[#14100e]`), gerando um efeito sofisticado e atmosférico sem comprometer a leitura dos textos informativos.
+  3. **Preservação das Cores de Antes:**
+     - Mantida rigorosamente a paleta escura do formulário com destaque em âmbar, atalho de teste e botão de ação em degradê.
+  4. **Validação Visual:**
+     - Screenshot automatizado no navegador confirmando o resultado harmônico com a imagem integrada na lateral.
+     - Build de produção validado com `npm run build`.

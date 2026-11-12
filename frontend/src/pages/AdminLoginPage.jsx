@@ -55,19 +55,21 @@ export default function AdminLoginPage() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Dual-Panel Steakhouse Card */}
+        {/* Dual-Panel Steakhouse Card with User Burger Image */}
         <div className="relative z-10 w-full max-w-4xl rounded-3xl overflow-hidden border border-[#2e231c] bg-[#14100e] shadow-2xl shadow-black/80 grid grid-cols-1 md:grid-cols-12 transition-all duration-300">
           
-          {/* Left Column: Visual Steakhouse Atmosphere (Desktop) */}
+          {/* Left Column: Visual Burger Lateral Atmosphere (Um pouco invisível com fade suave) */}
           <div className="hidden md:flex md:col-span-5 relative flex-col justify-between p-8 bg-[#0a0807] overflow-hidden">
-            {/* Background Image with Dark Vignette */}
+            {/* User Uploaded Bacon Burger with subtle opacity & feathered vignette */}
             <img
-              src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1000&h=1200&fit=crop"
-              alt="Steakhouse Kitchen & Grill"
-              className="absolute inset-0 w-full h-full object-cover opacity-35 scale-105"
+              src="/login-burger.jpg"
+              alt="FoodExpress Artisan Burger"
+              className="absolute inset-0 w-full h-full object-cover object-center opacity-40 scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0e0c0a] via-[#0e0c0a]/70 to-black/50" />
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-r from-transparent to-[#14100e]" />
+            {/* Multi-stage feathered dark overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0e0c0a] via-[#0e0c0a]/60 to-black/40" />
+            <div className="absolute inset-y-0 right-0 w-28 bg-gradient-to-r from-transparent via-[#14100e]/70 to-[#14100e]" />
+            <div className="absolute inset-0 bg-orange-950/20 mix-blend-color" />
 
             {/* Top Badge */}
             <div className="relative z-10">
@@ -106,8 +108,17 @@ export default function AdminLoginPage() {
             </div>
           </div>
 
-          {/* Right Column: Branded Login Form */}
-          <div className="md:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-center bg-gradient-to-b md:bg-gradient-to-r from-[#14100e] via-[#120e0c] to-[#0e0c0a]">
+          {/* Right Column: Branded Login Form (Cor exata de antes com sutil presença na lateral) */}
+          <div className="md:col-span-7 relative p-6 sm:p-10 lg:p-12 flex flex-col justify-center bg-gradient-to-b md:bg-gradient-to-r from-[#14100e] via-[#120e0c] to-[#0e0c0a] overflow-hidden">
+            {/* Subtle semi-transparent lateral burger watermark on the side */}
+            <div className="absolute right-0 top-0 bottom-0 w-2/5 overflow-hidden pointer-events-none opacity-10">
+              <img
+                src="/login-burger.jpg"
+                alt=""
+                className="w-full h-full object-cover object-left scale-125"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#14100e] via-[#14100e]/80 to-transparent" />
+            </div>
             {/* Header / Brand */}
             <div className="text-center md:text-left mb-6 sm:mb-8 space-y-2">
               <div className="inline-flex md:hidden items-center justify-center w-16 h-16 rounded-full bg-black border border-orange-500/50 p-1 mb-2 shadow-xl ring-2 ring-orange-500/20 overflow-hidden">
