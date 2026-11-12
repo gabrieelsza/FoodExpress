@@ -54,21 +54,21 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
 
       {/* Panel */}
       <div
-        className="relative z-10 flex w-full max-w-lg sm:max-w-md flex-col rounded-t-3xl sm:rounded-t-none sm:rounded-l-3xl bg-[#18181c] border-l border-neutral-800 text-neutral-100 shadow-2xl animate-in slide-in-from-bottom sm:slide-in-from-right duration-300 max-h-[92vh] sm:max-h-full sm:h-full"
+        className="relative z-10 flex w-full max-w-lg sm:max-w-md flex-col rounded-t-3xl sm:rounded-t-none sm:rounded-l-3xl bg-[#14110f] border-l border-[#2d241e] text-stone-100 shadow-2xl animate-in slide-in-from-bottom sm:slide-in-from-right duration-300 max-h-[92vh] sm:max-h-full sm:h-full"
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-neutral-800 px-5 py-4">
+        <div className="flex items-center justify-between border-b border-[#26201b] px-5 py-4">
           <div>
-            <h2 className="text-lg font-bold text-white">Sua Sacola</h2>
+            <h2 className="text-xl font-black text-white font-['Oswald',sans-serif] uppercase tracking-wide">Sua Sacola</h2>
             {totalItems > 0 && (
-              <p className="text-sm text-neutral-400">
-                {totalItems} {totalItems === 1 ? 'item' : 'itens'}
+              <p className="text-xs text-stone-400 font-medium">
+                {totalItems} {totalItems === 1 ? 'item' : 'itens'} no pedido
               </p>
             )}
           </div>
           <button
             onClick={onClose}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-neutral-400 transition-colors hover:bg-neutral-800 hover:text-white cursor-pointer"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-stone-400 transition-colors hover:bg-[#1f1915] hover:text-white cursor-pointer"
             aria-label="Fechar sacola"
           >
             <X size={22} />
@@ -255,17 +255,17 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
 
         {/* Footer: Total + checkout button */}
         {!isEmpty && (
-          <div className="border-t border-neutral-800 bg-[#18181c] px-5 py-4">
+          <div className="border-t border-[#26201b] bg-[#14110f] px-5 py-4">
             <div className="mb-3 flex items-center justify-between">
-              <span className="text-base font-bold text-white">Total</span>
-              <span className="text-xl font-bold text-orange-400">
+              <span className="text-base font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wide">Total</span>
+              <span className="text-2xl font-black text-amber-400 font-['Oswald',sans-serif] tracking-wide">
                 {formatPrice(totalPrice)}
               </span>
             </div>
             <button
               onClick={handleCheckout}
               disabled={!canCheckout}
-              className="flex h-14 w-full items-center justify-center rounded-xl bg-orange-500 text-base font-bold text-white transition-all disabled:cursor-not-allowed disabled:opacity-50 active:bg-orange-700 hover:bg-orange-600 shadow-lg shadow-orange-500/25 cursor-pointer"
+              className="flex h-14 w-full items-center justify-center rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-[0.98] text-base font-black text-white transition-all disabled:cursor-not-allowed disabled:opacity-50 shadow-lg shadow-orange-950/70 font-['Oswald',sans-serif] uppercase tracking-wider cursor-pointer"
             >
               Finalizar Pedido — {formatPrice(totalPrice)}
             </button>

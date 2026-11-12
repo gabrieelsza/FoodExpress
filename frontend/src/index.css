@@ -12,7 +12,14 @@
   --color-primary-800: #9a3412;
   --color-primary-900: #7c2d12;
   --color-primary-950: #431407;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Oswald', sans-serif;
+  --font-bebas: 'Bebas Neue', sans-serif;
+}
+
+/* Steakhouse Dark Ambient Glow */
+.steakhouse-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(234, 88, 12, 0.12) 0%, rgba(185, 28, 28, 0.05) 35%, transparent 70%);
 }
 
 /* Custom scrollbar for category tabs */

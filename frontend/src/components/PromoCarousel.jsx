@@ -170,13 +170,13 @@ export default function PromoCarousel({ onActionClick }) {
                 } bg-gradient-to-r ${slide.gradient} ${slide.borderAccent}`}
               >
                 {/* Background Image with Ambient Overlay */}
-                <div className="absolute right-0 top-0 bottom-0 w-full md:w-1/2 h-full overflow-hidden opacity-35 md:opacity-50">
+                <div className="absolute right-0 top-0 bottom-0 w-full md:w-1/2 h-full overflow-hidden opacity-30 md:opacity-45">
                   <img
                     src={slide.imageUrl}
                     alt={slide.title}
                     className="w-full h-full object-cover object-center transform transition-transform duration-700 scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#121215] via-[#121215]/80 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0e0c0a] via-[#0e0c0a]/85 to-transparent"></div>
                 </div>
 
                 {/* Left Content Column */}
@@ -184,25 +184,25 @@ export default function PromoCarousel({ onActionClick }) {
                   {/* Category / Promo Badge */}
                   <div className="flex items-center gap-2">
                     <span
-                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider border shadow-sm ${slide.badgeColor}`}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider border shadow-sm font-['Oswald',sans-serif] ${slide.badgeColor}`}
                     >
                       <SlideIcon size={13} className="shrink-0" />
                       {slide.badge}
                     </span>
                     {slide.saveText && (
-                      <span className="text-[11px] font-semibold text-neutral-400 hidden sm:inline-block">
+                      <span className="text-[11px] font-semibold text-stone-400 hidden sm:inline-block">
                         • {slide.saveText}
                       </span>
                     )}
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight leading-tight font-['Oswald',sans-serif] uppercase">
                     {slide.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-neutral-300 max-w-xl leading-relaxed line-clamp-2 sm:line-clamp-none">
+                  <p className="text-xs sm:text-sm text-stone-300 max-w-xl leading-relaxed line-clamp-2 sm:line-clamp-none">
                     {slide.subtitle}
                   </p>
 
@@ -210,18 +210,18 @@ export default function PromoCarousel({ onActionClick }) {
                   <div className="pt-2 flex flex-wrap items-center gap-4">
                     <div className="flex items-baseline gap-2">
                       {slide.originalPrice && (
-                        <span className="text-xs sm:text-sm text-neutral-500 line-through">
+                        <span className="text-xs sm:text-sm text-stone-500 line-through">
                           {slide.originalPrice}
                         </span>
                       )}
-                      <span className="text-lg sm:text-2xl font-black text-orange-400 tracking-tight">
+                      <span className="text-lg sm:text-2xl font-black text-amber-400 tracking-tight font-['Oswald',sans-serif]">
                         {slide.promoPrice}
                       </span>
                     </div>
 
                     <button
                       onClick={() => onActionClick && onActionClick(slide)}
-                      className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs sm:text-sm shadow-lg shadow-orange-500/30 transition-all transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                      className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg shadow-orange-950/60 transition-all cursor-pointer"
                     >
                       <span>{slide.ctaText}</span>
                       <ArrowRight size={14} />

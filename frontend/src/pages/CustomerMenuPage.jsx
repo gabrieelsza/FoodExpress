@@ -209,7 +209,7 @@ export default function CustomerMenuPage() {
   }, [categories, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#0f0f11] text-neutral-100 antialiased flex flex-col">
+    <div className="min-h-screen bg-[#0b0908] text-stone-100 antialiased flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
       <div className="flex-1">
         {/* Top Navbar with integrated search */}
         <Navbar
@@ -222,18 +222,18 @@ export default function CustomerMenuPage() {
 
         {/* Hero Cover Promotional Carousel (At the top in place of static banner) */}
         {!searchQuery && (
-          <div className="w-full bg-[#121215] border-b border-neutral-800/80">
+          <div className="w-full bg-[#0c0a09] border-b border-[#241d18]">
             <PromoCarousel onActionClick={handlePromoAction} />
           </div>
         )}
 
         {/* Restaurant Header Profile Section */}
-        <div className="relative bg-[#141417] border-b border-neutral-800/80 py-6 sm:py-8">
+        <div className="relative bg-[#100e0c] border-b border-[#241d18] py-6 sm:py-8 steakhouse-glow">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
               <div className="flex items-center gap-4 sm:gap-5">
                 {/* Store Avatar Badge */}
-                <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-full bg-black border-2 border-neutral-800 text-white shadow-xl ring-2 ring-orange-500/50 overflow-hidden">
+                <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-full bg-black border-2 border-orange-500/50 text-white shadow-2xl ring-4 ring-orange-500/20 overflow-hidden">
                   <img
                     src="/logo.jpg"
                     alt="FoodExpress"
@@ -243,16 +243,19 @@ export default function CustomerMenuPage() {
 
                 {/* Store Info */}
                 <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                  <div className="flex items-center gap-2.5">
+                    <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white leading-tight font-['Oswald',sans-serif]">
                       FoodExpress
                     </h1>
-                    <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-orange-500/20 text-orange-400">
-                      <CheckCircle2 size={15} className="text-orange-500" />
+                    <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-orange-500/20 text-orange-400" title="Restaurante Verificado">
+                      <CheckCircle2 size={16} className="text-orange-500" />
+                    </span>
+                    <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-red-950/80 text-amber-400 border border-red-800/60 font-['Oswald',sans-serif]">
+                      Steakhouse
                     </span>
                   </div>
 
-                  <p className="text-xs sm:text-sm font-medium text-neutral-400 mt-0.5">
+                  <p className="text-xs sm:text-sm font-medium text-stone-400 mt-0.5">
                     Hamburgueria Artesanal • Porções • Bebidas &amp; Sobremesas
                   </p>
 
@@ -261,24 +264,24 @@ export default function CustomerMenuPage() {
                     <span className="inline-flex items-center gap-1 font-bold text-white">
                       <Star size={14} className="fill-amber-400 text-amber-400" />
                       4.9
-                      <span className="font-normal text-neutral-400">(500+ avaliações)</span>
+                      <span className="font-normal text-stone-400">(500+ avaliações)</span>
                     </span>
 
-                    <span className="text-neutral-700">•</span>
+                    <span className="text-stone-700">•</span>
 
-                    <span className="inline-flex items-center gap-1 font-medium text-neutral-300">
-                      <Clock size={14} className="text-neutral-400" />
+                    <span className="inline-flex items-center gap-1 font-medium text-stone-300">
+                      <Clock size={14} className="text-amber-500" />
                       30–45 min
                     </span>
 
-                    <span className="text-neutral-700">•</span>
+                    <span className="text-stone-700">•</span>
 
-                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold border border-emerald-500/20">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold border border-emerald-500/30">
                       <Bike size={13} />
                       Salão &amp; Entrega
                     </span>
 
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neutral-800 text-neutral-300 text-xs">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#181411] border border-[#2e251f] text-stone-300 text-xs font-medium">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                       Aberto hoje até 23:30
                     </span>
@@ -289,18 +292,18 @@ export default function CustomerMenuPage() {
               {/* Mobile Search Input */}
               <div className="sm:hidden w-full">
                 <div className="relative">
-                  <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500" />
+                  <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-500" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Buscar no cardápio..."
-                    className="w-full rounded-full border border-neutral-700/80 bg-neutral-900/90 pl-9 pr-9 py-2 text-sm text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-orange-500"
+                    placeholder="Buscar lanches, porções, bebidas..."
+                    className="w-full rounded-full border border-[#2e251f] bg-[#14110e] pl-9 pr-9 py-2 text-sm text-stone-100 placeholder-stone-500 focus:outline-none focus:border-orange-500"
                   />
                   {searchQuery && (
                     <button
                       onClick={() => setSearchQuery('')}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400"
                     >
                       <X size={14} />
                     </button>
@@ -313,7 +316,7 @@ export default function CustomerMenuPage() {
 
         {/* Sticky Category Tabs Bar */}
         {!filteredProductsBySearch && (
-          <div className="sticky top-16 z-30 bg-[#141417]/95 backdrop-blur-md border-b border-neutral-800/80 shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
+          <div className="sticky top-16 z-30 bg-[#0e0c0a]/95 backdrop-blur-md border-b border-[#26201b] shadow-[0_8px_20px_rgba(0,0,0,0.6)]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div
                 ref={tabsBarRef}
@@ -328,16 +331,16 @@ export default function CustomerMenuPage() {
                       key={cat.id}
                       data-active={isSelected}
                       onClick={() => handleCategoryClick(cat.id)}
-                      className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-150 cursor-pointer ${
+                      className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-black whitespace-nowrap transition-all duration-200 cursor-pointer uppercase font-['Oswald',sans-serif] tracking-wider ${
                         isSelected
-                          ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/25 border border-orange-400/30'
-                          : 'bg-neutral-900 text-neutral-400 hover:bg-neutral-800 hover:text-white border border-neutral-800'
+                          ? 'bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/70 border border-orange-400/50'
+                          : 'bg-[#161210] text-stone-400 hover:bg-[#1e1915] hover:text-stone-200 border border-[#2b231d]'
                       }`}
                     >
                       <span>{cat.name}</span>
                       <span
-                        className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
-                          isSelected ? 'bg-orange-700/70 text-white' : 'bg-neutral-800 text-neutral-400'
+                        className={`rounded-md px-1.5 py-0.2 text-[10px] font-bold ${
+                          isSelected ? 'bg-red-950/70 text-amber-200 border border-red-800/50' : 'bg-[#221c17] text-stone-400'
                         }`}
                       >
                         {activeCount}
@@ -357,27 +360,27 @@ export default function CustomerMenuPage() {
           <div>
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-xl font-bold text-white">
+                <h2 className="text-xl sm:text-2xl font-black text-white font-['Oswald',sans-serif] uppercase tracking-wide">
                   Resultados para "{searchQuery}"
                 </h2>
-                <p className="text-xs text-neutral-400 mt-0.5">
+                <p className="text-xs text-stone-400 mt-0.5">
                   {filteredProductsBySearch.length} item(ns) encontrado(s)
                 </p>
               </div>
               <button
                 onClick={() => setSearchQuery('')}
-                className="text-xs font-semibold text-orange-400 hover:underline cursor-pointer"
+                className="text-xs font-bold text-amber-400 hover:underline cursor-pointer uppercase font-['Oswald',sans-serif] tracking-wider"
               >
                 Limpar busca
               </button>
             </div>
 
             {filteredProductsBySearch.length === 0 ? (
-              <div className="py-16 text-center bg-[#18181c] rounded-2xl border border-neutral-800 p-8 shadow-xs">
-                <Search size={36} className="mx-auto text-neutral-600 mb-2.5" />
-                <h3 className="text-sm font-bold text-neutral-200">Nenhum item encontrado</h3>
-                <p className="text-xs text-neutral-400 mt-1 max-w-xs mx-auto">
-                  Tente buscar por outro termo ou navegue pelas categorias.
+              <div className="py-16 text-center bg-[#14110f] rounded-2xl border border-[#29211b] p-8 shadow-md">
+                <Search size={36} className="mx-auto text-stone-600 mb-2.5" />
+                <h3 className="text-sm font-bold text-stone-200 font-['Oswald',sans-serif] uppercase tracking-wide">Nenhum item encontrado</h3>
+                <p className="text-xs text-stone-400 mt-1 max-w-xs mx-auto">
+                  Tente buscar por outro corte ou navegue pelas categorias acima.
                 </p>
               </div>
             ) : (
@@ -394,7 +397,7 @@ export default function CustomerMenuPage() {
           </div>
         ) : (
           /* Categories Sections */
-          <div className="space-y-10">
+          <div className="space-y-12">
             {categories.map((cat) => {
               const activeProducts = (cat.products || []).filter((p) => p.active);
               if (activeProducts.length === 0) return null;
@@ -408,16 +411,19 @@ export default function CustomerMenuPage() {
                   className="scroll-mt-32"
                 >
                   {/* Category Header */}
-                  <div className="flex items-baseline justify-between border-b border-neutral-800/80 pb-2.5 mb-5">
-                    <h2 className="text-xl font-bold text-white tracking-tight">
-                      {cat.name}
-                    </h2>
-                    <span className="text-xs font-medium text-neutral-400">
-                      {activeProducts.length} {activeProducts.length === 1 ? 'item' : 'itens'}
+                  <div className="flex items-center justify-between border-b border-[#26201b] pb-3 mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="h-5 w-1 rounded-full bg-gradient-to-b from-red-600 via-orange-500 to-amber-400"></div>
+                      <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-white font-['Oswald',sans-serif]">
+                        {cat.name}
+                      </h2>
+                    </div>
+                    <span className="text-xs font-semibold text-stone-400 font-['Oswald',sans-serif] tracking-wider uppercase">
+                      {activeProducts.length} {activeProducts.length === 1 ? 'opção' : 'opções'}
                     </span>
                   </div>
 
-                  {/* Products Grid: 4 columns on large screens! */}
+                  {/* Products Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
                     {activeProducts.map((product) => (
                       <ProductCard
@@ -461,94 +467,32 @@ export default function CustomerMenuPage() {
 
       </div>
 
-      {/* Modern, High-End Artisan Restaurant Footer */}
-      <footer className="mt-16 border-t border-neutral-800/80 bg-[#121215] text-neutral-400">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-neutral-800/70">
-            {/* Col 1: Brand Info & Quality Badges */}
-            <div className="md:col-span-2 space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-black border border-orange-500/40 text-white overflow-hidden shadow-md ring-2 ring-orange-500/20">
-                  <img src="/logo.jpg" alt="FoodExpress" className="w-full h-full object-cover scale-105" />
-                </div>
-                <div>
-                  <span className="text-xl font-extrabold text-white tracking-tight leading-none block">
-                    Food<span className="text-orange-500">Express</span>
-                  </span>
-                  <span className="text-xs font-medium text-neutral-400">Hamburgueria Artesanal & Delivery</span>
-                </div>
+      {/* Minimalist, Clean Outback-Style Dark Footer (Matching Image 3) */}
+      <footer className="mt-16 w-full bg-[#0b0908] border-t border-[#26201b] py-6 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#161210] border border-[#332720] text-orange-500 shadow-md">
+                <UtensilsCrossed size={17} />
               </div>
-              <p className="text-sm text-neutral-400 max-w-md leading-relaxed">
-                Hambúrgueres artesanais preparados com blends nobres grelhados no fogo, molhos especiais e ingredientes frescos selecionados. O verdadeiro sabor da brasa direto na sua mesa ou entregue com rapidez na sua casa.
-              </p>
-              <div className="flex flex-wrap gap-2 pt-1">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-semibold text-neutral-300">
-                  <CheckCircle2 size={12} className="text-orange-500" /> Carnes Nobres
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-semibold text-neutral-300">
-                  <Bike size={12} className="text-orange-500" /> Entrega Express
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-semibold text-neutral-300">
-                  <Clock size={12} className="text-orange-500" /> Preparo Artesanal
-                </span>
+              <div className="flex items-center gap-2">
+                <span className="font-extrabold text-white text-base tracking-tight">FoodExpress</span>
+                <span className="text-stone-600">•</span>
+                <span className="text-xs font-medium text-stone-400">Sistema de Pedidos</span>
               </div>
             </div>
 
-            {/* Col 2: Horário & Atendimento */}
-            <div className="space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-200">Atendimento & Horários</h4>
-              <ul className="space-y-3 text-xs text-neutral-400">
-                <li className="flex items-start gap-2.5">
-                  <Clock size={15} className="text-orange-500 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-semibold text-neutral-200 block">Terça a Domingo</span>
-                    <span>18:00 às 23:30</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <UtensilsCrossed size={15} className="text-orange-500 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-semibold text-neutral-200 block">Salão & Delivery</span>
-                    <span>Pedidos no balcão e entrega rápida</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            {/* Col 3: Pagamento & Área de Atendente */}
-            <div className="space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-200">Pagamento & Gestão</h4>
-              <div className="space-y-2 text-xs text-neutral-400">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                  <span>Pix (aprovação instantânea)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                  <span>Cartões de Débito e Crédito</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                  <span>Dinheiro (troco sob solicitação)</span>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <button
-                  onClick={() => navigate('/admin/login')}
-                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 hover:border-orange-500/50 text-neutral-200 hover:text-white text-xs font-semibold transition-all shadow-sm cursor-pointer"
-                >
-                  <ShieldCheck size={14} className="text-orange-500" />
-                  Painel do Atendente
-                </button>
-              </div>
-            </div>
+            <button
+              onClick={() => navigate('/admin/login')}
+              className="text-xs font-semibold text-stone-400 hover:text-orange-400 underline underline-offset-4 transition-colors cursor-pointer"
+            >
+              Acesso do Atendente
+            </button>
           </div>
 
-          {/* Bottom Copyright Bar */}
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400">
-            <p>© {new Date().getFullYear()} FoodExpress Hamburgueria Artesanal. Todos os direitos reservados.</p>
-            <p className="text-[11px] text-neutral-400">Cardápio Digital & Sistema Operacional Integrado</p>
+          <div className="mt-5 pt-4 border-t border-[#1c1814] flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-stone-500">
+            <p>© {new Date().getFullYear()} FoodExpress. Todos os direitos reservados.</p>
+            <p className="text-[11px] text-stone-600">Steakhouse &amp; Hambúrgueres Artesanais na Brasa</p>
           </div>
         </div>
       </footer>
