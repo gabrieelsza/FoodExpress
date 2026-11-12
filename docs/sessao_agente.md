@@ -180,3 +180,11 @@
   2. Inclusão do **Banner Oficial da FoodExpress** como Slide 1 do carrossel (`FoodExpress · Sabor de Verdade` com blends nobres na brasa e preview em alta definição).
   3. Ajuste de hierarquia visual: `Navbar` → `Hero Carousel de Capa` → `Perfil & Informações da Loja` → `Abas de Categorias` → `Grid de Produtos`.
   4. Validação com `npm run build` e confirmação visual em subagente de browser.
+
+---
+
+### [2026-11-12 15:39] — Expansão Full-Width da Navbar de Ponta a Ponta (`/passo3`)
+- **Ações Executadas:**
+  1. Ajuste em [`Navbar.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/Navbar.jsx) removendo a restrição de largura máxima centralizada (`max-w-7xl`).
+  2. A Navbar agora expande em 100% da largura da tela (`w-full`), posicionando o logotipo da FoodExpress no canto extremo esquerdo e o botão da Sacola no canto extremo direito ("até o final"), com a barra de busca equilibrada ao centro.
+  3. Validação com `npm run build` e inspeção visual comprovada de ponta a ponta.

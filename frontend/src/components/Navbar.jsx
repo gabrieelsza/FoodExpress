@@ -20,7 +20,7 @@ export default function Navbar({
 
   return (
     <header className="sticky top-0 z-50 bg-[#121215]/95 backdrop-blur-md border-b border-neutral-800/90 shadow-md w-full">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 gap-4">
+      <div className="w-full flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8 gap-4">
         {/* Brand / Logo */}
         <Link to={isAdmin ? '/admin/pedidos' : '/'} className="flex items-center gap-2.5 shrink-0 group">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black border border-orange-500/40 text-white transition-transform group-hover:scale-105 overflow-hidden shadow-md ring-1 ring-orange-500/30">
