@@ -260,3 +260,27 @@
      - Substituição do bloco excessivo de colunas pelo rodapé limpo e elegante: ícone `FoodExpress • Sistema de Pedidos`, link discreto `Acesso do Atendente` e direitos reservados.
   5. **Compilação e Integridade:**
      - `npm run build` executado com sucesso e commit registrado (`914b66c`).
+
+
+---
+
+### [2026-11-12 16:36] — Arquitetura de Abas e Redução da Home para 3 Itens Demonstrativos
+- **Papel Ativo:** Engenheiro Frontend & Especialista em Design de Steakhouse
+- **Etapa SDD:** `Fase 3 — Polimento de UI & Refatoração de Navegação em Abas`
+- **Ações Executadas:**
+  1. **Separação Arquitetural de Abas Superiores no Navbar:**
+     - `INÍCIO` (`/`): Página demonstrativa institucional com Split Hero Outback e apenas 3 itens demonstrativos icônicos.
+     - `NOSSOS PRODUTOS` (`/nossos-produtos`): Catálogo completo com 4 categorias, busca interativa, fotos em alta resolução, personalização de adicionais e sacola de compras.
+     - `RESTAURANTE & SALÃO` (`/restaurante`): Experiência presencial com pilares (grelhados ao vivo, caneca ultracongelada a -2°C, salão climatizado), horários e endereço.
+     - `DELIVERY` (`/delivery`): Interface operacional para pedidos diretos com carrinho, seleção de mesa/entrega e envio ao WhatsApp.
+     - `ACESSO DO ATENDENTE` (`/admin/login`): Acesso administrativo seguro para o painel de pedidos.
+  2. **Substituição do Cardápio Extenso na Home por 3 Itens Demonstrativos:**
+     - Removido o grid extenso de 10 produtos e os 4 tiles de categorias da Home.
+     - Implementado showcase com estritamente 3 criações lendárias:
+       - **X-Burger Artesanal** (R$ 28,90 - Blend 180g, Pão Brioche, Cheddar Duplo)
+       - **Aussie Cheese Fries** (R$ 18,90 - Batatas Rústicas com Cheddar e Bacon)
+       - **Thunder Brownie com Sorvete** (R$ 19,90 - Brownie de Chocolate Belga com Sorvete de Baunilha)
+     - Banner de chamada direta para a aba "NOSSOS PRODUTOS" e "DELIVERY".
+  3. **Validação Técnica e Visual:**
+     - Build de produção verificado com `npm run build` (sucesso em 982ms).
+     - Testes visuais automatizados via subagent de browser confirmando fidelidade estética e ausência de elementos duplicados.

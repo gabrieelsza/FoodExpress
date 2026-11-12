@@ -1,9 +1,7 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import {
-  ChevronLeft,
-  ChevronRight,
   Flame,
   Sparkles,
   Bike,
@@ -13,10 +11,6 @@ import {
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
-  Heart,
-  ShoppingBag,
-  Search,
-  SlidersHorizontal,
 } from 'lucide-react';
 import { formatPrice } from '../utils/helpers';
 
@@ -41,7 +35,7 @@ const HERO_SLIDES = [
     title: 'Aussie Fries & Bloomin\' Onion',
     subtitle: 'Batatas rústicas com cheddar cremoso e bacon crocante, anéis de cebola dourados e molhos especiais para mergulhar.',
     schedule: 'O ACOMPANHAMENTO PERFEITO PARA QUALQUER PEDIDO',
-    ctaText: 'PEDIR ESTE COMBO',
+    ctaText: 'PEDIR NO DELIVERY',
     ctaSubText: 'VER PORÇÕES DISPONÍVEIS',
     photoUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&h=900&fit=crop',
     photoAlt: 'Costela grelhada com batatas rústicas e porções generosas na mesa',
@@ -62,50 +56,7 @@ const HERO_SLIDES = [
   },
 ];
 
-const CATEGORY_TILES = [
-  {
-    id: 1,
-    title: 'Burgers & Lanches na Brasa',
-    shortTitle: 'Lanches',
-    badge: 'CORTES NOBRES',
-    description: 'Blends de 180g grelhados no fogo, pães brioche tostados na manteiga e queijo cheddar derretido.',
-    imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=450&fit=crop',
-    itemCount: '3 opções na brasa',
-    accent: 'border-orange-500/50',
-  },
-  {
-    id: 2,
-    title: 'Aperitivos & Aussie Fries',
-    shortTitle: 'Porções',
-    badge: 'PARA DIVIDIR',
-    description: 'Batatas com cheddar e bacon, Bloomin\' Onion crocante e nuggets crocantes para petiscar.',
-    imageUrl: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&h=450&fit=crop',
-    itemCount: '3 porções generosas',
-    accent: 'border-amber-500/50',
-  },
-  {
-    id: 3,
-    title: 'Bebidas & Chopps Gelados',
-    shortTitle: 'Bebidas',
-    badge: 'CANECAS CONGELADAS',
-    description: 'Chopp artesanal trincando, refrigerantes de lata bem gelados e sucos naturais da fruta.',
-    imageUrl: 'https://images.unsplash.com/photo-1608270191722-1efcb3be4919?w=600&h=450&fit=crop',
-    itemCount: '3 opções refrescantes',
-    accent: 'border-emerald-500/50',
-  },
-  {
-    id: 4,
-    title: 'Sobremesas & Thunder Brownie',
-    shortTitle: 'Sobremesas',
-    badge: 'DOCES DA CASA',
-    description: 'O famoso Thunder Brownie com calda quente de chocolate e pudim artesanal cremoso.',
-    imageUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=450&fit=crop',
-    itemCount: '2 sobremesas icônicas',
-    accent: 'border-rose-500/50',
-  },
-];
-
-const SIGNATURE_DISHES = [
+const DEMO_ITEMS = [
   {
     id: 1,
     title: 'X-Burger Artesanal',
@@ -113,31 +64,9 @@ const SIGNATURE_DISHES = [
     categoryId: 1,
     description: 'Pão brioche selado na manteiga, blend bovino 180g grelhado no fogo, queijo cheddar duplo, alface, tomate e maionese autoral da casa.',
     price: 28.90,
-    imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=450&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop',
     badge: 'O Mais Pedido',
     tags: ['Blend 180g', 'Queijo Cheddar', 'Pão Brioche', 'Na Brasa'],
-  },
-  {
-    id: 2,
-    title: 'X-Salada Especial',
-    category: 'Lanches na Brasa',
-    categoryId: 1,
-    description: 'Hambúrguer 150g suculento na grelha, queijo derretido, alface americana fresca, tomate maduro, cebola roxa e maionese temperada.',
-    price: 22.90,
-    imageUrl: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=450&fit=crop',
-    badge: 'Clássico Suculento',
-    tags: ['Blend 150g', 'Queijo Prato', 'Salada Fresca'],
-  },
-  {
-    id: 3,
-    title: 'Frango Crispy Steakhouse',
-    category: 'Lanches na Brasa',
-    categoryId: 1,
-    description: 'Sobrecoxa de frango empanada com casquinha crocante temperada com páprica defumada, maionese artesanal e alface no pão com gergelim.',
-    price: 25.90,
-    imageUrl: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&h=450&fit=crop',
-    badge: 'Crosta Dourada',
-    tags: ['Frango Crocante', 'Pão Gergelim', 'Molho da Casa'],
   },
   {
     id: 4,
@@ -146,53 +75,9 @@ const SIGNATURE_DISHES = [
     categoryId: 2,
     description: 'Porção generosa de batatas fritas douradas e crocantes cobertas com farta camada de queijo cheddar cremoso e cubos de bacon frito crocante.',
     price: 18.90,
-    imageUrl: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&h=450&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&h=600&fit=crop',
     badge: 'Favorito da Galera',
     tags: ['Batatas Rústicas', 'Cheddar Quente', 'Bacon Crocante'],
-  },
-  {
-    id: 6,
-    title: 'Bloomin\' Onion Rings',
-    category: 'Porções & Entradas',
-    categoryId: 2,
-    description: 'Anéis gigantes de cebola empanados em farinha especial com especiarias secretas, fritos sequinhos e servidos com molho ranch autoral.',
-    price: 16.90,
-    imageUrl: 'https://images.unsplash.com/photo-1639024471283-03518883512d?w=600&h=450&fit=crop',
-    badge: 'Crocância Máxima',
-    tags: ['Anéis de Cebola', 'Molho Ranch', 'Empanado Especial'],
-  },
-  {
-    id: 5,
-    title: 'Nuggets Crocantes (10 un)',
-    category: 'Porções & Entradas',
-    categoryId: 2,
-    description: '10 unidades de nuggets 100% peito de frango selecionado, crocantes por fora e macios por dentro, com molho barbecue defumado.',
-    price: 19.90,
-    imageUrl: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=600&h=450&fit=crop',
-    badge: 'Porção Família',
-    tags: ['100% Peito de Frango', 'Molho Barbecue', '10 Unidades'],
-  },
-  {
-    id: 8,
-    title: 'Chopp Artesanal Caneca Congelada',
-    category: 'Bebidas & Chopps',
-    categoryId: 3,
-    description: 'Chopp pilsen artesanal puro malte tirado no padrão perfeito e servido na caneca ultracongelada para máxima refrescância.',
-    price: 11.90,
-    imageUrl: 'https://images.unsplash.com/photo-1608270191722-1efcb3be4919?w=600&h=450&fit=crop',
-    badge: 'Trincando de Gelado',
-    tags: ['Puro Malte', 'Caneca Congelada', 'Chopp Artesanal'],
-  },
-  {
-    id: 9,
-    title: 'Refrigerante Lata & Sucos',
-    category: 'Bebidas & Chopps',
-    categoryId: 3,
-    description: 'Coca-Cola, Guaraná Antarctica, opções Zero e sucos naturais de laranja e maracujá servidos com copo de gelo e limão.',
-    price: 6.90,
-    imageUrl: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&h=450&fit=crop',
-    badge: 'Refrescante',
-    tags: ['Lata 350ml', 'Gelo & Limão', 'Opções Zero'],
   },
   {
     id: 11,
@@ -201,20 +86,9 @@ const SIGNATURE_DISHES = [
     categoryId: 4,
     description: 'Brownie morno com textura densa de puro chocolate belga, calda quente cremosa de chocolate meio amargo e bola generosa de sorvete de baunilha.',
     price: 19.90,
-    imageUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=450&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&h=600&fit=crop',
     badge: 'Final Perfeito',
     tags: ['Chocolate Belga', 'Calda Quente', 'Sorvete Baunilha'],
-  },
-  {
-    id: 12,
-    title: 'Pudim Artesanal de Leite',
-    category: 'Sobremesas Especiais',
-    categoryId: 4,
-    description: 'Pudim tradicional de leite condensado super aveludado e sem furinhos, banhado em calda dourada brilhante de caramelo.',
-    price: 12.90,
-    imageUrl: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&h=450&fit=crop',
-    badge: 'Receita da Casa',
-    tags: ['Leite Condensado', 'Calda de Caramelo', 'Cremoso'],
   },
 ];
 
@@ -222,8 +96,6 @@ export default function HomePage() {
   const navigate = useNavigate();
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategoryFilter, setActiveCategoryFilter] = useState('ALL');
 
   // Auto-advance slides every 6 seconds
   useEffect(() => {
@@ -236,21 +108,12 @@ export default function HomePage() {
 
   const currentSlide = HERO_SLIDES[currentSlideIndex];
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/cardapio?busca=${encodeURIComponent(searchQuery.trim())}`);
-    } else {
-      navigate('/cardapio');
-    }
+  const handleNavigateToProducts = () => {
+    navigate('/nossos-produtos');
   };
 
-  const handleNavigateToMenu = (categoryId = null) => {
-    if (categoryId) {
-      navigate(`/cardapio?categoria=${categoryId}`);
-    } else {
-      navigate('/cardapio');
-    }
+  const handleNavigateToDelivery = () => {
+    navigate('/delivery');
   };
 
   const scrollToProducts = () => {
@@ -258,15 +121,9 @@ export default function HomePage() {
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      handleNavigateToMenu();
+      navigate('/nossos-produtos');
     }
   };
-
-  // Filter dishes by active tab
-  const filteredDishes = useMemo(() => {
-    if (activeCategoryFilter === 'ALL') return SIGNATURE_DISHES;
-    return SIGNATURE_DISHES.filter((d) => d.categoryId === activeCategoryFilter);
-  }, [activeCategoryFilter]);
 
   return (
     <div className="min-h-screen bg-[#0b0908] text-stone-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-orange-600 flex flex-col">
@@ -333,7 +190,7 @@ export default function HomePage() {
               {/* Big Prominent Outback Button */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
                 <button
-                  onClick={() => handleNavigateToMenu()}
+                  onClick={handleNavigateToProducts}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-xl shadow-orange-950/80 transition-all cursor-pointer"
                 >
                   <span>{currentSlide.ctaText}</span>
@@ -378,138 +235,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. "NOSSOS PRODUTOS & VIVA O SABOR FOODEXPRESS" — ULTRA REFINED SHOWCASE */}
+      {/* 3. "NOSSOS PRODUTOS" — 3 ITENS DEMONSTRATIVOS */}
       <section id="nossos-produtos" className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
         {/* Section Header */}
         <div className="text-center space-y-3 mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#161210] border border-[#33261e] text-xs font-bold text-orange-400 uppercase tracking-widest font-['Oswald',sans-serif]">
             <Flame size={14} className="fill-orange-500" />
-            NOSSOS PRODUTOS EXCLUSIVOS
+            DESTAQUES DA CASA
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-wider font-['Oswald',sans-serif]">
             VIVA O SABOR FOODEXPRESS
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 mx-auto rounded-full mt-3"></div>
-          <p className="text-sm sm:text-base text-stone-400 max-w-2xl mx-auto pt-2 leading-relaxed">
-            Mergulhe no universo das nossas criações artesanais. Escolha uma categoria para explorar os cortes nobres na brasa viva, porções crocantes, chopps trincando e doces inesquecíveis.
+          <p className="text-sm sm:text-base text-stone-400 max-w-xl mx-auto pt-2 leading-relaxed">
+            Três criações lendárias para você conhecer o autêntico sabor da brasa. Para ver todos os lanches, porções, chopps e sobremesas, acesse a aba <strong className="text-amber-400 font-bold">Nossos Produtos</strong>.
           </p>
         </div>
 
-        {/* 3.1. ICONIC CATEGORY HERO TILES (Outback Style Category Tiles) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
-          {CATEGORY_TILES.map((cat) => (
-            <div
-              key={cat.id}
-              onClick={() => handleNavigateToMenu(cat.id)}
-              className="group relative overflow-hidden rounded-2xl bg-[#14110f] border border-[#2b221c] hover:border-orange-500/70 p-6 flex flex-col justify-between min-h-[220px] shadow-xl hover:shadow-2xl hover:shadow-orange-950/40 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
-            >
-              {/* Background image preview with dark gradient */}
-              <div className="absolute inset-0 opacity-20 group-hover:opacity-35 transition-opacity duration-500">
-                <img
-                  src={cat.imageUrl}
-                  alt={cat.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#14110f] via-[#14110f]/80 to-transparent" />
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 space-y-2">
-                <span className="inline-block px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-red-950/90 text-amber-300 border border-red-800/60 font-['Oswald',sans-serif]">
-                  {cat.badge}
-                </span>
-                <h3 className="text-xl font-black text-white group-hover:text-amber-400 transition-colors font-['Oswald',sans-serif] uppercase tracking-wide leading-tight">
-                  {cat.title}
-                </h3>
-                <p className="text-xs text-stone-400 line-clamp-2 leading-relaxed">
-                  {cat.description}
-                </p>
-              </div>
-
-              {/* Tile footer */}
-              <div className="relative z-10 pt-4 border-t border-[#231b16] mt-4 flex items-center justify-between">
-                <span className="text-[11px] font-semibold text-stone-400 font-['Oswald',sans-serif]">
-                  {cat.itemCount}
-                </span>
-                <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-400 group-hover:text-orange-400 uppercase font-['Oswald',sans-serif] tracking-wider">
-                  <span>Explorar</span>
-                  <ArrowRight size={13} className="transform group-hover:translate-x-1 transition-transform" />
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* 3.2. INTERACTIVE CATEGORY FILTER TABS */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10 pb-4 border-b border-[#221b16]">
-          <button
-            onClick={() => setActiveCategoryFilter('ALL')}
-            className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs sm:text-sm font-black whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
-              activeCategoryFilter === 'ALL'
-                ? 'bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/80 border border-orange-400/50'
-                : 'bg-[#15110f] text-stone-400 hover:bg-[#1f1915] hover:text-stone-200 border border-[#2b221c]'
-            }`}
-          >
-            <Flame size={14} className={activeCategoryFilter === 'ALL' ? 'text-white' : 'text-orange-500'} />
-            <span>Todos os Pratos ({SIGNATURE_DISHES.length})</span>
-          </button>
-
-          <button
-            onClick={() => setActiveCategoryFilter(1)}
-            className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs sm:text-sm font-black whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
-              activeCategoryFilter === 1
-                ? 'bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/80 border border-orange-400/50'
-                : 'bg-[#15110f] text-stone-400 hover:bg-[#1f1915] hover:text-stone-200 border border-[#2b221c]'
-            }`}
-          >
-            <span>Lanches na Brasa (3)</span>
-          </button>
-
-          <button
-            onClick={() => setActiveCategoryFilter(2)}
-            className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs sm:text-sm font-black whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
-              activeCategoryFilter === 2
-                ? 'bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/80 border border-orange-400/50'
-                : 'bg-[#15110f] text-stone-400 hover:bg-[#1f1915] hover:text-stone-200 border border-[#2b221c]'
-            }`}
-          >
-            <span>Porções &amp; Aussie Fries (3)</span>
-          </button>
-
-          <button
-            onClick={() => setActiveCategoryFilter(3)}
-            className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs sm:text-sm font-black whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
-              activeCategoryFilter === 3
-                ? 'bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/80 border border-orange-400/50'
-                : 'bg-[#15110f] text-stone-400 hover:bg-[#1f1915] hover:text-stone-200 border border-[#2b221c]'
-            }`}
-          >
-            <span>Chopps &amp; Bebidas (2)</span>
-          </button>
-
-          <button
-            onClick={() => setActiveCategoryFilter(4)}
-            className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs sm:text-sm font-black whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
-              activeCategoryFilter === 4
-                ? 'bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/80 border border-orange-400/50'
-                : 'bg-[#15110f] text-stone-400 hover:bg-[#1f1915] hover:text-stone-200 border border-[#2b221c]'
-            }`}
-          >
-            <span>Sobremesas (2)</span>
-          </button>
-        </div>
-
-        {/* 3.3. DYNAMIC PRODUCTS GRID (Rich, appetizing steakhouse cards) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {filteredDishes.map((dish) => (
+        {/* 3 Demonstrative Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {DEMO_ITEMS.map((dish) => (
             <div
               key={dish.id}
-              onClick={() => handleNavigateToMenu(dish.categoryId)}
+              onClick={() => navigate('/nossos-produtos')}
               className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#14110f] border border-[#2b221c] shadow-xl hover:shadow-2xl hover:shadow-orange-950/40 hover:border-orange-500/60 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
             >
               <div>
                 {/* Photo with Dark Overlay */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0c0a09]">
+                <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#0c0a09]">
                   <img
                     src={dish.imageUrl}
                     alt={dish.title}
@@ -545,11 +298,11 @@ export default function HomePage() {
                     {dish.title}
                   </h3>
 
-                  <p className="mt-1.5 text-xs text-stone-400 leading-relaxed line-clamp-2">
+                  <p className="mt-2 text-xs text-stone-400 leading-relaxed line-clamp-3">
                     {dish.description}
                   </p>
 
-                  {/* Ingredient / Flavor Tags */}
+                  {/* Ingredient Tags */}
                   {dish.tags && (
                     <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-[#1f1915]">
                       {dish.tags.map((tag, i) => (
@@ -576,8 +329,8 @@ export default function HomePage() {
                   </span>
                 </div>
 
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 text-white text-xs font-black font-['Oswald',sans-serif] uppercase tracking-wider shadow-md shadow-orange-950/60 transition-all cursor-pointer">
-                  <span>Pedir no Cardápio</span>
+                <div className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 text-white text-xs font-black font-['Oswald',sans-serif] uppercase tracking-wider shadow-md shadow-orange-950/60 transition-all">
+                  <span>Ver Detalhes</span>
                   <ArrowRight size={13} />
                 </div>
               </div>
@@ -585,29 +338,39 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* 3.4. BOTTOM CTA BANNER: PERSONALIZAÇÃO & CARDÁPIO */}
+        {/* Bottom CTA to Full Catalog Tab */}
         <div className="mt-14 rounded-3xl bg-gradient-to-r from-[#17120e] via-[#1c1612] to-[#17120e] border border-[#33261e] p-8 sm:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
             <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-widest font-['Oswald',sans-serif]">
-              <SlidersHorizontal size={14} className="text-orange-500" />
-              PERSONALIZAÇÃO COMPLETA DE PEDIDOS
+              <UtensilsCrossed size={14} className="text-orange-500" />
+              CARDÁPIO COMPLETO NAS ABAS SUPERIORES
             </div>
             <h3 className="text-2xl sm:text-3xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-wide">
-              Monte seu lanche com adicionais extras
+              Quer ver todas as nossas opções?
             </h3>
             <p className="text-xs sm:text-sm text-stone-400 max-w-xl">
-              Escolha ponto da carne, bacon crocante em dobro, molhos autorais à parte e monte seu combo perfeito com acompanhamentos.
+              Acesse a aba <strong>Nossos Produtos</strong> para ver todos os cortes, lanches, porções, chopp artesanal e sobremesas com filtros e fotos detalhadas.
             </p>
           </div>
 
-          <button
-            onClick={() => handleNavigateToMenu()}
-            className="shrink-0 inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-xl shadow-orange-950/80 transition-all cursor-pointer"
-          >
-            <UtensilsCrossed size={17} />
-            <span>Ver Cardápio Completo &amp; Pedir</span>
-            <ArrowRight size={17} />
-          </button>
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+            <button
+              onClick={() => navigate('/nossos-produtos')}
+              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-xl shadow-orange-950/80 transition-all cursor-pointer"
+            >
+              <UtensilsCrossed size={16} />
+              <span>Aba Nossos Produtos</span>
+              <ArrowRight size={16} />
+            </button>
+
+            <button
+              onClick={() => navigate('/delivery')}
+              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#191411] hover:bg-[#221b16] border border-[#3a2d24] hover:border-orange-500/60 text-stone-200 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
+            >
+              <Bike size={16} className="text-orange-500" />
+              <span>Fazer Pedido no Delivery</span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -631,7 +394,7 @@ export default function HomePage() {
 
               <div className="pt-8">
                 <button
-                  onClick={() => handleNavigateToMenu()}
+                  onClick={handleNavigateToDelivery}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg cursor-pointer"
                 >
                   <span>Fazer Pedido no Delivery</span>
@@ -656,10 +419,10 @@ export default function HomePage() {
 
               <div className="pt-8">
                 <button
-                  onClick={() => handleNavigateToMenu()}
+                  onClick={() => navigate('/restaurante')}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#1e1814] hover:bg-[#271f1a] border border-[#382b22] text-stone-200 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
                 >
-                  <span>Pedir na Mesa do Salão</span>
+                  <span>Conhecer Restaurante &amp; Salão</span>
                   <ArrowRight size={15} />
                 </button>
               </div>
