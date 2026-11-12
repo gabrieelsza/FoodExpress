@@ -191,7 +191,19 @@
 
 ---
 
-### [2026-11-12 16:04] — Redesign Premium do Rodapé Steakhouse (`/passo3`)
+### [2026-11-12 16:10] — Criação da Tela Inicial Demonstrativa Inspirada no Outback (`/passo3`)
+- **Ações Executadas:**
+  1. Criação da página inicial demonstrativa ([`frontend/src/pages/HomePage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/HomePage.jsx)) em conformidade com o design oficial do Outback:
+     - **Hero Banner Split 50/50:** Foto de estilo de vida em mesa com amigos à esquerda e cartaz gráfico com tipografia condensada de brasa, horários de funcionamento e CTA à direita.
+     - **Vitrine "VIVA O SABOR FOODEXPRESS":** Destaques visuais das receitas autorais (X-Burger Artesanal, Aussie Cheese Fries, Bloomin' Onion Rings, Frango Crispy, Chopps & Thunder Brownie).
+     - **Seção de Experiência Dupla:** Cards de Delivery Express em 30-45min e Experiência no Salão.
+     - **Prova Social & Avaliações:** Destaque para avaliação 4.9 com depoimentos reais.
+     - **Rodapé Oficial:** Rodapé steakhouse escuro de alto padrão.
+  2. Roteamento configurado em [`frontend/src/App.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/App.jsx):
+     - Rota `/`: Tela demonstrativa inicial.
+     - Rota `/cardapio` (e `/produtos`, `/menu`): Cardápio completo com sacola, busca, categorias e pedidos integrados.
+     - Suporte a deep-linking: clicar em um prato na home navega para `/cardapio?categoria=X`.
+  3. Build de produção validado (`npm run build` concluído com sucesso em 3.09s) e commit `c69afd2`.
 - **Ações Executadas:**
   1. Redesenho completo do rodapé para a estética **Outback Steakhouse Dark**:
      - Linha sutil de brasa no topo com degradê âmbar.
