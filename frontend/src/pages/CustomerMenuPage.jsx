@@ -8,6 +8,7 @@ import {
   UtensilsCrossed,
   X,
   CheckCircle2,
+  ShieldCheck,
 } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 import { useOrders } from '../contexts/OrderContext';
@@ -185,8 +186,8 @@ export default function CustomerMenuPage() {
   }, [categories, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#0f0f11] text-neutral-100 antialiased flex flex-col justify-between">
-      <div>
+    <div className="min-h-screen bg-[#0f0f11] text-neutral-100 antialiased flex flex-col">
+      <div className="flex-1">
         {/* Top Navbar with integrated search */}
         <Navbar
           isAdmin={false}
@@ -440,34 +441,99 @@ export default function CustomerMenuPage() {
         onCheckout={handleCheckout}
       />
 
-        {/* Minimalist Professional Footer */}
-        <footer className="mt-20 border-t border-neutral-800/80 bg-[#121215] py-10 pb-28 sm:pb-12 text-neutral-400">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      </div>
+
+      {/* Modern, High-End Artisan Restaurant Footer */}
+      <footer className="mt-16 border-t border-neutral-800/80 bg-[#121215] text-neutral-400">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-neutral-800/70">
+            {/* Col 1: Brand Info & Quality Badges */}
+            <div className="md:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-black border border-orange-500/40 text-white overflow-hidden shadow-sm ring-1 ring-orange-500/20">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-black border border-orange-500/40 text-white overflow-hidden shadow-md ring-2 ring-orange-500/20">
                   <img src="/logo.jpg" alt="FoodExpress" className="w-full h-full object-cover scale-105" />
                 </div>
-                <span className="font-bold text-white text-sm">FoodExpress</span>
-                <span className="text-xs text-neutral-400">• Hamburgueria Artesanal</span>
+                <div>
+                  <span className="text-xl font-extrabold text-white tracking-tight leading-none block">
+                    Food<span className="text-orange-500">Express</span>
+                  </span>
+                  <span className="text-xs font-medium text-neutral-400">Hamburgueria Artesanal & Delivery</span>
+                </div>
+              </div>
+              <p className="text-sm text-neutral-400 max-w-md leading-relaxed">
+                Hambúrgueres artesanais preparados com blends nobres grelhados no fogo, molhos especiais e ingredientes frescos selecionados. O verdadeiro sabor da brasa direto na sua mesa ou entregue com rapidez na sua casa.
+              </p>
+              <div className="flex flex-wrap gap-2 pt-1">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-semibold text-neutral-300">
+                  <CheckCircle2 size={12} className="text-orange-500" /> Carnes Nobres
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-semibold text-neutral-300">
+                  <Bike size={12} className="text-orange-500" /> Entrega Express
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-[11px] font-semibold text-neutral-300">
+                  <Clock size={12} className="text-orange-500" /> Preparo Artesanal
+                </span>
+              </div>
+            </div>
+
+            {/* Col 2: Horário & Atendimento */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-200">Atendimento & Horários</h4>
+              <ul className="space-y-3 text-xs text-neutral-400">
+                <li className="flex items-start gap-2.5">
+                  <Clock size={15} className="text-orange-500 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-neutral-200 block">Terça a Domingo</span>
+                    <span>18:00 às 23:30</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <UtensilsCrossed size={15} className="text-orange-500 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-neutral-200 block">Salão & Delivery</span>
+                    <span>Pedidos no balcão e entrega rápida</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* Col 3: Pagamento & Área de Atendente */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-200">Pagamento & Gestão</h4>
+              <div className="space-y-2 text-xs text-neutral-400">
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  <span>Pix (aprovação instantânea)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  <span>Cartões de Débito e Crédito</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  <span>Dinheiro (troco sob solicitação)</span>
+                </div>
               </div>
 
-              <div className="flex items-center gap-4 text-xs text-neutral-400">
+              <div className="pt-2">
                 <button
                   onClick={() => navigate('/admin/login')}
-                  className="text-neutral-400 hover:text-orange-400 underline transition-colors cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 hover:border-orange-500/50 text-neutral-200 hover:text-white text-xs font-semibold transition-all shadow-sm cursor-pointer"
                 >
-                  Acesso do Atendente
+                  <ShieldCheck size={14} className="text-orange-500" />
+                  Painel do Atendente
                 </button>
               </div>
             </div>
-
-            <div className="mt-6 pt-4 border-t border-neutral-800/60 text-center sm:text-left text-[11px] text-neutral-500">
-              <p>© {new Date().getFullYear()} FoodExpress. Todos os direitos reservados.</p>
-            </div>
           </div>
-        </footer>
-      </div>
+
+          {/* Bottom Copyright Bar */}
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400">
+            <p>© {new Date().getFullYear()} FoodExpress Hamburgueria Artesanal. Todos os direitos reservados.</p>
+            <p className="text-[11px] text-neutral-400">Cardápio Digital & Sistema Operacional Integrado</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

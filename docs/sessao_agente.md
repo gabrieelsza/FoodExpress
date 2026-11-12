@@ -131,3 +131,15 @@
      - **Rodapé Institucional (`CustomerMenuPage.jsx`):** Selo circular da hamburgueria.
      - **Tela de Login do Atendente (`AdminLoginPage.jsx`):** Emblema principal centralizado com acabamento premium.
   4. Validação completa via `npm run build` (sucesso em 971ms).
+
+---
+
+### [2026-11-12 15:05] — Redesign Profissional do Rodapé da Hamburgueria (`/passo3`)
+- **Ações Executadas:**
+  1. Substituição do rodapé genérico e vazio por um rodapé completo, moderno e alinhado à identidade visual da hamburgueria artesanal em `CustomerMenuPage.jsx`.
+  2. Estruturação em 3 colunas responsivas:
+     - **Identidade da Marca:** Emblema oficial circular, proposta de valor dos burgers artesanais grelhados na brasa e selos de qualidade (`Carnes Nobres`, `Entrega Express`, `Preparo Artesanal`).
+     - **Atendimento & Horários:** Informações claras de funcionamento (Terça a Domingo das 18h às 23h30) e canais de atendimento (Salão e Delivery).
+     - **Formas de Pagamento & Gestão:** Formas aceitas (Pix instantâneo, Cartões, Dinheiro) e botão estilizado `Painel do Atendente` com ícone de escudo protetor.
+  3. Eliminação completa do espaçamento excessivo/vazio no fundo da página, assegurando encaixe perfeito no viewport.
+  4. Validação visual com captura em subagente de browser e build aprovado com 100% de sucesso.
