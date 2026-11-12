@@ -152,7 +152,7 @@ export default function CustomerMenuPage() {
       {/* Navbar */}
       <Navbar
         isAdmin={false}
-        cartCount={cart.totalItems}
+        cartItemCount={cart.totalItems}
         onCartClick={() => setIsCartOpen(true)}
       />
 
@@ -224,8 +224,8 @@ export default function CustomerMenuPage() {
       {/* Floating Cart Bar */}
       {cart.totalItems > 0 && (
         <FloatingCartBar
-          totalItems={cart.totalItems}
-          totalPrice={cart.totalPrice}
+          itemCount={cart.totalItems}
+          total={cart.totalPrice}
           onClick={() => setIsCartOpen(true)}
         />
       )}

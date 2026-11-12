@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ShoppingBag, LogOut, ClipboardList, UtensilsCrossed } from 'lucide-react';
 
-export default function Navbar({ isAdmin = false, cartItemCount = 0, onCartClick, onLogout }) {
+export default function Navbar({ isAdmin = false, cartItemCount = 0, cartCount, onCartClick, onLogout }) {
+  const count = cartCount ?? cartItemCount;
   const location = useLocation();
 
   const isActive = (path) => location.pathname.startsWith(path);
@@ -60,12 +61,12 @@ export default function Navbar({ isAdmin = false, cartItemCount = 0, onCartClick
               <button
                 onClick={onCartClick}
                 className="relative flex min-h-11 min-w-11 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-orange-50 hover:text-orange-600"
-                aria-label={`Sacola com ${cartItemCount} itens`}
+                aria-label={`Sacola com ${count} itens`}
               >
                 <ShoppingBag size={24} />
-                {cartItemCount > 0 && (
+                {count > 0 && (
                   <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-orange-500 px-1 text-xs font-bold text-white">
-                    {cartItemCount > 99 ? '99+' : cartItemCount}
+                    {count > 99 ? '99+' : count}
                   </span>
                 )}
               </button>

@@ -1,8 +1,10 @@
 import { ShoppingBag } from 'lucide-react';
 import { formatPrice } from '../utils/helpers';
 
-export default function FloatingCartBar({ itemCount, total, onClick }) {
-  if (!itemCount || itemCount <= 0) return null;
+export default function FloatingCartBar({ itemCount, totalItems, total, totalPrice, onClick }) {
+  const count = itemCount ?? totalItems ?? 0;
+  const price = total ?? totalPrice ?? 0;
+  if (!count || count <= 0) return null;
 
   return (
     <button
@@ -13,11 +15,11 @@ export default function FloatingCartBar({ itemCount, total, onClick }) {
         <div className="flex items-center gap-2">
           <ShoppingBag size={20} className="text-white" />
           <span className="text-sm font-semibold text-white">
-            Ver sacola ({itemCount} {itemCount === 1 ? 'item' : 'itens'})
+            Ver sacola ({count} {count === 1 ? 'item' : 'itens'})
           </span>
         </div>
         <span className="text-base font-bold text-white">
-          {formatPrice(total)}
+          {formatPrice(price)}
         </span>
       </div>
     </button>
