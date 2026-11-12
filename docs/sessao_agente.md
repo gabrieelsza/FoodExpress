@@ -191,7 +191,24 @@
 
 ---
 
-### [2026-11-12 16:10] — Criação da Tela Inicial Demonstrativa Inspirada no Outback (`/passo3`)
+### [2026-11-12 16:17] — Aprimoramento Interativo da Seção "Nossos Produtos" (`/passo3`)
+- **Ações Executadas:**
+  1. **Tiles de Categorias Icônicas (Outback Style):**
+     - Adicionados 4 cards heróis com fotos de fundo, badges de corte e descrição sensorial:
+       - *Burgers & Lanches na Brasa* (Cortes Nobres)
+       - *Aperitivos & Aussie Fries* (Para Dividir)
+       - *Bebidas & Chopps Gelados* (Canecas Congeladas)
+       - *Sobremesas & Thunder Brownie* (Doces da Casa)
+  2. **Abas Interativas de Filtro Dinâmico:**
+     - Filtro instantâneo com badges de quantidade: `Todos os Pratos (10)`, `Lanches na Brasa (3)`, `Porções & Aussie Fries (3)`, `Chopps & Bebidas (2)` e `Sobremesas (2)`.
+     - Atualização dos pratos sem recarregar a tela, com efeito de iluminação de brasa na aba ativa.
+  3. **Cards de Produtos Enriquecidos:**
+     - Inclusão de chips de ingredientes (`Blend 180g`, `Pão Brioche`, `Cheddar Quente`, `Bacon Crocante`, etc.).
+     - Selo de destaque "Na Brasa", preços em ouro/âmbar e botão "Pedir no Cardápio".
+  4. **Smooth Scroll & Integração com a Navbar:**
+     - O botão `Nossos Produtos` na Navbar agora desliza suavemente até a vitrine interativa (`#nossos-produtos`), mantendo a navegação fluida.
+     - Banner de personalização ao final da seção conectando ao cardápio completo de montagem de pedidos.
+  5. Build de produção validado (`npm run build` concluído com sucesso em 4.01s) e commit `49fda1b`.
 - **Ações Executadas:**
   1. Criação da página inicial demonstrativa ([`frontend/src/pages/HomePage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/HomePage.jsx)) em conformidade com o design oficial do Outback:
      - **Hero Banner Split 50/50:** Foto de estilo de vida em mesa com amigos à esquerda e cartaz gráfico com tipografia condensada de brasa, horários de funcionamento e CTA à direita.
