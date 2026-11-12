@@ -188,3 +188,20 @@
   1. Ajuste em [`Navbar.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/Navbar.jsx) removendo a restrição de largura máxima centralizada (`max-w-7xl`).
   2. A Navbar agora expande em 100% da largura da tela (`w-full`), posicionando o logotipo da FoodExpress no canto extremo esquerdo e o botão da Sacola no canto extremo direito ("até o final"), com a barra de busca equilibrada ao centro.
   3. Validação com `npm run build` e inspeção visual comprovada de ponta a ponta.
+
+---
+
+### [2026-11-12 15:58] — Identidade Outback Steakhouse na Pegada Dark (`/passo3`)
+- **Ações Executadas:**
+  1. **Redesign Visual Integrado (Outback Dark Vibe):**
+     - Base ultra dark em madeira carbonizada e acabamento em bronze escuro (`#0b0908` / `#100e0c` / `#26201b`).
+     - Tipografia condensada forte de steakhouse (`Oswald` e `Bebas Neue` via Google Fonts) aplicada a títulos, badges, abas e botões.
+     - Botões e abas ativas com gradiente de brasa ardente (`from-red-700 via-orange-600 to-amber-500`) com sombra quente.
+  2. **Cards de Produtos ([`ProductCard.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/ProductCard.jsx)):**
+     - Superfície escura texturizada (`bg-[#14110f] border-[#2a221c]`), badge de destaque "Na Brasa", preços em ouro/âmbar (`text-amber-400 font-extrabold`) e botão "Pedir" com gradiente de brasa viva.
+  3. **Modal de Customização ([`ProductModal.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/ProductModal.jsx)):**
+     - Painel dark refinado com seletores de variação e adicionais integrados à paleta de steakhouse.
+  4. **Rodapé Minimalista ([`CustomerMenuPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/CustomerMenuPage.jsx)):**
+     - Substituição do bloco excessivo de colunas pelo rodapé limpo e elegante: ícone `FoodExpress • Sistema de Pedidos`, link discreto `Acesso do Atendente` e direitos reservados.
+  5. **Compilação e Integridade:**
+     - `npm run build` executado com sucesso e commit registrado (`914b66c`).
