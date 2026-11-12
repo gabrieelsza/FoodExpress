@@ -195,51 +195,73 @@ export default function CustomerMenuPage() {
         onSearchChange={setSearchQuery}
       />
 
-      {/* Restaurant Header: Custom Banner Artwork */}
-      <div className="bg-white border-b border-neutral-200/80">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-4 sm:pb-5">
-          {/* Banner Container with exact aspect ratio */}
-          <div className="relative w-full aspect-[1024/342] overflow-hidden rounded-2xl sm:rounded-3xl shadow-sm border border-neutral-200/90 bg-neutral-950">
-            <img
-              src="/banner.jpg"
-              alt="FoodExpress - Hambúrgueres Artesanais"
-              className="w-full h-full object-cover sm:object-contain bg-neutral-950"
-            />
-          </div>
+      {/* Restaurant Header Section: Full-Width Cover Banner with Overlapping Avatar */}
+      <div className="relative bg-white border-b border-neutral-200/80">
+        {/* Cover Photo Banner (Using custom banner.jpg) */}
+        <div className="h-48 sm:h-60 lg:h-72 w-full overflow-hidden relative bg-neutral-950">
+          <img
+            src="/banner.jpg"
+            alt="FoodExpress Banner"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        </div>
 
-          {/* Quick Info & Operational Status Bar */}
-          <div className="mt-3.5 sm:mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium text-neutral-600">
-              <span className="inline-flex items-center gap-1 font-bold text-neutral-900">
-                <Star size={14} className="fill-amber-400 text-amber-400" />
-                4.9
-                <span className="font-normal text-neutral-400">(500+ avaliações)</span>
-              </span>
+        {/* Store Info Profile (Overlapping) */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 -mt-12 sm:-mt-14 pb-6">
+            <div className="flex items-end gap-4 sm:gap-5">
+              {/* Store Avatar Badge */}
+              <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 shrink-0 items-center justify-center rounded-2xl bg-neutral-900 text-white shadow-xl ring-4 ring-white overflow-hidden">
+                <UtensilsCrossed size={42} strokeWidth={2.2} className="text-orange-500" />
+              </div>
 
-              <span className="text-neutral-300">•</span>
+              {/* Store Titles */}
+              <div className="pt-2">
+                <div className="flex items-center gap-2">
+                  <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900">
+                    FoodExpress
+                  </h1>
+                  <CheckCircle2 size={18} className="text-orange-500" />
+                </div>
+                <p className="text-xs sm:text-sm text-neutral-500 font-medium mt-0.5">
+                  Hamburgueria Artesanal • Porções • Bebidas & Sobremesas
+                </p>
 
-              <span className="inline-flex items-center gap-1">
-                <Clock size={14} className="text-neutral-400" />
-                30-45 min
-              </span>
+                {/* Key Metrics */}
+                <div className="mt-2.5 flex flex-wrap items-center gap-2.5 text-xs">
+                  <span className="inline-flex items-center gap-1 font-bold text-neutral-900">
+                    <Star size={13} className="fill-amber-400 text-amber-400" />
+                    4.9
+                    <span className="font-normal text-neutral-400">(500+ avaliações)</span>
+                  </span>
 
-              <span className="text-neutral-300">•</span>
+                  <span className="text-neutral-300">•</span>
 
-              <span className="inline-flex items-center gap-1 text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full text-xs font-semibold border border-emerald-200/60">
-                <Bike size={13} />
-                Salão & Entrega
-              </span>
+                  <span className="inline-flex items-center gap-1 font-medium text-neutral-600">
+                    <Clock size={13} className="text-neutral-400" />
+                    30-45 min
+                  </span>
 
-              <span className="text-neutral-300">•</span>
+                  <span className="text-neutral-300">•</span>
 
-              <span className="inline-flex items-center gap-1.5 text-xs text-neutral-500 font-medium">
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                Aberto hoje até 23:30
-              </span>
+                  <span className="inline-flex items-center gap-1 font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/50">
+                    <Bike size={13} />
+                    Salão & Entrega
+                  </span>
+
+                  <span className="text-neutral-300">•</span>
+
+                  <span className="inline-flex items-center gap-1.5 text-xs text-neutral-500 font-medium">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    Aberto hoje até 23:30
+                  </span>
+                </div>
+              </div>
             </div>
 
             {/* Mobile Search Input */}
-            <div className="sm:hidden w-full mt-1">
+            <div className="sm:hidden w-full mt-2">
               <div className="relative">
                 <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
                 <input
