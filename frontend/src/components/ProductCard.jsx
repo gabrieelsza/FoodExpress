@@ -1,5 +1,5 @@
 import { Plus, SlidersHorizontal, Flame } from 'lucide-react';
-import { formatPrice } from '../utils/helpers';
+import { formatPrice, sanitizeProductImageUrl, getFallbackFoodImage } from '../utils/helpers';
 
 export default function ProductCard({ product, onAdd }) {
   if (!product) return null;
@@ -12,6 +12,8 @@ export default function ProductCard({ product, onAdd }) {
     ? Math.min(...activeVariations.map((v) => v.price))
     : product.basePrice;
 
+  const safeImageUrl = sanitizeProductImageUrl(product.imageUrl, product.name);
+
   return (
     <div
       onClick={() => onAdd(product)}
@@ -21,8 +23,12 @@ export default function ProductCard({ product, onAdd }) {
         {/* Product Image */}
         <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0c0a09]">
           <img
-            src={product.imageUrl}
+            src={safeImageUrl}
             alt={product.name}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = getFallbackFoodImage(product.name);
+            }}
             className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-108"
             loading="lazy"
           />

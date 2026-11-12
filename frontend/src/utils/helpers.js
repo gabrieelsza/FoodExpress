@@ -131,3 +131,120 @@ export function escapeHtml(str) {
   div.textContent = str;
   return div.innerHTML;
 }
+
+/**
+ * Verified food images dictionary to replace inappropriate stock images or broken links
+ */
+export const VERIFIED_FOOD_IMAGES = {
+  burger: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=450&fit=crop',
+  chicken: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&h=450&fit=crop',
+  fries: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&h=450&fit=crop',
+  nuggets: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=600&h=450&fit=crop',
+  onionRings: 'https://images.unsplash.com/photo-1639024471283-03518883512d?w=600&h=450&fit=crop',
+  soda: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&h=450&fit=crop',
+  beer: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&h=450&fit=crop',
+  juice: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&h=450&fit=crop',
+  water: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=600&h=450&fit=crop',
+  milkshake: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&h=450&fit=crop',
+  brownie: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=450&fit=crop',
+  pudim: 'https://images.unsplash.com/photo-1532556660262-1c45d5fae825?w=600&h=450&fit=crop',
+};
+
+/**
+ * Sanitizes and guarantees that an item image strictly represents that item.
+ * Fixes any inappropriate photos (e.g. gym workout photo or cat photo) or broken URLs.
+ */
+export function sanitizeProductImageUrl(url, productName = '') {
+  const nameLower = (productName || '').toLowerCase();
+
+  // Specifically check for known problematic Unsplash IDs
+  const isGymGuy = url && url.includes('photo-1581636625402');
+  const isCatPhoto = url && url.includes('photo-1584282479261');
+  const isBrokenBeer = url && url.includes('photo-1535958636474');
+
+  if (isGymGuy || nameLower.includes('refrigerante') || nameLower.includes('coca') || nameLower.includes('refri')) {
+    return VERIFIED_FOOD_IMAGES.soda;
+  }
+
+  if (isBrokenBeer || nameLower.includes('chopp') || nameLower.includes('cerveja')) {
+    return VERIFIED_FOOD_IMAGES.beer;
+  }
+
+  if (isCatPhoto || nameLower.includes('pudim') || nameLower.includes('flan')) {
+    return VERIFIED_FOOD_IMAGES.pudim;
+  }
+
+  if (nameLower.includes('suco')) {
+    return VERIFIED_FOOD_IMAGES.juice;
+  }
+
+  if (nameLower.includes('água') || nameLower.includes('agua')) {
+    return VERIFIED_FOOD_IMAGES.water;
+  }
+
+  if (nameLower.includes('milkshake')) {
+    return VERIFIED_FOOD_IMAGES.milkshake;
+  }
+
+  if (nameLower.includes('brownie')) {
+    return VERIFIED_FOOD_IMAGES.brownie;
+  }
+
+  if (nameLower.includes('batata') || nameLower.includes('fries')) {
+    return VERIFIED_FOOD_IMAGES.fries;
+  }
+
+  if (nameLower.includes('nugget')) {
+    return VERIFIED_FOOD_IMAGES.nuggets;
+  }
+
+  if (nameLower.includes('onion')) {
+    return VERIFIED_FOOD_IMAGES.onionRings;
+  }
+
+  if (nameLower.includes('frango') || nameLower.includes('crispy')) {
+    return VERIFIED_FOOD_IMAGES.chicken;
+  }
+
+  if (!url || typeof url !== 'string' || url.trim() === '') {
+    return VERIFIED_FOOD_IMAGES.burger;
+  }
+
+  return url;
+}
+
+export function getFallbackFoodImage(productName = '') {
+  return sanitizeProductImageUrl('', productName);
+}
+
+/**
+ * Sanitizes and guarantees menu data integrity, preventing stale inappropriate images
+ * and ensuring new dishes (like Chopp and Pudim) are properly present.
+ */
+export function getSanitizedMenuData(rawMenuData, fallbackMenu) {
+  if (!rawMenuData || !Array.isArray(rawMenuData.categories)) return fallbackMenu;
+
+  const hasChopp = rawMenuData.categories.some((c) =>
+    (c.products || []).some((p) => p.name.toLowerCase().includes('chopp'))
+  );
+  const hasPudim = rawMenuData.categories.some((c) =>
+    (c.products || []).some((p) => p.name.toLowerCase().includes('pudim'))
+  );
+
+  if (!hasChopp || !hasPudim) {
+    return fallbackMenu;
+  }
+
+  return {
+    ...rawMenuData,
+    categories: rawMenuData.categories.map((cat) => ({
+      ...cat,
+      products: (cat.products || []).map((prod) => ({
+        ...prod,
+        imageUrl: sanitizeProductImageUrl(prod.imageUrl, prod.name),
+      })),
+    })),
+  };
+}
+
+

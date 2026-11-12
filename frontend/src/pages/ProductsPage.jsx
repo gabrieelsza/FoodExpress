@@ -17,7 +17,7 @@ import {
 import { useCart } from '../contexts/CartContext';
 import { useOrders } from '../contexts/OrderContext';
 import { MOCK_MENU, RESTAURANT_CONFIG } from '../data/mockData';
-import { formatPrice, generateWhatsAppMessage, generateWhatsAppUrl } from '../utils/helpers';
+import { formatPrice, generateWhatsAppMessage, generateWhatsAppUrl, getSanitizedMenuData } from '../utils/helpers';
 import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 import ProductModal from '../components/ProductModal';
@@ -46,16 +46,16 @@ const CATEGORY_TILES = [
     title: 'Bebidas & Chopps Gelados',
     badge: 'CANECAS CONGELADAS',
     description: 'Chopp artesanal trincando, refrigerantes em lata e sucos naturais da fruta.',
-    imageUrl: 'https://images.unsplash.com/photo-1608270191722-1efcb3be4919?w=600&h=450&fit=crop',
-    itemCount: '3 opções refrescantes',
+    imageUrl: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&h=450&fit=crop',
+    itemCount: '4 opções refrescantes',
   },
   {
     id: 4,
     title: 'Sobremesas & Thunder Brownie',
     badge: 'DOCES DA CASA',
-    description: 'O clássico Thunder Brownie quente de chocolate belga com sorvete artesanal.',
+    description: 'O clássico Thunder Brownie quente de chocolate belga, pudim artesanal e milkshakes.',
     imageUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=450&fit=crop',
-    itemCount: '2 sobremesas icônicas',
+    itemCount: '3 sobremesas icônicas',
   },
 ];
 
@@ -73,7 +73,8 @@ export default function ProductsPage() {
   const menuData = useMemo(() => {
     try {
       const saved = localStorage.getItem('foodexpress_admin_menu_data');
-      return saved ? JSON.parse(saved) : MOCK_MENU;
+      const parsed = saved ? JSON.parse(saved) : null;
+      return getSanitizedMenuData(parsed, MOCK_MENU);
     } catch {
       return MOCK_MENU;
     }

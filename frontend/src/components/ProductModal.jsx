@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { X, Plus, Minus } from 'lucide-react';
-import { formatPrice, calculateItemPrice } from '../utils/helpers';
+import { formatPrice, calculateItemPrice, sanitizeProductImageUrl, getFallbackFoodImage } from '../utils/helpers';
 
 export default function ProductModal({ product, onClose, onAdd }) {
   const [selectedVariation, setSelectedVariation] = useState(null);
@@ -79,8 +79,12 @@ export default function ProductModal({ product, onClose, onAdd }) {
           {/* Product image */}
           <div className="aspect-video w-full overflow-hidden rounded-t-3xl bg-neutral-900">
             <img
-              src={product.imageUrl}
+              src={sanitizeProductImageUrl(product.imageUrl, product.name)}
               alt={product.name}
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = getFallbackFoodImage(product.name);
+              }}
               className="h-full w-full object-cover"
             />
           </div>

@@ -15,7 +15,7 @@ import {
 import { useCart } from '../contexts/CartContext';
 import { useOrders } from '../contexts/OrderContext';
 import { MOCK_MENU, RESTAURANT_CONFIG } from '../data/mockData';
-import { formatPrice, generateWhatsAppMessage, generateWhatsAppUrl } from '../utils/helpers';
+import { formatPrice, generateWhatsAppMessage, generateWhatsAppUrl, getSanitizedMenuData } from '../utils/helpers';
 import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
 import ProductModal from '../components/ProductModal';
@@ -41,7 +41,8 @@ export default function CustomerMenuPage() {
   const menuData = useMemo(() => {
     try {
       const saved = localStorage.getItem('foodexpress_admin_menu_data');
-      return saved ? JSON.parse(saved) : MOCK_MENU;
+      const parsed = saved ? JSON.parse(saved) : null;
+      return getSanitizedMenuData(parsed, MOCK_MENU);
     } catch {
       return MOCK_MENU;
     }
