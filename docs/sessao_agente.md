@@ -112,10 +112,9 @@
 
 ---
 
-### [2026-11-12 14:40] — Refinamento de Banner, Logotipo Oficial e Correção do Rodapé (`/passo3`)
+### [2026-11-12 14:48] — Correção de Inconsistência de Sobreposição de Nome e Altura do Banner (`/passo3`)
 - **Ações Executadas:**
-  1. Aplicação definitiva do banner oficial de hamburgueria artesanal com alta resolução e ajuste de proporção sem corte indevido (`aspect-[1024/340] max-h-80 sm:max-h-96`).
-  2. Implementação do emblema oficial (`logo.jpg`) no Avatar sobreposto à esquerda e na Barra de Navegação (`Navbar.jsx`), substituindo ícones genéricos por arte de marca exclusiva.
-  3. Realce visual nos botões de ação "+ Pedir" com preenchimento em laranja vivo (`bg-orange-500 hover:bg-orange-600 text-white font-bold`) e elevação no hover.
-  4. Correção estrutural do rodapé (`CustomerMenuPage.jsx`): remoção do `pb-28` do contêiner raiz para eliminar a fenda vazia sob os direitos reservados, mantendo o espaçamento responsivo do mobile.
-  5. Validação com `npm run build` passando em 926ms.
+  1. Correção da altura e corte do banner (`CustomerMenuPage.jsx`): preservada a altura natural do banner (`w-full h-auto max-h-[380px] sm:max-h-[460px] object-cover object-center`), eliminando qualquer corte no texto "FoodExpress HAMBÚRGUERES ARTESANAIS".
+  2. Ajuste do posicionamento do avatar (`-mt-10 sm:-mt-14`): o emblema agora sobrepõe exclusivamente a área de mesas no canto inferior esquerdo, sem encobrir nenhuma palavra ou elemento textual do banner.
+  3. Inclusão explícita do título da loja `FoodExpress` em `<h1>` estilizado com selo verificado ao lado do avatar, seguido da linha descritiva e dos badges operacionais, garantindo legibilidade perfeita e hierarquia visual completa.
+  4. Validação com `npm run build` passando em 1.01s.
