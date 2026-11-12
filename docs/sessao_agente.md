@@ -63,3 +63,37 @@
   - **ADR-02 (Backend & Persistência Local):** **Node.js + Express** estruturado como **Monólito Modular em Camadas** (`controllers`, `services`, `repositories`, `middlewares`) persistindo em **SQLite** em arquivo local único (`data/foodexpress.sqlite`) gerenciado via **Drizzle ORM** (ou Prisma ORM) com seed automático.
   - **ADR-03 (Segurança & Testes):** Hash de senhas com `node:crypto scrypt` + autenticação administrativa via Token JWT (HMAC-SHA256); suíte de verificação automatizada com **Vitest + Supertest** executando sobre banco SQLite isolado.
 - **Status da Etapa:** Concluída, aguardando aprovação explícita do usuário sobre `docs/trd.md` e `docs/arquitetura.md` antes de iniciar o `/passo3`.
+
+
+---
+
+### [2026-11-12 13:14] — Implementação Integral do Front-End React + Vite + Tailwind CSS (`/passo3`)
+- **Papel Ativo:** Engenheiro de Software Front-End & Especialista em Arquitetura UI
+- **Etapa SDD:** `Fase 3 — Implementação do Front-End (SPA Mobile-First)`
+- **Ações Executadas:**
+  1. Leitura completa do briefing executivo e especificações no Google Docs e documentação em `/docs/`.
+  2. Configuração do ambiente front-end: React 19 + Vite + Tailwind CSS v4 + React Router DOM + Lucide React.
+  3. Implementação dos contextos de estado com persistência em `localStorage`:
+     - `CartContext.jsx` (adicionar, alterar quantidade, remover, limpar sacola, cálculo dinâmico de variações e adicionais).
+     - `AuthContext.jsx` (autenticação de atendente com token e armazenamento local seguro).
+     - `OrderContext.jsx` (criação de pedidos, avanço de status, cancelamento e histórico).
+  4. Implementação de componentes modulares reutilizáveis e acessíveis:
+     - `Navbar.jsx` (modo cliente com indicador da sacola e modo admin com navegação e logout).
+     - `ProductCard.jsx` (card com foto, descrição truncada, preço "a partir de" e botão de adicionar touch-friendly).
+     - `ProductModal.jsx` (bottom sheet responsivo com seleção de variação obrigatória/opcional, adicionais múltiplos, campo de observações limitado a 140 caracteres e cálculo de subtotal em tempo real).
+     - `CartDrawer.jsx` (sacola completa com alternância entre Consumo no Local exigindo mesa e Entrega exigindo nome do cliente).
+     - `OrderStatusStepper.jsx` (esteira visual de status linear: Recebido → Em preparo → Pronto → Entregue, além de badge de Cancelado).
+     - `FloatingCartBar.jsx` (barra flutuante inferior fixa mobile-first com transição animada).
+  5. Implementação das páginas completas:
+     - `CustomerMenuPage.jsx` (catálogo público filtrado por categorias ativas com abas deslizantes e integração com sacola/modal).
+     - `OrderTrackingPage.jsx` (acompanhamento de status do pedido em tempo real, redirecionamento formatado para o WhatsApp nos pedidos de entrega e trava de cancelamento de até 5 minutos com contagem regressiva).
+     - `AdminLoginPage.jsx` (tela de login restrita com validação de credenciais).
+     - `AdminOrdersPage.jsx` (painel de pedidos para atendentes com filtros por status, atualização automática configurável de 10s a 10min, botão de atualização manual e avanço estrito de status).
+     - `AdminMenuPage.jsx` (gestão completa do cardápio com abas de categorias e produtos, controle de ativação/inativação, criação e edição de variações e adicionais).
+     - `NotFoundPage.jsx` (página 404 amigável com redirecionamento para o cardápio).
+  6. Validação de build com `npm run build` passando com 100% de sucesso sem warnings ou erros.
+- **Decisões de Implementação:**
+  - Alinhado com a definição do Google Docs da UCB que homologa **React + Vite + Tailwind CSS** para o projeto prático.
+  - Implementado roteamento com `HashRouter` para compatibilidade total tanto com servidores estáticos quanto GitHub Pages.
+  - Todos os fluxos operacionais (consumo local, entrega via WhatsApp, trava de 5 min, máquina de estados do atendente) foram 100% contemplados no front-end.
+- **Próximos Passos:** Subir todas as alterações para o repositório remoto no GitHub (`git push`).
