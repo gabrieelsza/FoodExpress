@@ -392,3 +392,18 @@
   3. **Validação Visual:**
      - Screenshot automatizado confirmando harmonia visual dos 4 cards em `#/restaurante`.
      - Build de produção validado com `npm run build`.
+
+
+---
+
+### [2026-11-12 17:47] — Refatoração Visual do PromoCarousel: Full-Bleed Feathered Photo e Padronização Cromática
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** `Fase 3 — Polimento Estético e Equilíbrio de Layout`
+- **Ações Executadas:**
+  1. **Eliminação do Vazio Central e Miniatura Isolada:**
+     - A foto do produto não é mais um pequeno quadrado isolado em um canto escuro. Agora preenche de forma generosa e fluida toda a metade direita do card (`md:w-5/12`), com borda esquerda suave em feathered gradient que se funde ao fundo carvão do texto.
+  2. **Unificação Cromática Absoluta ("na mesma cor"):**
+     - O slide de "Entrega Grátis Acima de R$ 60" e todos os demais slides do carrossel agora utilizam rigorosamente a paleta de fogo e brasa: badge em âmbar/laranja (`bg-orange-950/80 text-amber-400 border-orange-500/40`), valor em âmbar vibrante e botão no degradê laranja/vermelho. O verde e qualquer desvio cromático foram 100% eliminados.
+  3. **Validação Visual:**
+     - Screenshot automatizado no navegador confirmando o alinhamento de cores e a diagramação preenchida e convidativa no slide de entrega grátis.
+     - Build de produção verificado com `npm run build`.

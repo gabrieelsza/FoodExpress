@@ -6,7 +6,6 @@ const PROMO_SLIDES = [
     id: 'combo-artesanal',
     badge: 'COMBO ESPECIAL DO CHEF',
     badgeIcon: Sparkles,
-    badgeColor: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
     title: 'X-Burger + Fritas + Refri',
     subtitle: 'O combo clássico mais pedido: blend 180g na brasa, queijo cheddar derretido, batatas crocantes e bebida gelada.',
     originalPrice: 'R$ 55,70',
@@ -14,16 +13,12 @@ const PROMO_SLIDES = [
     saveText: 'Economize R$ 10,80',
     ctaText: 'Pedir Este Combo',
     productId: 1, // X-Burger Artesanal
-    imageUrl: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=800&h=500&fit=crop',
-    gradient: 'from-orange-950/80 via-neutral-900/90 to-neutral-950',
-    glowColor: 'rgba(249, 115, 22, 0.15)',
-    borderAccent: 'border-orange-500/30',
+    imageUrl: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=1000&h=700&fit=crop',
   },
   {
     id: 'smash-triplo',
     badge: 'LANÇAMENTO DA BRASA',
     badgeIcon: Flame,
-    badgeColor: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
     title: 'Smash Burger com Queijo Duplo',
     subtitle: 'Crosta crocante caramelizada na chapa, dobro de cheddar cremoso e fatias generosas de bacon defumado.',
     originalPrice: null,
@@ -31,16 +26,12 @@ const PROMO_SLIDES = [
     saveText: 'Preparo 100% artesanal',
     ctaText: 'Ver Detalhes',
     productId: 1,
-    imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=500&fit=crop',
-    gradient: 'from-amber-950/80 via-neutral-900/90 to-neutral-950',
-    glowColor: 'rgba(245, 158, 11, 0.15)',
-    borderAccent: 'border-amber-500/30',
+    imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1000&h=700&fit=crop',
   },
   {
     id: 'frete-gratis',
     badge: 'VANTAGEM EXCLUSIVA',
     badgeIcon: Bike,
-    badgeColor: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
     title: 'Entrega Grátis Acima de R$ 60',
     subtitle: 'Monte seu pedido na hamburgueria e receba no conforto da sua casa com taxa de entrega totalmente zerada.',
     originalPrice: null,
@@ -48,27 +39,20 @@ const PROMO_SLIDES = [
     saveText: 'Válido para todo o cardápio',
     ctaText: 'Aproveitar Oferta',
     categoryId: 1, // Lanches
-    imageUrl: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&h=500&fit=crop',
-    gradient: 'from-orange-950/70 via-neutral-900/90 to-neutral-950',
-    glowColor: 'rgba(249, 115, 22, 0.15)',
-    borderAccent: 'border-orange-500/30',
+    imageUrl: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=1000&h=700&fit=crop',
   },
   {
     id: 'sobremesa-premium',
     badge: 'DOCE PERFEITO',
     badgeIcon: UtensilsCrossed,
-    badgeColor: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
     title: 'Brownie Quente com Sorvete',
-    subtitle: 'Finalize sua experiência com brownie denso de chocolate belga, calda quente e sorvete artesanal de creme.',
+    subtitle: 'Finalize sua experiência com brownie denso de chocolate belga, calda quente cremosa e sorvete artesanal.',
     originalPrice: 'R$ 24,90',
     promoPrice: 'R$ 19,90',
     saveText: 'Sobremesa favorita',
     ctaText: 'Pedir Sobremesa',
     productId: 11, // Brownie com Sorvete
-    imageUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&h=500&fit=crop',
-    gradient: 'from-amber-950/70 via-neutral-900/90 to-neutral-950',
-    glowColor: 'rgba(245, 158, 11, 0.15)',
-    borderAccent: 'border-amber-500/30',
+    imageUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=1000&h=700&fit=crop',
   },
 ];
 
@@ -129,10 +113,7 @@ export default function PromoCarousel({ onActionClick }) {
   return (
     <div className="w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
       <div
-        className="relative overflow-hidden rounded-2xl sm:rounded-3xl border transition-all duration-500 shadow-2xl group"
-        style={{
-          boxShadow: `0 10px 40px -10px ${currentSlide.glowColor}`,
-        }}
+        className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#2e231c] bg-[#120e0c] shadow-2xl shadow-orange-950/20 group transition-all duration-300 hover:border-orange-500/30"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={handleTouchStart}
@@ -140,7 +121,7 @@ export default function PromoCarousel({ onActionClick }) {
         onTouchEnd={handleTouchEnd}
       >
         {/* Slides Container */}
-        <div className="relative min-h-[220px] sm:min-h-[260px] md:min-h-[280px] flex items-center">
+        <div className="relative h-[280px] sm:h-[300px] md:h-[320px] flex items-stretch">
           {PROMO_SLIDES.map((slide, idx) => {
             const isActive = idx === currentIndex;
             const SlideIcon = slide.badgeIcon;
@@ -148,32 +129,16 @@ export default function PromoCarousel({ onActionClick }) {
             return (
               <div
                 key={slide.id}
-                className={`absolute inset-0 transition-opacity duration-700 ease-in-out flex flex-col md:flex-row items-center justify-between ${
+                className={`absolute inset-0 transition-opacity duration-700 ease-in-out flex flex-col md:flex-row items-stretch justify-between ${
                   isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
-                } bg-gradient-to-r ${slide.gradient} ${slide.borderAccent}`}
+                } bg-gradient-to-r from-[#14100e] via-[#100d0b] to-[#0c0a08]`}
               >
-                {/* Background Ambient Glow & Mobile-only Subtle Texture */}
-                <div className="absolute right-0 top-0 bottom-0 w-full md:w-1/2 h-full overflow-hidden pointer-events-none">
-                  <div className="md:hidden absolute inset-0">
-                    <img
-                      src={slide.imageUrl}
-                      alt=""
-                      className="w-full h-full object-cover opacity-20"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e0c0a] via-[#0e0c0a]/80 to-transparent" />
-                  </div>
-                  <div className="hidden md:block absolute right-12 top-1/2 -translate-y-1/2 w-80 h-80 bg-orange-600/10 rounded-full blur-3xl" />
-                  <div className="hidden md:block absolute right-4 top-4 w-60 h-60 bg-amber-500/10 rounded-full blur-2xl" />
-                </div>
-
                 {/* Left Content Column */}
-                <div className="relative z-10 w-full md:w-3/5 p-6 sm:p-8 md:p-10 flex flex-col justify-center space-y-3 sm:space-y-4">
-                  {/* Category / Promo Badge */}
+                <div className="relative z-10 w-full md:w-3/5 lg:w-7/12 p-6 sm:p-8 lg:p-10 flex flex-col justify-center space-y-3 sm:space-y-4">
+                  {/* Category / Promo Badge (Unified Steakhouse Fire Theme) */}
                   <div className="flex items-center gap-2">
-                    <span
-                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider border shadow-sm font-['Oswald',sans-serif] ${slide.badgeColor}`}
-                    >
-                      <SlideIcon size={13} className="shrink-0" />
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider bg-orange-950/80 text-amber-400 border border-orange-500/40 shadow-sm font-['Oswald',sans-serif]">
+                      <SlideIcon size={12} className="text-orange-500 shrink-0" />
                       {slide.badge}
                     </span>
                     {slide.saveText && (
@@ -184,7 +149,7 @@ export default function PromoCarousel({ onActionClick }) {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-tight leading-tight font-['Oswald',sans-serif] uppercase">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight font-['Oswald',sans-serif] uppercase drop-shadow-sm">
                     {slide.title}
                   </h3>
 
@@ -197,18 +162,18 @@ export default function PromoCarousel({ onActionClick }) {
                   <div className="pt-2 flex flex-wrap items-center gap-4">
                     <div className="flex items-baseline gap-2">
                       {slide.originalPrice && (
-                        <span className="text-xs sm:text-sm text-stone-500 line-through">
+                        <span className="text-xs sm:text-sm text-stone-500 line-through font-semibold">
                           {slide.originalPrice}
                         </span>
                       )}
-                      <span className="text-lg sm:text-2xl font-black text-amber-400 tracking-tight font-['Oswald',sans-serif]">
+                      <span className="text-xl sm:text-2xl lg:text-3xl font-black text-amber-400 tracking-tight font-['Oswald',sans-serif]">
                         {slide.promoPrice}
                       </span>
                     </div>
 
                     <button
                       onClick={() => onActionClick && onActionClick(slide)}
-                      className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg shadow-orange-950/60 transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg shadow-orange-950/70 transition-all cursor-pointer"
                     >
                       <span>{slide.ctaText}</span>
                       <ArrowRight size={14} />
@@ -216,16 +181,18 @@ export default function PromoCarousel({ onActionClick }) {
                   </div>
                 </div>
 
-                {/* Right Hero Food Image (100% straight, clean border, no rotation / no tilt) */}
-                <div className="hidden md:flex relative z-10 w-2/5 h-full items-center justify-center p-6 sm:p-8 pr-12">
-                  <div className="relative w-56 h-56 lg:w-64 lg:h-64 rounded-2xl overflow-hidden border border-[#3d2e24] shadow-2xl bg-[#0c0a08]">
-                    <img
-                      src={slide.imageUrl}
-                      alt={slide.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                  </div>
+                {/* Right Food Photo (Seamless full-height bleed with feathered blend) */}
+                <div className="relative w-full md:w-2/5 lg:w-5/12 h-full overflow-hidden bg-[#0c0a08] shrink-0">
+                  <img
+                    src={slide.imageUrl}
+                    alt={slide.title}
+                    className="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out hover:scale-105"
+                  />
+                  {/* Seamless feathered blend from right photo to left text */}
+                  <div className="hidden md:block absolute inset-y-0 left-0 w-36 bg-gradient-to-r from-[#14100e] via-[#14100e]/70 to-transparent pointer-events-none z-10" />
+                  <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                  {/* Mobile dark overlay */}
+                  <div className="md:hidden absolute inset-0 bg-gradient-to-t from-[#14100e] via-[#14100e]/85 to-transparent pointer-events-none" />
                 </div>
               </div>
             );
@@ -236,7 +203,7 @@ export default function PromoCarousel({ onActionClick }) {
         <button
           onClick={prevSlide}
           aria-label="Slide anterior"
-          className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/60 hover:bg-orange-500 text-white border border-white/15 backdrop-blur-md transition-all shadow-lg opacity-80 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/70 hover:bg-orange-600 text-stone-300 hover:text-white border border-[#382b22] backdrop-blur-md transition-all shadow-xl opacity-90 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
         >
           <ChevronLeft size={18} />
         </button>
@@ -244,20 +211,22 @@ export default function PromoCarousel({ onActionClick }) {
         <button
           onClick={nextSlide}
           aria-label="Próximo slide"
-          className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/60 hover:bg-orange-500 text-white border border-white/15 backdrop-blur-md transition-all shadow-lg opacity-80 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/70 hover:bg-orange-600 text-stone-300 hover:text-white border border-[#382b22] backdrop-blur-md transition-all shadow-xl opacity-90 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
         >
           <ChevronRight size={18} />
         </button>
 
         {/* Dot Indicators */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-[#382b22] shadow-lg">
           {PROMO_SLIDES.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
               aria-label={`Ir para o slide ${idx + 1}`}
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                idx === currentIndex ? 'w-6 bg-orange-500 shadow-sm' : 'w-2 bg-neutral-600 hover:bg-neutral-400'
+                idx === currentIndex
+                  ? 'w-7 bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 shadow-md shadow-orange-500/50'
+                  : 'w-2 bg-stone-700 hover:bg-stone-500'
               }`}
             />
           ))}
