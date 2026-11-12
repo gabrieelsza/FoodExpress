@@ -171,3 +171,12 @@
      - Setas laterais translúcidas e barra de indicadores (*dots*) expandidos.
      - Ação de clique conectada ao modal de customização do produto (`setSelectedProduct`).
   4. Validação técnica via `npm run build` (sucesso em 1.22s) e inspeção visual comprovada via subagente de browser.
+
+---
+
+### [2026-11-12 15:33] — Reposicionamento do Carrossel para o Topo (Área de Capa Hero) (`/passo3`)
+- **Ações Executadas:**
+  1. Reposicionamento do [`PromoCarousel.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/PromoCarousel.jsx) para o topo absoluto da página (logo abaixo da Navbar e acima do perfil da loja em `CustomerMenuPage.jsx`), atendendo com precisão à indicação visual do usuário.
+  2. Inclusão do **Banner Oficial da FoodExpress** como Slide 1 do carrossel (`FoodExpress · Sabor de Verdade` com blends nobres na brasa e preview em alta definição).
+  3. Ajuste de hierarquia visual: `Navbar` → `Hero Carousel de Capa` → `Perfil & Informações da Loja` → `Abas de Categorias` → `Grid de Produtos`.
+  4. Validação com `npm run build` e confirmação visual em subagente de browser.

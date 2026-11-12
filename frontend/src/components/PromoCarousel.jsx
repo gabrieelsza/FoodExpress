@@ -3,9 +3,26 @@ import { ChevronLeft, ChevronRight, Sparkles, Bike, Flame, UtensilsCrossed, Arro
 
 const PROMO_SLIDES = [
   {
+    id: 'foodexpress-hero',
+    badge: 'HAMBURGUERIA ARTESANAL',
+    badgeIcon: Flame,
+    badgeColor: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
+    title: 'FoodExpress · Sabor de Verdade',
+    subtitle: 'Blends nobres grelhados na brasa, pães brioche selados na manteiga e molhos autorais exclusivos.',
+    originalPrice: null,
+    promoPrice: 'A partir de R$ 22,90',
+    saveText: 'Grelhado no fogo',
+    ctaText: 'Ver Cardápio',
+    categoryId: 1, // Lanches
+    imageUrl: '/banner.jpg',
+    gradient: 'from-black/95 via-neutral-900/90 to-neutral-950/80',
+    glowColor: 'rgba(249, 115, 22, 0.2)',
+    borderAccent: 'border-orange-500/40',
+  },
+  {
     id: 'combo-artesanal',
     badge: 'COMBO ESPECIAL DO CHEF',
-    badgeIcon: Flame,
+    badgeIcon: Sparkles,
     badgeColor: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
     title: 'X-Burger + Fritas + Refri',
     subtitle: 'O combo clássico mais pedido: blend 180g na brasa, queijo cheddar derretido, batatas crocantes e bebida gelada.',
@@ -39,7 +56,7 @@ const PROMO_SLIDES = [
   {
     id: 'smash-triplo',
     badge: 'LANÇAMENTO DA BRASA',
-    badgeIcon: Sparkles,
+    badgeIcon: Flame,
     badgeColor: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
     title: 'Smash Burger com Queijo Duplo',
     subtitle: 'Crosta crocante caramelizada na chapa, dobro de cheddar cremoso e fatias generosas de bacon defumado.',

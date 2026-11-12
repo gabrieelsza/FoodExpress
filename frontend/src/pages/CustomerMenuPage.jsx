@@ -220,7 +220,14 @@ export default function CustomerMenuPage() {
           onSearchChange={setSearchQuery}
         />
 
-        {/* Restaurant Header Profile Section (No Banner) */}
+        {/* Hero Cover Promotional Carousel (At the top in place of static banner) */}
+        {!searchQuery && (
+          <div className="w-full bg-[#121215] border-b border-neutral-800/80">
+            <PromoCarousel onActionClick={handlePromoAction} />
+          </div>
+        )}
+
+        {/* Restaurant Header Profile Section */}
         <div className="relative bg-[#141417] border-b border-neutral-800/80 py-6 sm:py-8">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
@@ -303,11 +310,6 @@ export default function CustomerMenuPage() {
             </div>
           </div>
         </div>
-
-        {/* Promotional Highlights Carousel */}
-        {!searchQuery && (
-          <PromoCarousel onActionClick={handlePromoAction} />
-        )}
 
         {/* Sticky Category Tabs Bar */}
         {!filteredProductsBySearch && (
