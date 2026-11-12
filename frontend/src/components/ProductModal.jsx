@@ -54,16 +54,16 @@ export default function ProductModal({ product, onClose, onAdd }) {
   const isValid = !hasVariations || selectedVariation;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/50 transition-opacity"
+        className="absolute inset-0 bg-black/50 backdrop-blur-xs transition-opacity"
         onClick={onClose}
       />
 
       {/* Panel */}
-      <div className="relative z-10 flex w-full max-w-lg flex-col rounded-t-3xl bg-white shadow-xl animate-in slide-in-from-bottom duration-300"
-        style={{ maxHeight: '85vh' }}
+      <div className="relative z-10 flex w-full max-w-lg flex-col rounded-t-3xl sm:rounded-3xl bg-white shadow-2xl animate-in slide-in-from-bottom sm:zoom-in-95 duration-300 overflow-hidden"
+        style={{ maxHeight: '90vh' }}
       >
         {/* Close button */}
         <button

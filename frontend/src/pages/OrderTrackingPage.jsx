@@ -125,7 +125,7 @@ export default function OrderTrackingPage() {
     <div className="min-h-screen bg-gray-50 pb-8">
       <Navbar isAdmin={false} />
 
-      <div className="max-w-lg mx-auto px-4 pt-4">
+      <div className="max-w-2xl mx-auto px-4 pt-6">
         {/* Back to menu */}
         <button
           onClick={() => navigate('/')}

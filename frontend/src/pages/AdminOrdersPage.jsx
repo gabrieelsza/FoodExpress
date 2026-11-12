@@ -153,34 +153,39 @@ export default function AdminOrdersPage() {
     <div className="min-h-screen bg-gray-100">
       <Navbar isAdmin onLogout={logout} />
 
-      <div className="max-w-2xl mx-auto px-4 pt-4 pb-24">
+      <div className="max-w-5xl mx-auto px-4 pt-6 pb-24">
         {/* Header */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <h1 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-            <ClipboardList className="w-6 h-6 text-orange-500" />
-            Painel de Pedidos
-          </h1>
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <div>
+            <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2.5 tracking-tight">
+              <ClipboardList className="w-7 h-7 text-orange-500" />
+              Painel de Pedidos
+            </h1>
+            <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
+              Acompanhamento da fila da cozinha e entregas em tempo real
+            </p>
+          </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={doRefresh}
               disabled={refreshing}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-50 active:bg-gray-100 transition disabled:opacity-60"
+              className="inline-flex items-center gap-2 px-3.5 py-2 text-sm font-semibold bg-white border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 active:bg-gray-100 shadow-xs transition-all disabled:opacity-60 cursor-pointer"
             >
-              <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
-              Atualizar
+              <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin text-orange-500' : 'text-gray-500'}`} />
+              <span>Atualizar</span>
             </button>
 
-            <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded-lg px-2 py-1.5">
-              <Timer className="w-4 h-4 text-gray-400" />
+            <div className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-xl px-3 py-2 shadow-xs">
+              <Timer className="w-4 h-4 text-orange-500" />
               <select
                 value={pollMs}
                 onChange={handlePollChange}
-                className="text-sm bg-transparent border-none focus:outline-none text-gray-700 cursor-pointer"
+                className="text-xs sm:text-sm font-semibold bg-transparent border-none focus:outline-none text-gray-700 cursor-pointer"
               >
                 {INTERVAL_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>
-                    {opt.label}
+                    Auto: {opt.label}
                   </option>
                 ))}
               </select>
@@ -188,16 +193,44 @@ export default function AdminOrdersPage() {
           </div>
         </div>
 
+        {/* Quick KPI Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
+          <div className="bg-white p-4 rounded-2xl border border-gray-200/80 shadow-xs">
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block">Novos</span>
+            <span className="text-2xl font-black text-blue-600 mt-1 block">
+              {adminOrders.filter((o) => o.status === 'RECEIVED').length}
+            </span>
+          </div>
+          <div className="bg-white p-4 rounded-2xl border border-gray-200/80 shadow-xs">
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block">Em Preparo</span>
+            <span className="text-2xl font-black text-amber-500 mt-1 block">
+              {adminOrders.filter((o) => o.status === 'PREPARING').length}
+            </span>
+          </div>
+          <div className="bg-white p-4 rounded-2xl border border-gray-200/80 shadow-xs">
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block">Prontos</span>
+            <span className="text-2xl font-black text-emerald-600 mt-1 block">
+              {adminOrders.filter((o) => o.status === 'READY').length}
+            </span>
+          </div>
+          <div className="bg-white p-4 rounded-2xl border border-gray-200/80 shadow-xs">
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block">Finalizados</span>
+            <span className="text-2xl font-black text-gray-700 mt-1 block">
+              {adminOrders.filter((o) => o.status === 'DELIVERED').length}
+            </span>
+          </div>
+        </div>
+
         {/* Tabs */}
-        <div className="flex gap-1 bg-white rounded-lg p-1 shadow-sm mb-4 overflow-x-auto">
+        <div className="flex gap-1.5 bg-white rounded-2xl p-1.5 shadow-xs border border-gray-200/80 mb-6 overflow-x-auto">
           {TAB_FILTERS.map((tab) => (
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`flex-1 min-w-fit px-3 py-2 text-sm font-medium rounded-md transition whitespace-nowrap ${
+              className={`flex-1 min-w-fit px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === tab.key
-                  ? 'bg-orange-500 text-white shadow-sm'
-                  : 'text-gray-600 hover:bg-gray-100'
+                  ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-xs'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
               }`}
             >
               {tab.label}
@@ -212,7 +245,7 @@ export default function AdminOrdersPage() {
             <p className="text-gray-500 font-medium">Nenhum pedido encontrado</p>
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredOrders.map((order) => (
               <OrderCard
                 key={order.id}
@@ -250,7 +283,7 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
 
   return (
     <div
-      className={`bg-white rounded-xl shadow-sm overflow-hidden ${
+      className={`bg-white rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-all overflow-hidden flex flex-col justify-between ${
         isReceived ? 'border-l-4 border-l-orange-500' : ''
       }`}
     >

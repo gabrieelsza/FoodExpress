@@ -45,17 +45,16 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-stretch sm:justify-end">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/50 transition-opacity"
+        className="absolute inset-0 bg-black/50 backdrop-blur-xs transition-opacity"
         onClick={onClose}
       />
 
       {/* Panel */}
       <div
-        className="relative z-10 flex w-full max-w-lg flex-col rounded-t-3xl bg-white shadow-xl animate-in slide-in-from-bottom duration-300"
-        style={{ maxHeight: '90vh' }}
+        className="relative z-10 flex w-full max-w-lg sm:max-w-md flex-col rounded-t-3xl sm:rounded-t-none sm:rounded-l-3xl bg-white shadow-2xl animate-in slide-in-from-bottom sm:slide-in-from-right duration-300 max-h-[92vh] sm:max-h-full sm:h-full"
       >
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-100 px-5 py-4">
