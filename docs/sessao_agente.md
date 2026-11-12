@@ -324,3 +324,21 @@
   5. **Validação Visual:**
      - Verificado em navegador automatizado nos 3 slides do carrossel (Burgers, Aussie Fries e Thunder Brownie), confirmando o resultado fluido e cinematográfico.
      - Build de produção validado com sucesso (`npm run build`).
+
+
+---
+
+### [2026-11-12 17:18] — Unificação de Abas: Remoção da Aba Redundante e Renomeação de Delivery para Nossos Produtos
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** `Fase 3 — Otimização de Navegação e UX do Cardápio`
+- **Ações Executadas:**
+  1. **Remoção da Aba Estática Redundante:**
+     - Eliminada a antiga aba "NOSSOS PRODUTOS" que exibia apenas um catálogo estático sem a sacola de compras.
+  2. **Renomeação e Elevação da Aba Delivery:**
+     - A aba "DELIVERY" (que contém o cardápio interativo completo, seleção de categorias, carrinho/sacola e opção de mesa ou entrega) foi renomeada para **NOSSOS PRODUTOS**.
+     - A barra de navegação agora exibe estritamente: `INÍCIO` | `RESTAURANTE & SALÃO` | `NOSSOS PRODUTOS` | `ACESSO DO ATENDENTE`.
+  3. **Roteamento Unificado:**
+     - Rotas `/nossos-produtos`, `/delivery` e `/cardapio` unificadas em [`frontend/src/App.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/App.jsx) apontando diretamente para o cardápio interativo `CustomerMenuPage`.
+  4. **Validação Visual:**
+     - Verificado via subagente de browser tanto na página inicial quanto dentro de `#/nossos-produtos`.
+     - Build de produção validado com `npm run build` com sucesso.

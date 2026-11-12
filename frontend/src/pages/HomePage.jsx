@@ -35,7 +35,7 @@ const HERO_SLIDES = [
     title: 'Aussie Fries & Bloomin\' Onion',
     subtitle: 'Batatas rústicas com cheddar cremoso e bacon crocante, anéis de cebola dourados e molhos especiais para mergulhar.',
     schedule: 'O ACOMPANHAMENTO PERFEITO PARA QUALQUER PEDIDO',
-    ctaText: 'PEDIR NO DELIVERY',
+    ctaText: 'VER NOSSOS PRODUTOS',
     ctaSubText: 'VER PORÇÕES DISPONÍVEIS',
     photoUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&h=900&fit=crop',
     photoAlt: 'Costela grelhada com batatas rústicas e porções generosas na mesa',
@@ -421,16 +421,16 @@ export default function HomePage() {
               className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-xl shadow-orange-950/80 transition-all cursor-pointer"
             >
               <UtensilsCrossed size={16} />
-              <span>Aba Nossos Produtos</span>
+              <span>Ver Nossos Produtos</span>
               <ArrowRight size={16} />
             </button>
 
             <button
-              onClick={() => navigate('/delivery')}
+              onClick={() => navigate('/restaurante')}
               className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#191411] hover:bg-[#221b16] border border-[#3a2d24] hover:border-orange-500/60 text-stone-200 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
             >
-              <Bike size={16} className="text-orange-500" />
-              <span>Fazer Pedido no Delivery</span>
+              <UtensilsCrossed size={16} className="text-orange-500" />
+              <span>Conhecer o Salão</span>
             </button>
           </div>
         </div>
@@ -456,10 +456,10 @@ export default function HomePage() {
 
               <div className="pt-8">
                 <button
-                  onClick={handleNavigateToDelivery}
+                  onClick={handleNavigateToProducts}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg cursor-pointer"
                 >
-                  <span>Fazer Pedido no Delivery</span>
+                  <span>Fazer Pedido Agora</span>
                   <ArrowRight size={15} />
                 </button>
               </div>

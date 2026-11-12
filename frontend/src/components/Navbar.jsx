@@ -22,9 +22,8 @@ export default function Navbar({
   };
 
   const navTabs = [
-    { label: 'NOSSOS PRODUTOS', path: '/nossos-produtos', altPaths: ['/produtos'] },
     { label: 'RESTAURANTE & SALÃO', path: '/restaurante', altPaths: ['/salao'] },
-    { label: 'DELIVERY', path: '/delivery', altPaths: ['/cardapio'] },
+    { label: 'NOSSOS PRODUTOS', path: '/nossos-produtos', altPaths: ['/delivery', '/cardapio', '/produtos'] },
     { label: 'ACESSO DO ATENDENTE', path: '/admin/login', altPaths: [] },
   ];
 
@@ -186,9 +185,9 @@ export default function Navbar({
                 )}
               </button>
             ) : (
-              /* If no cart click passed, show a direct button to Delivery/Cardápio */
+              /* If no cart click passed, show a direct button to Nossos Produtos / Cardápio */
               <Link
-                to="/delivery"
+                to="/nossos-produtos"
                 className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white px-4 py-2 text-xs sm:text-sm font-black shadow-lg shadow-orange-950/60 uppercase font-['Oswald',sans-serif] tracking-wider transition-all cursor-pointer"
               >
                 <ShoppingBag size={15} />
