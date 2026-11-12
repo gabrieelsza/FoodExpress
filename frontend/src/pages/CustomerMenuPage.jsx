@@ -436,6 +436,41 @@ export default function CustomerMenuPage() {
         onClose={() => setIsCartOpen(false)}
         onCheckout={handleCheckout}
       />
+
+      {/* Footer (No Final da Página) */}
+      <footer className="mt-20 border-t border-gray-200/80 bg-white py-10">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-orange-500 text-white shadow-xs">
+                <UtensilsCrossed size={18} strokeWidth={2.5} />
+              </div>
+              <div>
+                <span className="font-extrabold text-gray-900 tracking-tight block">FoodExpress</span>
+                <span className="text-xs text-gray-400">Cardápio Digital & Sistema de Gestão</span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-gray-500">
+              <span>Consumo no Local</span>
+              <span>•</span>
+              <span>Entrega via WhatsApp</span>
+              <span>•</span>
+              <button
+                onClick={() => navigate('/admin/login')}
+                className="inline-flex items-center gap-1.5 text-orange-600 hover:text-orange-700 bg-orange-50 hover:bg-orange-100 px-3.5 py-2 rounded-xl transition-colors cursor-pointer font-bold"
+              >
+                <span>Área do Atendente</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-gray-400">
+            <p>© {new Date().getFullYear()} FoodExpress. Todos os direitos reservados.</p>
+            <p>Desenvolvido para atendimento ágil e pedidos sem burocracia.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

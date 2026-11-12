@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, LogOut, ClipboardList, UtensilsCrossed, ShieldCheck, Clock } from 'lucide-react';
+import { ShoppingBag, LogOut, ClipboardList, UtensilsCrossed, Clock } from 'lucide-react';
 
 export default function Navbar({ isAdmin = false, cartItemCount = 0, cartCount, onCartClick, onLogout }) {
   const count = cartCount ?? cartItemCount;
@@ -8,10 +8,10 @@ export default function Navbar({ isAdmin = false, cartItemCount = 0, cartCount, 
   const isActive = (path) => location.pathname.startsWith(path);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs transition-all">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Brand / Logo */}
-        <div className="flex items-center gap-6">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs transition-all w-full">
+      <div className="w-full flex h-16 items-center justify-between px-4 sm:px-8 lg:px-12">
+        {/* Brand / Logo (Left Edge) */}
+        <div className="flex items-center gap-4 sm:gap-6">
           <Link to={isAdmin ? '/admin/pedidos' : '/'} className="flex items-center gap-2.5 group">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-orange-600 to-amber-500 text-white shadow-md shadow-orange-500/25 transition-all group-hover:scale-105 group-hover:shadow-orange-500/40">
               <UtensilsCrossed size={20} strokeWidth={2.5} />
@@ -39,7 +39,7 @@ export default function Navbar({ isAdmin = false, cartItemCount = 0, cartCount, 
           )}
         </div>
 
-        {/* Right side actions */}
+        {/* Right side actions (Right Edge / No Final) */}
         <div className="flex items-center gap-2">
           {isAdmin ? (
             <>
@@ -83,7 +83,7 @@ export default function Navbar({ isAdmin = false, cartItemCount = 0, cartCount, 
               {/* Logout button */}
               <button
                 onClick={onLogout}
-                className="ml-2 flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold text-gray-500 transition-colors hover:bg-red-50 hover:text-red-600"
+                className="ml-2 flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold text-gray-500 transition-colors hover:bg-red-50 hover:text-red-600 cursor-pointer"
                 title="Sair do painel"
               >
                 <LogOut size={18} />
@@ -91,34 +91,22 @@ export default function Navbar({ isAdmin = false, cartItemCount = 0, cartCount, 
               </button>
             </>
           ) : (
-            <div className="flex items-center gap-2">
-              {/* Admin Link for staff */}
-              <Link
-                to="/admin/login"
-                className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500 hover:text-orange-600 px-3 py-2 rounded-xl hover:bg-gray-50 transition-colors"
-                title="Acesso de atendentes e gestão"
+            /* Customer Cart button at the very right end */
+            onCartClick && (
+              <button
+                onClick={onCartClick}
+                className="relative flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-4 sm:px-5 py-2.5 text-white font-bold text-sm shadow-md shadow-orange-500/25 transition-all hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                aria-label={`Sacola com ${count} itens`}
               >
-                <ShieldCheck size={16} />
-                <span>Área do Atendente</span>
-              </Link>
-
-              {/* Customer cart button */}
-              {onCartClick && (
-                <button
-                  onClick={onCartClick}
-                  className="relative flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-4 py-2.5 text-white font-bold text-sm shadow-md shadow-orange-500/20 transition-all hover:shadow-orange-500/35 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
-                  aria-label={`Sacola com ${count} itens`}
-                >
-                  <ShoppingBag size={18} strokeWidth={2.5} />
-                  <span className="hidden xs:inline">Sacola</span>
-                  {count > 0 && (
-                    <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1.5 text-xs font-black text-orange-600 shadow-xs">
-                      {count > 99 ? '99+' : count}
-                    </span>
-                  )}
-                </button>
-              )}
-            </div>
+                <ShoppingBag size={19} strokeWidth={2.5} />
+                <span className="font-extrabold tracking-tight">Sacola</span>
+                {count > 0 && (
+                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-white px-1.5 text-xs font-black text-orange-600 shadow-xs">
+                    {count > 99 ? '99+' : count}
+                  </span>
+                )}
+              </button>
+            )
           )}
         </div>
       </div>
