@@ -361,3 +361,18 @@
   3. **Validação Visual:**
      - Verificado no navegador através de screenshot automatizado confirmando desobstrução total dos botões `VER CARDÁPIO COMPLETO` e `EXPLORAR PRODUTOS`.
      - Build de produção validado com `npm run build`.
+
+
+---
+
+### [2026-11-12 17:35] — Nivelamento do Card de Imagem do PromoCarousel (Eliminação da Rotação Torta)
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** `Fase 3 — Polimento Visual do Cardápio`
+- **Ações Executadas:**
+  1. **Remoção de Rotação Torta:**
+     - Removida a classe CSS `transform rotate-1` do container da foto do combo em [`PromoCarousel.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/PromoCarousel.jsx), deixando o enquadramento 100% reto e nivelado.
+  2. **Eliminação de Imagem Fantasma Duplicada:**
+     - Removida a imagem de fundo que gerava uma sombra deslocada/fantasma atrás do card, mantendo iluminação suave com gradiente limpo.
+  3. **Validação Visual:**
+     - Verificado no navegador através de screenshot automatizado confirmando alinhamento reto e sem distorções no combo de X-Burger + Fritas + Refri.
+     - Build de produção validado com `npm run build`.

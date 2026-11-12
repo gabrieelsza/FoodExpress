@@ -152,14 +152,18 @@ export default function PromoCarousel({ onActionClick }) {
                   isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
                 } bg-gradient-to-r ${slide.gradient} ${slide.borderAccent}`}
               >
-                {/* Background Image with Ambient Overlay */}
-                <div className="absolute right-0 top-0 bottom-0 w-full md:w-1/2 h-full overflow-hidden opacity-30 md:opacity-45">
-                  <img
-                    src={slide.imageUrl}
-                    alt={slide.title}
-                    className="w-full h-full object-cover object-center transform transition-transform duration-700 scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0e0c0a] via-[#0e0c0a]/85 to-transparent"></div>
+                {/* Background Ambient Glow & Mobile-only Subtle Texture */}
+                <div className="absolute right-0 top-0 bottom-0 w-full md:w-1/2 h-full overflow-hidden pointer-events-none">
+                  <div className="md:hidden absolute inset-0">
+                    <img
+                      src={slide.imageUrl}
+                      alt=""
+                      className="w-full h-full object-cover opacity-20"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e0c0a] via-[#0e0c0a]/80 to-transparent" />
+                  </div>
+                  <div className="hidden md:block absolute right-12 top-1/2 -translate-y-1/2 w-80 h-80 bg-orange-600/10 rounded-full blur-3xl" />
+                  <div className="hidden md:block absolute right-4 top-4 w-60 h-60 bg-amber-500/10 rounded-full blur-2xl" />
                 </div>
 
                 {/* Left Content Column */}
@@ -212,15 +216,15 @@ export default function PromoCarousel({ onActionClick }) {
                   </div>
                 </div>
 
-                {/* Right Hero Burger Image Preview (Desktop Only) */}
-                <div className="hidden md:flex relative z-10 w-2/5 h-full items-center justify-center p-8 pr-12">
-                  <div className="relative w-56 h-56 lg:w-64 lg:h-64 rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl transform rotate-1 group-hover:rotate-0 transition-transform duration-500">
+                {/* Right Hero Food Image (100% straight, clean border, no rotation / no tilt) */}
+                <div className="hidden md:flex relative z-10 w-2/5 h-full items-center justify-center p-6 sm:p-8 pr-12">
+                  <div className="relative w-56 h-56 lg:w-64 lg:h-64 rounded-2xl overflow-hidden border border-[#3d2e24] shadow-2xl bg-[#0c0a08]">
                     <img
                       src={slide.imageUrl}
                       alt={slide.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
               </div>
