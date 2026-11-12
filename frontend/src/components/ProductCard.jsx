@@ -15,11 +15,11 @@ export default function ProductCard({ product, onAdd }) {
   return (
     <div
       onClick={() => onAdd(product)}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-white border border-neutral-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-200 hover:shadow-md hover:border-neutral-300 hover:-translate-y-0.5 cursor-pointer"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#18181c] border border-neutral-800/80 shadow-[0_1px_3px_rgba(0,0,0,0.3)] transition-all duration-200 hover:shadow-xl hover:shadow-black/50 hover:border-neutral-700 hover:-translate-y-0.5 cursor-pointer text-white"
     >
       <div>
         {/* Product Image */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100">
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-900">
           <img
             src={product.imageUrl}
             alt={product.name}
@@ -30,8 +30,8 @@ export default function ProductCard({ product, onAdd }) {
           {/* Customization badge */}
           {hasVariations && (
             <div className="absolute bottom-2.5 left-2.5">
-              <span className="inline-flex items-center gap-1 rounded-full bg-white/95 backdrop-blur-xs px-2.5 py-0.5 text-[11px] font-semibold text-neutral-700 shadow-sm border border-neutral-200/60">
-                <SlidersHorizontal size={11} className="text-orange-600" />
+              <span className="inline-flex items-center gap-1 rounded-full bg-neutral-900/90 backdrop-blur-xs px-2.5 py-0.5 text-[11px] font-semibold text-neutral-200 shadow-sm border border-neutral-700/60">
+                <SlidersHorizontal size={11} className="text-orange-400" />
                 Variações
               </span>
             </div>
@@ -40,11 +40,11 @@ export default function ProductCard({ product, onAdd }) {
 
         {/* Content */}
         <div className="p-4 sm:p-4.5">
-          <h3 className="text-base font-bold text-neutral-900 group-hover:text-orange-600 transition-colors line-clamp-1">
+          <h3 className="text-base font-bold text-white group-hover:text-orange-400 transition-colors line-clamp-1">
             {product.name}
           </h3>
 
-          <p className="mt-1 text-xs sm:text-sm text-neutral-500 line-clamp-2 leading-relaxed">
+          <p className="mt-1 text-xs sm:text-sm text-neutral-400 line-clamp-2 leading-relaxed">
             {product.description || 'Ingredientes selecionados e preparados com o padrão FoodExpress.'}
           </p>
         </div>
@@ -54,11 +54,11 @@ export default function ProductCard({ product, onAdd }) {
       <div className="flex items-center justify-between p-4 sm:p-4.5 pt-0">
         <div>
           {hasVariations && (
-            <span className="block text-[11px] font-medium text-neutral-400">
+            <span className="block text-[11px] font-medium text-neutral-500">
               A partir de
             </span>
           )}
-          <span className="text-base sm:text-lg font-bold text-neutral-900">
+          <span className="text-base sm:text-lg font-bold text-white">
             {formatPrice(minPrice)}
           </span>
         </div>
@@ -69,7 +69,7 @@ export default function ProductCard({ product, onAdd }) {
             e.stopPropagation();
             onAdd(product);
           }}
-          className="inline-flex items-center gap-1 rounded-xl bg-orange-50 hover:bg-orange-600 text-orange-600 hover:text-white px-3 py-1.5 text-xs sm:text-sm font-semibold transition-colors active:scale-95 cursor-pointer"
+          className="inline-flex items-center gap-1 rounded-xl bg-orange-500/15 hover:bg-orange-500 text-orange-400 hover:text-white border border-orange-500/30 px-3 py-1.5 text-xs sm:text-sm font-semibold transition-all active:scale-95 cursor-pointer"
         >
           <Plus size={15} strokeWidth={2.5} />
           <span>Pedir</span>

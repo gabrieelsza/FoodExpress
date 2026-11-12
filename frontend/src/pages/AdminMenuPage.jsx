@@ -245,22 +245,22 @@ export default function AdminMenuPage() {
       : allProducts.filter((p) => p.categoryId === Number(selectedCategoryFilter));
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-[#0f0f11] text-neutral-100 pb-20">
       <Navbar isAdmin={true} onLogout={() => { logout(); navigate('/admin/login'); }} />
 
       <main className="max-w-5xl mx-auto px-4 py-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">Gestão do Cardápio</h1>
-            <p className="text-sm text-gray-500">Configure categorias, itens, variações e adicionais do restaurante</p>
+            <h1 className="text-2xl font-extrabold text-white tracking-tight">Gestão do Cardápio</h1>
+            <p className="text-sm text-neutral-400">Configure categorias, itens, variações e adicionais do restaurante</p>
           </div>
 
           <div className="flex items-center gap-2">
             {activeTab === 'categories' ? (
               <button
                 onClick={() => handleOpenCategoryModal()}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm rounded-xl shadow-sm transition-all active:scale-95"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm rounded-xl shadow-lg shadow-orange-500/25 transition-all active:scale-95 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
                 Nova Categoria
@@ -268,7 +268,7 @@ export default function AdminMenuPage() {
             ) : (
               <button
                 onClick={() => handleOpenProductModal()}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm rounded-xl shadow-sm transition-all active:scale-95"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm rounded-xl shadow-lg shadow-orange-500/25 transition-all active:scale-95 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
                 Novo Produto
@@ -278,13 +278,13 @@ export default function AdminMenuPage() {
         </div>
 
         {/* Tab switch */}
-        <div className="flex border-b border-gray-200 mb-6 bg-white rounded-t-2xl px-4 pt-2 shadow-sm">
+        <div className="flex border-b border-neutral-800 mb-6 bg-[#18181c] rounded-t-2xl px-4 pt-2 shadow-sm">
           <button
             onClick={() => setActiveTab('products')}
-            className={`flex items-center gap-2 py-3 px-4 font-semibold text-sm border-b-2 transition-all ${
+            className={`flex items-center gap-2 py-3 px-4 font-semibold text-sm border-b-2 transition-all cursor-pointer ${
               activeTab === 'products'
-                ? 'border-orange-500 text-orange-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-orange-500 text-orange-400'
+                : 'border-transparent text-neutral-400 hover:text-white'
             }`}
           >
             <Utensils className="w-4 h-4" />
@@ -292,10 +292,10 @@ export default function AdminMenuPage() {
           </button>
           <button
             onClick={() => setActiveTab('categories')}
-            className={`flex items-center gap-2 py-3 px-4 font-semibold text-sm border-b-2 transition-all ${
+            className={`flex items-center gap-2 py-3 px-4 font-semibold text-sm border-b-2 transition-all cursor-pointer ${
               activeTab === 'categories'
-                ? 'border-orange-500 text-orange-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-orange-500 text-orange-400'
+                : 'border-transparent text-neutral-400 hover:text-white'
             }`}
           >
             <Layers className="w-4 h-4" />
@@ -305,10 +305,10 @@ export default function AdminMenuPage() {
 
         {/* ================= CATEGORIES VIEW ================= */}
         {activeTab === 'categories' && (
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="bg-[#18181c] rounded-2xl shadow-sm border border-neutral-800 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
-                <thead className="bg-gray-50 text-gray-500 font-medium border-b border-gray-100">
+                <thead className="bg-neutral-900 text-neutral-400 font-medium border-b border-neutral-800">
                   <tr>
                     <th className="py-3.5 px-4">Ordem</th>
                     <th className="py-3.5 px-4">Nome da Categoria</th>
@@ -317,22 +317,22 @@ export default function AdminMenuPage() {
                     <th className="py-3.5 px-4 text-right">Ações</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100">
+                <tbody className="divide-y divide-neutral-800">
                   {menu.categories
                     .slice()
                     .sort((a, b) => a.displayOrder - b.displayOrder)
                     .map((cat) => (
-                      <tr key={cat.id} className="hover:bg-gray-50/60 transition-colors">
-                        <td className="py-3.5 px-4 font-semibold text-gray-400">#{cat.displayOrder}</td>
-                        <td className="py-3.5 px-4 font-bold text-gray-800">{cat.name}</td>
-                        <td className="py-3.5 px-4 text-gray-500">{(cat.products || []).length} itens</td>
+                      <tr key={cat.id} className="hover:bg-neutral-800/40 transition-colors">
+                        <td className="py-3.5 px-4 font-semibold text-neutral-500">#{cat.displayOrder}</td>
+                        <td className="py-3.5 px-4 font-bold text-white">{cat.name}</td>
+                        <td className="py-3.5 px-4 text-neutral-400">{(cat.products || []).length} itens</td>
                         <td className="py-3.5 px-4 text-center">
                           <button
                             onClick={() => handleToggleCategory(cat.id)}
                             className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold cursor-pointer transition-colors ${
                               cat.active
-                                ? 'bg-green-100 text-green-700 hover:bg-green-200'
-                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 hover:bg-emerald-900/60'
+                                : 'bg-neutral-900 text-neutral-400 border border-neutral-800 hover:bg-neutral-800'
                             }`}
                           >
                             {cat.active ? <Check className="w-3 h-3" /> : <X className="w-3 h-3" />}
@@ -342,7 +342,7 @@ export default function AdminMenuPage() {
                         <td className="py-3.5 px-4 text-right">
                           <button
                             onClick={() => handleOpenCategoryModal(cat)}
-                            className="p-1.5 text-gray-500 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
+                            className="p-1.5 text-neutral-400 hover:text-orange-400 hover:bg-neutral-800 rounded-lg transition-colors cursor-pointer"
                             title="Editar Categoria"
                           >
                             <Edit2 className="w-4 h-4" />
@@ -362,11 +362,11 @@ export default function AdminMenuPage() {
             {/* Filter */}
             <div className="flex items-center justify-between gap-4 mb-4">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Filtrar por:</span>
+                <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">Filtrar por:</span>
                 <select
                   value={selectedCategoryFilter}
                   onChange={(e) => setSelectedCategoryFilter(e.target.value)}
-                  className="bg-white border border-gray-200 text-gray-700 text-sm rounded-xl px-3 py-2 font-medium focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="bg-[#18181c] border border-neutral-800 text-neutral-200 text-sm rounded-xl px-3 py-2 font-medium focus:outline-none focus:border-orange-500 cursor-pointer"
                 >
                   <option value="ALL">Todas as Categorias</option>
                   {menu.categories.map((c) => (
@@ -376,7 +376,7 @@ export default function AdminMenuPage() {
                   ))}
                 </select>
               </div>
-              <span className="text-xs text-gray-400 font-medium">
+              <span className="text-xs text-neutral-500 font-medium">
                 Mostrando {filteredProducts.length} de {allProducts.length} produtos
               </span>
             </div>
@@ -386,8 +386,8 @@ export default function AdminMenuPage() {
               {filteredProducts.map((product) => (
                 <div
                   key={product.id}
-                  className={`bg-white rounded-2xl p-4 border transition-all shadow-sm flex flex-col justify-between ${
-                    product.active ? 'border-gray-100' : 'border-gray-200 bg-gray-50/70 opacity-75'
+                  className={`bg-[#18181c] rounded-2xl p-4 border transition-all shadow-sm flex flex-col justify-between ${
+                    product.active ? 'border-neutral-800' : 'border-neutral-800/60 bg-neutral-900/60 opacity-70'
                   }`}
                 >
                   <div>
@@ -395,16 +395,16 @@ export default function AdminMenuPage() {
                       <img
                         src={product.imageUrl}
                         alt={product.name}
-                        className="w-20 h-20 rounded-xl object-cover bg-gray-100 shrink-0 border border-gray-100"
+                        className="w-20 h-20 rounded-xl object-cover bg-neutral-900 shrink-0 border border-neutral-800"
                       />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2">
-                          <h3 className="font-bold text-gray-900 text-base leading-tight truncate">
+                          <h3 className="font-bold text-white text-base leading-tight truncate">
                             {product.name}
                           </h3>
                           <span
                             className={`shrink-0 inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold ${
-                              product.active ? 'bg-green-100 text-green-700' : 'bg-gray-200 text-gray-600'
+                              product.active ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-800/60' : 'bg-neutral-900 text-neutral-400 border border-neutral-800'
                             }`}
                           >
                             {product.active ? 'Ativo' : 'Inativo'}

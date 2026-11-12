@@ -51,8 +51,8 @@ export default function OrderStatusStepper({ status }) {
                     <div
                       className={`h-full w-full ${
                         currentStep >= stepNumber
-                          ? 'bg-green-500'
-                          : 'bg-gray-200'
+                          ? 'bg-emerald-500'
+                          : 'bg-neutral-800'
                       }`}
                     />
                   </div>
@@ -62,10 +62,10 @@ export default function OrderStatusStepper({ status }) {
                 <div
                   className={`relative z-[1] flex h-8 w-8 items-center justify-center rounded-full border-2 text-sm font-bold transition-colors ${
                     isCompleted && !isActive
-                      ? 'border-green-500 bg-green-500 text-white'
+                      ? 'border-emerald-500 bg-emerald-500 text-white'
                       : isActive
-                        ? 'border-orange-500 bg-orange-500 text-white shadow-md shadow-orange-200'
-                        : 'border-gray-300 bg-white text-gray-400'
+                        ? 'border-orange-500 bg-orange-500 text-white shadow-lg shadow-orange-500/30'
+                        : 'border-neutral-700 bg-neutral-900 text-neutral-500'
                   }`}
                 >
                   {isCompleted && !isActive ? (
@@ -79,10 +79,10 @@ export default function OrderStatusStepper({ status }) {
                 <span
                   className={`mt-2 text-center text-xs font-medium leading-tight ${
                     isActive
-                      ? 'text-orange-600'
+                      ? 'text-orange-400 font-semibold'
                       : isCompleted
-                        ? 'text-green-600'
-                        : 'text-gray-400'
+                        ? 'text-emerald-400 font-medium'
+                        : 'text-neutral-500'
                   }`}
                 >
                   {step.label}

@@ -86,12 +86,12 @@ export default function OrderTrackingPage() {
   // ---- Order not found ----
   if (!order) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-[#0f0f11] text-neutral-100">
         <Navbar isAdmin={false} />
         <div className="flex flex-col items-center justify-center px-6 py-20">
-          <AlertCircle className="w-16 h-16 text-gray-300 mb-4" />
-          <h1 className="text-xl font-bold text-gray-700 mb-2">Pedido não encontrado</h1>
-          <p className="text-gray-500 text-center mb-6">
+          <AlertCircle className="w-16 h-16 text-neutral-600 mb-4" />
+          <h1 className="text-xl font-bold text-white mb-2">Pedido não encontrado</h1>
+          <p className="text-neutral-400 text-center mb-6">
             Não conseguimos localizar o pedido #{orderId}. Verifique o número ou faça um novo
             pedido.
           </p>
@@ -122,43 +122,43 @@ export default function OrderTrackingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-8">
+    <div className="min-h-screen bg-[#0f0f11] text-neutral-100 pb-12">
       <Navbar isAdmin={false} />
 
       <div className="max-w-2xl mx-auto px-4 pt-6">
         {/* Back to menu */}
         <button
           onClick={() => navigate('/')}
-          className="inline-flex items-center gap-1.5 text-gray-500 hover:text-orange-600 text-sm mb-4 transition-colors min-h-[44px]"
+          className="inline-flex items-center gap-1.5 text-neutral-400 hover:text-orange-400 text-sm mb-4 transition-colors min-h-[44px] cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar ao cardápio
         </button>
 
         {/* Order Header Card */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-4">
+        <div className="bg-[#18181c] rounded-2xl shadow-sm border border-neutral-800 p-5 mb-4">
           <div className="flex items-center justify-between mb-1">
-            <h1 className="text-xl font-bold text-gray-800">Pedido #{order.id}</h1>
+            <h1 className="text-xl font-bold text-white">Pedido #{order.id}</h1>
             <span
               className={`px-3 py-1 rounded-full text-xs font-semibold ${statusConfig.bgLight} ${statusConfig.textColor}`}
             >
               {statusConfig.label}
             </span>
           </div>
-          <p className="text-sm text-gray-400">{formatRelativeTime(order.createdAt)}</p>
+          <p className="text-sm text-neutral-400">{formatRelativeTime(order.createdAt)}</p>
 
           {/* Order type indicator */}
-          <div className="flex items-center gap-2 mt-3 text-sm text-gray-600">
+          <div className="flex items-center gap-2 mt-3 text-sm text-neutral-300">
             {isDelivery ? (
               <>
-                <Truck className="w-4 h-4 text-orange-500" />
+                <Truck className="w-4 h-4 text-orange-400" />
                 <span>
                   Entrega — <strong>{order.customerName}</strong>
                 </span>
               </>
             ) : (
               <>
-                <UtensilsCrossed className="w-4 h-4 text-orange-500" />
+                <UtensilsCrossed className="w-4 h-4 text-orange-400" />
                 <span>
                   Mesa <strong>{order.tableNumber}</strong>
                 </span>
@@ -168,8 +168,8 @@ export default function OrderTrackingPage() {
         </div>
 
         {/* Status Stepper */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-4">
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
+        <div className="bg-[#18181c] rounded-2xl shadow-sm border border-neutral-800 p-5 mb-4">
+          <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-4">
             Acompanhamento
           </h2>
           <OrderStatusStepper currentStatus={order.status} />
@@ -179,7 +179,7 @@ export default function OrderTrackingPage() {
         {isDelivery && !isCancelled && (
           <button
             onClick={handleWhatsApp}
-            className="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3.5 rounded-xl transition-colors mb-4 min-h-[44px]"
+            className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 rounded-xl transition-colors mb-4 min-h-[44px] shadow-lg shadow-emerald-950/40 cursor-pointer"
           >
             <MessageCircle className="w-5 h-5" />
             Enviar pelo WhatsApp
@@ -187,8 +187,8 @@ export default function OrderTrackingPage() {
         )}
 
         {/* Order Items */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 mb-4">
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
+        <div className="bg-[#18181c] rounded-2xl shadow-sm border border-neutral-800 p-5 mb-4">
+          <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-4">
             Itens do pedido
           </h2>
 
@@ -198,27 +198,27 @@ export default function OrderTrackingPage() {
               return (
                 <div
                   key={item.id}
-                  className="flex justify-between gap-3 pb-4 border-b border-gray-50 last:border-0 last:pb-0"
+                  className="flex justify-between gap-3 pb-4 border-b border-neutral-800/80 last:border-0 last:pb-0"
                 >
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium text-gray-800">
+                    <p className="font-semibold text-white">
                       {item.quantity}x {item.productNameSnapshot}
                     </p>
                     {item.variationNameSnapshot && (
-                      <p className="text-sm text-gray-500 mt-0.5">
+                      <p className="text-sm text-neutral-400 mt-0.5">
                         Variação: {item.variationNameSnapshot}
                       </p>
                     )}
                     {addons.length > 0 && (
-                      <p className="text-sm text-gray-500 mt-0.5">
+                      <p className="text-sm text-neutral-400 mt-0.5">
                         + {addons.map((a) => a.name).join(', ')}
                       </p>
                     )}
                     {item.notes && (
-                      <p className="text-sm text-orange-600 italic mt-0.5">Obs: {item.notes}</p>
+                      <p className="text-sm text-orange-400 italic mt-0.5">Obs: {item.notes}</p>
                     )}
                   </div>
-                  <p className="text-sm font-semibold text-gray-700 whitespace-nowrap">
+                  <p className="text-sm font-semibold text-neutral-200 whitespace-nowrap">
                     {formatPrice(item.unitPrice * item.quantity)}
                   </p>
                 </div>
@@ -227,9 +227,9 @@ export default function OrderTrackingPage() {
           </div>
 
           {/* Total */}
-          <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-200">
-            <span className="text-base font-bold text-gray-800">Total</span>
-            <span className="text-lg font-bold text-orange-600">
+          <div className="flex justify-between items-center mt-4 pt-4 border-t border-neutral-800">
+            <span className="text-base font-bold text-white">Total</span>
+            <span className="text-lg font-bold text-orange-400">
               {formatPrice(order.totalAmount)}
             </span>
           </div>
@@ -239,7 +239,7 @@ export default function OrderTrackingPage() {
         {showCancelButton && (
           <button
             onClick={handleCancel}
-            className="w-full flex items-center justify-center gap-2 border-2 border-red-400 text-red-600 hover:bg-red-50 font-semibold py-3.5 rounded-xl transition-colors mb-4 min-h-[44px]"
+            className="w-full flex items-center justify-center gap-2 border-2 border-red-500/50 text-red-400 hover:bg-red-950/30 font-semibold py-3.5 rounded-xl transition-colors mb-4 min-h-[44px] cursor-pointer"
           >
             <XCircle className="w-5 h-5" />
             Cancelar pedido ({formatTime(cancelRemaining)})
@@ -249,7 +249,7 @@ export default function OrderTrackingPage() {
         {/* New order link */}
         <Link
           to="/"
-          className="block w-full text-center text-orange-600 hover:text-orange-700 font-semibold py-3 transition-colors min-h-[44px]"
+          className="block w-full text-center text-orange-400 hover:text-orange-300 font-semibold py-3 transition-colors min-h-[44px]"
         >
           Fazer novo pedido
         </Link>

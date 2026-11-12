@@ -185,7 +185,7 @@ export default function CustomerMenuPage() {
   }, [categories, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa] text-neutral-900 pb-28 antialiased">
+    <div className="min-h-screen bg-[#0f0f11] text-neutral-100 pb-28 antialiased">
       {/* Top Navbar with integrated search */}
       <Navbar
         isAdmin={false}
@@ -196,7 +196,7 @@ export default function CustomerMenuPage() {
       />
 
       {/* Restaurant Header Section: Full-Width Cover Banner with Overlapping Avatar */}
-      <div className="relative bg-white border-b border-neutral-200/80">
+      <div className="relative bg-[#141417] border-b border-neutral-800/80">
         {/* Cover Photo Banner (Using custom banner.jpg) */}
         <div className="w-full overflow-hidden relative bg-neutral-950 aspect-[1024/320] sm:aspect-[1024/280] max-h-72">
           <img
@@ -206,46 +206,46 @@ export default function CustomerMenuPage() {
           />
         </div>
 
-        {/* Store Info Profile (Avatar overlaps banner, details on white background) */}
+        {/* Store Info Profile (Avatar overlaps banner, details on dark background) */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 pt-3">
             <div className="flex items-start sm:items-center gap-4 sm:gap-5">
               {/* Store Avatar Badge (Overlapping bottom-left of the banner) */}
-              <div className="-mt-12 sm:-mt-14 relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-2xl bg-neutral-900 text-white shadow-xl ring-4 ring-white overflow-hidden z-10">
+              <div className="-mt-12 sm:-mt-14 relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-2xl bg-neutral-900 border border-neutral-800 text-white shadow-2xl ring-4 ring-[#141417] overflow-hidden z-10">
                 <UtensilsCrossed size={36} strokeWidth={2.2} className="text-orange-500" />
               </div>
 
-              {/* Store Info (Cleanly positioned on white background) */}
+              {/* Store Info (Cleanly positioned on dark background) */}
               <div className="min-w-0">
-                <p className="text-sm sm:text-base font-medium text-neutral-600">
+                <p className="text-sm sm:text-base font-medium text-neutral-300">
                   Hamburgueria Artesanal • Porções • Bebidas &amp; Sobremesas
                 </p>
 
                 {/* Key Metrics */}
                 <div className="mt-1.5 flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-                  <span className="inline-flex items-center gap-1 font-bold text-neutral-900">
+                  <span className="inline-flex items-center gap-1 font-bold text-white">
                     <Star size={14} className="fill-amber-400 text-amber-400" />
                     4.9
                     <span className="font-normal text-neutral-400">(500+ avaliações)</span>
                   </span>
 
-                  <span className="text-neutral-300">•</span>
+                  <span className="text-neutral-700">•</span>
 
-                  <span className="inline-flex items-center gap-1 font-medium text-neutral-600">
+                  <span className="inline-flex items-center gap-1 font-medium text-neutral-300">
                     <Clock size={14} className="text-neutral-400" />
                     30–45 min
                   </span>
 
-                  <span className="text-neutral-300">•</span>
+                  <span className="text-neutral-700">•</span>
 
-                  <span className="inline-flex items-center gap-1 font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/60 text-xs">
+                  <span className="inline-flex items-center gap-1 font-medium text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-md border border-emerald-800/60 text-xs">
                     <Bike size={13} />
                     Salão &amp; Entrega
                   </span>
 
-                  <span className="text-neutral-300">•</span>
+                  <span className="text-neutral-700">•</span>
 
-                  <span className="inline-flex items-center gap-1.5 font-medium text-neutral-600 text-xs">
+                  <span className="inline-flex items-center gap-1.5 font-medium text-neutral-300 text-xs">
                     <span className="h-2 w-2 rounded-full bg-emerald-500" />
                     Aberto hoje até 23:30
                   </span>
@@ -256,13 +256,13 @@ export default function CustomerMenuPage() {
             {/* Mobile Search Input */}
             <div className="sm:hidden w-full">
               <div className="relative">
-                <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
+                <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Buscar no cardápio..."
-                  className="w-full rounded-full border border-neutral-200 bg-neutral-50 pl-9 pr-9 py-2 text-sm text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-900"
+                  className="w-full rounded-full border border-neutral-700/80 bg-neutral-900/90 pl-9 pr-9 py-2 text-sm text-neutral-100 placeholder-neutral-500 focus:outline-none focus:border-orange-500"
                 />
                 {searchQuery && (
                   <button
@@ -280,7 +280,7 @@ export default function CustomerMenuPage() {
 
       {/* Sticky Category Tabs Bar */}
       {!filteredProductsBySearch && (
-        <div className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-neutral-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+        <div className="sticky top-16 z-30 bg-[#141417]/95 backdrop-blur-md border-b border-neutral-800/80 shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div
               ref={tabsBarRef}
@@ -297,14 +297,14 @@ export default function CustomerMenuPage() {
                     onClick={() => handleCategoryClick(cat.id)}
                     className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-150 cursor-pointer ${
                       isSelected
-                        ? 'bg-neutral-900 text-white shadow-xs'
-                        : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200/80 hover:text-neutral-900'
+                        ? 'bg-orange-500 text-white shadow-md shadow-orange-500/25'
+                        : 'bg-neutral-900 text-neutral-400 hover:bg-neutral-800 hover:text-white border border-neutral-800'
                     }`}
                   >
                     <span>{cat.name}</span>
                     <span
                       className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
-                        isSelected ? 'bg-neutral-700 text-neutral-200' : 'bg-neutral-200 text-neutral-600'
+                        isSelected ? 'bg-orange-600 text-white' : 'bg-neutral-800 text-neutral-400'
                       }`}
                     >
                       {activeCount}
@@ -324,26 +324,26 @@ export default function CustomerMenuPage() {
           <div>
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-xl font-bold text-neutral-900">
+                <h2 className="text-xl font-bold text-white">
                   Resultados para "{searchQuery}"
                 </h2>
-                <p className="text-xs text-neutral-500 mt-0.5">
+                <p className="text-xs text-neutral-400 mt-0.5">
                   {filteredProductsBySearch.length} item(ns) encontrado(s)
                 </p>
               </div>
               <button
                 onClick={() => setSearchQuery('')}
-                className="text-xs font-semibold text-orange-600 hover:underline cursor-pointer"
+                className="text-xs font-semibold text-orange-400 hover:underline cursor-pointer"
               >
                 Limpar busca
               </button>
             </div>
 
             {filteredProductsBySearch.length === 0 ? (
-              <div className="py-16 text-center bg-white rounded-2xl border border-neutral-200 p-8 shadow-xs">
-                <Search size={36} className="mx-auto text-neutral-300 mb-2.5" />
-                <h3 className="text-sm font-bold text-neutral-800">Nenhum item encontrado</h3>
-                <p className="text-xs text-neutral-500 mt-1 max-w-xs mx-auto">
+              <div className="py-16 text-center bg-[#18181c] rounded-2xl border border-neutral-800 p-8 shadow-xs">
+                <Search size={36} className="mx-auto text-neutral-600 mb-2.5" />
+                <h3 className="text-sm font-bold text-neutral-200">Nenhum item encontrado</h3>
+                <p className="text-xs text-neutral-400 mt-1 max-w-xs mx-auto">
                   Tente buscar por outro termo ou navegue pelas categorias.
                 </p>
               </div>
@@ -375,8 +375,8 @@ export default function CustomerMenuPage() {
                   className="scroll-mt-32"
                 >
                   {/* Category Header */}
-                  <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-2.5 mb-5">
-                    <h2 className="text-xl font-bold text-neutral-900 tracking-tight">
+                  <div className="flex items-baseline justify-between border-b border-neutral-800/80 pb-2.5 mb-5">
+                    <h2 className="text-xl font-bold text-white tracking-tight">
                       {cat.name}
                     </h2>
                     <span className="text-xs font-medium text-neutral-400">
@@ -427,28 +427,28 @@ export default function CustomerMenuPage() {
       />
 
       {/* Minimalist Professional Footer */}
-      <footer className="mt-20 border-t border-neutral-200 bg-white py-10">
+      <footer className="mt-20 border-t border-neutral-800/80 bg-[#121215] py-10 text-neutral-400">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 text-white">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 border border-neutral-800 text-white">
                 <UtensilsCrossed size={16} strokeWidth={2.5} className="text-orange-500" />
               </div>
-              <span className="font-bold text-neutral-900 text-sm">FoodExpress</span>
+              <span className="font-bold text-white text-sm">FoodExpress</span>
               <span className="text-xs text-neutral-400">• Sistema de Pedidos</span>
             </div>
 
-            <div className="flex items-center gap-4 text-xs text-neutral-500">
+            <div className="flex items-center gap-4 text-xs text-neutral-400">
               <button
                 onClick={() => navigate('/admin/login')}
-                className="text-neutral-500 hover:text-neutral-900 underline transition-colors cursor-pointer"
+                className="text-neutral-400 hover:text-orange-400 underline transition-colors cursor-pointer"
               >
                 Acesso do Atendente
               </button>
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-neutral-100 text-center sm:text-left text-[11px] text-neutral-400">
+          <div className="mt-6 pt-4 border-t border-neutral-800/60 text-center sm:text-left text-[11px] text-neutral-500">
             <p>© {new Date().getFullYear()} FoodExpress. Todos os direitos reservados.</p>
           </div>
         </div>

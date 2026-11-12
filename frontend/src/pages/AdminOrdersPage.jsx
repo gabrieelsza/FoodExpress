@@ -150,18 +150,18 @@ export default function AdminOrdersPage() {
   if (!isAuthenticated) return null;
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-[#0f0f11] text-neutral-100">
       <Navbar isAdmin onLogout={logout} />
 
       <div className="max-w-5xl mx-auto px-4 pt-6 pb-24">
         {/* Header */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
           <div>
-            <h1 className="text-2xl font-black text-gray-900 flex items-center gap-2.5 tracking-tight">
+            <h1 className="text-2xl font-black text-white flex items-center gap-2.5 tracking-tight">
               <ClipboardList className="w-7 h-7 text-orange-500" />
               Painel de Pedidos
             </h1>
-            <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
+            <p className="text-xs sm:text-sm text-neutral-400 mt-0.5">
               Acompanhamento da fila da cozinha e entregas em tempo real
             </p>
           </div>
@@ -170,21 +170,21 @@ export default function AdminOrdersPage() {
             <button
               onClick={doRefresh}
               disabled={refreshing}
-              className="inline-flex items-center gap-2 px-3.5 py-2 text-sm font-semibold bg-white border border-gray-200 text-gray-700 rounded-xl hover:bg-gray-50 active:bg-gray-100 shadow-xs transition-all disabled:opacity-60 cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 text-sm font-semibold bg-[#18181c] border border-neutral-800 text-neutral-200 rounded-xl hover:bg-neutral-800 active:bg-neutral-700 shadow-xs transition-all disabled:opacity-60 cursor-pointer"
             >
-              <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin text-orange-500' : 'text-gray-500'}`} />
+              <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin text-orange-500' : 'text-neutral-400'}`} />
               <span>Atualizar</span>
             </button>
 
-            <div className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-xl px-3 py-2 shadow-xs">
+            <div className="flex items-center gap-1.5 bg-[#18181c] border border-neutral-800 rounded-xl px-3 py-2 shadow-xs">
               <Timer className="w-4 h-4 text-orange-500" />
               <select
                 value={pollMs}
                 onChange={handlePollChange}
-                className="text-xs sm:text-sm font-semibold bg-transparent border-none focus:outline-none text-gray-700 cursor-pointer"
+                className="text-xs sm:text-sm font-semibold bg-transparent border-none focus:outline-none text-neutral-200 cursor-pointer"
               >
                 {INTERVAL_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
+                  <option key={opt.value} value={opt.value} className="bg-neutral-900 text-neutral-200">
                     Auto: {opt.label}
                   </option>
                 ))}
@@ -195,34 +195,34 @@ export default function AdminOrdersPage() {
 
         {/* Quick KPI Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
-          <div className="bg-white p-4 rounded-2xl border border-gray-200/80 shadow-xs">
-            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block">Novos</span>
-            <span className="text-2xl font-black text-blue-600 mt-1 block">
+          <div className="bg-[#18181c] p-4 rounded-2xl border border-neutral-800 shadow-xs">
+            <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block">Novos</span>
+            <span className="text-2xl font-black text-blue-400 mt-1 block">
               {adminOrders.filter((o) => o.status === 'RECEIVED').length}
             </span>
           </div>
-          <div className="bg-white p-4 rounded-2xl border border-gray-200/80 shadow-xs">
-            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block">Em Preparo</span>
-            <span className="text-2xl font-black text-amber-500 mt-1 block">
+          <div className="bg-[#18181c] p-4 rounded-2xl border border-neutral-800 shadow-xs">
+            <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block">Em Preparo</span>
+            <span className="text-2xl font-black text-amber-400 mt-1 block">
               {adminOrders.filter((o) => o.status === 'PREPARING').length}
             </span>
           </div>
-          <div className="bg-white p-4 rounded-2xl border border-gray-200/80 shadow-xs">
-            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block">Prontos</span>
-            <span className="text-2xl font-black text-emerald-600 mt-1 block">
+          <div className="bg-[#18181c] p-4 rounded-2xl border border-neutral-800 shadow-xs">
+            <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block">Prontos</span>
+            <span className="text-2xl font-black text-emerald-400 mt-1 block">
               {adminOrders.filter((o) => o.status === 'READY').length}
             </span>
           </div>
-          <div className="bg-white p-4 rounded-2xl border border-gray-200/80 shadow-xs">
-            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider block">Finalizados</span>
-            <span className="text-2xl font-black text-gray-700 mt-1 block">
+          <div className="bg-[#18181c] p-4 rounded-2xl border border-neutral-800 shadow-xs">
+            <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block">Finalizados</span>
+            <span className="text-2xl font-black text-neutral-300 mt-1 block">
               {adminOrders.filter((o) => o.status === 'DELIVERED').length}
             </span>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1.5 bg-white rounded-2xl p-1.5 shadow-xs border border-gray-200/80 mb-6 overflow-x-auto">
+        <div className="flex gap-1.5 bg-[#18181c] rounded-2xl p-1.5 shadow-xs border border-neutral-800 mb-6 overflow-x-auto">
           {TAB_FILTERS.map((tab) => (
             <button
               key={tab.key}
@@ -230,7 +230,7 @@ export default function AdminOrdersPage() {
               className={`flex-1 min-w-fit px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === tab.key
                   ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-xs'
-                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                  : 'text-neutral-400 hover:bg-neutral-800 hover:text-white'
               }`}
             >
               {tab.label}
@@ -241,8 +241,8 @@ export default function AdminOrdersPage() {
         {/* Orders list */}
         {filteredOrders.length === 0 ? (
           <div className="text-center py-16">
-            <PackageOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500 font-medium">Nenhum pedido encontrado</p>
+            <PackageOpen className="w-16 h-16 text-neutral-600 mx-auto mb-4" />
+            <p className="text-neutral-400 font-medium">Nenhum pedido encontrado</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -283,7 +283,7 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
 
   return (
     <div
-      className={`bg-white rounded-2xl border border-gray-200/80 shadow-xs hover:shadow-md transition-all overflow-hidden flex flex-col justify-between ${
+      className={`bg-[#18181c] rounded-2xl border border-neutral-800 shadow-xs hover:shadow-xl transition-all overflow-hidden flex flex-col justify-between ${
         isReceived ? 'border-l-4 border-l-orange-500' : ''
       }`}
     >
@@ -292,10 +292,10 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
         <div className="flex items-start justify-between gap-2 mb-2">
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="font-bold text-gray-900">#{order.id}</span>
-              <span className="text-xs text-gray-400">{formatRelativeTime(order.createdAt)}</span>
+              <span className="font-bold text-white">#{order.id}</span>
+              <span className="text-xs text-neutral-500">{formatRelativeTime(order.createdAt)}</span>
             </div>
-            <div className="text-sm text-gray-600 mt-0.5 flex items-center gap-1.5">
+            <div className="text-sm text-neutral-300 mt-0.5 flex items-center gap-1.5">
               {order.orderType === 'DINE_IN' ? (
                 <span className="inline-flex items-center gap-1.5 font-medium">
                   <Utensils className="w-3.5 h-3.5 text-orange-500" />
@@ -303,14 +303,14 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
                 </span>
               ) : (
                 <span className="inline-flex items-center gap-1.5 font-medium">
-                  <Bike className="w-3.5 h-3.5 text-blue-500" />
+                  <Bike className="w-3.5 h-3.5 text-blue-400" />
                   Entrega - {order.customerName}
                 </span>
               )}
             </div>
             {order.deliveryAddress && (
-              <p className="text-xs text-gray-500 mt-0.5 inline-flex items-center gap-1">
-                <MapPin className="w-3 h-3 text-gray-400 shrink-0" />
+              <p className="text-xs text-neutral-400 mt-0.5 inline-flex items-center gap-1">
+                <MapPin className="w-3 h-3 text-neutral-500 shrink-0" />
                 {order.deliveryAddress}
               </p>
             )}
@@ -325,7 +325,7 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
         {/* Expandable items */}
         <button
           onClick={onToggleExpanded}
-          className="flex items-center gap-1 text-sm text-orange-600 hover:text-orange-700 font-medium mt-1 min-h-[44px]"
+          className="flex items-center gap-1 text-sm text-orange-400 hover:text-orange-300 font-medium mt-1 min-h-[44px] cursor-pointer"
         >
           {expanded ? (
             <>
@@ -339,31 +339,31 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
         </button>
 
         {expanded && (
-          <div className="mt-2 space-y-2 border-t border-gray-100 pt-3">
+          <div className="mt-2 space-y-2 border-t border-neutral-800 pt-3">
             {order.items.map((item) => {
               const itemAddons = addons(item);
               return (
                 <div key={item.id} className="text-sm">
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
-                      <span className="font-medium text-gray-800">
+                      <span className="font-medium text-neutral-200">
                         {item.quantity}x {item.productNameSnapshot}
                         {item.variationNameSnapshot && (
-                          <span className="text-gray-500"> ({item.variationNameSnapshot})</span>
+                          <span className="text-neutral-400"> ({item.variationNameSnapshot})</span>
                         )}
                       </span>
                       {itemAddons.length > 0 && (
-                        <p className="text-xs text-gray-400 mt-0.5">
+                        <p className="text-xs text-neutral-400 mt-0.5">
                           + {itemAddons.map((a) => a.name).join(', ')}
                         </p>
                       )}
                       {item.notes && (
-                        <p className="text-xs text-amber-600 italic mt-0.5">
+                        <p className="text-xs text-amber-400 italic mt-0.5">
                           Obs: {item.notes}
                         </p>
                       )}
                     </div>
-                    <span className="text-gray-600 ml-2 whitespace-nowrap">
+                    <span className="text-neutral-300 ml-2 whitespace-nowrap">
                       {formatPrice(item.subtotal)}
                     </span>
                   </div>
@@ -374,9 +374,9 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
         )}
 
         {/* Total */}
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-          <span className="text-sm text-gray-500">Total</span>
-          <span className="font-bold text-gray-900 text-lg">{formatPrice(order.totalAmount)}</span>
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-neutral-800">
+          <span className="text-sm text-neutral-400">Total</span>
+          <span className="font-bold text-white text-lg">{formatPrice(order.totalAmount)}</span>
         </div>
       </div>
 
@@ -385,13 +385,13 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
         <div className="flex gap-2 px-4 pb-4">
           <button
             onClick={onAdvance}
-            className="flex-1 h-11 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold text-sm rounded-lg transition"
+            className="flex-1 h-11 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold text-sm rounded-xl transition shadow-lg shadow-orange-500/20 cursor-pointer"
           >
             {getNextStatusLabel(order.status)}
           </button>
           <button
             onClick={onCancel}
-            className="h-11 px-4 border-2 border-red-300 text-red-600 hover:bg-red-50 active:bg-red-100 font-semibold text-sm rounded-lg transition flex items-center gap-1.5"
+            className="h-11 px-4 border-2 border-red-500/40 text-red-400 hover:bg-red-950/30 active:bg-red-900/50 font-semibold text-sm rounded-xl transition flex items-center gap-1.5 cursor-pointer"
           >
             <X className="w-4 h-4" />
             Cancelar

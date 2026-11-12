@@ -19,16 +19,16 @@ export default function Navbar({
   const isActive = (path) => location.pathname.startsWith(path);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-neutral-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.05)] w-full">
+    <header className="sticky top-0 z-50 bg-[#121215]/95 backdrop-blur-md border-b border-neutral-800/90 shadow-md w-full">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 gap-4">
         {/* Brand / Logo */}
         <Link to={isAdmin ? '/admin/pedidos' : '/'} className="flex items-center gap-2.5 shrink-0 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 text-white transition-transform group-hover:scale-105">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-900 border border-neutral-800 text-white transition-transform group-hover:scale-105">
             <UtensilsCrossed size={19} strokeWidth={2.5} className="text-orange-500" />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-extrabold tracking-tight text-neutral-900 leading-none">
-              Food<span className="text-orange-600">Express</span>
+            <span className="text-xl font-extrabold tracking-tight text-white leading-none">
+              Food<span className="text-orange-500">Express</span>
             </span>
             <span className="text-[10px] font-semibold text-neutral-400 tracking-wider uppercase mt-0.5">
               {isAdmin ? 'Painel Operacional' : 'Restaurante & Delivery'}
@@ -40,18 +40,18 @@ export default function Navbar({
         {!isAdmin && onSearchChange && (
           <div className="hidden md:flex flex-1 max-w-md mx-4">
             <div className="relative w-full">
-              <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
+              <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-500" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
                 placeholder="Buscar lanche, porção, bebida..."
-                className="w-full rounded-full border border-neutral-200 bg-neutral-50/70 pl-10 pr-9 py-2 text-sm text-neutral-800 placeholder-neutral-400 transition-colors focus:border-neutral-900 focus:bg-white focus:outline-none"
+                className="w-full rounded-full border border-neutral-700/80 bg-neutral-900/90 pl-10 pr-9 py-2 text-sm text-neutral-100 placeholder-neutral-500 transition-colors focus:border-orange-500 focus:bg-neutral-900 focus:outline-none"
               />
               {searchQuery && (
                 <button
                   onClick={() => onSearchChange('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 p-0.5 rounded-full"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-200 p-0.5 rounded-full"
                 >
                   <X size={14} />
                 </button>
@@ -69,8 +69,8 @@ export default function Navbar({
                 to="/admin/pedidos"
                 className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors ${
                   isActive('/admin/pedidos') || isActive('/admin/orders')
-                    ? 'bg-neutral-900 text-white'
-                    : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                    ? 'bg-orange-500 text-white'
+                    : 'text-neutral-400 hover:bg-neutral-800 hover:text-white'
                 }`}
                 title="Fila de Pedidos"
               >
@@ -82,8 +82,8 @@ export default function Navbar({
                 to="/admin/cardapio"
                 className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors ${
                   isActive('/admin/cardapio') || isActive('/admin/menu')
-                    ? 'bg-neutral-900 text-white'
-                    : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                    ? 'bg-orange-500 text-white'
+                    : 'text-neutral-400 hover:bg-neutral-800 hover:text-white'
                 }`}
                 title="Gerenciar Cardápio"
               >
@@ -95,7 +95,7 @@ export default function Navbar({
               <Link
                 to="/"
                 target="_blank"
-                className="hidden lg:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-neutral-500 hover:text-neutral-900 rounded-lg transition-colors"
+                className="hidden lg:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-neutral-400 hover:text-white rounded-lg transition-colors"
                 title="Abrir cardápio do cliente em nova aba"
               >
                 Ver cardápio
@@ -104,7 +104,7 @@ export default function Navbar({
               {/* Logout button */}
               <button
                 onClick={onLogout}
-                className="ml-1 flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold text-neutral-500 hover:bg-red-50 hover:text-red-600 transition-colors cursor-pointer"
+                className="ml-1 flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold text-neutral-400 hover:bg-red-950/40 hover:text-red-400 transition-colors cursor-pointer"
                 title="Sair do painel"
               >
                 <LogOut size={17} />
@@ -116,7 +116,7 @@ export default function Navbar({
             onCartClick && (
               <button
                 onClick={onCartClick}
-                className="relative flex items-center gap-2.5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white px-4 sm:px-5 py-2.5 font-bold text-sm shadow-sm transition-all hover:shadow active:scale-[0.98] cursor-pointer"
+                className="relative flex items-center gap-2.5 rounded-full bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 text-white px-4 sm:px-5 py-2.5 font-bold text-sm shadow-sm transition-all hover:shadow active:scale-[0.98] cursor-pointer"
                 aria-label={`Sacola com ${count} itens`}
               >
                 <ShoppingBag size={17} strokeWidth={2.2} className="text-orange-400" />

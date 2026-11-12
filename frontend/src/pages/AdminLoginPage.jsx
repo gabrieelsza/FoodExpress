@@ -38,26 +38,26 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#0f0f11] text-neutral-100 flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-[#18181c] border border-neutral-800 rounded-2xl shadow-2xl p-8">
           {/* Logo / Heading */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-500/10 border border-orange-500/20 mb-4">
               <Lock className="w-8 h-8 text-orange-500" />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 flex items-center justify-center gap-2">
+            <h1 className="text-2xl font-bold text-white flex items-center justify-center gap-2">
               <UtensilsCrossed className="w-6 h-6 text-orange-500" />
               FoodExpress
             </h1>
-            <p className="text-gray-500 mt-1">Área do Restaurante</p>
+            <p className="text-neutral-400 mt-1 text-sm">Área do Restaurante</p>
           </div>
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Username */}
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="username" className="block text-sm font-medium text-neutral-300 mb-1">
                 Usuário
               </label>
               <input
@@ -68,13 +68,13 @@ export default function AdminLoginPage() {
                 placeholder="Digite seu usuário"
                 required
                 autoComplete="username"
-                className="w-full h-12 px-4 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                className="w-full h-12 px-4 border border-neutral-700/80 bg-neutral-900 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-orange-500 transition"
               />
             </div>
 
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-neutral-300 mb-1">
                 Senha
               </label>
               <div className="relative">
@@ -86,12 +86,12 @@ export default function AdminLoginPage() {
                   placeholder="Digite sua senha"
                   required
                   autoComplete="current-password"
-                  className="w-full h-12 px-4 pr-12 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition"
+                  className="w-full h-12 px-4 pr-12 border border-neutral-700/80 bg-neutral-900 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-orange-500 transition"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-neutral-400 hover:text-neutral-200"
                   aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -103,7 +103,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold rounded-xl transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-orange-500/25 cursor-pointer"
             >
               {loading ? (
                 <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -114,7 +114,7 @@ export default function AdminLoginPage() {
 
             {/* Error */}
             {error && (
-              <p className="text-red-600 text-sm text-center font-medium">{error}</p>
+              <p className="text-red-400 text-sm text-center font-medium">{error}</p>
             )}
           </form>
         </div>
@@ -123,7 +123,7 @@ export default function AdminLoginPage() {
         <div className="text-center mt-6">
           <Link
             to="/"
-            className="text-sm text-gray-500 hover:text-orange-500 transition inline-flex items-center gap-1"
+            className="text-sm text-neutral-400 hover:text-orange-400 transition inline-flex items-center gap-1"
           >
             ← Voltar ao cardápio
           </Link>
