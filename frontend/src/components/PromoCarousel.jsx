@@ -40,7 +40,7 @@ const PROMO_SLIDES = [
     id: 'frete-gratis',
     badge: 'VANTAGEM EXCLUSIVA',
     badgeIcon: Bike,
-    badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+    badgeColor: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
     title: 'Entrega Grátis Acima de R$ 60',
     subtitle: 'Monte seu pedido na hamburgueria e receba no conforto da sua casa com taxa de entrega totalmente zerada.',
     originalPrice: null,
@@ -49,15 +49,15 @@ const PROMO_SLIDES = [
     ctaText: 'Aproveitar Oferta',
     categoryId: 1, // Lanches
     imageUrl: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&h=500&fit=crop',
-    gradient: 'from-emerald-950/70 via-neutral-900/90 to-neutral-950',
-    glowColor: 'rgba(16, 185, 129, 0.15)',
-    borderAccent: 'border-emerald-500/30',
+    gradient: 'from-orange-950/70 via-neutral-900/90 to-neutral-950',
+    glowColor: 'rgba(249, 115, 22, 0.15)',
+    borderAccent: 'border-orange-500/30',
   },
   {
     id: 'sobremesa-premium',
     badge: 'DOCE PERFEITO',
     badgeIcon: UtensilsCrossed,
-    badgeColor: 'bg-rose-500/20 text-rose-400 border-rose-500/30',
+    badgeColor: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
     title: 'Brownie Quente com Sorvete',
     subtitle: 'Finalize sua experiência com brownie denso de chocolate belga, calda quente e sorvete artesanal de creme.',
     originalPrice: 'R$ 24,90',
@@ -66,9 +66,9 @@ const PROMO_SLIDES = [
     ctaText: 'Pedir Sobremesa',
     productId: 11, // Brownie com Sorvete
     imageUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&h=500&fit=crop',
-    gradient: 'from-rose-950/70 via-neutral-900/90 to-neutral-950',
-    glowColor: 'rgba(244, 63, 94, 0.15)',
-    borderAccent: 'border-rose-500/30',
+    gradient: 'from-amber-950/70 via-neutral-900/90 to-neutral-950',
+    glowColor: 'rgba(245, 158, 11, 0.15)',
+    borderAccent: 'border-amber-500/30',
   },
 ];
 

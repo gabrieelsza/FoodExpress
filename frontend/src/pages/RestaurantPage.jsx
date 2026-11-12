@@ -82,7 +82,7 @@ export default function RestaurantPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="p-6 rounded-2xl bg-[#14100e] border border-[#2b221c] space-y-3 shadow-lg">
+          <div className="p-6 rounded-2xl bg-[#14100e] border border-[#2b221c] space-y-3 shadow-lg hover:border-orange-500/40 transition-colors">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 border border-orange-500/30 text-orange-400">
               <Flame size={24} />
             </div>
@@ -94,8 +94,8 @@ export default function RestaurantPage() {
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#14100e] border border-[#2b221c] space-y-3 shadow-lg">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400">
+          <div className="p-6 rounded-2xl bg-[#14100e] border border-[#2b221c] space-y-3 shadow-lg hover:border-orange-500/40 transition-colors">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 border border-orange-500/30 text-orange-400">
               <Beer size={24} />
             </div>
             <h3 className="text-lg font-bold text-white font-['Oswald',sans-serif] uppercase tracking-wide">
@@ -106,8 +106,8 @@ export default function RestaurantPage() {
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#14100e] border border-[#2b221c] space-y-3 shadow-lg">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+          <div className="p-6 rounded-2xl bg-[#14100e] border border-[#2b221c] space-y-3 shadow-lg hover:border-orange-500/40 transition-colors">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 border border-orange-500/30 text-orange-400">
               <Wind size={24} />
             </div>
             <h3 className="text-lg font-bold text-white font-['Oswald',sans-serif] uppercase tracking-wide">
@@ -118,8 +118,8 @@ export default function RestaurantPage() {
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#14100e] border border-[#2b221c] space-y-3 shadow-lg">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400">
+          <div className="p-6 rounded-2xl bg-[#14100e] border border-[#2b221c] space-y-3 shadow-lg hover:border-orange-500/40 transition-colors">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 border border-orange-500/30 text-orange-400">
               <UtensilsCrossed size={24} />
             </div>
             <h3 className="text-lg font-bold text-white font-['Oswald',sans-serif] uppercase tracking-wide">
@@ -166,7 +166,7 @@ export default function RestaurantPage() {
                 </div>
 
                 <div className="flex items-start gap-3 p-4 rounded-xl bg-[#14100e] border border-[#292019]">
-                  <Phone size={20} className="text-emerald-500 shrink-0 mt-0.5" />
+                  <Phone size={20} className="text-orange-500 shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-white font-semibold">Contato &amp; Reservas:</strong>
                     <span>WhatsApp: (11) 99999-9999</span>

@@ -376,3 +376,19 @@
   3. **Validação Visual:**
      - Verificado no navegador através de screenshot automatizado confirmando alinhamento reto e sem distorções no combo de X-Burger + Fritas + Refri.
      - Build de produção validado com `npm run build`.
+
+
+---
+
+### [2026-11-12 17:41] — Unificação e Sobriedade da Paleta de Cores (Eliminação de Efeito Arco-íris)
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** `Fase 3 — Harmonização Visual e Consistência de Branding`
+- **Ações Executadas:**
+  1. **Unificação dos Pilares do Salão (`RestaurantPage.jsx`):**
+     - Substituídos os ícones verdes e rosa/magenta por uma paleta de cores consistente e elegante em âmbar/laranja de brasa (`bg-orange-500/10 border-orange-500/30 text-orange-400`).
+     - Todos os 4 pilares (Grelhados ao Vivo, Caneca Ultracongelada, Salão Climatizado, Pedido Digital) agora compartilham a mesma identidade sóbria de steakhouse escuro.
+  2. **Harmonização do Carrossel de Promoções (`PromoCarousel.jsx`):**
+     - Substituídas as cores verde e rosa dos slides de frete grátis e sobremesa pelos tons quentes da brasa (laranja e âmbar), mantendo harmonia cromática em todo o site.
+  3. **Validação Visual:**
+     - Screenshot automatizado confirmando harmonia visual dos 4 cards em `#/restaurante`.
+     - Build de produção validado com `npm run build`.
