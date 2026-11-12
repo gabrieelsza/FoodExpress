@@ -130,109 +130,171 @@ export default function HomePage() {
       {/* 1. TOP NAVBAR (Outback Tabs: INÍCIO | NOSSOS PRODUTOS | RESTAURANTE & SALÃO | DELIVERY | ACESSO DO ATENDENTE) */}
       <Navbar isAdmin={false} />
 
-      {/* 2. HUGE SPLIT HERO BANNER (Directly Emulating the Outback Screenshot) */}
+      {/* 2. HUGE SPLIT HERO BANNER (Outback Style Seamless Cinematic Carousel) */}
       <section
-        className="relative w-full bg-[#0a0807] overflow-hidden border-b border-[#241d18]"
+        className="relative w-full h-[540px] sm:h-[600px] lg:h-[660px] bg-[#0c0a08] overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 min-h-[500px] lg:min-h-[620px]">
-          {/* Left Side: High-energy lifestyle steakhouse photography */}
-          <div className="lg:col-span-7 relative min-h-[320px] sm:min-h-[420px] lg:min-h-full overflow-hidden">
-            <img
-              src={currentSlide.photoUrl}
-              alt={currentSlide.photoAlt}
-              className="w-full h-full object-cover object-center transform transition-transform duration-1000 scale-102 hover:scale-105"
-            />
-            {/* Ambient gradients */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0807] via-transparent to-transparent lg:hidden" />
-            <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0a0807]" />
+        {/* Slides Container with Smooth Crossfade */}
+        {HERO_SLIDES.map((slide, idx) => {
+          const isActive = idx === currentSlideIndex;
+          return (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
+              }`}
+            >
+              <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12">
+                {/* Left Side: Photography with seamless organic feathered blend */}
+                <div className="lg:col-span-7 relative h-[280px] sm:h-[360px] lg:h-full overflow-hidden bg-[#0c0a08]">
+                  <img
+                    src={slide.photoUrl}
+                    alt={slide.photoAlt}
+                    className={`w-full h-full object-cover object-center transform transition-transform duration-7000 ease-out ${
+                      isActive ? 'scale-105' : 'scale-100'
+                    }`}
+                    style={{
+                      WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.7) 72%, rgba(0,0,0,0.2) 90%, rgba(0,0,0,0) 100%)',
+                      maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.7) 72%, rgba(0,0,0,0.2) 90%, rgba(0,0,0,0) 100%)',
+                    }}
+                  />
 
-            {/* Floating Quality Tag */}
-            <div className="absolute top-5 left-5 z-10">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md text-amber-400 border border-orange-500/40 text-[10px] sm:text-xs font-black uppercase font-['Oswald',sans-serif] tracking-wider shadow-xl">
-                <Flame size={12} className="text-orange-500 fill-orange-500" />
-                Steakhouse Experience
-              </span>
-            </div>
-          </div>
+                  {/* Multi-stage Feathered Gradients for Desktop */}
+                  <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/30 via-transparent 30% to-[#0c0a08] 95% pointer-events-none" />
+                  <div className="hidden lg:block absolute inset-y-0 right-0 w-64 bg-gradient-to-r from-transparent via-[#0c0a08]/80 to-[#0c0a08] pointer-events-none z-10" />
 
-          {/* Right Side: Outback Style Graphic Canvas in Dark Mode */}
-          <div className="lg:col-span-5 relative flex flex-col justify-center p-6 sm:p-10 lg:p-14 bg-radial from-[#181310] via-[#100d0b] to-[#0a0807] border-l border-[#241d18]/60 text-center lg:text-left">
-            <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                  {/* Bottom & Top feathering for Mobile & Desktop */}
+                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0c0a08] via-[#0c0a08]/70 to-transparent pointer-events-none z-10 lg:hidden" />
+                  <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/40 to-transparent pointer-events-none z-10" />
 
-            <div className="relative z-10 space-y-4 sm:space-y-6">
-              {/* Eyebrow & Tag */}
-              <div className="space-y-1">
-                <span className="block text-[11px] sm:text-xs font-black uppercase tracking-widest text-amber-500 font-['Oswald',sans-serif]">
-                  {currentSlide.badge}
-                </span>
-                <span className="block text-[10px] sm:text-[11px] font-bold text-stone-400 tracking-wider uppercase">
-                  {currentSlide.tag}
-                </span>
-              </div>
-
-              {/* Big Bold Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight uppercase font-['Oswald',sans-serif] leading-[1.08]">
-                {currentSlide.title}
-              </h1>
-
-              {/* Subtitle / Description */}
-              <p className="text-xs sm:text-sm text-stone-300 max-w-md mx-auto lg:mx-0 leading-relaxed">
-                {currentSlide.subtitle}
-              </p>
-
-              {/* Operating / Info Tag */}
-              <div className="inline-block px-3 py-1 rounded-lg bg-[#1a1411] border border-[#33261f] text-[11px] font-semibold text-amber-400/90 font-['Oswald',sans-serif] tracking-wider uppercase">
-                {currentSlide.schedule}
-              </div>
-
-              {/* Big Prominent Outback Button */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
-                <button
-                  onClick={handleNavigateToProducts}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-xl shadow-orange-950/80 transition-all cursor-pointer"
-                >
-                  <span>{currentSlide.ctaText}</span>
-                  <ArrowRight size={17} />
-                </button>
-
-                <button
-                  onClick={scrollToProducts}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#171310] hover:bg-[#201a15] border border-[#382c23] hover:border-orange-500/70 text-stone-300 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
-                >
-                  <span>Explorar Produtos</span>
-                </button>
-              </div>
-
-              {/* Outback Signature Seal */}
-              <div className="pt-4 border-t border-[#241d18] flex items-center justify-center lg:justify-start gap-3 text-stone-500">
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black border border-orange-500/40 text-orange-500">
-                  <UtensilsCrossed size={13} />
+                  {/* Floating Steakhouse Experience Tag */}
+                  <div className="absolute top-5 left-5 z-20">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-amber-400 border border-orange-500/40 text-[10px] sm:text-xs font-black uppercase font-['Oswald',sans-serif] tracking-wider shadow-xl">
+                      <Flame size={12} className="text-orange-500 fill-orange-500" />
+                      Steakhouse Experience
+                    </span>
+                  </div>
                 </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-stone-400 font-['Oswald',sans-serif]">
-                  FOODEXPRESS STEAKHOUSE BRASIL
-                </span>
+
+                {/* Right Side: Seamless Dark Graphic Canvas with Warm Glow & Organic Accents */}
+                <div className="lg:col-span-5 relative h-full flex flex-col justify-center p-6 sm:p-10 lg:p-12 xl:p-14 bg-gradient-to-b lg:bg-gradient-to-r from-[#0c0a08] via-[#120e0b] to-[#0a0807] text-center lg:text-left overflow-hidden">
+                  {/* Hearth Fire Warm Glow behind transition */}
+                  <div className="absolute top-1/2 -left-20 -translate-y-1/2 w-72 h-72 bg-orange-600/15 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute -top-24 -right-24 w-80 h-80 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute -bottom-24 right-1/4 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
+
+                  {/* Subtle Outback organic curved wave lines creating fluidity */}
+                  <svg
+                    className="hidden lg:block absolute -left-16 top-0 bottom-0 h-full w-36 text-orange-500/20 pointer-events-none z-10"
+                    viewBox="0 0 120 800"
+                    preserveAspectRatio="none"
+                    fill="none"
+                  >
+                    <path
+                      d="M20,0 C90,220 10,380 80,560 C110,660 30,800 20,800"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeDasharray="6 8"
+                      className="opacity-75"
+                    />
+                    <path
+                      d="M50,0 C120,240 40,420 100,600 C130,700 60,800 50,800"
+                      stroke="url(#warmGradient)"
+                      strokeWidth="1.5"
+                      className="opacity-50"
+                    />
+                    <defs>
+                      <linearGradient id="warmGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#ea580c" />
+                        <stop offset="50%" stopColor="#f59e0b" />
+                        <stop offset="100%" stopColor="#dc2626" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  {/* Content Container with soft stagger animation */}
+                  <div className={`relative z-10 space-y-4 sm:space-y-5 transition-all duration-700 ease-out transform ${
+                    isActive ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
+                  }`}>
+                    {/* Eyebrow & Tag */}
+                    <div className="space-y-1">
+                      <span className="block text-[11px] sm:text-xs font-black uppercase tracking-widest text-amber-500 font-['Oswald',sans-serif]">
+                        {slide.badge}
+                      </span>
+                      <span className="block text-[10px] sm:text-[11px] font-bold text-stone-400 tracking-wider uppercase">
+                        {slide.tag}
+                      </span>
+                    </div>
+
+                    {/* Headline */}
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight uppercase font-['Oswald',sans-serif] leading-[1.08] drop-shadow-md">
+                      {slide.title}
+                    </h1>
+
+                    {/* Subtitle / Description */}
+                    <p className="text-xs sm:text-sm text-stone-300 max-w-md mx-auto lg:mx-0 leading-relaxed">
+                      {slide.subtitle}
+                    </p>
+
+                    {/* Operating / Info Tag */}
+                    <div className="inline-block px-3 py-1 rounded-lg bg-[#1a1411]/90 backdrop-blur-xs border border-[#382b22] text-[11px] font-semibold text-amber-400/90 font-['Oswald',sans-serif] tracking-wider uppercase shadow-md">
+                      {slide.schedule}
+                    </div>
+
+                    {/* Big Prominent Outback Button */}
+                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+                      <button
+                        onClick={handleNavigateToProducts}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-xl shadow-orange-950/80 transition-all cursor-pointer"
+                      >
+                        <span>{slide.ctaText}</span>
+                        <ArrowRight size={17} />
+                      </button>
+
+                      <button
+                        onClick={scrollToProducts}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#171310]/90 hover:bg-[#201a15] border border-[#382c23] hover:border-orange-500/70 text-stone-300 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
+                      >
+                        <span>Explorar Produtos</span>
+                      </button>
+                    </div>
+
+                    {/* Outback Signature Seal */}
+                    <div className="pt-3 border-t border-[#241d18]/70 flex items-center justify-center lg:justify-start gap-3 text-stone-500">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black border border-orange-500/40 text-orange-500">
+                        <UtensilsCrossed size={13} />
+                      </div>
+                      <span className="text-xs font-bold uppercase tracking-widest text-stone-400 font-['Oswald',sans-serif]">
+                        FOODEXPRESS STEAKHOUSE BRASIL
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+          );
+        })}
 
-            {/* Slider Dots Indicator */}
-            <div className="mt-8 flex items-center justify-center lg:justify-start gap-2">
-              {HERO_SLIDES.map((slide, idx) => (
-                <button
-                  key={slide.id}
-                  onClick={() => setCurrentSlideIndex(idx)}
-                  className={`h-2 transition-all rounded-full cursor-pointer ${
-                    idx === currentSlideIndex
-                      ? 'w-8 bg-gradient-to-r from-red-600 to-amber-500'
-                      : 'w-2 bg-[#2d241e] hover:bg-[#4a3b31]'
-                  }`}
-                  aria-label={`Ir para slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-          </div>
+        {/* Global Slider Navigation Dots */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:right-16 z-30 flex items-center gap-2.5 bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-stone-800/60">
+          {HERO_SLIDES.map((slide, idx) => (
+            <button
+              key={slide.id}
+              onClick={() => setCurrentSlideIndex(idx)}
+              className={`h-2 transition-all duration-300 rounded-full cursor-pointer ${
+                idx === currentSlideIndex
+                  ? 'w-8 bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 shadow-md shadow-orange-500/50'
+                  : 'w-2 bg-stone-700 hover:bg-stone-500'
+              }`}
+              aria-label={`Ir para slide ${idx + 1}`}
+            />
+          ))}
         </div>
+
+        {/* Soft Bottom Gradient Transition into Section 3 (Melts into page seamlessly!) */}
+        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#0b0908] via-[#0b0908]/90 to-transparent pointer-events-none z-20" />
       </section>
 
       {/* 3. "NOSSOS PRODUTOS" — 3 ITENS DEMONSTRATIVOS */}

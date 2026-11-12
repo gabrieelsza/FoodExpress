@@ -303,3 +303,24 @@
   3. **Validação Visual:**
      - Testes visuais executados via subagente de browser confirmando a exibição correta dos itens em `/nossos-produtos` e no cardápio de delivery.
      - Build de produção verificado com `npm run build` e commit `e837331`.
+
+
+---
+
+### [2026-11-12 17:10] — Suavização e Fluidez Orgânica do Hero Banner (Eliminação do Corte Seco)
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** `Fase 3 — Refinamento Estético e Transições Visuais`
+- **Ações Executadas:**
+  1. **Eliminação da Linha Divisória Rígida:**
+     - Removida qualquer borda vertical ou divisão seca entre a fotografia gastronômica da esquerda e a área textual da direita.
+  2. **Implementação de Feathered Mask e Fusão Gradual:**
+     - Aplicada máscara linear CSS (`mask-image` com múltiplos estágios de transparência) para que a foto do prato se dissolva suavemente na escuridão do background.
+     - Adicionado gradiente horizontal multi-stop de 64 colunas (`bg-gradient-to-r from-transparent via-[#0c0a08]/80 to-[#0c0a08]`) suavizando as bordas.
+  3. **Iluminação de Brasa e Curvas Orgânicas:**
+     - Inserido ambient glow radial quente (tom de fogo/brasa `#ea580c`) no ponto de transição.
+     - Adicionadas curvas orgânicas inspiradas no estilo Outback em SVG pontilhado com gradiente quente, criando dinamismo sem poluição visual.
+  4. **Fusão com a Seção Seguinte:**
+     - Aumentada a profundidade da transição inferior para 112px (`h-28`), fazendo com que o banner se funda continuamente na seção "VIVA O SABOR FOODEXPRESS".
+  5. **Validação Visual:**
+     - Verificado em navegador automatizado nos 3 slides do carrossel (Burgers, Aussie Fries e Thunder Brownie), confirmando o resultado fluido e cinematográfico.
+     - Build de produção validado com sucesso (`npm run build`).
