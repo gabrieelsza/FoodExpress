@@ -3,23 +3,6 @@ import { ChevronLeft, ChevronRight, Sparkles, Bike, Flame, UtensilsCrossed, Arro
 
 const PROMO_SLIDES = [
   {
-    id: 'foodexpress-hero',
-    badge: 'HAMBURGUERIA ARTESANAL',
-    badgeIcon: Flame,
-    badgeColor: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-    title: 'FoodExpress · Sabor de Verdade',
-    subtitle: 'Blends nobres grelhados na brasa, pães brioche selados na manteiga e molhos autorais exclusivos.',
-    originalPrice: null,
-    promoPrice: 'A partir de R$ 22,90',
-    saveText: 'Grelhado no fogo',
-    ctaText: 'Ver Cardápio',
-    categoryId: 1, // Lanches
-    imageUrl: '/banner.jpg',
-    gradient: 'from-black/95 via-neutral-900/90 to-neutral-950/80',
-    glowColor: 'rgba(249, 115, 22, 0.2)',
-    borderAccent: 'border-orange-500/40',
-  },
-  {
     id: 'combo-artesanal',
     badge: 'COMBO ESPECIAL DO CHEF',
     badgeIcon: Sparkles,
@@ -37,23 +20,6 @@ const PROMO_SLIDES = [
     borderAccent: 'border-orange-500/30',
   },
   {
-    id: 'frete-gratis',
-    badge: 'VANTAGEM EXCLUSIVA',
-    badgeIcon: Bike,
-    badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
-    title: 'Entrega Grátis Acima de R$ 60',
-    subtitle: 'Monte seu pedido na hamburgueria e receba no conforto da sua casa com taxa de entrega totalmente zerada.',
-    originalPrice: null,
-    promoPrice: 'Frete R$ 0,00',
-    saveText: 'Válido para todo o cardápio',
-    ctaText: 'Aproveitar Oferta',
-    categoryId: 1, // Lanches
-    imageUrl: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&h=500&fit=crop',
-    gradient: 'from-emerald-950/70 via-neutral-900/90 to-neutral-950',
-    glowColor: 'rgba(16, 185, 129, 0.15)',
-    borderAccent: 'border-emerald-500/30',
-  },
-  {
     id: 'smash-triplo',
     badge: 'LANÇAMENTO DA BRASA',
     badgeIcon: Flame,
@@ -69,6 +35,23 @@ const PROMO_SLIDES = [
     gradient: 'from-amber-950/80 via-neutral-900/90 to-neutral-950',
     glowColor: 'rgba(245, 158, 11, 0.15)',
     borderAccent: 'border-amber-500/30',
+  },
+  {
+    id: 'frete-gratis',
+    badge: 'VANTAGEM EXCLUSIVA',
+    badgeIcon: Bike,
+    badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+    title: 'Entrega Grátis Acima de R$ 60',
+    subtitle: 'Monte seu pedido na hamburgueria e receba no conforto da sua casa com taxa de entrega totalmente zerada.',
+    originalPrice: null,
+    promoPrice: 'Frete R$ 0,00',
+    saveText: 'Válido para todo o cardápio',
+    ctaText: 'Aproveitar Oferta',
+    categoryId: 1, // Lanches
+    imageUrl: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&h=500&fit=crop',
+    gradient: 'from-emerald-950/70 via-neutral-900/90 to-neutral-950',
+    glowColor: 'rgba(16, 185, 129, 0.15)',
+    borderAccent: 'border-emerald-500/30',
   },
   {
     id: 'sobremesa-premium',
