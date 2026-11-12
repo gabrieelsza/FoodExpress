@@ -284,3 +284,22 @@
   3. **Validação Técnica e Visual:**
      - Build de produção verificado com `npm run build` (sucesso em 982ms).
      - Testes visuais automatizados via subagent de browser confirmando fidelidade estética e ausência de elementos duplicados.
+
+
+---
+
+### [2026-11-12 16:53] — Correção e Sanitização de Imagens dos Produtos (Fotos Autênticas)
+- **Papel Ativo:** Engenheiro Frontend & Especialista em Design de Steakhouse
+- **Etapa SDD:** `Fase 3 — Correção de Conteúdo Visual e Sanitização de Dados`
+- **Ações Executadas:**
+  1. **Substituição de Imagens Inadequadas / Quebradas:**
+     - **Refrigerante:** Substituída foto incorreta de academia por latas de Coca-Cola geladas sobre cubos de gelo com gotas de condensação.
+     - **Chopp Artesanal:** Adicionado item de chopp tirado na caneca ultracongelada com colarinho denso e cremoso.
+     - **Suco Natural:** Adicionada foto de copo com suco de laranja natural e fatias de fruta fresca.
+     - **Pudim Artesanal de Leite:** Substituída foto genérica por fatia de pudim de leite condensado com calda de caramelo brilhante servida no prato.
+  2. **Camada de Sanitização Automática (`sanitizeProductImageUrl` e `getFallbackFoodImage`):**
+     - Implementada verificação em [`frontend/src/utils/helpers.js`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/utils/helpers.js) para sanitizar URLs no [`ProductCard.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/ProductCard.jsx) e [`ProductModal.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/ProductModal.jsx), garantindo que dados em cache antigo no `localStorage` não exibam fotos impróprias.
+     - Fallback gracioso com `onError` nas tags `<img>`.
+  3. **Validação Visual:**
+     - Testes visuais executados via subagente de browser confirmando a exibição correta dos itens em `/nossos-produtos` e no cardápio de delivery.
+     - Build de produção verificado com `npm run build` e commit `e837331`.
