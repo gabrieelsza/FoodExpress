@@ -5,14 +5,8 @@ import {
   Star,
   Clock,
   Bike,
-  Utensils,
-  Sparkles,
-  Flame,
-  Coffee,
-  Cake,
   UtensilsCrossed,
   X,
-  MapPin,
   CheckCircle2,
 } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
@@ -25,15 +19,6 @@ import ProductModal from '../components/ProductModal';
 import CartDrawer from '../components/CartDrawer';
 import FloatingCartBar from '../components/FloatingCartBar';
 
-function getCategoryIcon(catName) {
-  const lower = catName.toLowerCase();
-  if (lower.includes('lanche') || lower.includes('burger')) return UtensilsCrossed;
-  if (lower.includes('porç') || lower.includes('batata') || lower.includes('petisco')) return Flame;
-  if (lower.includes('bebid') || lower.includes('suco') || lower.includes('refri')) return Coffee;
-  if (lower.includes('sobremesa') || lower.includes('doce')) return Cake;
-  return Sparkles;
-}
-
 export default function CustomerMenuPage() {
   const navigate = useNavigate();
   const cart = useCart();
@@ -44,11 +29,10 @@ export default function CustomerMenuPage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Refs for category sections (scroll-into-view)
   const sectionRefs = useRef({});
   const tabsBarRef = useRef(null);
 
-  // Menu data (stored in localStorage by Admin or fallback to MOCK_MENU)
+  // Menu data from localStorage or MOCK_MENU
   const menuData = useMemo(() => {
     try {
       const saved = localStorage.getItem('foodexpress_admin_menu_data');
@@ -74,9 +58,9 @@ export default function CustomerMenuPage() {
     }
   }, [categories, selectedCategory]);
 
-  // ---- Intersection Observer to update active tab on scroll ----
+  // Observer for active category on scroll
   useEffect(() => {
-    if (searchQuery.trim()) return; // disable during active search
+    if (searchQuery.trim()) return;
     const observers = [];
     const threshold = 0.3;
 
@@ -92,7 +76,7 @@ export default function CustomerMenuPage() {
             }
           });
         },
-        { threshold, rootMargin: '-100px 0px -50% 0px' }
+        { threshold, rootMargin: '-90px 0px -50% 0px' }
       );
 
       observer.observe(el);
@@ -102,7 +86,7 @@ export default function CustomerMenuPage() {
     return () => observers.forEach((o) => o.disconnect());
   }, [categories, searchQuery]);
 
-  // ---- Scroll active tab into view within the tabs bar ----
+  // Scroll active tab into view
   useEffect(() => {
     if (!tabsBarRef.current) return;
     const activeBtn = tabsBarRef.current.querySelector('[data-active="true"]');
@@ -111,13 +95,12 @@ export default function CustomerMenuPage() {
     }
   }, [selectedCategory]);
 
-  // ---- Handlers ----
   const handleCategoryClick = useCallback((catId) => {
     setSelectedCategory(catId);
     setSearchQuery('');
     const section = sectionRefs.current[catId];
     if (section) {
-      const yOffset = -140; // account for sticky navbar + tabs
+      const yOffset = -130;
       const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
@@ -181,7 +164,7 @@ export default function CustomerMenuPage() {
     [cart, orders, navigate]
   );
 
-  // Search filtering
+  // Search filter
   const filteredProductsBySearch = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     if (!q) return null;
@@ -202,72 +185,91 @@ export default function CustomerMenuPage() {
   }, [categories, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#fafaf9] text-gray-900 pb-28 antialiased">
-      {/* Navbar */}
+    <div className="min-h-screen bg-[#f8f9fa] text-neutral-900 pb-28 antialiased">
+      {/* Top Navbar with integrated search */}
       <Navbar
         isAdmin={false}
         cartItemCount={cart.totalItems}
         onCartClick={() => setIsCartOpen(true)}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
       />
 
-      {/* Hero Banner Section */}
-      <div className="relative bg-gradient-to-b from-orange-50/70 via-amber-50/30 to-transparent border-b border-gray-100/60 pt-6 pb-8">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            {/* Restaurant Profile Card */}
-            <div className="flex items-center gap-4 sm:gap-5">
-              <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-tr from-orange-600 via-orange-500 to-amber-500 text-white shadow-xl shadow-orange-500/25 border-4 border-white">
-                <UtensilsCrossed size={40} strokeWidth={2.2} />
+      {/* Restaurant Header Section (Real Food Photography Banner) */}
+      <div className="relative bg-white border-b border-neutral-200/80">
+        {/* Cover Photo */}
+        <div className="h-44 sm:h-56 lg:h-64 w-full overflow-hidden relative bg-neutral-800">
+          <img
+            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&h=600&fit=crop&q=80"
+            alt="FoodExpress Banner"
+            className="w-full h-full object-cover object-center opacity-85"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        </div>
+
+        {/* Store Info Profile (Overlapping) */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 -mt-12 sm:-mt-14 pb-6">
+            <div className="flex items-end gap-4 sm:gap-5">
+              {/* Store Avatar Badge */}
+              <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 shrink-0 items-center justify-center rounded-2xl bg-neutral-900 text-white shadow-lg ring-4 ring-white overflow-hidden">
+                <UtensilsCrossed size={42} strokeWidth={2.2} className="text-orange-500" />
               </div>
 
-              <div>
+              {/* Store Titles */}
+              <div className="pt-2">
                 <div className="flex items-center gap-2">
-                  <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-gray-900">
+                  <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900">
                     FoodExpress
                   </h1>
-                  <CheckCircle2 size={18} className="text-orange-500 fill-orange-100" />
+                  <CheckCircle2 size={18} className="text-orange-500" />
                 </div>
-                <p className="text-xs sm:text-sm text-gray-500 font-medium mt-0.5">
-                  Lanches Artesanais • Porções Crocantes • Bebidas & Sobremesas
+                <p className="text-xs sm:text-sm text-neutral-500 font-medium mt-0.5">
+                  Hamburgueria Artesanal • Porções • Bebidas & Sobremesas
                 </p>
 
-                {/* Badges / Metrics */}
-                <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 border border-amber-200/60 px-2.5 py-1 font-bold text-amber-700">
-                    <Star size={13} className="fill-amber-500 text-amber-500" />
-                    4.9 (500+)
+                {/* Key Metrics */}
+                <div className="mt-2.5 flex flex-wrap items-center gap-2.5 text-xs">
+                  <span className="inline-flex items-center gap-1 font-bold text-neutral-900">
+                    <Star size={13} className="fill-amber-400 text-amber-400" />
+                    4.9
+                    <span className="font-normal text-neutral-400">(500+ avaliações)</span>
                   </span>
 
-                  <span className="inline-flex items-center gap-1 rounded-full bg-white border border-gray-200/60 px-2.5 py-1 font-medium text-gray-600 shadow-xs">
-                    <Clock size={13} className="text-orange-500" />
-                    30 - 45 min
+                  <span className="text-neutral-300">•</span>
+
+                  <span className="inline-flex items-center gap-1 font-medium text-neutral-600">
+                    <Clock size={13} className="text-neutral-400" />
+                    30-45 min
                   </span>
 
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 border border-emerald-200/60 px-2.5 py-1 font-semibold text-emerald-700">
+                  <span className="text-neutral-300">•</span>
+
+                  <span className="inline-flex items-center gap-1 font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/50">
                     <Bike size={13} />
-                    Entrega & Salão
+                    Salão & Entrega
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Quick Search Input */}
-            <div className="w-full md:max-w-xs">
+            {/* Mobile Search Input */}
+            <div className="sm:hidden w-full mt-2">
               <div className="relative">
-                <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Buscar no cardápio..."
-                  className="w-full rounded-2xl border border-gray-200/80 bg-white pl-10 pr-9 py-2.5 text-sm font-medium text-gray-800 placeholder-gray-400 shadow-xs transition-all focus:border-orange-500 focus:outline-none focus:ring-3 focus:ring-orange-500/15"
+                  className="w-full rounded-full border border-neutral-200 bg-neutral-50 pl-9 pr-9 py-2 text-sm text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-neutral-900"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-0.5 rounded-full"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400"
                   >
-                    <X size={15} />
+                    <X size={14} />
                   </button>
                 )}
               </div>
@@ -278,15 +280,14 @@ export default function CustomerMenuPage() {
 
       {/* Sticky Category Tabs Bar */}
       {!filteredProductsBySearch && (
-        <div className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-neutral-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div
               ref={tabsBarRef}
               className="flex items-center gap-2 overflow-x-auto py-3 scrollbar-hide"
             >
               {categories.map((cat) => {
                 const isSelected = selectedCategory === cat.id;
-                const IconComponent = getCategoryIcon(cat.name);
                 const activeCount = (cat.products || []).filter((p) => p.active).length;
 
                 return (
@@ -294,20 +295,16 @@ export default function CustomerMenuPage() {
                     key={cat.id}
                     data-active={isSelected}
                     onClick={() => handleCategoryClick(cat.id)}
-                    className={`group flex items-center gap-2 rounded-2xl px-4 py-2 text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                    className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-150 cursor-pointer ${
                       isSelected
-                        ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md shadow-orange-500/25 scale-[1.02]'
-                        : 'bg-gray-100/80 text-gray-600 hover:bg-gray-200/80 hover:text-gray-900'
+                        ? 'bg-neutral-900 text-white shadow-xs'
+                        : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200/80 hover:text-neutral-900'
                     }`}
                   >
-                    <IconComponent
-                      size={16}
-                      className={isSelected ? 'text-white' : 'text-gray-400 group-hover:text-gray-600'}
-                    />
                     <span>{cat.name}</span>
                     <span
-                      className={`ml-0.5 rounded-full px-1.5 py-0.2 text-[10px] font-black ${
-                        isSelected ? 'bg-white/20 text-white' : 'bg-gray-200/80 text-gray-500'
+                      className={`rounded-full px-1.5 py-0.2 text-[10px] font-bold ${
+                        isSelected ? 'bg-neutral-700 text-neutral-200' : 'bg-neutral-200 text-neutral-600'
                       }`}
                     >
                       {activeCount}
@@ -320,38 +317,38 @@ export default function CustomerMenuPage() {
         </div>
       )}
 
-      {/* Main Content Area */}
-      <main className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-8">
+      {/* Main Products Grid */}
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
         {/* Search Results Mode */}
         {filteredProductsBySearch ? (
           <div>
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-xl font-extrabold text-gray-900">
+                <h2 className="text-xl font-bold text-neutral-900">
                   Resultados para "{searchQuery}"
                 </h2>
-                <p className="text-xs text-gray-500 mt-0.5">
+                <p className="text-xs text-neutral-500 mt-0.5">
                   {filteredProductsBySearch.length} item(ns) encontrado(s)
                 </p>
               </div>
               <button
                 onClick={() => setSearchQuery('')}
-                className="text-xs font-semibold text-orange-600 hover:underline"
+                className="text-xs font-semibold text-orange-600 hover:underline cursor-pointer"
               >
                 Limpar busca
               </button>
             </div>
 
             {filteredProductsBySearch.length === 0 ? (
-              <div className="py-16 text-center bg-white rounded-3xl border border-gray-100 p-8 shadow-xs">
-                <Search size={40} className="mx-auto text-gray-300 mb-3" />
-                <h3 className="text-base font-bold text-gray-800">Nenhum item encontrado</h3>
-                <p className="text-xs text-gray-500 mt-1 max-w-xs mx-auto">
-                  Tente buscar por outro ingrediente ou nome (ex: burger, batata, suco).
+              <div className="py-16 text-center bg-white rounded-2xl border border-neutral-200 p-8 shadow-xs">
+                <Search size={36} className="mx-auto text-neutral-300 mb-2.5" />
+                <h3 className="text-sm font-bold text-neutral-800">Nenhum item encontrado</h3>
+                <p className="text-xs text-neutral-500 mt-1 max-w-xs mx-auto">
+                  Tente buscar por outro termo ou navegue pelas categorias.
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
                 {filteredProductsBySearch.map((product) => (
                   <ProductCard
                     key={product.id}
@@ -363,12 +360,11 @@ export default function CustomerMenuPage() {
             )}
           </div>
         ) : (
-          /* Normal Categories Sections */
-          <div className="space-y-12">
+          /* Categories Sections */
+          <div className="space-y-10">
             {categories.map((cat) => {
               const activeProducts = (cat.products || []).filter((p) => p.active);
               if (activeProducts.length === 0) return null;
-              const IconComponent = getCategoryIcon(cat.name);
 
               return (
                 <section
@@ -376,27 +372,20 @@ export default function CustomerMenuPage() {
                   ref={(el) => {
                     sectionRefs.current[cat.id] = el;
                   }}
-                  className="scroll-mt-36"
+                  className="scroll-mt-32"
                 >
                   {/* Category Header */}
-                  <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-6">
-                    <div className="flex items-center gap-2.5">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
-                        <IconComponent size={18} />
-                      </div>
-                      <div>
-                        <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
-                          {cat.name}
-                        </h2>
-                      </div>
-                    </div>
-                    <span className="text-xs font-semibold text-gray-400">
-                      {activeProducts.length} {activeProducts.length === 1 ? 'opção' : 'opções'}
+                  <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-2.5 mb-5">
+                    <h2 className="text-xl font-bold text-neutral-900 tracking-tight">
+                      {cat.name}
+                    </h2>
+                    <span className="text-xs font-medium text-neutral-400">
+                      {activeProducts.length} {activeProducts.length === 1 ? 'item' : 'itens'}
                     </span>
                   </div>
 
-                  {/* Products Grid: 1 col on mobile, 2 on tablet, 3 on desktop */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                  {/* Products Grid: 4 columns on large screens! */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
                     {activeProducts.map((product) => (
                       <ProductCard
                         key={product.id}
@@ -421,7 +410,7 @@ export default function CustomerMenuPage() {
         />
       )}
 
-      {/* Floating Bottom Cart Bar (Visible when cart has items) */}
+      {/* Floating Bottom Cart Bar */}
       {cart.totalItems > 0 && (
         <FloatingCartBar
           itemCount={cart.totalItems}
@@ -437,37 +426,30 @@ export default function CustomerMenuPage() {
         onCheckout={handleCheckout}
       />
 
-      {/* Footer (No Final da Página) */}
-      <footer className="mt-20 border-t border-gray-200/80 bg-white py-10">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+      {/* Minimalist Professional Footer */}
+      <footer className="mt-20 border-t border-neutral-200 bg-white py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-orange-500 text-white shadow-xs">
-                <UtensilsCrossed size={18} strokeWidth={2.5} />
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 text-white">
+                <UtensilsCrossed size={16} strokeWidth={2.5} className="text-orange-500" />
               </div>
-              <div>
-                <span className="font-extrabold text-gray-900 tracking-tight block">FoodExpress</span>
-                <span className="text-xs text-gray-400">Cardápio Digital & Sistema de Gestão</span>
-              </div>
+              <span className="font-bold text-neutral-900 text-sm">FoodExpress</span>
+              <span className="text-xs text-neutral-400">• Sistema de Pedidos</span>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-gray-500">
-              <span>Consumo no Local</span>
-              <span>•</span>
-              <span>Entrega via WhatsApp</span>
-              <span>•</span>
+            <div className="flex items-center gap-4 text-xs text-neutral-500">
               <button
                 onClick={() => navigate('/admin/login')}
-                className="inline-flex items-center gap-1.5 text-orange-600 hover:text-orange-700 bg-orange-50 hover:bg-orange-100 px-3.5 py-2 rounded-xl transition-colors cursor-pointer font-bold"
+                className="text-neutral-500 hover:text-neutral-900 underline transition-colors cursor-pointer"
               >
-                <span>Área do Atendente</span>
+                Acesso do Atendente
               </button>
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-gray-400">
+          <div className="mt-6 pt-4 border-t border-neutral-100 text-center sm:text-left text-[11px] text-neutral-400">
             <p>© {new Date().getFullYear()} FoodExpress. Todos os direitos reservados.</p>
-            <p>Desenvolvido para atendimento ágil e pedidos sem burocracia.</p>
           </div>
         </div>
       </footer>

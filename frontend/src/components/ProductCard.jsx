@@ -7,7 +7,6 @@ export default function ProductCard({ product, onAdd }) {
   const activeVariations = product.variations?.filter((v) => v.active) || [];
   const activeAddons = product.addons?.filter((a) => a.active) || [];
   const hasVariations = activeVariations.length > 0;
-  const hasAddons = activeAddons.length > 0;
 
   const minPrice = hasVariations
     ? Math.min(...activeVariations.map((v) => v.price))
@@ -16,70 +15,52 @@ export default function ProductCard({ product, onAdd }) {
   return (
     <div
       onClick={() => onAdd(product)}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-white border border-gray-100/90 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 hover:border-orange-200/80 hover:-translate-y-1 cursor-pointer"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-white border border-neutral-200/80 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-200 hover:shadow-md hover:border-neutral-300 hover:-translate-y-0.5 cursor-pointer"
     >
-      {/* Top: Product Image */}
       <div>
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-gray-100">
+        {/* Product Image */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100">
           <img
             src={product.imageUrl}
             alt={product.name}
-            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-108"
+            className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
             loading="lazy"
           />
-          {/* Subtle gradient vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-          {/* Badges */}
-          <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-            {hasVariations && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-white/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-bold text-gray-800 shadow-sm border border-gray-200/40">
-                <SlidersHorizontal size={11} className="text-orange-500" />
-                Opções
+          {/* Customization badge */}
+          {hasVariations && (
+            <div className="absolute bottom-2.5 left-2.5">
+              <span className="inline-flex items-center gap-1 rounded-full bg-white/95 backdrop-blur-xs px-2.5 py-0.5 text-[11px] font-semibold text-neutral-700 shadow-sm border border-neutral-200/60">
+                <SlidersHorizontal size={11} className="text-orange-600" />
+                Variações
               </span>
-            )}
-            {hasAddons && !hasVariations && (
-              <span className="inline-flex items-center rounded-full bg-amber-500/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-bold text-white shadow-sm">
-                + Adicionais
-              </span>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
-        {/* Product Info */}
-        <div className="p-4 sm:p-5">
-          <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors line-clamp-1">
+        {/* Content */}
+        <div className="p-4 sm:p-4.5">
+          <h3 className="text-base font-bold text-neutral-900 group-hover:text-orange-600 transition-colors line-clamp-1">
             {product.name}
           </h3>
 
-          <p className="mt-1.5 text-xs sm:text-sm text-gray-500 line-clamp-2 leading-relaxed">
-            {product.description || 'Ingredientes selecionados e preparados na hora com o padrão FoodExpress.'}
+          <p className="mt-1 text-xs sm:text-sm text-neutral-500 line-clamp-2 leading-relaxed">
+            {product.description || 'Ingredientes selecionados e preparados com o padrão FoodExpress.'}
           </p>
         </div>
       </div>
 
-      {/* Footer: Price + Button */}
-      <div className="flex items-center justify-between p-4 sm:p-5 pt-0 border-t border-transparent">
-        <div className="flex flex-col">
-          {hasVariations ? (
-            <>
-              <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
-                A partir de
-              </span>
-              <span className="text-lg sm:text-xl font-extrabold text-gray-900 leading-tight">
-                {formatPrice(minPrice)}
-              </span>
-            </>
-          ) : (
-            <>
-              <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
-                Preço
-              </span>
-              <span className="text-lg sm:text-xl font-extrabold text-orange-600 leading-tight">
-                {formatPrice(product.basePrice)}
-              </span>
-            </>
+      {/* Card Footer: Price & CTA */}
+      <div className="flex items-center justify-between p-4 sm:p-4.5 pt-0">
+        <div>
+          {hasVariations && (
+            <span className="block text-[11px] font-medium text-neutral-400">
+              A partir de
+            </span>
           )}
+          <span className="text-base sm:text-lg font-bold text-neutral-900">
+            {formatPrice(minPrice)}
+          </span>
         </div>
 
         <button
@@ -88,9 +69,9 @@ export default function ProductCard({ product, onAdd }) {
             e.stopPropagation();
             onAdd(product);
           }}
-          className="inline-flex items-center gap-1.5 rounded-2xl bg-orange-50 px-3.5 py-2.5 text-xs sm:text-sm font-bold text-orange-600 transition-all hover:bg-orange-500 hover:text-white shadow-xs group-hover:bg-orange-500 group-hover:text-white"
+          className="inline-flex items-center gap-1 rounded-xl bg-orange-50 hover:bg-orange-600 text-orange-600 hover:text-white px-3 py-1.5 text-xs sm:text-sm font-semibold transition-colors active:scale-95 cursor-pointer"
         >
-          <Plus size={16} strokeWidth={2.5} />
+          <Plus size={15} strokeWidth={2.5} />
           <span>Pedir</span>
         </button>
       </div>
