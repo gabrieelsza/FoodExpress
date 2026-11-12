@@ -407,3 +407,19 @@
   3. **Validação Visual:**
      - Screenshot automatizado no navegador confirmando o alinhamento de cores e a diagramação preenchida e convidativa no slide de entrega grátis.
      - Build de produção verificado com `npm run build`.
+
+
+---
+
+### [2026-11-12 17:53] — Correção de Responsividade e Desobstrução dos Botões no Banner Hero
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** `Fase 3 — Responsividade e Ajuste de Overflow`
+- **Ações Executadas:**
+  1. **Ajuste de Breakpoint para Split Layout (`md:`):**
+     - O layout lado a lado (foto à esquerda, texto à direita) foi ampliado de `lg:` (1024px) para `md:` (768px), prevenindo que tablets e navegadores com larguras intermediárias empilhassem o banner de forma indesejada.
+  2. **Eliminação do Corte Inferior e Redução da Máscara de Fundo:**
+     - A camada de gradiente inferior preta de 112px (`h-28`), que submergia a metade inferior dos botões primário e secundário, foi suavizada para 48px (`h-12`).
+     - A altura no modo mobile foi tornada flexível (`min-h-[620px] md:h-[580px] lg:h-[640px]`), garantindo que todos os textos, botões e controles fiquem 100% visíveis com folga confortável em qualquer resolução.
+  3. **Validação Visual:**
+     - Screenshot automatizado no navegador confirmando desobstrução e visibilidade plena dos botões `VER CARDÁPIO COMPLETO` e `EXPLORAR PRODUTOS`.
+     - Build de produção verificado com `npm run build`.

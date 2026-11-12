@@ -134,7 +134,7 @@ export default function HomePage() {
 
       {/* 2. HUGE SPLIT HERO BANNER (Outback Style Seamless Cinematic Carousel) */}
       <section
-        className="relative w-full h-[540px] sm:h-[600px] lg:h-[660px] bg-[#0c0a08] overflow-hidden"
+        className="relative w-full min-h-[620px] md:min-h-0 md:h-[580px] lg:h-[640px] bg-[#0c0a08] overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -148,9 +148,9 @@ export default function HomePage() {
                 isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
-              <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12">
+              <div className="w-full h-full grid grid-cols-1 md:grid-cols-12">
                 {/* Left Side: Photography with seamless organic feathered blend */}
-                <div className="lg:col-span-7 relative h-[280px] sm:h-[360px] lg:h-full overflow-hidden bg-[#0c0a08]">
+                <div className="md:col-span-6 lg:col-span-7 relative h-[210px] sm:h-[240px] md:h-full overflow-hidden bg-[#0c0a08] shrink-0">
                   <img
                     src={slide.photoUrl}
                     alt={slide.photoAlt}
@@ -164,15 +164,15 @@ export default function HomePage() {
                   />
 
                   {/* Multi-stage Feathered Gradients for Desktop */}
-                  <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/30 via-transparent 30% to-[#0c0a08] 95% pointer-events-none" />
-                  <div className="hidden lg:block absolute inset-y-0 right-0 w-64 bg-gradient-to-r from-transparent via-[#0c0a08]/80 to-[#0c0a08] pointer-events-none z-10" />
+                  <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/30 via-transparent 30% to-[#0c0a08] 95% pointer-events-none" />
+                  <div className="hidden md:block absolute inset-y-0 right-0 w-64 bg-gradient-to-r from-transparent via-[#0c0a08]/80 to-[#0c0a08] pointer-events-none z-10" />
 
-                  {/* Bottom & Top feathering for Mobile & Desktop */}
-                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0c0a08] via-[#0c0a08]/70 to-transparent pointer-events-none z-10 lg:hidden" />
-                  <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/40 to-transparent pointer-events-none z-10" />
+                  {/* Bottom & Top feathering for Mobile */}
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0c0a08] via-[#0c0a08]/70 to-transparent pointer-events-none z-10 md:hidden" />
+                  <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-black/50 to-transparent pointer-events-none z-10" />
 
                   {/* Floating Steakhouse Experience Tag */}
-                  <div className="absolute top-5 left-5 z-20">
+                  <div className="absolute top-4 left-4 z-20">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-amber-400 border border-orange-500/40 text-[10px] sm:text-xs font-black uppercase font-['Oswald',sans-serif] tracking-wider shadow-xl">
                       <Flame size={12} className="text-orange-500 fill-orange-500" />
                       Steakhouse Experience
@@ -181,7 +181,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Right Side: Seamless Dark Graphic Canvas with Warm Glow & Organic Accents */}
-                <div className="lg:col-span-5 relative h-full flex flex-col justify-center p-6 sm:p-10 lg:p-12 xl:p-14 bg-gradient-to-b lg:bg-gradient-to-r from-[#0c0a08] via-[#120e0b] to-[#0a0807] text-center lg:text-left overflow-hidden">
+                <div className="md:col-span-6 lg:col-span-5 relative h-full flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:p-8 lg:p-12 xl:p-14 bg-gradient-to-b md:bg-gradient-to-r from-[#0c0a08] via-[#120e0b] to-[#0a0807] text-center md:text-left overflow-hidden">
                   {/* Hearth Fire Warm Glow behind transition */}
                   <div className="absolute top-1/2 -left-20 -translate-y-1/2 w-72 h-72 bg-orange-600/15 rounded-full blur-3xl pointer-events-none" />
                   <div className="absolute -top-24 -right-24 w-80 h-80 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
@@ -189,7 +189,7 @@ export default function HomePage() {
 
                   {/* Subtle Outback organic curved wave lines creating fluidity */}
                   <svg
-                    className="hidden lg:block absolute -left-16 top-0 bottom-0 h-full w-36 text-orange-500/20 pointer-events-none z-10"
+                    className="hidden md:block absolute -left-16 top-0 bottom-0 h-full w-36 text-orange-500/20 pointer-events-none z-10"
                     viewBox="0 0 120 800"
                     preserveAspectRatio="none"
                     fill="none"
@@ -217,59 +217,59 @@ export default function HomePage() {
                   </svg>
 
                   {/* Content Container with soft stagger animation */}
-                  <div className={`relative z-10 space-y-4 sm:space-y-5 transition-all duration-700 ease-out transform ${
+                  <div className={`relative z-10 space-y-3 sm:space-y-4 md:space-y-4 lg:space-y-5 transition-all duration-700 ease-out transform ${
                     isActive ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
                   }`}>
                     {/* Eyebrow & Tag */}
-                    <div className="space-y-1">
-                      <span className="block text-[11px] sm:text-xs font-black uppercase tracking-widest text-amber-500 font-['Oswald',sans-serif]">
+                    <div className="space-y-0.5 sm:space-y-1">
+                      <span className="block text-[10px] sm:text-xs font-black uppercase tracking-widest text-amber-500 font-['Oswald',sans-serif]">
                         {slide.badge}
                       </span>
-                      <span className="block text-[10px] sm:text-[11px] font-bold text-stone-400 tracking-wider uppercase">
+                      <span className="block text-[9px] sm:text-[11px] font-bold text-stone-400 tracking-wider uppercase">
                         {slide.tag}
                       </span>
                     </div>
 
                     {/* Headline */}
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight uppercase font-['Oswald',sans-serif] leading-[1.08] drop-shadow-md">
+                    <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-5xl font-black text-white tracking-tight uppercase font-['Oswald',sans-serif] leading-[1.08] drop-shadow-md">
                       {slide.title}
                     </h1>
 
                     {/* Subtitle / Description */}
-                    <p className="text-xs sm:text-sm text-stone-300 max-w-md mx-auto lg:mx-0 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-stone-300 max-w-md mx-auto md:mx-0 leading-relaxed line-clamp-3 sm:line-clamp-none">
                       {slide.subtitle}
                     </p>
 
                     {/* Operating / Info Tag */}
-                    <div className="inline-block px-3 py-1 rounded-lg bg-[#1a1411]/90 backdrop-blur-xs border border-[#382b22] text-[11px] font-semibold text-amber-400/90 font-['Oswald',sans-serif] tracking-wider uppercase shadow-md">
+                    <div className="inline-block px-3 py-1 rounded-lg bg-[#1a1411]/90 backdrop-blur-xs border border-[#382b22] text-[10px] sm:text-[11px] font-semibold text-amber-400/90 font-['Oswald',sans-serif] tracking-wider uppercase shadow-md">
                       {slide.schedule}
                     </div>
 
                     {/* Big Prominent Outback Button */}
-                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+                    <div className="pt-1 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2.5 sm:gap-3">
                       <button
                         onClick={handleNavigateToProducts}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-xl shadow-orange-950/80 transition-all cursor-pointer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-xs sm:text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-xl shadow-orange-950/80 transition-all cursor-pointer"
                       >
                         <span>{slide.ctaText}</span>
-                        <ArrowRight size={17} />
+                        <ArrowRight size={16} />
                       </button>
 
                       <button
                         onClick={scrollToProducts}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#171310]/90 hover:bg-[#201a15] border border-[#382c23] hover:border-orange-500/70 text-stone-300 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-3.5 rounded-xl bg-[#171310]/90 hover:bg-[#201a15] border border-[#382c23] hover:border-orange-500/70 text-stone-300 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
                       >
                         <span>Explorar Produtos</span>
                       </button>
                     </div>
 
                     {/* Carousel Navigation Indicators & Outback Signature Seal */}
-                    <div className="pt-3 border-t border-[#241d18]/70 flex flex-col sm:flex-row items-center justify-between gap-3 text-stone-500">
+                    <div className="pt-2 sm:pt-3 border-t border-[#241d18]/70 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 text-stone-500">
                       <div className="flex items-center gap-2.5">
                         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black border border-orange-500/40 text-orange-500 shrink-0">
                           <UtensilsCrossed size={13} />
                         </div>
-                        <span className="text-xs font-bold uppercase tracking-widest text-stone-400 font-['Oswald',sans-serif]">
+                        <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-stone-400 font-['Oswald',sans-serif]">
                           FOODEXPRESS STEAKHOUSE BRASIL
                         </span>
                       </div>
@@ -327,8 +327,8 @@ export default function HomePage() {
           );
         })}
 
-        {/* Soft Bottom Gradient Transition into Section 3 (Melts into page seamlessly!) */}
-        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#0b0908] via-[#0b0908]/90 to-transparent pointer-events-none z-20" />
+        {/* Soft Bottom Gradient Transition into Section 3 (Gentle 48px dissolve, never blankets buttons) */}
+        <div className="absolute bottom-0 inset-x-0 h-10 md:h-12 bg-gradient-to-t from-[#0b0908] to-transparent pointer-events-none z-20" />
       </section>
 
       {/* 3. "NOSSOS PRODUTOS" — 3 ITENS DEMONSTRATIVOS */}
