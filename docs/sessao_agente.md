@@ -778,6 +778,21 @@ pm run build bem-sucedido.
      - `npm run build`: gerado com sucesso em 1.09s.
      - Inspeção visual automatizada via browser subagent com evidência em `final_step_429.png`.
 
+---
+
+### [2026-11-13 00:53] — Reposicionamento das Linhas Orgânicas Junto ao Bloco de Texto ("Colado nas Frases")
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Ajuste de Alinhamento e Espaçamento Visual do Hero Banner
+- **Ações Executadas:**
+  1. **Aproximação das Curvas em Relação à Tipografia (`HomePage.jsx`):**
+     - O posicionamento horizontal do SVG de curvas foi deslocado de `left-[47%] lg:left-[53%]` para `left-[51%] lg:left-[58%]`.
+     - As curvas agora contornam diretamente a lateral esquerda das frases e chamadas de texto ("Cortes Nobres", "Thunder Brownie", etc.), servindo como uma moldura fluida e sofisticada ("colado nas frases") sem encavalar ou comprometer a legibilidade.
+  2. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 1.14s.
+     - Inspeção visual automatizada via browser subagent confirmando enquadramento perfeito rente ao texto.
+
+
 
 
 

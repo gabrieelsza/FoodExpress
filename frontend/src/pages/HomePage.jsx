@@ -183,9 +183,9 @@ export default function HomePage() {
               <div className="absolute -top-16 right-8 w-88 h-88 bg-amber-600/10 rounded-full blur-[90px] pointer-events-none z-10" />
               <div className="absolute -bottom-16 right-[28%] w-88 h-88 bg-red-600/8 rounded-full blur-[90px] pointer-events-none z-10" />
 
-              {/* Elegant, low-contrast organic design curves (Suaves, sem contraste agressivo ou linhas gêmeas paralelas) */}
+              {/* Elegant, low-contrast organic design curves closer to the text phrases ("colado nas frases") */}
               <svg
-                className="hidden md:block absolute left-[47%] lg:left-[53%] -translate-x-1/2 top-0 bottom-0 h-full w-56 pointer-events-none z-20"
+                className="hidden md:block absolute left-[51%] lg:left-[58%] -translate-x-1/2 top-0 bottom-0 h-full w-56 pointer-events-none z-20"
                 viewBox="0 0 160 800"
                 preserveAspectRatio="none"
                 fill="none"
