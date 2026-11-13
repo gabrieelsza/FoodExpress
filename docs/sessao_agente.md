@@ -518,3 +518,19 @@ elative z-10).
      - 
 pm run lint com 0 erros e 
 pm run build bem-sucedido.
+
+---
+
+### [2026-11-12 22:50] — Implementação do Layout Dual-Panel Profissional de Login com Showcase Operacional
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Refatoração de Login para Padrão Corporativo Dual-Panel
+- **Ações Executadas:**
+  1. **Estrutura Dual-Panel Profissional (AdminLoginPage.jsx):**
+     - O contêiner de login foi expandido para um cartão dual-panel profissional (max-w-5xl rounded-3xl grid grid-cols-1 md:grid-cols-12 overflow-hidden border border-zinc-800 bg-[#121214]).
+     - **Painel Esquerdo (md:col-span-7)**: Área de acesso exclusiva com o PAINEL DO ATENDENTE, atalho rápido de credenciais demo (dmin/dmin123), inputs estilizados com ícones e botão de login em laranja de alta conversão.
+     - **Painel Direito (md:col-span-5)**: Vitrine visual com a foto do hambúrguer artesanal com bacon (/login-burger.jpg), degradê neutro suave de contraste (zero marrom), badge SISTEMA OPERACIONAL, título GESTÃO EM TEMPO REAL, lista de diferenciais técnicos com ícones e card inferior de métricas operacionais (+5.000 pedidos preparados | 99.8% ONLINE).
+  2. **Validação Visual e CI/CD:**
+     - Screenshot do navegador confirmado pelo subagent visual em desktop (1440x900).
+     - 
+pm run lint com 0 erros e 
+pm run build bem-sucedido.
