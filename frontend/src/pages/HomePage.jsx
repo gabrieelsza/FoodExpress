@@ -187,35 +187,6 @@ export default function HomePage() {
                   <div className="absolute -top-24 -right-24 w-80 h-80 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
                   <div className="absolute -bottom-24 right-1/4 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
 
-                  {/* Subtle Outback organic curved wave lines creating fluidity */}
-                  <svg
-                    className="hidden md:block absolute -left-16 top-0 bottom-0 h-full w-36 text-orange-500/20 pointer-events-none z-10"
-                    viewBox="0 0 120 800"
-                    preserveAspectRatio="none"
-                    fill="none"
-                  >
-                    <path
-                      d="M20,0 C90,220 10,380 80,560 C110,660 30,800 20,800"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeDasharray="6 8"
-                      className="opacity-75"
-                    />
-                    <path
-                      d="M50,0 C120,240 40,420 100,600 C130,700 60,800 50,800"
-                      stroke="url(#warmGradient)"
-                      strokeWidth="1.5"
-                      className="opacity-50"
-                    />
-                    <defs>
-                      <linearGradient id="warmGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#ea580c" />
-                        <stop offset="50%" stopColor="#f59e0b" />
-                        <stop offset="100%" stopColor="#dc2626" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-
                   {/* Content Container with soft stagger animation */}
                   <div className={`relative z-10 space-y-3 sm:space-y-4 md:space-y-4 lg:space-y-5 transition-all duration-700 ease-out transform ${
                     isActive ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'

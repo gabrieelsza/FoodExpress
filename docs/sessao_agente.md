@@ -627,3 +627,17 @@ pm run build bem-sucedido.
   5. **Validação e Build:**
      - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
      - `npm run build`: gerado com sucesso em 1.04s.
+
+
+---
+
+### [2026-11-13 00:09] — Remoção da Linha Divisória Vertical no Banner Hero
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Refinamento de Harmonia Visual
+- **Ações Executadas:**
+  1. **Eliminação da Linha Divisória Vertical (`HomePage.jsx` & `RestaurantPage.jsx`):**
+     - Removida a linha curva vetorial vertical que criava um divisor nítido entre a fotografia lateral e o bloco de conteúdo.
+     - A transição agora ocorre exclusivamente por meio do gradiente contínuo e máscara suave (`linear-gradient(to right, ...)`), fundindo perfeitamente a imagem ao fundo escuro acolhedor sem nenhuma barreira linear.
+  2. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 1.15s.

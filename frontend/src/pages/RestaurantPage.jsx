@@ -35,35 +35,6 @@ export default function RestaurantPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0b0908] via-[#0b0908]/85 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0b0908] via-transparent to-transparent" />
-
-          {/* Subtle curved fluid lines creating organic steakhouse ambience */}
-          <svg
-            className="hidden md:block absolute right-1/4 top-0 bottom-0 h-full w-40 text-orange-500/20 pointer-events-none z-10"
-            viewBox="0 0 120 800"
-            preserveAspectRatio="none"
-            fill="none"
-          >
-            <path
-              d="M20,0 C90,220 10,380 80,560 C110,660 30,800 20,800"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeDasharray="6 8"
-              className="opacity-75"
-            />
-            <path
-              d="M50,0 C120,240 40,420 100,600 C130,700 60,800 50,800"
-              stroke="url(#restHeroGradient)"
-              strokeWidth="1.5"
-              className="opacity-50"
-            />
-            <defs>
-              <linearGradient id="restHeroGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#ea580c" />
-                <stop offset="50%" stopColor="#f59e0b" />
-                <stop offset="100%" stopColor="#dc2626" />
-              </linearGradient>
-            </defs>
-          </svg>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
