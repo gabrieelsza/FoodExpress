@@ -859,6 +859,20 @@ pm run build bem-sucedido.
      - `npm run build`: gerado com sucesso em 1.32s (`dist/assets/index-CBnc5ik8.css` 91.44 kB, `dist/assets/index-Buvf9U99.js` 440.83 kB).
      - Testes visuais via subagente de browser (`e2d51569-60a8-4762-a6e5-995c269b6a38`): rolagem completa de descida e subida validada em `http://localhost:5173/`, com transições suaves e sem nenhum tipo de flickering ou layout jump.
 
+---
+
+### [2026-11-13 01:53] — Restauração do Equilíbrio Ideal das Curvas ("Nem Muito Separado ou Junto")
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Ajuste de Proporção e Distância Equilibrada das Curvas do Hero
+- **Ações Executadas:**
+  1. **Restauração do Traçado e Posição Equilibrada Original (`HomePage.jsx`):**
+     - O posicionamento das linhas orgânicas duplas foi restaurado para a proporção original equilibrada (`left-[51%] lg:left-[58%] -translate-x-1/2`).
+     - As coordenadas das curvas foram restabelecidas (`M52/M70`, `C122/C140`, `C27/C45`, `C97/C115`), mantendo o espaço de respiração perfeito em relação ao bloco de texto (nem colado excessivamente e nem afastado em demasia).
+     - Mantida a distância constante de 18px entre a linha tracejada e a linha contínua, com nitidez total e sem efeito neon.
+  2. **Validação:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: executado com sucesso em 1.29s.
+
 
 
 
