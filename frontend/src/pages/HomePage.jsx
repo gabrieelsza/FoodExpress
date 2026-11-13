@@ -435,8 +435,33 @@ export default function HomePage() {
         </div>
 
         {/* Bottom CTA to Full Catalog Tab */}
-        <div className="mt-14 rounded-3xl bg-[#14100e] border border-[#2b221c] p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center md:text-left">
+        <div className="mt-14 rounded-3xl bg-[#14100e] border border-[#2b221c] p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+          {/* Subtle decorative curved fluid waves */}
+          <svg
+            className="hidden sm:block absolute -right-8 -bottom-10 w-72 h-72 text-orange-500/15 pointer-events-none"
+            viewBox="0 0 200 200"
+            fill="none"
+          >
+            <path
+              d="M10,180 C80,120 120,160 190,80 C210,50 180,20 170,10"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeDasharray="5 7"
+            />
+            <path
+              d="M30,195 C100,135 140,175 200,95"
+              stroke="url(#ctaCurveGradient)"
+              strokeWidth="1.5"
+            />
+            <defs>
+              <linearGradient id="ctaCurveGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#ea580c" />
+                <stop offset="100%" stopColor="#f59e0b" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <div className="space-y-2 text-center md:text-left relative z-10">
             <div className="inline-flex items-center gap-2 text-xs font-bold text-stone-400 uppercase tracking-widest font-['Oswald',sans-serif]">
               <UtensilsCrossed size={14} className="text-[#c2410c]" />
               CARDÁPIO COMPLETO NAS ABAS SUPERIORES
@@ -476,7 +501,32 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Card 1: Delivery */}
             <div className="relative overflow-hidden rounded-3xl bg-[#14100e] border border-[#2b221c] p-8 sm:p-10 flex flex-col justify-between shadow-xl group">
-              <div className="space-y-4">
+              {/* Organic wave accent in background */}
+              <svg
+                className="hidden sm:block absolute -right-6 -top-6 w-48 h-48 text-orange-500/10 pointer-events-none"
+                viewBox="0 0 150 150"
+                fill="none"
+              >
+                <path
+                  d="M10,140 C50,80 80,120 140,20"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeDasharray="4 6"
+                />
+                <path
+                  d="M25,145 C65,85 95,125 145,35"
+                  stroke="url(#cardCurveGradient1)"
+                  strokeWidth="1.5"
+                />
+                <defs>
+                  <linearGradient id="cardCurveGradient1" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#ea580c" />
+                    <stop offset="100%" stopColor="#f59e0b" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <div className="space-y-4 relative z-10">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1e1713] border border-[#382b22] text-[#c2410c]">
                   <Bike size={26} />
                 </div>
@@ -501,7 +551,32 @@ export default function HomePage() {
 
             {/* Card 2: Experiência no Salão */}
             <div className="relative overflow-hidden rounded-3xl bg-[#14100e] border border-[#2b221c] p-8 sm:p-10 flex flex-col justify-between shadow-xl group">
-              <div className="space-y-4">
+              {/* Organic wave accent in background */}
+              <svg
+                className="hidden sm:block absolute -right-6 -top-6 w-48 h-48 text-amber-500/10 pointer-events-none"
+                viewBox="0 0 150 150"
+                fill="none"
+              >
+                <path
+                  d="M10,140 C50,80 80,120 140,20"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeDasharray="4 6"
+                />
+                <path
+                  d="M25,145 C65,85 95,125 145,35"
+                  stroke="url(#cardCurveGradient2)"
+                  strokeWidth="1.5"
+                />
+                <defs>
+                  <linearGradient id="cardCurveGradient2" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#f59e0b" />
+                    <stop offset="100%" stopColor="#ea580c" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <div className="space-y-4 relative z-10">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400">
                   <UtensilsCrossed size={26} />
                 </div>

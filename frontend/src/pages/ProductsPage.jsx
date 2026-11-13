@@ -188,8 +188,33 @@ export default function ProductsPage() {
       />
 
       {/* 2. Page Hero Banner Header */}
-      <div className="relative bg-[#100e0c] border-b border-[#241d18] py-10 sm:py-14 steakhouse-glow">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#100e0c] border-b border-[#241d18] py-10 sm:py-14 steakhouse-glow overflow-hidden">
+        {/* Subtle decorative curved fluid waves */}
+        <svg
+          className="hidden md:block absolute right-6 -bottom-6 w-80 h-36 text-orange-500/15 pointer-events-none"
+          viewBox="0 0 300 120"
+          fill="none"
+        >
+          <path
+            d="M0,100 C80,30 180,120 300,40"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeDasharray="5 7"
+          />
+          <path
+            d="M10,115 C90,45 190,135 300,55"
+            stroke="url(#prodCurveGradient)"
+            strokeWidth="1.5"
+          />
+          <defs>
+            <linearGradient id="prodCurveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#ea580c" />
+              <stop offset="100%" stopColor="#f59e0b" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="space-y-3 text-center sm:text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#181310] border border-[#33261f] text-xs font-bold text-orange-400 uppercase tracking-widest font-['Oswald',sans-serif]">
