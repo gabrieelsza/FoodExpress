@@ -51,148 +51,159 @@ export default function AdminLoginPage() {
 
       {/* 2. MAIN LOGIN AREA */}
       <main className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden bg-black">
-        {/* Lateral Artisan Burger Atmosphere - User Uploaded Image with Natural Colors and Soft Fade */}
-        <div className="absolute right-0 inset-y-0 w-full md:w-3/5 lg:w-1/2 h-full pointer-events-none overflow-hidden select-none">
+        {/* Subtle Ambient Burger Bleed on Page Background */}
+        <div className="absolute right-0 inset-y-0 w-full md:w-3/5 lg:w-1/2 h-full pointer-events-none overflow-hidden select-none opacity-30">
           <img
             src="/login-burger.jpg"
-            alt="FoodExpress Artisan Burger"
-            className="w-full h-full object-cover object-center opacity-45 scale-105"
+            alt=""
+            className="w-full h-full object-cover object-center scale-105"
           />
-          {/* Seamless fade to black towards the center & card */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
-          {/* Top and bottom subtle feathering */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
         </div>
 
-        {/* Login Card - Exact Match to user specifications: Clean, Pure Charcoal/Black, Zero Brown, No Neon */}
-        <div className="relative z-10 w-full max-w-lg rounded-2xl sm:rounded-3xl border border-zinc-800 bg-[#121214] p-6 sm:p-9 shadow-2xl shadow-black transition-all">
+        {/* Login Card - With Lateral Burger Atmosphere inside the card on the right side */}
+        <div className="relative z-10 w-full max-w-lg rounded-2xl sm:rounded-3xl border border-zinc-800 bg-[#121214] p-6 sm:p-9 shadow-2xl shadow-black overflow-hidden transition-all">
           
-          {/* Top Badge */}
-          <div className="mb-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700/80 text-[11px] font-bold text-orange-500 uppercase tracking-wider font-['Oswald',sans-serif]">
-              <ShieldCheck size={14} className="text-orange-500" />
-              ACESSO RESTRITO AO STAFF
-            </span>
+          {/* Lateral Burger Photo inside the card on the right side (Foto na lateral um pouco invisivel) */}
+          <div className="absolute right-0 inset-y-0 w-3/5 sm:w-1/2 h-full pointer-events-none select-none overflow-hidden z-0">
+            <img
+              src="/login-burger.jpg"
+              alt="FoodExpress Artisan Burger"
+              className="w-full h-full object-cover object-center opacity-40 scale-110"
+            />
+            {/* Seamless fade to card background #121214 */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#121214] via-[#121214]/65 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#121214]/60 via-transparent to-[#121214]/80" />
           </div>
 
-          {/* Heading */}
-          <div className="space-y-1.5 mb-6 text-left">
-            <h1 className="text-2xl sm:text-3xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-tight">
-              PAINEL DO ATENDENTE
-            </h1>
-            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-              Digite suas credenciais corporativas para acessar o painel de pedidos e cozinha.
-            </p>
-          </div>
-
-          {/* Test Credentials Box */}
-          <div className="mb-6 p-3 sm:p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 flex items-center justify-between gap-3">
-            <div className="text-left text-xs leading-relaxed">
-              <span className="block font-bold text-zinc-300">Credenciais de Teste:</span>
-              <span className="text-zinc-400">
-                Usuário: <code className="text-amber-400 font-bold bg-black px-1.5 py-0.5 rounded border border-zinc-800">admin</code>
-                <span className="mx-1 text-zinc-600">|</span>
-                Senha: <code className="text-amber-400 font-bold bg-black px-1.5 py-0.5 rounded border border-zinc-800">admin123</code>
+          <div className="relative z-10">
+            {/* Top Badge */}
+            <div className="mb-4">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900/90 border border-zinc-700/80 text-[11px] font-bold text-orange-500 uppercase tracking-wider font-['Oswald',sans-serif]">
+                <ShieldCheck size={14} className="text-orange-500" />
+                ACESSO RESTRITO AO STAFF
               </span>
             </div>
-            <button
-              type="button"
-              onClick={handleFillDemoCredentials}
-              className="shrink-0 px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-orange-600 hover:text-white border border-zinc-700 hover:border-orange-500 text-[10px] sm:text-[11px] font-bold text-amber-400 hover:text-white uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
-            >
-              PREENCHER DADOS
-            </button>
-          </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Username Field */}
-            <div className="text-left">
-              <label htmlFor="username" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 font-['Oswald',sans-serif] mb-1.5">
-                USUÁRIO OPERACIONAL
-              </label>
-              <div className="relative">
-                <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500" />
-                <input
-                  id="username"
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Ex: admin"
-                  required
-                  autoComplete="username"
-                  className="w-full h-12 pl-10 pr-4 border border-zinc-800 bg-zinc-900/60 focus:bg-zinc-900 focus:border-zinc-600 rounded-xl text-white placeholder-zinc-600 text-sm font-medium transition-colors outline-none"
-                />
-              </div>
+            {/* Heading */}
+            <div className="space-y-1.5 mb-6 text-left">
+              <h1 className="text-2xl sm:text-3xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-tight">
+                PAINEL DO ATENDENTE
+              </h1>
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
+                Digite suas credenciais corporativas para acessar o painel de pedidos e cozinha.
+              </p>
             </div>
 
-            {/* Password Field */}
-            <div className="text-left">
-              <label htmlFor="password" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 font-['Oswald',sans-serif] mb-1.5">
-                SENHA DE ACESSO
-              </label>
-              <div className="relative">
-                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500" />
-                <input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Digite sua senha"
-                  required
-                  autoComplete="current-password"
-                  className="w-full h-12 pl-10 pr-11 border border-zinc-800 bg-zinc-900/60 focus:bg-zinc-900 focus:border-zinc-600 rounded-xl text-white placeholder-zinc-600 text-sm font-medium transition-colors outline-none"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-zinc-500 hover:text-zinc-300 cursor-pointer"
-                  aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
-                >
-                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                </button>
+            {/* Test Credentials Box */}
+            <div className="mb-6 p-3 sm:p-3.5 rounded-xl bg-zinc-900/90 backdrop-blur-xs border border-zinc-800 flex items-center justify-between gap-3">
+              <div className="text-left text-xs leading-relaxed">
+                <span className="block font-bold text-zinc-300">Credenciais de Teste:</span>
+                <span className="text-zinc-400">
+                  Usuário: <code className="text-amber-400 font-bold bg-black px-1.5 py-0.5 rounded border border-zinc-800">admin</code>
+                  <span className="mx-1 text-zinc-600">|</span>
+                  Senha: <code className="text-amber-400 font-bold bg-black px-1.5 py-0.5 rounded border border-zinc-800">admin123</code>
+                </span>
               </div>
+              <button
+                type="button"
+                onClick={handleFillDemoCredentials}
+                className="shrink-0 px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-orange-600 hover:text-white border border-zinc-700 hover:border-orange-500 text-[10px] sm:text-[11px] font-bold text-amber-400 hover:text-white uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
+              >
+                PREENCHER DADOS
+              </button>
             </div>
 
-            {/* Error Alert */}
-            {error && (
-              <div className="p-3 rounded-xl bg-red-950/80 border border-red-800/80 text-red-200 text-xs font-medium text-center">
-                {error}
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Username Field */}
+              <div className="text-left">
+                <label htmlFor="username" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 font-['Oswald',sans-serif] mb-1.5">
+                  USUÁRIO OPERACIONAL
+                </label>
+                <div className="relative">
+                  <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500" />
+                  <input
+                    id="username"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Ex: admin"
+                    required
+                    autoComplete="username"
+                    className="w-full h-12 pl-10 pr-4 border border-zinc-800 bg-zinc-900/70 focus:bg-zinc-900 focus:border-zinc-600 rounded-xl text-white placeholder-zinc-600 text-sm font-medium transition-colors outline-none"
+                  />
+                </div>
               </div>
-            )}
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full h-12 mt-2 bg-orange-600 hover:bg-orange-500 active:scale-[0.99] text-white font-bold text-sm uppercase tracking-wider font-['Oswald',sans-serif] rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer shadow-md"
-            >
-              {loading ? (
-                <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-              ) : (
-                <>
-                  <span>ENTRAR NO PAINEL</span>
-                  <ArrowRight size={16} />
-                </>
+              {/* Password Field */}
+              <div className="text-left">
+                <label htmlFor="password" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 font-['Oswald',sans-serif] mb-1.5">
+                  SENHA DE ACESSO
+                </label>
+                <div className="relative">
+                  <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500" />
+                  <input
+                    id="password"
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Digite sua senha"
+                    required
+                    autoComplete="current-password"
+                    className="w-full h-12 pl-10 pr-11 border border-zinc-800 bg-zinc-900/70 focus:bg-zinc-900 focus:border-zinc-600 rounded-xl text-white placeholder-zinc-600 text-sm font-medium transition-colors outline-none"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-zinc-500 hover:text-zinc-300 cursor-pointer"
+                    aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                  >
+                    {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Error Alert */}
+              {error && (
+                <div className="p-3 rounded-xl bg-red-950/80 border border-red-800/80 text-red-200 text-xs font-medium text-center">
+                  {error}
+                </div>
               )}
-            </button>
-          </form>
 
-          {/* Bottom Security Note & Back Link */}
-          <div className="mt-6 pt-5 border-t border-zinc-800 flex items-center justify-between gap-3 text-xs text-zinc-500">
-            <span className="flex items-center gap-1.5 text-zinc-400">
-              <ShieldCheck size={14} className="text-orange-500" />
-              Sessão segura de atendimento
-            </span>
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full h-12 mt-2 bg-orange-600 hover:bg-orange-500 active:scale-[0.99] text-white font-bold text-sm uppercase tracking-wider font-['Oswald',sans-serif] rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer shadow-md"
+              >
+                {loading ? (
+                  <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <span>ENTRAR NO PAINEL</span>
+                    <ArrowRight size={16} />
+                  </>
+                )}
+              </button>
+            </form>
 
-            <Link
-              to="/nossos-produtos"
-              className="text-zinc-400 hover:text-zinc-200 font-semibold transition-colors"
-            >
-              ← Voltar ao cardápio
-            </Link>
+            {/* Bottom Security Note & Back Link */}
+            <div className="mt-6 pt-5 border-t border-zinc-800 flex items-center justify-between gap-3 text-xs text-zinc-500">
+              <span className="flex items-center gap-1.5 text-zinc-400">
+                <ShieldCheck size={14} className="text-orange-500" />
+                Sessão segura de atendimento
+              </span>
+
+              <Link
+                to="/nossos-produtos"
+                className="text-zinc-400 hover:text-zinc-200 font-semibold transition-colors"
+              >
+                ← Voltar ao cardápio
+              </Link>
+            </div>
           </div>
-
         </div>
       </main>
     </div>

@@ -501,3 +501,20 @@
      - `npm run lint` com 0 erros e `npm run build` bem-sucedido.
 
 
+
+---
+
+### [2026-11-12 22:42] — Integração Interna da Foto do Hambúrguer na Lateral Direita do Card de Login
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Refinamento de Posicionamento e Composição do Card de Login
+- **Ações Executadas:**
+  1. **Posicionamento Interno no Card (AdminLoginPage.jsx):**
+     - A foto do hambúrguer artesanal (/login-burger.jpg) foi posicionada diretamente dentro da estrutura do card de login (overflow-hidden rounded-2xl sm:rounded-3xl relative), ocupando a lateral direita interna (bsolute right-0 inset-y-0 w-3/5 sm:w-1/2 h-full z-0).
+     - Camada de fade progressivo multidirecional com transição para #121214 (rom-[#121214] via-[#121214]/65 to-transparent e vertical rom-[#121214]/60 via-transparent to-[#121214]/80) com opacity-40 scale-110.
+     - Preservação de legibilidade absoluta do formulário, campos e botões no lado esquerdo (
+elative z-10).
+  2. **Validação Visual e Build:**
+     - Inspeção visual comprovando renderização uniforme do hambúrguer diretamente na lateral direita do card em qualquer viewport.
+     - 
+pm run lint com 0 erros e 
+pm run build bem-sucedido.
