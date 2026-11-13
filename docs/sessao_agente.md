@@ -934,6 +934,26 @@ pm run build bem-sucedido.
      - `npm run lint`: 0 erros.
      - `npm run build`: compilado com sucesso em 1.10s (`dist/assets/index-moUntxZ8.css` 94.45 kB, `dist/assets/index-DX_qCVVo.js` 463.28 kB).
 
+---
+
+### [2026-11-13 12:05] — Implementação da Tela de Carregamento Idêntica ao Convertecom (`convertecom.com.br/convert-drop`)
+- **Papel Ativo:** Engenheiro Frontend Especialista em Animação Vetorial & Creative Development
+- **Etapa SDD:** Fase 3 — Replicação Técnica Fiel do Loader Oficial do `convertecom.com.br/convert-drop`
+- **Ações Executadas:**
+  1. **Engenharia Reversa dos Elementos Oficiais do Convertecom:**
+     - Identificado o design canônico do loader:
+       - **Símbolo SVG Central com Órbita Dinâmica (`.tc__mark`)**: trajetória elíptica com segmento pontilhado animado em loop contínuo de 1.5s ao redor do brasão central.
+       - **Tipografia em Camada Dupla com Sweep Fill (`.tc__name`)**: camada de texto fantasma no fundo (`.tc__name-ghost` com 15% de opacidade) e camada de preenchimento frontal (`.tc__name-fill`) que desliza da esquerda para a direita via `clip-path: inset(0 100% 0 0) -> inset(0 0% 0 0)` ao longo de 900ms.
+       - **Barra Minimalista de 140px x 3px (`.tc__bar`)**: barra de cantos arredondados de 3px com preenchimento em escala horizontal `scaleX(0) -> scaleX(1)`.
+       - **Transição de Saída Exata**: `opacity: 0; transform: translateY(-40px)` com `cubic-bezier(0.16, 1, 0.3, 1)`.
+       - **Zero Porcentagens e Zero Neon**: sem números de porcentagem e sem luzes estouradas, exatamente conforme solicitado.
+  2. **Implementação em [`LoadingScreen.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/LoadingScreen.jsx) e [`index.css`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/index.css):**
+     - Criadas as keyframes canônicas `@keyframes tc-orbit`, `@keyframes tc-name` e `@keyframes tc-bar`.
+     - Transição de saída acionada automaticamente após o ciclo de revelação.
+  3. **Validação:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: gerado com sucesso em 1.04s (`dist/assets/index-B7y_YhCC.css` 95.00 kB, `dist/assets/index-BYKGCGgb.js` 464.86 kB).
+
 
 
 
