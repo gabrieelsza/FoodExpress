@@ -144,18 +144,47 @@ export default function HomePage() {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden bg-gradient-to-r from-[#090706] via-[#0e0b08] 35% via-[#18110b] 65% to-[#1e150e] ${
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden bg-gradient-to-r from-[#090706] via-[#0d0a08] 40% via-[#140e0a] 65% to-[#1a120c] ${
                 isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
+              {/* Full-width Photo Layer with wide feathered mask fading into the right */}
+              <div className="absolute inset-y-0 left-0 w-full md:w-3/5 lg:w-[65%] h-[230px] sm:h-[260px] md:h-full overflow-hidden pointer-events-none">
+                <img
+                  src={slide.photoUrl}
+                  alt={slide.photoAlt}
+                  className={`w-full h-full object-cover object-center transform transition-transform duration-7000 ease-out ${
+                    isActive ? 'scale-105' : 'scale-100'
+                  }`}
+                  style={{
+                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 92%)',
+                    maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 92%)',
+                  }}
+                />
+
+                {/* Mobile Bottom & Top feathering */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#090706] via-[#090706]/70 to-transparent pointer-events-none md:hidden" />
+                <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-black/50 to-transparent pointer-events-none" />
+
+                {/* Floating Steakhouse Experience Tag */}
+                <div className="absolute top-4 left-4 z-20">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#181411] text-stone-300 border border-[#382b22] text-[10px] sm:text-xs font-bold uppercase font-['Oswald',sans-serif] tracking-wider shadow-md">
+                    <Flame size={12} className="text-[#c2410c] fill-[#c2410c]" />
+                    Steakhouse Experience
+                  </span>
+                </div>
+              </div>
+
+              {/* Full-width continuous horizontal degradê overlay (0% to 100% across the ENTIRE banner — NO vertical steps!) */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/30 0%, transparent 25%, transparent 38%, rgba(13,10,8,0.45) 52%, rgba(20,14,10,0.85) 68%, #1a120c 88%, #1a120c 100% pointer-events-none z-10" />
+
               {/* Wide Hearth Glow seamlessly diffused across the degradê transition */}
-              <div className="absolute top-1/2 left-1/2 -translate-y-1/2 w-[700px] h-[550px] bg-gradient-to-r from-orange-600/10 via-amber-600/12 to-transparent rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -top-20 right-10 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-20 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[550px] bg-gradient-to-br from-orange-600/10 via-amber-600/8 to-transparent rounded-full blur-3xl pointer-events-none z-10" />
+              <div className="absolute -top-20 right-10 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none z-10" />
 
               {/* Subtle Outback organic curved wave lines creating fluidity across the gradient transition */}
               <svg
-                className="hidden md:block absolute left-[48%] lg:left-[53%] -translate-x-1/2 top-0 bottom-0 h-full w-44 text-orange-500/25 pointer-events-none z-20"
+                className="hidden md:block absolute left-[50%] lg:left-[55%] -translate-x-1/2 top-0 bottom-0 h-full w-44 text-orange-500/25 pointer-events-none z-15"
                 viewBox="0 0 120 800"
                 preserveAspectRatio="none"
                 fill="none"
@@ -182,39 +211,13 @@ export default function HomePage() {
                 </defs>
               </svg>
 
-              <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 relative z-10">
-                {/* Left Side: Photography with seamless organic feathered blend */}
-                <div className="md:col-span-6 lg:col-span-7 relative h-[210px] sm:h-[240px] md:h-full overflow-hidden shrink-0">
-                  <img
-                    src={slide.photoUrl}
-                    alt={slide.photoAlt}
-                    className={`w-full h-full object-cover object-center transform transition-transform duration-7000 ease-out ${
-                      isActive ? 'scale-105' : 'scale-100'
-                    }`}
-                    style={{
-                      WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0) 100%)',
-                      maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0) 100%)',
-                    }}
-                  />
+              {/* Content Grid (Transparent columns allowing the continuous degradê to shine through smoothly) */}
+              <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 relative z-20">
+                {/* Left Side Spacer on Desktop */}
+                <div className="hidden md:block md:col-span-6 lg:col-span-7 h-full pointer-events-none" />
 
-                  {/* Multi-stage Smooth Feathered Gradients connecting directly to the right side degradê */}
-                  <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/30 via-transparent 25% via-[#0e0b08]/40 50% via-[#18110b]/80 75% to-[#1e150e] pointer-events-none" />
-
-                  {/* Bottom & Top feathering for Mobile */}
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#090706] via-[#090706]/70 to-transparent pointer-events-none z-10 md:hidden" />
-                  <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-black/50 to-transparent pointer-events-none z-10" />
-
-                  {/* Floating Steakhouse Experience Tag */}
-                  <div className="absolute top-4 left-4 z-20">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#181411] text-stone-300 border border-[#382b22] text-[10px] sm:text-xs font-bold uppercase font-['Oswald',sans-serif] tracking-wider shadow-md">
-                      <Flame size={12} className="text-[#c2410c] fill-[#c2410c]" />
-                      Steakhouse Experience
-                    </span>
-                  </div>
-                </div>
-
-                {/* Right Side: Seamless Dark Graphic Canvas with Warm Glow & Organic Accents (bg-transparent so the smooth horizontal degradê flows through) */}
-                <div className="md:col-span-6 lg:col-span-5 relative h-full flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:p-8 lg:p-12 xl:p-14 text-center md:text-left">
+                {/* Right Side: Content Container */}
+                <div className="md:col-span-6 lg:col-span-5 relative h-full flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:p-8 lg:p-12 xl:p-14 text-center md:text-left pt-64 sm:pt-72 md:pt-8 pointer-events-auto">
                   {/* Content Container with soft stagger animation */}
                   <div className={`relative z-10 space-y-3 sm:space-y-4 md:space-y-4 lg:space-y-5 transition-all duration-700 ease-out transform ${
                     isActive ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'

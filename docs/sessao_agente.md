@@ -673,3 +673,19 @@ pm run build bem-sucedido.
   2. **Validação e Build:**
      - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
      - `npm run build`: gerado com sucesso em 1.25s.
+
+
+---
+
+### [2026-11-13 00:22] — Eliminação Definitiva do Recorte de Coluna com Overlay Global em Degradê Contínuo
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Transição Visual Líquida entre Foto e Texto
+- **Ações Executadas:**
+  1. **Redesenho Arquitetural da Transição no Hero (`HomePage.jsx`):**
+     - A fotografia deixou de ficar restrita dentro da coluna `col-span-7`. Agora é posicionada em camada absoluta com máscara progressiva suave (`maskImage: linear-gradient(...)`) que desvanece de 30% a 92% da tela.
+     - O degradê de transição agora abrange **100% da largura do banner** (`inset-0`), fluindo perfeitamente de `transparent` na foto, passando por tons escuros intermediários (`rgba(13,10,8,0.45)` a `rgba(20,14,10,0.85)`), até o fundo amadeirado steakhouse `#1a120c`.
+     - Eliminação completa de qualquer emenda ou step de cor no ponto de encontro entre as duas partes.
+     - As curvas orgânicas com degradê de brasa e traçado pontilhado permanecem destacadas sobre a área de degradê.
+  2. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 1.29s.
