@@ -16,7 +16,6 @@ import {
   ChevronRight,
   MapPin,
   Navigation,
-  Phone,
 } from 'lucide-react';
 import { formatPrice } from '../utils/helpers';
 
@@ -741,47 +740,44 @@ export default function HomePage() {
               </div>
             </ScrollReveal>
 
-            {/* Right Column: Visual Showcase & Map Preview */}
+            {/* Right Column: Real Interactive Google Map */}
             <ScrollReveal direction="right" duration={750} className="lg:col-span-5 h-full">
-              <div className="h-full rounded-3xl bg-[#14100e] border border-[#2b221c] p-3 sm:p-4 flex flex-col justify-between shadow-2xl overflow-hidden relative group">
-                {/* Visual Map / Image Area */}
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/11] border border-[#2e231c]">
-                  <img
-                    src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop"
-                    alt="Ambiente e Fachada do FoodExpress Steakhouse"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              <div className="h-full min-h-[380px] rounded-3xl bg-[#14100e] border border-[#2b221c] p-3 sm:p-4 flex flex-col justify-between shadow-2xl overflow-hidden relative">
+                {/* Interactive Google Maps Iframe */}
+                <div className="relative w-full h-full min-h-[320px] rounded-2xl overflow-hidden border border-[#2e231c] bg-[#0c0a08]">
+                  <iframe
+                    title="Mapa de Localização FoodExpress"
+                    src="https://maps.google.com/maps?q=Av.+Paulista,+1200,+Bela+Vista,+Sao+Paulo+-+SP&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    className="w-full h-full min-h-[320px] border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
                   {/* Pulsing Pin Badge */}
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-orange-500/40 text-white text-xs font-bold shadow-xl font-['Oswald',sans-serif] tracking-wider">
+                  <div className="absolute top-3 left-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/90 backdrop-blur-md border border-orange-500/40 text-white text-xs font-bold shadow-xl font-['Oswald',sans-serif] tracking-wider pointer-events-none">
                     <span className="relative flex h-2.5 w-2.5">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
                     </span>
-                    <span>FOODEXPRESS • UNIDADE PRINCIPAL</span>
-                  </div>
-
-                  {/* Bottom Image Overlay */}
-                  <div className="absolute bottom-4 left-4 right-4 space-y-1">
-                    <span className="text-[11px] font-bold text-amber-400 uppercase font-['Oswald',sans-serif] tracking-wider">
-                      EXPERIÊNCIA PRESENCIAL COMPLETA
-                    </span>
-                    <h4 className="text-white font-black text-lg sm:text-xl font-['Oswald',sans-serif] uppercase leading-tight">
-                      Mesas Aconchegantes &amp; Chope na Caneca Congelada
-                    </h4>
+                    <span>FOODEXPRESS • LOCALIZAÇÃO NO MAPA</span>
                   </div>
                 </div>
 
-                {/* Quick Info Bar below image */}
-                <div className="p-3 sm:p-4 mt-3 rounded-xl bg-[#1a1411] border border-[#2e231c] flex items-center justify-between text-xs">
+                {/* Quick Info Bar below map */}
+                <div className="p-3 mt-3 rounded-xl bg-[#1a1411] border border-[#2e231c] flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2 text-stone-300">
-                    <Phone size={14} className="text-orange-500 shrink-0" />
-                    <span>WhatsApp: <strong>(11) 99999-9999</strong></span>
+                    <MapPin size={14} className="text-orange-500 shrink-0" />
+                    <span className="font-medium">Av. Paulista dos Burgers, 1200</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded-md bg-orange-500/10 text-orange-400 font-bold font-['Oswald',sans-serif] text-[11px]">
-                    RESPOSTA RÁPIDA
-                  </span>
+                  <a
+                    href="https://maps.google.com/?q=Av.+Paulista,+1200,+Sao+Paulo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 font-bold font-['Oswald',sans-serif] tracking-wider uppercase transition-colors"
+                  >
+                    <span>Abrir Rota</span>
+                    <Navigation size={13} />
+                  </a>
                 </div>
               </div>
             </ScrollReveal>

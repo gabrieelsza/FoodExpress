@@ -1042,3 +1042,20 @@ pm run build bem-sucedido.
      - Screenshot do navegador confirmado pelo subagent visual.
      - `npm run lint`: 0 erros.
      - `npm run build`: gerado com sucesso em 1.13s.
+
+
+---
+
+### [2026-11-13 12:41] — Substituição do Card de Foto pelo Mapa Interativo Real do Google Maps
+- **Papel Ativo:** Designer UI/UX & Engenheiro Frontend
+- **Etapa SDD:** Fase 3 — Ajuste na Seção de Localização da Página Inicial
+- **Ações Executadas:**
+  1. **Remoção da Foto Genérica de Salão ([`HomePage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/HomePage.jsx)):**
+     - Removida a foto de mesas/salão que estava ocupando o lado direito da seção de localização.
+  2. **Integração do Google Maps Interativo:**
+     - Adicionado iframe oficial do Google Maps renderizando diretamente o mapa de satélite/ruas de São Paulo na Avenida Paulista, 1200.
+     - Badge superior `FOODEXPRESS • LOCALIZAÇÃO NO MAPA` com pulso em tempo real.
+     - Barra de ação inferior permitindo abrir a rota diretamente no aplicativo de GPS / Google Maps.
+  3. **Validação:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: gerado com sucesso em 2.71s.
