@@ -487,18 +487,17 @@
 
 ---
 
-### [2026-11-12 22:25] — Eliminação Completa de Tons Marrons e Padronização do Login no Dark Neutro Puro
+### [2026-11-12 22:32] — Reintegração da Foto Lateral do Hambúrguer com Opacidade Suave e Cores Naturais
 - **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
-- **Etapa SDD:** `Fase 3 — Refinamento de Paleta Dark e Identidade Visual Neutra`
+- **Etapa SDD:** `Fase 3 — Refinamento Visual da Tela de Login`
 - **Ações Executadas:**
-  1. **Purga Integral de Tons Terrosos/Marrons em Todo o Repositório:**
-     - Varredura completa em todos os componentes e páginas (`AdminLoginPage.jsx`, `HomePage.jsx`, `ProductsPage.jsx`, `RestaurantPage.jsx`, `CustomerMenuPage.jsx`, `PromoCarousel.jsx`, `ProductCard.jsx`, `ProductModal.jsx`, `CartDrawer.jsx`, `Navbar.jsx`, `index.css`).
-     - Substituição de todos os códigos hexadecimais terrosos (`#0b0908`, `#14100e`, `#201a15`, `#382b22`, `#120f0d`, `#181310`, `#1a1411`, `#241d18`, `#26201a`, `#1c1613`, etc.) por uma paleta neutra e pura de preto e zinc (`#000000`, `#09090b`, `#121214`, `bg-zinc-900`, `border-zinc-800`, `text-zinc-100`).
-  2. **Refatoração da Tela de Login do Atendente:**
-     - Ajustado o card para layout centralizado único com largura balanceada (`max-w-lg`), fundo `#121214` e bordas `border-zinc-800`.
-     - Mantidos os elementos de destaque: badge `ACESSO RESTRITO AO STAFF`, título em destaque `PAINEL DO ATENDENTE`, caixa de credenciais demo com botão `PREENCHER DADOS`, campos estilizados com ícones e botão de ação sólido em laranja institucional `bg-orange-600` (sem halos neon).
-  3. **Validação Automatizada de Qualidade e Build:**
-     - `npm run lint`: 0 erros.
-     - `npm run build`: Build de produção gerado com sucesso em 1.55s.
-     - Verificação visual via browser subagent com captura de screenshot comprovando centralização perfeita e ausência de qualquer tom marrom.
+  1. **Exibição da Imagem Lateral do Hambúrguer (`/login-burger.jpg`):**
+     - Posicionada na metade direita da tela (`absolute right-0 inset-y-0 w-full md:w-3/5 lg:w-1/2 h-full`), com suas cores apetitosas autênticas preservadas (pão brioche, bacon crocante e cheddar derretido) e opacidade suave controlada (`opacity-45 scale-105`).
+     - Aplicado degradê horizontal progressivo (`from-black via-black/70 to-transparent`) para dissolver perfeitamente a imagem no fundo preto atrás do card central, mantendo legibilidade total dos formulários.
+  2. **Harmonia com o Dark Puro:**
+     - O card `PAINEL DO ATENDENTE` permanece em preto carvão neutro (`#121214`), borda discreta `border-zinc-800` e sem tons marrons lamacentos.
+  3. **Validação:**
+     - Verificação visual via browser subagent confirmando a presença da foto na lateral.
+     - `npm run lint` com 0 erros e `npm run build` bem-sucedido.
+
 
