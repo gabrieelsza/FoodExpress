@@ -3,15 +3,18 @@ import { useRef, useState, useEffect } from 'react';
 /**
  * ScrollReveal Component
  * Smoothly animates children into view when scrolling down and up.
+ * Replicates the modern momentum & focus-in (blur + scale + translate) effects from convertecom.com.br.
  */
 export default function ScrollReveal({
   children,
   className = '',
   direction = 'up',
   delay = 0,
-  duration = 700,
-  distance = 32,
+  duration = 800,
+  distance = 36,
   threshold = 0.08,
+  withBlur = true,
+  withScale = true,
   once = false,
 }) {
   const ref = useRef(null);
@@ -39,7 +42,7 @@ export default function ScrollReveal({
       },
       {
         threshold,
-        rootMargin: '0px 0px -20px 0px',
+        rootMargin: '0px 0px -30px 0px',
       }
     );
 
@@ -48,20 +51,22 @@ export default function ScrollReveal({
   }, [threshold, once]);
 
   // Compute transform offset based on direction
-  let hiddenTransform = `translateY(${distance}px)`;
-  if (direction === 'down') hiddenTransform = `translateY(-${distance}px)`;
-  if (direction === 'left') hiddenTransform = `translateX(-${distance}px)`;
-  if (direction === 'right') hiddenTransform = `translateX(${distance}px)`;
-  if (direction === 'zoom') hiddenTransform = 'scale(0.94)';
+  const scalePart = withScale ? ' scale(0.97)' : '';
+  let hiddenTransform = `translateY(${distance}px)${scalePart}`;
+  if (direction === 'down') hiddenTransform = `translateY(-${distance}px)${scalePart}`;
+  if (direction === 'left') hiddenTransform = `translateX(-${distance}px)${scalePart}`;
+  if (direction === 'right') hiddenTransform = `translateX(${distance}px)${scalePart}`;
+  if (direction === 'zoom') hiddenTransform = 'scale(0.92)';
 
   const style = {
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? 'translate(0, 0) scale(1)' : hiddenTransform,
-    transitionProperty: 'opacity, transform',
+    filter: withBlur ? (isVisible ? 'blur(0px)' : 'blur(5px)') : undefined,
+    transitionProperty: 'opacity, transform, filter',
     transitionDuration: `${duration}ms`,
     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
     transitionDelay: `${delay}ms`,
-    willChange: 'opacity, transform',
+    willChange: 'opacity, transform, filter',
   };
 
   return (

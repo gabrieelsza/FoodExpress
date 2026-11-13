@@ -10,6 +10,7 @@ import {
   Clock,
   Star,
   ArrowRight,
+  ArrowUp,
   ShieldCheck,
   ChevronLeft,
   ChevronRight,
@@ -121,7 +122,11 @@ export default function HomePage() {
   const scrollToProducts = () => {
     const el = document.getElementById('nossos-produtos');
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (window.__lenis) {
+        window.__lenis.scrollTo(el, { offset: -40, duration: 1.2 });
+      } else {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     } else {
       navigate('/nossos-produtos');
     }
@@ -799,7 +804,20 @@ export default function HomePage() {
               <p>© {new Date().getFullYear()} FoodExpress Steakhouse. Todos os direitos reservados.</p>
             </div>
             <div className="flex items-center gap-4 text-[11px] text-stone-600">
-              <span>Cardápio Digital &amp; Sistema de Pedidos</span>
+              <button
+                type="button"
+                onClick={() => {
+                  if (window.__lenis) {
+                    window.__lenis.scrollTo(0, { duration: 1.4 });
+                  } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                className="inline-flex items-center gap-1.5 text-stone-400 hover:text-amber-400 transition-colors cursor-pointer text-[11px] font-bold uppercase font-['Oswald',sans-serif] tracking-wider"
+              >
+                <ArrowUp size={13} className="text-orange-500" />
+                <span>Voltar ao topo</span>
+              </button>
               <span>•</span>
               <span className="text-amber-500/80 font-bold font-['Oswald',sans-serif] uppercase tracking-wider">Sabor da Brasa</span>
             </div>

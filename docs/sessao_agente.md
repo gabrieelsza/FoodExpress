@@ -873,6 +873,27 @@ pm run build bem-sucedido.
      - `npm run lint`: 0 erros.
      - `npm run build`: executado com sucesso em 1.29s.
 
+---
+
+### [2026-11-13 11:46] — Implementação do Motor de Rolagem e Animações Idênticas ao Convertecom (`Lenis Momentum Scroll`)
+- **Papel Ativo:** Engenheiro Frontend Especialista em Motion & Creative Development
+- **Etapa SDD:** Fase 3 — Replicação Técnica da Engenharia de Scroll do `convertecom.com.br`
+- **Ações Executadas:**
+  1. **Análise de Engenharia Reversa do `convertecom.com.br`:**
+     - Identificado o uso da biblioteca **Lenis** (`@studio-freight/lenis`) para momentum/inertia scrolling físico, com easing exponencial e amortecimento de rolagem suave.
+     - Identificadas as propriedades de entrada: transição coordenada com `opacity: 0 -> 1`, elevação `translateY(36px) scale(0.97) -> translateY(0) scale(1)`, foco dinâmico com `blur(5px) -> blur(0px)` e timing cúbico de luxo `cubic-bezier(0.16, 1, 0.3, 1)`.
+  2. **Instalação e Configuração da Biblioteca Canônica:**
+     - Instalado pacote oficial `lenis` no frontend.
+     - Criação do provider de contexto global [`SmoothScroll.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/SmoothScroll.jsx) gerenciando o loop RAF e desacoplamento com `requestAnimationFrame`.
+     - Inclusão dos estilos canônicos do Lenis em [`index.css`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/index.css) (`html.lenis`, `.lenis-smooth`).
+  3. **Aprimoramento do [`ScrollReveal.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/ScrollReveal.jsx):**
+     - Adicionado suporte a `withBlur` (revelação suave de desfoque a foco nítido) e `withScale` (leve expansão tridimensional proporcional de `0.97` para `1.0`).
+     - Integração fluida da navegação por âncoras ("Explorar Produtos") com `window.__lenis.scrollTo(el, { offset: -40, duration: 1.2 })`.
+     - Adicionado botão interativo "Voltar ao topo" no rodapé com animação controlada via Lenis.
+  4. **Validação:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: compilado com sucesso em 1.89s (`dist/assets/index-DhVG7ljP.css` 92.00 kB, `dist/assets/index-BARk8o3N.js` 460.76 kB).
+
 
 
 
