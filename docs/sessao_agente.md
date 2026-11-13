@@ -1059,3 +1059,18 @@ pm run build bem-sucedido.
   3. **Validação:**
      - `npm run lint`: 0 erros.
      - `npm run build`: gerado com sucesso em 2.71s.
+
+
+---
+
+### [2026-11-13 12:58] — Unificação do Google Maps Oficial Interativo na Página Inicial e Restaurante
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Padronização de Mapas e Experiência de Localização
+- **Ações Executadas:**
+  1. **Google Maps Embed Oficial em [`HomePage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/HomePage.jsx) e [`RestaurantPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/RestaurantPage.jsx):**
+     - Integrado mapa interativo em tempo real via iframe oficial do Google Maps com pino centralizado no endereço da unidade (`Av. Paulista, 1200 - Bela Vista, São Paulo - SP`).
+     - Selo flutuante de status com ponto pulsante `FOODEXPRESS • MAPA DA UNIDADE`.
+     - Barra de ferramentas com link para abrir a rota diretamente no aplicativo móvel do Google Maps.
+  2. **Validação:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: 100% aprovado.

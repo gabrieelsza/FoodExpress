@@ -218,23 +218,37 @@ export default function RestaurantPage() {
               </div>
             </ScrollReveal>
 
-            {/* Visual Photo Card */}
+            {/* Interactive Google Map */}
             <ScrollReveal direction="right" duration={750}>
-              <div className="relative rounded-3xl overflow-hidden border border-[#2b221c] shadow-2xl aspect-[4/3]">
-                <img
-                  src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&h=600&fit=crop"
-                  alt="Mesa do restaurante FoodExpress"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
-                  <div className="space-y-1">
-                    <span className="text-amber-400 font-bold text-xs uppercase font-['Oswald',sans-serif] tracking-wider">
-                      RESERVE OU VENHA DIRETO
+              <div className="relative rounded-3xl overflow-hidden border border-[#2b221c] shadow-2xl bg-[#0c0a08] min-h-[380px] flex flex-col justify-between p-3">
+                <div className="relative w-full h-[320px] rounded-2xl overflow-hidden border border-[#2e231c]">
+                  <iframe
+                    title="Mapa de Localização FoodExpress Salão"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.097782780654!2d-46.65492162386927!3d-23.565839078796853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%201200%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                    className="w-full h-full border-0"
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                  <div className="absolute top-3 left-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/90 backdrop-blur-md border border-orange-500/40 text-white text-xs font-bold shadow-xl font-['Oswald',sans-serif] tracking-wider pointer-events-none">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
                     </span>
-                    <p className="text-white font-black text-xl font-['Oswald',sans-serif] uppercase">
-                      Mesas disponíveis sem fila de espera
-                    </p>
+                    <span>FOODEXPRESS • MAPA DA UNIDADE</span>
                   </div>
+                </div>
+
+                <div className="p-3 mt-2 rounded-xl bg-[#14100e] border border-[#2e231c] flex items-center justify-between text-xs">
+                  <span className="text-stone-300 font-medium">Av. Paulista, 1200 · Bela Vista, SP</span>
+                  <a
+                    href="https://maps.google.com/?q=Av.+Paulista,+1200,+Bela+Vista,+Sao+Paulo+-+SP"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-orange-400 hover:text-orange-300 font-bold uppercase font-['Oswald',sans-serif] tracking-wider transition-colors"
+                  >
+                    Abrir no Google Maps ↗
+                  </a>
                 </div>
               </div>
             </ScrollReveal>

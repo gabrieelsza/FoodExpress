@@ -742,14 +742,15 @@ export default function HomePage() {
 
             {/* Right Column: Real Interactive Google Map */}
             <ScrollReveal direction="right" duration={750} className="lg:col-span-5 h-full">
-              <div className="h-full min-h-[380px] rounded-3xl bg-[#14100e] border border-[#2b221c] p-3 sm:p-4 flex flex-col justify-between shadow-2xl overflow-hidden relative">
+              <div className="h-full min-h-[400px] rounded-3xl bg-[#14100e] border border-[#2b221c] p-3 sm:p-4 flex flex-col justify-between shadow-2xl overflow-hidden relative">
                 {/* Interactive Google Maps Iframe */}
-                <div className="relative w-full h-full min-h-[320px] rounded-2xl overflow-hidden border border-[#2e231c] bg-[#0c0a08]">
+                <div className="relative w-full h-full min-h-[340px] rounded-2xl overflow-hidden border border-[#2e231c] bg-[#0c0a08]">
                   <iframe
                     title="Mapa de Localização FoodExpress"
-                    src="https://maps.google.com/maps?q=Av.+Paulista,+1200,+Bela+Vista,+Sao+Paulo+-+SP&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    className="w-full h-full min-h-[320px] border-0"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.097782780654!2d-46.65492162386927!3d-23.565839078796853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%201200%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                    className="w-full h-full min-h-[340px] border-0"
                     loading="lazy"
+                    allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
                   />
 
@@ -759,7 +760,7 @@ export default function HomePage() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
                     </span>
-                    <span>FOODEXPRESS • LOCALIZAÇÃO NO MAPA</span>
+                    <span>FOODEXPRESS • MAPA DA UNIDADE</span>
                   </div>
                 </div>
 
@@ -767,17 +768,19 @@ export default function HomePage() {
                 <div className="p-3 mt-3 rounded-xl bg-[#1a1411] border border-[#2e231c] flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2 text-stone-300">
                     <MapPin size={14} className="text-orange-500 shrink-0" />
-                    <span className="font-medium">Av. Paulista dos Burgers, 1200</span>
+                    <span className="font-medium">Av. Paulista, 1200 · Bela Vista, SP</span>
                   </div>
-                  <a
-                    href="https://maps.google.com/?q=Av.+Paulista,+1200,+Sao+Paulo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 font-bold font-['Oswald',sans-serif] tracking-wider uppercase transition-colors"
-                  >
-                    <span>Abrir Rota</span>
-                    <Navigation size={13} />
-                  </a>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href="https://maps.google.com/?q=Av.+Paulista,+1200,+Bela+Vista,+Sao+Paulo+-+SP"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 font-bold font-['Oswald',sans-serif] tracking-wider uppercase transition-colors"
+                    >
+                      <span>Google Maps</span>
+                      <Navigation size={13} />
+                    </a>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
