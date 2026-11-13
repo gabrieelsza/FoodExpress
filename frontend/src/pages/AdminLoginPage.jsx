@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Lock, User, Eye, EyeOff, ShieldCheck, Flame, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Lock, User, Eye, EyeOff, ShieldCheck, ArrowRight } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
 
@@ -45,191 +45,152 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0908] text-stone-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased flex flex-col">
-      {/* 1. TOP NAVBAR (Consistente com todas as outras abas do FoodExpress) */}
+    <div className="min-h-screen bg-black text-zinc-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased flex flex-col selection:bg-orange-600">
+      {/* 1. TOP NAVBAR */}
       <Navbar isAdmin={false} />
 
       {/* 2. MAIN LOGIN AREA */}
-      <main className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
-        {/* Dual-Panel Steakhouse Card with User Burger Image */}
-        <div className="relative z-10 w-full max-w-4xl rounded-3xl overflow-hidden border border-[#201a15] bg-[#0c0a08] shadow-2xl shadow-black/90 grid grid-cols-1 md:grid-cols-12 transition-all duration-300">
+      <main className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden bg-black">
+        {/* Subtle burger watermark on lateral background (pure neutral, no brown tint) */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[550px] h-[550px] pointer-events-none opacity-20 overflow-hidden hidden md:block">
+          <img
+            src="/login-burger.jpg"
+            alt=""
+            className="w-full h-full object-cover rounded-full filter grayscale contrast-125"
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black/80 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black" />
+        </div>
+
+        {/* Login Card - Exact Match to user specifications: Clean, Pure Charcoal/Black, Zero Brown, No Neon */}
+        <div className="relative z-10 w-full max-w-lg rounded-2xl sm:rounded-3xl border border-zinc-800 bg-[#121214] p-6 sm:p-9 shadow-2xl shadow-black transition-all">
           
-          {/* Left Column: Visual Burger Lateral Atmosphere (Um pouco invisível com fade suave) */}
-          <div className="hidden md:flex md:col-span-5 relative flex-col justify-between p-8 bg-[#080605] overflow-hidden">
-            {/* User Uploaded Bacon Burger with subtle opacity & feathered vignette */}
-            <img
-              src="/login-burger.jpg"
-              alt="FoodExpress Artisan Burger"
-              className="absolute inset-0 w-full h-full object-cover object-center opacity-35 scale-105"
-            />
-            {/* Multi-stage feathered dark overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#080605] via-[#080605]/70 to-black/50" />
-            <div className="absolute inset-y-0 right-0 w-28 bg-gradient-to-r from-transparent via-[#0c0a08]/80 to-[#0c0a08]" />
-
-            {/* Top Badge */}
-            <div className="relative z-10">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#100d0b] text-stone-300 border border-[#261f19] text-[10px] font-bold uppercase font-['Oswald',sans-serif] tracking-wider shadow-md">
-                <Flame size={12} className="text-[#c2410c] fill-[#c2410c]" />
-                Painel Operacional
-              </span>
-            </div>
-
-            {/* Bottom Content / Highlights */}
-            <div className="relative z-10 space-y-4">
-              <div className="space-y-1">
-                <h2 className="text-2xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-tight leading-tight">
-                  Gestão em Tempo Real
-                </h2>
-                <p className="text-xs text-stone-400 leading-relaxed">
-                  Acompanhe a fila de preparo da cozinha, gerencie o cardápio e atualize o status dos pedidos de mesa e delivery.
-                </p>
-              </div>
-
-              {/* Status Points */}
-              <div className="pt-2 space-y-2 border-t border-white/10 text-[11px] text-stone-400 font-medium">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={13} className="text-[#c2410c] shrink-0" />
-                  <span>Fila de pedidos com máquina de estados</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={13} className="text-[#c2410c] shrink-0" />
-                  <span>Edição de itens, preços e adicionais</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={13} className="text-[#c2410c] shrink-0" />
-                  <span>Atualização automática em tempo real</span>
-                </div>
-              </div>
-            </div>
+          {/* Top Badge */}
+          <div className="mb-4">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700/80 text-[11px] font-bold text-orange-500 uppercase tracking-wider font-['Oswald',sans-serif]">
+              <ShieldCheck size={14} className="text-orange-500" />
+              ACESSO RESTRITO AO STAFF
+            </span>
           </div>
 
-          {/* Right Column: Branded Login Form (Tom escuro, sóbrio e sem claridade) */}
-          <div className="md:col-span-7 relative p-6 sm:p-10 lg:p-12 flex flex-col justify-center bg-[#0c0a08] overflow-hidden">
-            {/* Header / Brand */}
-            <div className="text-center md:text-left mb-6 sm:mb-8 space-y-2">
-              <div className="inline-flex md:hidden items-center justify-center w-16 h-16 rounded-full bg-black border border-[#2c221a] p-1 mb-2 shadow-xl overflow-hidden">
-                <img src="/logo.jpg" alt="FoodExpress" className="w-full h-full object-cover scale-105" />
-              </div>
+          {/* Heading */}
+          <div className="space-y-1.5 mb-6 text-left">
+            <h1 className="text-2xl sm:text-3xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-tight">
+              PAINEL DO ATENDENTE
+            </h1>
+            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+              Digite suas credenciais corporativas para acessar o painel de pedidos e cozinha.
+            </p>
+          </div>
 
-              <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#120f0d] border border-[#241d18] text-[11px] font-bold text-[#ea580c] uppercase tracking-widest font-['Oswald',sans-serif]">
-                <ShieldCheck size={13} className="text-[#c2410c]" />
-                ACESSO RESTRITO AO STAFF
-              </div>
+          {/* Test Credentials Box */}
+          <div className="mb-6 p-3 sm:p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 flex items-center justify-between gap-3">
+            <div className="text-left text-xs leading-relaxed">
+              <span className="block font-bold text-zinc-300">Credenciais de Teste:</span>
+              <span className="text-zinc-400">
+                Usuário: <code className="text-amber-400 font-bold bg-black px-1.5 py-0.5 rounded border border-zinc-800">admin</code>
+                <span className="mx-1 text-zinc-600">|</span>
+                Senha: <code className="text-amber-400 font-bold bg-black px-1.5 py-0.5 rounded border border-zinc-800">admin123</code>
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={handleFillDemoCredentials}
+              className="shrink-0 px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-orange-600 hover:text-white border border-zinc-700 hover:border-orange-500 text-[10px] sm:text-[11px] font-bold text-amber-400 hover:text-white uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
+            >
+              PREENCHER DADOS
+            </button>
+          </div>
 
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-tight">
-                Painel do Atendente
-              </h1>
-              <p className="text-xs sm:text-sm text-stone-400">
-                Digite suas credenciais corporativas para acessar o painel de pedidos e cozinha.
-              </p>
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Username Field */}
+            <div className="text-left">
+              <label htmlFor="username" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 font-['Oswald',sans-serif] mb-1.5">
+                USUÁRIO OPERACIONAL
+              </label>
+              <div className="relative">
+                <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500" />
+                <input
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Ex: admin"
+                  required
+                  autoComplete="username"
+                  className="w-full h-12 pl-10 pr-4 border border-zinc-800 bg-zinc-900/60 focus:bg-zinc-900 focus:border-zinc-600 rounded-xl text-white placeholder-zinc-600 text-sm font-medium transition-colors outline-none"
+                />
+              </div>
             </div>
 
-            {/* Quick Demo Credentials Pill */}
-            <div className="mb-6 p-3 rounded-xl bg-[#120f0d] border border-[#241d18] flex flex-col sm:flex-row items-center justify-between gap-2.5">
-              <div className="text-left text-xs">
-                <span className="block font-bold text-stone-300">Credenciais de Teste:</span>
-                <span className="text-stone-400">
-                  Usuário: <code className="text-amber-400 font-bold bg-black/60 px-1.5 py-0.5 rounded border border-white/5">admin</code> | Senha: <code className="text-amber-400 font-bold bg-black/60 px-1.5 py-0.5 rounded border border-white/5">admin123</code>
-                </span>
+            {/* Password Field */}
+            <div className="text-left">
+              <label htmlFor="password" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 font-['Oswald',sans-serif] mb-1.5">
+                SENHA DE ACESSO
+              </label>
+              <div className="relative">
+                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500" />
+                <input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Digite sua senha"
+                  required
+                  autoComplete="current-password"
+                  className="w-full h-12 pl-10 pr-11 border border-zinc-800 bg-zinc-900/60 focus:bg-zinc-900 focus:border-zinc-600 rounded-xl text-white placeholder-zinc-600 text-sm font-medium transition-colors outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-zinc-500 hover:text-zinc-300 cursor-pointer"
+                  aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                >
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={handleFillDemoCredentials}
-                className="shrink-0 px-3 py-1.5 rounded-lg bg-[#1a1411] hover:bg-[#c2410c] hover:text-white border border-[#2c221a] hover:border-[#c2410c] text-[11px] font-bold text-stone-300 uppercase tracking-wider font-['Oswald',sans-serif] transition-all cursor-pointer"
-              >
-                Preencher Dados
-              </button>
             </div>
 
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Username Field */}
-              <div>
-                <label htmlFor="username" className="block text-xs font-bold uppercase tracking-wider text-stone-400 font-['Oswald',sans-serif] mb-1.5">
-                  Usuário Operacional
-                </label>
-                <div className="relative">
-                  <User size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-500" />
-                  <input
-                    id="username"
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Ex: admin"
-                    required
-                    autoComplete="username"
-                    className="w-full h-12 pl-10 pr-4 border border-[#26201a] bg-[#120f0d] focus:bg-[#161210] rounded-xl text-stone-100 placeholder-stone-600 focus:outline-none focus:border-[#c2410c] text-sm font-medium transition-colors"
-                  />
-                </div>
+            {/* Error Alert */}
+            {error && (
+              <div className="p-3 rounded-xl bg-red-950/80 border border-red-800/80 text-red-200 text-xs font-medium text-center">
+                {error}
               </div>
+            )}
 
-              {/* Password Field */}
-              <div>
-                <label htmlFor="password" className="block text-xs font-bold uppercase tracking-wider text-stone-400 font-['Oswald',sans-serif] mb-1.5">
-                  Senha de Acesso
-                </label>
-                <div className="relative">
-                  <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-500" />
-                  <input
-                    id="password"
-                    type={showPassword ? 'text' : 'password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Digite sua senha"
-                    required
-                    autoComplete="current-password"
-                    className="w-full h-12 pl-10 pr-12 border border-[#26201a] bg-[#120f0d] focus:bg-[#161210] rounded-xl text-stone-100 placeholder-stone-600 focus:outline-none focus:border-[#c2410c] text-sm font-medium transition-colors"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-stone-500 hover:text-stone-300 cursor-pointer"
-                    aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
-                  >
-                    {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                  </button>
-                </div>
-              </div>
-
-              {/* Error Alert */}
-              {error && (
-                <div className="p-3 rounded-xl bg-red-950/80 border border-red-800/80 text-red-200 text-xs font-medium text-center shadow-md">
-                  {error}
-                </div>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full h-12 mt-2 bg-orange-600 hover:bg-orange-500 active:scale-[0.99] text-white font-bold text-sm uppercase tracking-wider font-['Oswald',sans-serif] rounded-xl transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer shadow-md"
+            >
+              {loading ? (
+                <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              ) : (
+                <>
+                  <span>ENTRAR NO PAINEL</span>
+                  <ArrowRight size={16} />
+                </>
               )}
+            </button>
+          </form>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full h-12 mt-2 bg-[#c2410c] hover:bg-[#d9531e] active:scale-[0.99] text-white font-bold text-sm uppercase tracking-wider font-['Oswald',sans-serif] rounded-xl shadow-lg shadow-black/60 transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
-              >
-                {loading ? (
-                  <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  <>
-                    <span>Entrar no Painel</span>
-                    <ArrowRight size={16} />
-                  </>
-                )}
-              </button>
-            </form>
+          {/* Bottom Security Note & Back Link */}
+          <div className="mt-6 pt-5 border-t border-zinc-800 flex items-center justify-between gap-3 text-xs text-zinc-500">
+            <span className="flex items-center gap-1.5 text-zinc-400">
+              <ShieldCheck size={14} className="text-orange-500" />
+              Sessão segura de atendimento
+            </span>
 
-            {/* Security Note & Back Link */}
-            <div className="mt-6 pt-5 border-t border-[#1e1814] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-500">
-              <span className="flex items-center gap-1.5">
-                <ShieldCheck size={14} className="text-[#c2410c]" />
-                Sessão segura de atendimento
-              </span>
-
-              <Link
-                to="/nossos-produtos"
-                className="text-stone-400 hover:text-stone-200 font-semibold transition-colors flex items-center gap-1"
-              >
-                ← Voltar ao cardápio
-              </Link>
-            </div>
+            <Link
+              to="/nossos-produtos"
+              className="text-zinc-400 hover:text-zinc-200 font-semibold transition-colors"
+            >
+              ← Voltar ao cardápio
+            </Link>
           </div>
+
         </div>
       </main>
     </div>

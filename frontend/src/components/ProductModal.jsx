@@ -62,13 +62,13 @@ export default function ProductModal({ product, onClose, onAdd }) {
       />
 
       {/* Panel */}
-      <div className="relative z-10 flex w-full max-w-lg flex-col rounded-t-3xl sm:rounded-3xl bg-[#14110f] border border-[#2d241e] text-stone-100 shadow-2xl animate-in slide-in-from-bottom sm:zoom-in-95 duration-300 overflow-hidden"
+      <div className="relative z-10 flex w-full max-w-lg flex-col rounded-t-3xl sm:rounded-3xl bg-[#121214] border border-zinc-800 text-zinc-100 shadow-2xl animate-in slide-in-from-bottom sm:zoom-in-95 duration-300 overflow-hidden"
         style={{ maxHeight: '90vh' }}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-[#100d0b]/85 text-stone-300 shadow-md backdrop-blur-sm hover:bg-[#1a1512] hover:text-white border border-[#3a3028]"
+          className="absolute right-4 top-4 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-zinc-900/90 text-zinc-300 shadow-md backdrop-blur-sm hover:bg-zinc-800 hover:text-white border border-zinc-700"
           aria-label="Fechar"
         >
           <X size={20} />
@@ -113,7 +113,7 @@ export default function ProductModal({ product, onClose, onAdd }) {
                       className={`flex min-h-12 cursor-pointer items-center justify-between rounded-xl border px-4 py-3 transition-colors ${
                         selectedVariation?.id === variation.id
                           ? 'border-orange-500 bg-red-950/40 text-white shadow-md'
-                          : 'border-[#2d241e] bg-[#181411] text-stone-300 hover:border-stone-600'
+                          : 'border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -153,7 +153,7 @@ export default function ProductModal({ product, onClose, onAdd }) {
                         className={`flex min-h-12 cursor-pointer items-center justify-between rounded-xl border px-4 py-3 transition-colors ${
                           isSelected
                             ? 'border-orange-500 bg-orange-950/30 text-white'
-                            : 'border-[#2d241e] bg-[#181411] text-stone-300 hover:border-stone-600'
+                            : 'border-zinc-800 bg-zinc-900 text-zinc-300 hover:border-zinc-700'
                         }`}
                       >
                         <div className="flex items-center gap-3">
@@ -163,7 +163,7 @@ export default function ProductModal({ product, onClose, onAdd }) {
                             onChange={() => toggleAddon(addon)}
                             className="h-4 w-4 rounded accent-orange-500"
                           />
-                          <span className="text-sm font-medium text-stone-200">
+                          <span className="text-sm font-medium text-zinc-200">
                             {addon.name}
                           </span>
                         </div>
@@ -179,7 +179,7 @@ export default function ProductModal({ product, onClose, onAdd }) {
 
             {/* Observations */}
             <div>
-              <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-stone-400 font-['Oswald',sans-serif]">
+              <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-zinc-400 font-['Oswald',sans-serif]">
                 Observações
               </h3>
               <textarea
@@ -188,21 +188,21 @@ export default function ProductModal({ product, onClose, onAdd }) {
                 maxLength={140}
                 placeholder="Ex: Ponto da carne, sem cebola, molho à parte..."
                 rows={2}
-                className="w-full resize-none rounded-xl border border-[#2d241e] bg-[#100d0b] px-4 py-3 text-sm text-stone-100 placeholder-stone-500 transition-colors focus:border-orange-500 focus:outline-none"
+                className="w-full resize-none rounded-xl border border-zinc-800 bg-black px-4 py-3 text-sm text-zinc-100 placeholder-zinc-500 transition-colors focus:border-orange-500 focus:outline-none"
               />
-              <p className="mt-1 text-right text-xs text-stone-500">
+              <p className="mt-1 text-right text-xs text-zinc-500">
                 {notes.length}/140
               </p>
             </div>
 
             {/* Quantity */}
             <div className="flex items-center justify-between">
-              <span className="text-sm font-bold text-stone-300 uppercase tracking-wider font-['Oswald',sans-serif]">Quantidade</span>
+              <span className="text-sm font-bold text-zinc-300 uppercase tracking-wider font-['Oswald',sans-serif]">Quantidade</span>
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                   disabled={quantity <= 1}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3a3028] bg-[#181411] text-stone-300 transition-colors disabled:opacity-30 hover:border-orange-400 hover:text-orange-400 cursor-pointer"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-300 transition-colors disabled:opacity-30 hover:border-orange-400 hover:text-orange-400 cursor-pointer"
                   aria-label="Diminuir quantidade"
                 >
                   <Minus size={18} />
@@ -212,7 +212,7 @@ export default function ProductModal({ product, onClose, onAdd }) {
                 </span>
                 <button
                   onClick={() => setQuantity((q) => q + 1)}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-red-600 to-orange-500 text-white transition-colors hover:from-red-700 hover:to-orange-600 shadow-md cursor-pointer"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-600 hover:bg-orange-500 text-white transition-colors shadow-md cursor-pointer"
                   aria-label="Aumentar quantidade"
                 >
                   <Plus size={18} />
@@ -221,7 +221,7 @@ export default function ProductModal({ product, onClose, onAdd }) {
             </div>
 
             {/* Price display */}
-            <div className="rounded-xl bg-[#100d0b] border border-[#2d241e] p-4">
+            <div className="rounded-xl bg-black border border-zinc-800 p-4">
               <div className="flex items-center justify-between text-sm text-stone-400">
                 <span>Preço unitário</span>
                 <span className="text-stone-200 font-bold font-['Oswald',sans-serif]">{formatPrice(unitPrice)}</span>
@@ -237,7 +237,7 @@ export default function ProductModal({ product, onClose, onAdd }) {
         </div>
 
         {/* Fixed add button */}
-        <div className="border-t border-[#26201b] bg-[#14110f] p-4">
+        <div className="border-t border-zinc-800 bg-[#121214] p-4">
           <button
             onClick={handleAdd}
             disabled={!isValid}

@@ -34,7 +34,7 @@ export default function Navbar({
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0e0c0a]/95 backdrop-blur-md border-b border-[#26201b] shadow-2xl w-full">
+    <header className="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-zinc-800 shadow-2xl w-full">
       <div className="w-full flex h-18 items-center justify-between px-4 sm:px-6 lg:px-8 gap-4">
         {/* Brand / Logo */}
         <div className="flex items-center gap-3 shrink-0">
@@ -166,29 +166,29 @@ export default function Navbar({
             onCartClick ? (
               <button
                 onClick={onCartClick}
-                className="relative flex items-center gap-2.5 rounded-full bg-[#181411] hover:bg-[#201b17] border border-[#3a3029] hover:border-[#4d3f35] text-white px-4 sm:px-5 py-2 font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] cursor-pointer"
+                className="relative flex items-center gap-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white px-4 sm:px-5 py-2 font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] cursor-pointer"
                 aria-label={`Sacola com ${count} itens`}
               >
-                <ShoppingBag size={16} strokeWidth={2.2} className="text-amber-500" />
-                <span className="font-bold text-xs sm:text-sm text-stone-100">Sacola</span>
+                <ShoppingBag size={16} strokeWidth={2.2} className="text-orange-500" />
+                <span className="font-bold text-xs sm:text-sm text-white">Sacola</span>
                 {count > 0 ? (
-                  <div className="flex items-center gap-2 pl-1 border-l border-[#3a3029] ml-1">
-                    <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#c2410c] px-1.5 text-xs font-bold text-white shadow-sm">
+                  <div className="flex items-center gap-2 pl-1 border-l border-zinc-800 ml-1">
+                    <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-orange-600 px-1.5 text-xs font-bold text-white shadow-sm">
                       {count}
                     </span>
-                    <span className="hidden sm:inline text-xs font-semibold text-amber-400">
+                    <span className="hidden sm:inline text-xs font-semibold text-orange-400">
                       {formatPrice(totalPrice)}
                     </span>
                   </div>
                 ) : (
-                  <span className="text-xs text-stone-500 font-normal">vazia</span>
+                  <span className="text-xs text-zinc-500 font-normal">vazia</span>
                 )}
               </button>
             ) : (
               /* If no cart click passed, show a direct button to Nossos Produtos / Cardápio */
               <Link
                 to="/nossos-produtos"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] active:scale-95 text-white px-4 py-2 text-xs sm:text-sm font-bold shadow-md shadow-black/50 uppercase font-['Oswald',sans-serif] tracking-wider transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 rounded-xl bg-orange-600 hover:bg-orange-500 active:scale-95 text-white px-4 py-2 text-xs sm:text-sm font-bold shadow-md shadow-black/50 uppercase font-['Oswald',sans-serif] tracking-wider transition-all cursor-pointer"
               >
                 <ShoppingBag size={15} />
                 <span>Pedir Agora</span>
@@ -200,7 +200,7 @@ export default function Navbar({
 
       {/* Mobile Subnav for tabs */}
       {!isAdmin && (
-        <div className="md:hidden flex items-center gap-4 overflow-x-auto px-4 py-2 bg-[#120e0c] border-t border-[#221a15] scrollbar-hide text-xs font-bold font-['Oswald',sans-serif]">
+        <div className="md:hidden flex items-center gap-4 overflow-x-auto px-4 py-2 bg-black border-t border-zinc-800 scrollbar-hide text-xs font-bold font-['Oswald',sans-serif]">
           <Link
             to="/"
             className={`whitespace-nowrap pb-0.5 border-b-2 ${

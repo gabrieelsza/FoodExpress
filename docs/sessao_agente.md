@@ -487,14 +487,18 @@
 
 ---
 
-### [2026-11-12 20:46] — Sincronização e Publicação Integral do Frontend no Repositório Remoto
-- **Papel Ativo:** Engenheiro de Software & DevOps
-- **Etapa SDD:** `Fase 3 — Deploy & Sincronização de Código`
+### [2026-11-12 22:25] — Eliminação Completa de Tons Marrons e Padronização do Login no Dark Neutro Puro
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** `Fase 3 — Refinamento de Paleta Dark e Identidade Visual Neutra`
 - **Ações Executadas:**
-  1. **Integração com Branch Remoto:**
-     - Sincronização e merge das atualizações remotas de CI/CD do GitHub Actions (`.github/workflows/node.js.yml`).
-  2. **Push de Todos os Commits para o GitHub:**
-     - Enviados com sucesso todos os 49 commits locais para `https://github.com/gabrieelsza/FoodExpress.git` na branch `main`.
-     - Todos os arquivos do frontend, componentes, páginas, temas dark steakhouse, assets estáticos e documentação SDD em `/docs/` agora estão 100% atualizados no repositório remoto.
-  3. **Status:**
-     - Branch local perfeitamente alinhada com `origin/main` (working tree clean).
+  1. **Purga Integral de Tons Terrosos/Marrons em Todo o Repositório:**
+     - Varredura completa em todos os componentes e páginas (`AdminLoginPage.jsx`, `HomePage.jsx`, `ProductsPage.jsx`, `RestaurantPage.jsx`, `CustomerMenuPage.jsx`, `PromoCarousel.jsx`, `ProductCard.jsx`, `ProductModal.jsx`, `CartDrawer.jsx`, `Navbar.jsx`, `index.css`).
+     - Substituição de todos os códigos hexadecimais terrosos (`#0b0908`, `#14100e`, `#201a15`, `#382b22`, `#120f0d`, `#181310`, `#1a1411`, `#241d18`, `#26201a`, `#1c1613`, etc.) por uma paleta neutra e pura de preto e zinc (`#000000`, `#09090b`, `#121214`, `bg-zinc-900`, `border-zinc-800`, `text-zinc-100`).
+  2. **Refatoração da Tela de Login do Atendente:**
+     - Ajustado o card para layout centralizado único com largura balanceada (`max-w-lg`), fundo `#121214` e bordas `border-zinc-800`.
+     - Mantidos os elementos de destaque: badge `ACESSO RESTRITO AO STAFF`, título em destaque `PAINEL DO ATENDENTE`, caixa de credenciais demo com botão `PREENCHER DADOS`, campos estilizados com ícones e botão de ação sólido em laranja institucional `bg-orange-600` (sem halos neon).
+  3. **Validação Automatizada de Qualidade e Build:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: Build de produção gerado com sucesso em 1.55s.
+     - Verificação visual via browser subagent com captura de screenshot comprovando centralização perfeita e ausência de qualquer tom marrom.
+

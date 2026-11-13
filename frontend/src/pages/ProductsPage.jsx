@@ -177,7 +177,7 @@ export default function ProductsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-[#0b0908] text-stone-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-orange-600 flex flex-col">
+    <div className="min-h-screen bg-black text-zinc-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-orange-600 flex flex-col">
       {/* 1. Global Navbar with "NOSSOS PRODUTOS" active */}
       <Navbar
         isAdmin={false}
@@ -188,28 +188,28 @@ export default function ProductsPage() {
       />
 
       {/* 2. Page Hero Banner Header */}
-      <div className="relative bg-[#100e0c] border-b border-[#241d18] py-10 sm:py-14 steakhouse-glow">
+      <div className="relative bg-black border-b border-zinc-800 py-10 sm:py-14 steakhouse-glow">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="space-y-3 text-center sm:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#181310] border border-[#33261f] text-xs font-bold text-orange-400 uppercase tracking-widest font-['Oswald',sans-serif]">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-orange-400 uppercase tracking-widest font-['Oswald',sans-serif]">
                 <Flame size={14} className="fill-orange-500" />
                 CARDÁPIO OFICIAL FOODEXPRESS
               </div>
               <h1 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-wider font-['Oswald',sans-serif]">
                 Nossos Produtos
               </h1>
-              <p className="text-xs sm:text-sm text-stone-400 max-w-xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-zinc-400 max-w-xl leading-relaxed">
                 Explore todos os pratos lendários do nosso cardápio. Blends grelhados na brasa, queijos derretidos, batatas crocantes e sobremesas generosas.
               </p>
             </div>
 
-            <div className="flex flex-col sm:items-end gap-2 text-xs text-stone-400">
+            <div className="flex flex-col sm:items-end gap-2 text-xs text-zinc-400">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/30">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                 Cozinha Aberta até 23:30
               </span>
-              <span className="text-stone-500">Entrega rápida em 30 a 45 minutos</span>
+              <span className="text-zinc-500">Entrega rápida em 30 a 45 minutos</span>
             </div>
           </div>
         </div>
@@ -224,25 +224,25 @@ export default function ProductsPage() {
               <div
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`group relative overflow-hidden rounded-2xl bg-[#14110f] border p-5 flex flex-col justify-between min-h-[190px] shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer ${
+                className={`group relative overflow-hidden rounded-2xl bg-[#121214] border p-5 flex flex-col justify-between min-h-[190px] shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer ${
                   isSelected
-                    ? 'border-[#c2410c] shadow-lg shadow-black/50 ring-1 ring-[#c2410c]'
-                    : 'border-[#2b221c] hover:border-[#42342a]'
+                    ? 'border-orange-600 shadow-lg shadow-black/50 ring-1 ring-orange-600'
+                    : 'border-zinc-800 hover:border-zinc-700'
                 }`}
               >
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-35 transition-opacity">
                   <img src={cat.imageUrl} alt={cat.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#14110f] via-[#14110f]/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#121214] via-[#121214]/80 to-transparent" />
                 </div>
 
                 <div className="relative z-10 space-y-1.5">
-                  <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#181310] text-stone-300 border border-[#382b22] font-['Oswald',sans-serif]">
+                  <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-zinc-900 text-zinc-300 border border-zinc-800 font-['Oswald',sans-serif]">
                     {cat.badge}
                   </span>
                   <h3 className="text-lg font-black text-white font-['Oswald',sans-serif] uppercase tracking-wide leading-tight group-hover:text-amber-400 transition-colors">
                     {cat.title}
                   </h3>
-                  <p className="text-[11px] text-stone-400 line-clamp-2 leading-relaxed">
+                  <p className="text-[11px] text-zinc-400 line-clamp-2 leading-relaxed">
                     {cat.description}
                   </p>
                 </div>
@@ -261,7 +261,7 @@ export default function ProductsPage() {
         </div>
 
         {/* 4. Interactive Category Filter Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 border-b border-[#221b16] scrollbar-hide">
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 border-b border-zinc-800 scrollbar-hide">
           <button
             onClick={() => {
               setSelectedCategory('ALL');
@@ -269,11 +269,11 @@ export default function ProductsPage() {
             }}
             className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
               selectedCategory === 'ALL'
-                ? 'bg-[#c2410c] text-white shadow-md shadow-black/50 border border-[#832604]'
-                : 'bg-[#15110f] text-stone-400 hover:bg-[#1f1915] hover:text-stone-200 border border-[#2b221c]'
+                ? 'bg-orange-600 text-white shadow-md shadow-black/50 border border-orange-700'
+                : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 border border-zinc-800'
             }`}
           >
-            <Flame size={14} className={selectedCategory === 'ALL' ? 'text-white' : 'text-[#c2410c]'} />
+            <Flame size={14} className={selectedCategory === 'ALL' ? 'text-white' : 'text-orange-500'} />
             <span>Todos os Pratos ({allProducts.length})</span>
           </button>
 
@@ -286,8 +286,8 @@ export default function ProductsPage() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
                   isSelected
-                    ? 'bg-[#c2410c] text-white shadow-md shadow-black/50 border border-[#832604]'
-                    : 'bg-[#15110f] text-stone-400 hover:bg-[#1f1915] hover:text-stone-200 border border-[#2b221c]'
+                    ? 'bg-orange-600 text-white shadow-md shadow-black/50 border border-orange-700'
+                    : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 border border-zinc-800'
                 }`}
               >
                 <span>{cat.name} ({count})</span>
@@ -300,7 +300,7 @@ export default function ProductsPage() {
         <main className="pb-16 flex-1">
           {searchQuery && (
             <div className="flex items-center justify-between mb-6">
-              <p className="text-xs text-stone-400">
+              <p className="text-xs text-zinc-400">
                 Mostrando resultados para: <strong className="text-white">"{searchQuery}"</strong> ({filteredProducts.length} itens encontrados)
               </p>
               <button
@@ -313,12 +313,12 @@ export default function ProductsPage() {
           )}
 
           {filteredProducts.length === 0 ? (
-            <div className="py-16 text-center bg-[#14110f] rounded-2xl border border-[#29211b] p-8 shadow-md">
-              <Search size={36} className="mx-auto text-stone-600 mb-2.5" />
-              <h3 className="text-sm font-bold text-stone-200 font-['Oswald',sans-serif] uppercase tracking-wide">
+            <div className="py-16 text-center bg-[#121214] rounded-2xl border border-zinc-800 p-8 shadow-md">
+              <Search size={36} className="mx-auto text-zinc-600 mb-2.5" />
+              <h3 className="text-sm font-bold text-zinc-200 font-['Oswald',sans-serif] uppercase tracking-wide">
                 Nenhum produto encontrado
               </h3>
-              <p className="text-xs text-stone-400 mt-1 max-w-xs mx-auto">
+              <p className="text-xs text-zinc-400 mt-1 max-w-xs mx-auto">
                 Tente buscar por outro termo ou selecione uma categoria acima.
               </p>
             </div>
@@ -362,11 +362,11 @@ export default function ProductsPage() {
       />
 
       {/* Outback Steakhouse Dark Footer */}
-      <footer className="w-full bg-[#090807] border-t border-[#241d18] text-stone-300 relative overflow-hidden mt-auto">
+      <footer className="w-full bg-black border-t border-zinc-800 text-zinc-300 relative overflow-hidden mt-auto">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent"></div>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#1f1915]">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-zinc-800">
             <div className="md:col-span-6 space-y-5">
               <div className="flex items-center gap-3.5">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black border-2 border-orange-500/50 shadow-xl ring-2 ring-orange-500/20 overflow-hidden">
@@ -387,13 +387,13 @@ export default function ProductsPage() {
               </p>
 
               <div className="flex flex-wrap gap-2 pt-1">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14100d] border border-[#2d221a] text-xs font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-300 font-['Oswald',sans-serif] uppercase tracking-wider">
                   <Flame size={12} className="text-orange-500 fill-orange-500" /> Grelhado no Fogo
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14100d] border border-[#2d221a] text-xs font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-300 font-['Oswald',sans-serif] uppercase tracking-wider">
                   <Sparkles size={12} className="text-amber-400" /> Blends Nobres 180g
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14100d] border border-[#2d221a] text-xs font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-300 font-['Oswald',sans-serif] uppercase tracking-wider">
                   <Bike size={12} className="text-emerald-400" /> Entrega Express
                 </span>
               </div>
@@ -407,19 +407,19 @@ export default function ProductsPage() {
                 </h4>
               </div>
 
-              <div className="space-y-3 text-xs text-stone-400">
-                <div className="rounded-xl bg-[#13100d] border border-[#261f19] p-3.5 space-y-2">
+              <div className="space-y-3 text-xs text-zinc-400">
+                <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-3.5 space-y-2">
                   <div className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span className="font-bold text-white uppercase font-['Oswald',sans-serif] tracking-wide">Aberto Hoje</span>
                   </div>
-                  <p className="text-stone-300">Terça a Domingo: <strong className="text-amber-400 font-['Oswald',sans-serif]">18:00 às 23:30</strong></p>
-                  <p className="text-[11px] text-stone-500">Segunda-feira: Fechado para descanso</p>
+                  <p className="text-zinc-300">Terça a Domingo: <strong className="text-amber-400 font-['Oswald',sans-serif]">18:00 às 23:30</strong></p>
+                  <p className="text-[11px] text-zinc-500">Segunda-feira: Fechado para descanso</p>
                 </div>
 
-                <div className="flex items-center gap-2 text-stone-400 text-xs">
+                <div className="flex items-center gap-2 text-zinc-400 text-xs">
                   <Clock size={14} className="text-amber-500 shrink-0" />
-                  <span>Tempo médio: <strong className="text-stone-200">30 a 45 min</strong></span>
+                  <span>Tempo médio: <strong className="text-zinc-200">30 a 45 min</strong></span>
                 </div>
               </div>
             </div>
@@ -432,7 +432,7 @@ export default function ProductsPage() {
                 </h4>
               </div>
 
-              <div className="space-y-2 text-xs text-stone-400">
+              <div className="space-y-2 text-xs text-zinc-400">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                   <span>Pix (aprovação instantânea)</span>
@@ -450,7 +450,7 @@ export default function ProductsPage() {
               <div className="pt-2">
                 <button
                   onClick={() => navigate('/admin/login')}
-                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#171310] hover:bg-[#201a15] border border-[#382c23] hover:border-orange-500/70 text-stone-200 hover:text-white text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] transition-all shadow-md cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-orange-500/70 text-zinc-200 hover:text-white text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] transition-all shadow-md cursor-pointer"
                 >
                   <ShieldCheck size={15} className="text-orange-500" />
                   <span>Acesso do Atendente</span>

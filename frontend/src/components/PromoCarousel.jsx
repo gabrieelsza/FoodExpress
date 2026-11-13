@@ -113,7 +113,7 @@ export default function PromoCarousel({ onActionClick }) {
   return (
     <div className="w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
       <div
-        className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#2e231c] bg-[#120e0c] shadow-xl shadow-black/60 group transition-all duration-300 hover:border-[#3d3127]"
+        className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-800 bg-[#121214] shadow-xl shadow-black/60 group transition-all duration-300 hover:border-zinc-700"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={handleTouchStart}
@@ -131,14 +131,14 @@ export default function PromoCarousel({ onActionClick }) {
                 key={slide.id}
                 className={`absolute inset-0 transition-opacity duration-700 ease-in-out flex flex-col md:flex-row items-stretch justify-between ${
                   isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
-                } bg-gradient-to-r from-[#14100e] via-[#100d0b] to-[#0c0a08]`}
+                } bg-[#121214]`}
               >
                 {/* Left Content Column */}
                 <div className="relative z-10 w-full md:w-3/5 lg:w-7/12 p-6 sm:p-8 lg:p-10 flex flex-col justify-center space-y-3 sm:space-y-4">
                   {/* Category / Promo Badge (Unified Steakhouse Theme) */}
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-[#1c1714] text-stone-300 border border-[#382b22] shadow-sm font-['Oswald',sans-serif]">
-                      <SlideIcon size={12} className="text-[#c2410c] shrink-0" />
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-zinc-900 text-zinc-300 border border-zinc-800 shadow-sm font-['Oswald',sans-serif]">
+                      <SlideIcon size={12} className="text-orange-500 shrink-0" />
                       {slide.badge}
                     </span>
                     {slide.saveText && (
@@ -182,17 +182,17 @@ export default function PromoCarousel({ onActionClick }) {
                 </div>
 
                 {/* Right Food Photo (Seamless full-height bleed with feathered blend) */}
-                <div className="relative w-full md:w-2/5 lg:w-5/12 h-full overflow-hidden bg-[#0c0a08] shrink-0">
+                <div className="relative w-full md:w-2/5 lg:w-5/12 h-full overflow-hidden bg-black shrink-0">
                   <img
                     src={slide.imageUrl}
                     alt={slide.title}
                     className="w-full h-full object-cover object-center transform transition-transform duration-700 ease-out hover:scale-105"
                   />
                   {/* Seamless feathered blend from right photo to left text */}
-                  <div className="hidden md:block absolute inset-y-0 left-0 w-36 bg-gradient-to-r from-[#14100e] via-[#14100e]/70 to-transparent pointer-events-none z-10" />
+                  <div className="hidden md:block absolute inset-y-0 left-0 w-36 bg-gradient-to-r from-[#121214] via-[#121214]/70 to-transparent pointer-events-none z-10" />
                   <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                   {/* Mobile dark overlay */}
-                  <div className="md:hidden absolute inset-0 bg-gradient-to-t from-[#14100e] via-[#14100e]/85 to-transparent pointer-events-none" />
+                  <div className="md:hidden absolute inset-0 bg-gradient-to-t from-[#121214] via-[#121214]/85 to-transparent pointer-events-none" />
                 </div>
               </div>
             );
@@ -203,7 +203,7 @@ export default function PromoCarousel({ onActionClick }) {
         <button
           onClick={prevSlide}
           aria-label="Slide anterior"
-          className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/70 hover:bg-orange-600 text-stone-300 hover:text-white border border-[#382b22] backdrop-blur-md transition-all shadow-xl opacity-90 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/70 hover:bg-orange-600 text-zinc-300 hover:text-white border border-zinc-800 backdrop-blur-md transition-all shadow-xl opacity-90 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
         >
           <ChevronLeft size={18} />
         </button>
@@ -211,13 +211,13 @@ export default function PromoCarousel({ onActionClick }) {
         <button
           onClick={nextSlide}
           aria-label="Próximo slide"
-          className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/70 hover:bg-orange-600 text-stone-300 hover:text-white border border-[#382b22] backdrop-blur-md transition-all shadow-xl opacity-90 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-black/70 hover:bg-orange-600 text-zinc-300 hover:text-white border border-zinc-800 backdrop-blur-md transition-all shadow-xl opacity-90 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
         >
           <ChevronRight size={18} />
         </button>
 
         {/* Dot Indicators */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#14100e] border border-[#382b22] shadow-md">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 shadow-md">
           {PROMO_SLIDES.map((_, idx) => (
             <button
               key={idx}
@@ -225,8 +225,8 @@ export default function PromoCarousel({ onActionClick }) {
               aria-label={`Ir para o slide ${idx + 1}`}
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 idx === currentIndex
-                  ? 'w-6 bg-[#c2410c]'
-                  : 'w-2 bg-stone-700 hover:bg-stone-500'
+                  ? 'w-6 bg-orange-600'
+                  : 'w-2 bg-zinc-700 hover:bg-zinc-500'
               }`}
             />
           ))}

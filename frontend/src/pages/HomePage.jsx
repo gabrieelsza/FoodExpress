@@ -128,13 +128,13 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0908] text-stone-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-orange-600 flex flex-col">
+    <div className="min-h-screen bg-black text-zinc-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased flex flex-col">
       {/* 1. TOP NAVBAR (Outback Tabs: INÍCIO | NOSSOS PRODUTOS | RESTAURANTE & SALÃO | DELIVERY | ACESSO DO ATENDENTE) */}
       <Navbar isAdmin={false} />
 
       {/* 2. HUGE SPLIT HERO BANNER (Outback Style Seamless Cinematic Carousel) */}
       <section
-        className="relative w-full min-h-[620px] md:min-h-0 md:h-[580px] lg:h-[640px] bg-[#0c0a08] overflow-hidden"
+        className="relative w-full min-h-[620px] md:min-h-0 md:h-[580px] lg:h-[640px] bg-black overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -150,7 +150,7 @@ export default function HomePage() {
             >
               <div className="w-full h-full grid grid-cols-1 md:grid-cols-12">
                 {/* Left Side: Photography with seamless organic feathered blend */}
-                <div className="md:col-span-6 lg:col-span-7 relative h-[210px] sm:h-[240px] md:h-full overflow-hidden bg-[#0c0a08] shrink-0">
+                <div className="md:col-span-6 lg:col-span-7 relative h-[210px] sm:h-[240px] md:h-full overflow-hidden bg-black shrink-0">
                   <img
                     src={slide.photoUrl}
                     alt={slide.photoAlt}
@@ -164,24 +164,24 @@ export default function HomePage() {
                   />
 
                   {/* Multi-stage Feathered Gradients for Desktop */}
-                  <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/30 via-transparent 30% to-[#0c0a08] 95% pointer-events-none" />
-                  <div className="hidden md:block absolute inset-y-0 right-0 w-64 bg-gradient-to-r from-transparent via-[#0c0a08]/80 to-[#0c0a08] pointer-events-none z-10" />
+                  <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/30 via-transparent 30% to-black 95% pointer-events-none" />
+                  <div className="hidden md:block absolute inset-y-0 right-0 w-64 bg-gradient-to-r from-transparent via-black/80 to-black pointer-events-none z-10" />
 
                   {/* Bottom & Top feathering for Mobile */}
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0c0a08] via-[#0c0a08]/70 to-transparent pointer-events-none z-10 md:hidden" />
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none z-10 md:hidden" />
                   <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-black/50 to-transparent pointer-events-none z-10" />
 
                   {/* Floating Steakhouse Experience Tag */}
                   <div className="absolute top-4 left-4 z-20">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#181411] text-stone-300 border border-[#382b22] text-[10px] sm:text-xs font-bold uppercase font-['Oswald',sans-serif] tracking-wider shadow-md">
-                      <Flame size={12} className="text-[#c2410c] fill-[#c2410c]" />
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 text-zinc-300 border border-zinc-700 text-[10px] sm:text-xs font-bold uppercase font-['Oswald',sans-serif] tracking-wider shadow-md">
+                      <Flame size={12} className="text-orange-500 fill-orange-500" />
                       Steakhouse Experience
                     </span>
                   </div>
                 </div>
 
                 {/* Right Side: Seamless Dark Graphic Canvas */}
-                <div className="md:col-span-6 lg:col-span-5 relative h-full flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:p-8 lg:p-12 xl:p-14 bg-[#0c0a08] text-center md:text-left overflow-hidden">
+                <div className="md:col-span-6 lg:col-span-5 relative h-full flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:p-8 lg:p-12 xl:p-14 bg-black text-center md:text-left overflow-hidden">
 
                   {/* Content Container with soft stagger animation */}
                   <div className={`relative z-10 space-y-3 sm:space-y-4 md:space-y-4 lg:space-y-5 transition-all duration-700 ease-out transform ${
@@ -192,7 +192,7 @@ export default function HomePage() {
                       <span className="block text-[10px] sm:text-xs font-black uppercase tracking-widest text-amber-500 font-['Oswald',sans-serif]">
                         {slide.badge}
                       </span>
-                      <span className="block text-[9px] sm:text-[11px] font-bold text-stone-400 tracking-wider uppercase">
+                      <span className="block text-[9px] sm:text-[11px] font-bold text-zinc-400 tracking-wider uppercase">
                         {slide.tag}
                       </span>
                     </div>
@@ -203,12 +203,12 @@ export default function HomePage() {
                     </h1>
 
                     {/* Subtitle / Description */}
-                    <p className="text-xs sm:text-sm text-stone-300 max-w-md mx-auto md:mx-0 leading-relaxed line-clamp-3 sm:line-clamp-none">
+                    <p className="text-xs sm:text-sm text-zinc-300 max-w-md mx-auto md:mx-0 leading-relaxed line-clamp-3 sm:line-clamp-none">
                       {slide.subtitle}
                     </p>
 
                     {/* Operating / Info Tag */}
-                    <div className="inline-block px-3 py-1 rounded-lg bg-[#1a1411]/90 backdrop-blur-xs border border-[#382b22] text-[10px] sm:text-[11px] font-semibold text-amber-400/90 font-['Oswald',sans-serif] tracking-wider uppercase shadow-md">
+                    <div className="inline-block px-3 py-1 rounded-lg bg-zinc-900/90 backdrop-blur-xs border border-zinc-700 text-[10px] sm:text-[11px] font-semibold text-amber-400 font-['Oswald',sans-serif] tracking-wider uppercase shadow-md">
                       {slide.schedule}
                     </div>
 
@@ -216,7 +216,7 @@ export default function HomePage() {
                     <div className="pt-1 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2.5 sm:gap-3">
                       <button
                         onClick={handleNavigateToProducts}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] active:scale-95 text-white font-bold text-xs sm:text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg shadow-black/50 transition-all cursor-pointer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-orange-600 hover:bg-orange-500 active:scale-95 text-white font-bold text-xs sm:text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg shadow-black/50 transition-all cursor-pointer"
                       >
                         <span>{slide.ctaText}</span>
                         <ArrowRight size={16} />
@@ -224,25 +224,25 @@ export default function HomePage() {
 
                       <button
                         onClick={scrollToProducts}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-3.5 rounded-xl bg-[#171310] hover:bg-[#201a15] border border-[#382c23] hover:border-stone-600 text-stone-300 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
                       >
                         <span>Explorar Produtos</span>
                       </button>
                     </div>
 
                     {/* Carousel Navigation Indicators & Outback Signature Seal */}
-                    <div className="pt-2 sm:pt-3 border-t border-[#241d18]/70 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 text-stone-500">
+                    <div className="pt-2 sm:pt-3 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 text-zinc-500">
                       <div className="flex items-center gap-2.5">
-                        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black border border-[#3a2d24] text-[#c2410c] shrink-0">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black border border-zinc-700 text-orange-500 shrink-0">
                           <UtensilsCrossed size={13} />
                         </div>
-                        <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-stone-400 font-['Oswald',sans-serif]">
+                        <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-zinc-400 font-['Oswald',sans-serif]">
                           FOODEXPRESS STEAKHOUSE BRASIL
                         </span>
                       </div>
 
                       {/* Integrated Slider Dots & Controls (Never overlaps buttons!) */}
-                      <div className="flex items-center gap-2 bg-[#14100e] px-3 py-1.5 rounded-full border border-[#382b22] shadow-md">
+                      <div className="flex items-center gap-2 bg-[#121214] px-3 py-1.5 rounded-full border border-zinc-800 shadow-md">
                         <button
                           type="button"
                           onClick={(e) => {
@@ -294,15 +294,15 @@ export default function HomePage() {
           );
         })}
 
-        {/* Soft Bottom Gradient Transition into Section 3 (Gentle 48px dissolve, never blankets buttons) */}
-        <div className="absolute bottom-0 inset-x-0 h-10 md:h-12 bg-gradient-to-t from-[#0b0908] to-transparent pointer-events-none z-20" />
+        {/* Soft Bottom Gradient Transition into Section 3 */}
+        <div className="absolute bottom-0 inset-x-0 h-10 md:h-12 bg-gradient-to-t from-black to-transparent pointer-events-none z-20" />
       </section>
 
       {/* 3. "NOSSOS PRODUTOS" — 3 ITENS DEMONSTRATIVOS */}
       <section id="nossos-produtos" className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
         {/* Section Header */}
         <div className="text-center space-y-3 mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#161210] border border-[#33261e] text-xs font-bold text-orange-400 uppercase tracking-widest font-['Oswald',sans-serif]">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-orange-400 uppercase tracking-widest font-['Oswald',sans-serif]">
             <Flame size={14} className="fill-orange-500" />
             DESTAQUES DA CASA
           </div>
@@ -310,7 +310,7 @@ export default function HomePage() {
             VIVA O SABOR FOODEXPRESS
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 mx-auto rounded-full mt-3"></div>
-          <p className="text-sm sm:text-base text-stone-400 max-w-xl mx-auto pt-2 leading-relaxed">
+          <p className="text-sm sm:text-base text-zinc-400 max-w-xl mx-auto pt-2 leading-relaxed">
             Três criações lendárias para você conhecer o autêntico sabor da brasa. Para ver todos os lanches, porções, chopps e sobremesas, acesse a aba <strong className="text-amber-400 font-bold">Nossos Produtos</strong>.
           </p>
         </div>
@@ -321,18 +321,18 @@ export default function HomePage() {
             <div
               key={dish.id}
               onClick={() => navigate('/nossos-produtos')}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#14110f] border border-[#2b221c] shadow-xl hover:shadow-2xl hover:border-[#42342a] transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#121214] border border-zinc-800 shadow-xl hover:shadow-2xl hover:border-zinc-700 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
             >
               <div>
                 {/* Photo with Dark Overlay */}
-                <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#0c0a09]">
+                <div className="relative aspect-[16/11] w-full overflow-hidden bg-black">
                   <img
                     src={dish.imageUrl}
                     alt={dish.title}
                     className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-108"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#14110f] via-transparent to-black/30 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#121214] via-transparent to-black/30 pointer-events-none" />
 
                   {/* Badges */}
                   <div className="absolute top-3 left-3 z-10">
@@ -367,11 +367,11 @@ export default function HomePage() {
 
                   {/* Ingredient Tags */}
                   {dish.tags && (
-                    <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-[#1f1915]">
+                    <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-zinc-800">
                       {dish.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className="px-2 py-0.5 rounded-md bg-[#191411] border border-[#2e241d] text-[10px] font-semibold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wider"
+                          className="px-2 py-0.5 rounded-md bg-zinc-900 border border-zinc-700 text-[10px] font-semibold text-zinc-300 font-['Oswald',sans-serif] uppercase tracking-wider"
                         >
                           {tag}
                         </span>
@@ -382,9 +382,9 @@ export default function HomePage() {
               </div>
 
               {/* Price & Action */}
-              <div className="p-5 pt-0 flex items-center justify-between border-t border-[#201a15] mt-2 pt-4">
+              <div className="p-5 pt-0 flex items-center justify-between border-t border-zinc-800 mt-2 pt-4">
                 <div>
-                  <span className="block text-[10px] font-bold text-stone-500 uppercase font-['Oswald',sans-serif]">
+                  <span className="block text-[10px] font-bold text-zinc-500 uppercase font-['Oswald',sans-serif]">
                     A partir de
                   </span>
                   <span className="text-xl font-black text-amber-400 font-['Oswald',sans-serif] tracking-wide">
@@ -392,7 +392,7 @@ export default function HomePage() {
                   </span>
                 </div>
 
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] text-white text-xs font-bold font-['Oswald',sans-serif] uppercase tracking-wider shadow-sm transition-all">
+                <div className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold font-['Oswald',sans-serif] uppercase tracking-wider shadow-sm transition-all">
                   <span>Ver Detalhes</span>
                   <ArrowRight size={13} />
                 </div>
@@ -402,16 +402,16 @@ export default function HomePage() {
         </div>
 
         {/* Bottom CTA to Full Catalog Tab */}
-        <div className="mt-14 rounded-3xl bg-[#14100e] border border-[#2b221c] p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-14 rounded-3xl bg-[#121214] border border-zinc-800 p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-stone-400 uppercase tracking-widest font-['Oswald',sans-serif]">
-              <UtensilsCrossed size={14} className="text-[#c2410c]" />
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-zinc-400 uppercase tracking-widest font-['Oswald',sans-serif]">
+              <UtensilsCrossed size={14} className="text-orange-500" />
               CARDÁPIO COMPLETO NAS ABAS SUPERIORES
             </div>
             <h3 className="text-2xl sm:text-3xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-wide">
               Quer ver todas as nossas opções?
             </h3>
-            <p className="text-xs sm:text-sm text-stone-400 max-w-xl">
+            <p className="text-xs sm:text-sm text-zinc-400 max-w-xl">
               Acesse a aba <strong>Nossos Produtos</strong> para ver todos os cortes, lanches, porções, chopp artesanal e sobremesas com filtros e fotos detalhadas.
             </p>
           </div>
@@ -419,7 +419,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
             <button
               onClick={() => navigate('/nossos-produtos')}
-              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-[#c2410c] hover:bg-[#d9531e] active:scale-95 text-white font-bold text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg shadow-black/50 transition-all cursor-pointer"
+              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-orange-600 hover:bg-orange-500 active:scale-95 text-white font-bold text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg shadow-black/50 transition-all cursor-pointer"
             >
               <UtensilsCrossed size={16} />
               <span>Ver Nossos Produtos</span>
@@ -428,9 +428,9 @@ export default function HomePage() {
 
             <button
               onClick={() => navigate('/restaurante')}
-              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#191411] hover:bg-[#221b16] border border-[#3a2d24] hover:border-stone-600 text-stone-200 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
+              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-zinc-500 text-zinc-200 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
             >
-              <UtensilsCrossed size={16} className="text-[#c2410c]" />
+              <UtensilsCrossed size={16} className="text-orange-500" />
               <span>Conhecer o Salão</span>
             </button>
           </div>
@@ -438,13 +438,13 @@ export default function HomePage() {
       </section>
 
       {/* 4. EXPERIENCE SECTION: SALÃO OU DELIVERY */}
-      <section id="experiencia-section" className="w-full bg-[#0e0c0a] border-y border-[#241d18] py-16 px-4 sm:px-6 lg:px-8">
+      <section id="experiencia-section" className="w-full bg-black border-y border-zinc-800 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Card 1: Delivery */}
-            <div className="relative overflow-hidden rounded-3xl bg-[#14100e] border border-[#2b221c] p-8 sm:p-10 flex flex-col justify-between shadow-xl group">
+            <div className="relative overflow-hidden rounded-3xl bg-[#121214] border border-zinc-800 p-8 sm:p-10 flex flex-col justify-between shadow-xl group">
               <div className="space-y-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1e1713] border border-[#382b22] text-[#c2410c]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-900 border border-zinc-800 text-orange-500">
                   <Bike size={26} />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-black text-white font-['Oswald',sans-serif] uppercase tracking-wide">
@@ -467,7 +467,7 @@ export default function HomePage() {
             </div>
 
             {/* Card 2: Experiência no Salão */}
-            <div className="relative overflow-hidden rounded-3xl bg-[#14100e] border border-[#2b221c] p-8 sm:p-10 flex flex-col justify-between shadow-xl group">
+            <div className="relative overflow-hidden rounded-3xl bg-[#121214] border border-zinc-800 p-8 sm:p-10 flex flex-col justify-between shadow-xl group">
               <div className="space-y-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400">
                   <UtensilsCrossed size={26} />
@@ -475,7 +475,7 @@ export default function HomePage() {
                 <h3 className="text-2xl sm:text-3xl font-black text-white font-['Oswald',sans-serif] uppercase tracking-wide">
                   Experiência no Salão
                 </h3>
-                <p className="text-sm text-stone-400 leading-relaxed max-w-md">
+                <p className="text-sm text-zinc-400 leading-relaxed max-w-md">
                   Venha viver o clima acolhedor do nosso steakhouse. Salão climatizado com iluminação quente, chopp artesanal servido na caneca congelada e pedidos direto na mesa com acompanhamento em tempo real.
                 </p>
               </div>
@@ -483,7 +483,7 @@ export default function HomePage() {
               <div className="pt-8">
                 <button
                   onClick={() => navigate('/restaurante')}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#1e1814] hover:bg-[#271f1a] border border-[#382b22] text-stone-200 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
                 >
                   <span>Conhecer Restaurante &amp; Salão</span>
                   <ArrowRight size={15} />
@@ -496,56 +496,56 @@ export default function HomePage() {
 
       {/* 5. REVIEWS & SOCIAL PROOF */}
       <section className="w-full py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#181310] border border-[#2e231b] text-amber-400 text-xs font-bold mb-4 font-['Oswald',sans-serif] uppercase tracking-wider">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-amber-400 text-xs font-bold mb-4 font-['Oswald',sans-serif] uppercase tracking-wider">
           <Star size={14} className="fill-amber-400 text-amber-400" />
           Avaliação 4.9 de 5.0 (Mais de 500 Clientes)
         </div>
         <h3 className="text-2xl sm:text-3xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-wide">
           O Que Nossos Clientes Dizem
         </h3>
-        <p className="text-xs sm:text-sm text-stone-400 max-w-lg mx-auto mt-2">
+        <p className="text-xs sm:text-sm text-zinc-400 max-w-lg mx-auto mt-2">
           A paixão pelo fogo e pela brasa refletida no prato de quem experimenta.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 text-left">
-          <div className="p-6 rounded-2xl bg-[#120f0d] border border-[#241d18] space-y-3">
+          <div className="p-6 rounded-2xl bg-[#121214] border border-zinc-800 space-y-3">
             <div className="flex text-amber-400 gap-1">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} size={14} className="fill-amber-400" />
               ))}
             </div>
-            <p className="text-xs text-stone-300 italic">
+            <p className="text-xs text-zinc-300 italic">
               "Lanche espetacular! A carne com gosto autêntico de brasa e o pão macio selado na manteiga. Lembra muito os burgers do Outback, mas com toque artesanal único."
             </p>
-            <span className="block text-[11px] font-bold text-stone-400 font-['Oswald',sans-serif] uppercase">
+            <span className="block text-[11px] font-bold text-zinc-400 font-['Oswald',sans-serif] uppercase">
               Rodrigo S. · Cliente Delivery
             </span>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#120f0d] border border-[#241d18] space-y-3">
+          <div className="p-6 rounded-2xl bg-[#121214] border border-zinc-800 space-y-3">
             <div className="flex text-amber-400 gap-1">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} size={14} className="fill-amber-400" />
               ))}
             </div>
-            <p className="text-xs text-stone-300 italic">
+            <p className="text-xs text-zinc-300 italic">
               "As batatas com cheddar e bacon são surreais, e a Bloomin' Onion é crocante demais. Pedido chegou super rápido e quente em casa."
             </p>
-            <span className="block text-[11px] font-bold text-stone-400 font-['Oswald',sans-serif] uppercase">
+            <span className="block text-[11px] font-bold text-zinc-400 font-['Oswald',sans-serif] uppercase">
               Camila M. · Cliente Frequente
             </span>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#120f0d] border border-[#241d18] space-y-3">
+          <div className="p-6 rounded-2xl bg-[#121214] border border-zinc-800 space-y-3">
             <div className="flex text-amber-400 gap-1">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} size={14} className="fill-amber-400" />
               ))}
             </div>
-            <p className="text-xs text-stone-300 italic">
+            <p className="text-xs text-zinc-300 italic">
               "O brownie no final é obrigatório. Atendimento impecável no salão e o cardápio digital é super rápido de pedir. 10/10."
             </p>
-            <span className="block text-[11px] font-bold text-stone-400 font-['Oswald',sans-serif] uppercase">
+            <span className="block text-[11px] font-bold text-zinc-400 font-['Oswald',sans-serif] uppercase">
               Lucas V. · Cliente Salão
             </span>
           </div>
@@ -553,11 +553,11 @@ export default function HomePage() {
       </section>
 
       {/* 6. STEAKHOUSE FOOTER */}
-      <footer className="w-full bg-[#090807] border-t border-[#241d18] text-stone-300 relative overflow-hidden mt-auto">
+      <footer className="w-full bg-black border-t border-zinc-800 text-zinc-300 relative overflow-hidden mt-auto">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent"></div>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#1f1915]">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-zinc-800">
             {/* Col 1: Brand & Manifesto */}
             <div className="md:col-span-6 space-y-5">
               <div className="flex items-center gap-3.5">
@@ -574,18 +574,18 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <p className="text-sm text-stone-400 max-w-lg leading-relaxed">
+              <p className="text-sm text-zinc-400 max-w-lg leading-relaxed">
                 Hambúrgueres artesanais preparados com cortes nobres grelhados na brasa viva, queijos fundidos e receitas autorais exclusivas no autêntico padrão steakhouse. Sabor marcante e generosidade do início ao fim.
               </p>
 
               <div className="flex flex-wrap gap-2 pt-1">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14100d] border border-[#2d221a] text-xs font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-300 font-['Oswald',sans-serif] uppercase tracking-wider">
                   <Flame size={12} className="text-orange-500 fill-orange-500" /> Grelhado no Fogo
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14100d] border border-[#2d221a] text-xs font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-300 font-['Oswald',sans-serif] uppercase tracking-wider">
                   <Sparkles size={12} className="text-amber-400" /> Blends Nobres 180g
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14100d] border border-[#2d221a] text-xs font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-300 font-['Oswald',sans-serif] uppercase tracking-wider">
                   <Bike size={12} className="text-emerald-400" /> Entrega Express
                 </span>
               </div>
@@ -600,19 +600,19 @@ export default function HomePage() {
                 </h4>
               </div>
 
-              <div className="space-y-3 text-xs text-stone-400">
-                <div className="rounded-xl bg-[#13100d] border border-[#261f19] p-3.5 space-y-2">
+              <div className="space-y-3 text-xs text-zinc-400">
+                <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-3.5 space-y-2">
                   <div className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span className="font-bold text-white uppercase font-['Oswald',sans-serif] tracking-wide">Aberto Hoje</span>
                   </div>
-                  <p className="text-stone-300">Terça a Domingo: <strong className="text-amber-400 font-['Oswald',sans-serif]">18:00 às 23:30</strong></p>
-                  <p className="text-[11px] text-stone-500">Segunda-feira: Fechado para descanso da equipe</p>
+                  <p className="text-zinc-300">Terça a Domingo: <strong className="text-amber-400 font-['Oswald',sans-serif]">18:00 às 23:30</strong></p>
+                  <p className="text-[11px] text-zinc-500">Segunda-feira: Fechado para descanso da equipe</p>
                 </div>
 
-                <div className="flex items-center gap-2 text-stone-400 text-xs">
+                <div className="flex items-center gap-2 text-zinc-400 text-xs">
                   <Clock size={14} className="text-amber-500 shrink-0" />
-                  <span>Tempo médio: <strong className="text-stone-200">30 a 45 min</strong></span>
+                  <span>Tempo médio: <strong className="text-zinc-200">30 a 45 min</strong></span>
                 </div>
               </div>
             </div>
@@ -626,7 +626,7 @@ export default function HomePage() {
                 </h4>
               </div>
 
-              <div className="space-y-2 text-xs text-stone-400">
+              <div className="space-y-2 text-xs text-zinc-400">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                   <span>Pix (aprovação instantânea no balcão)</span>
@@ -644,7 +644,7 @@ export default function HomePage() {
               <div className="pt-2">
                 <button
                   onClick={() => navigate('/admin/login')}
-                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#171310] hover:bg-[#201a15] border border-[#382c23] hover:border-orange-500/70 text-stone-200 hover:text-white text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] transition-all shadow-md cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-orange-500/70 text-zinc-200 hover:text-white text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] transition-all shadow-md cursor-pointer"
                 >
                   <ShieldCheck size={15} className="text-orange-500" />
                   <span>Acesso do Atendente</span>
