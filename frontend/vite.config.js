@@ -4,5 +4,6 @@ import { defineConfig } from 'vite'
 
 // Standalone Front-end (Zero backend/database dependency)
 export default defineConfig({
+  base: './',
   plugins: [react(), tailwindcss()],
 })

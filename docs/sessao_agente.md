@@ -67,6 +67,17 @@
 
 ---
 
+### [2026-11-12 21:45] — Otimização Total do CI/CD no GitHub Actions & Suporte Duplo Pages
+- **Papel Ativo:** Engenheiro DevOps & Confiabilidade de Sistemas
+- **Etapa SDD:** `Fase 3 — CI/CD, Qualidade de Código & Automação de Deploy`
+- **Ações Executadas:**
+  1. Configuração de `base: './'` no `vite.config.js` para garantir integridade de carregamento de assets estáticos em qualquer ambiente e subcaminho.
+  2. Ajuste fino na esteira `.github/workflows/node.js.yml`:
+     - Remoção da dependência frágil do `actions/configure-pages@v5` (que falhava caso a API do Pages não estivesse pré-habilitada).
+     - Implementação de suporte duplo resiliente de publicação: deploy automatizado via branch `gh-pages` com `peaceiris/actions-gh-pages@v4` e compatibilidade com artefatos de GitHub Pages Actions.
+     - Garantia de passagem 100% verde nos passos obrigatórios de qualidade (`npm ci`, `npm run lint` e `npm run build`).
+- **Status:** Concluído com sucesso.
+
 ### [2026-11-12 20:55] — Correção de Linter CI/CD e Restauração da Tela de Login do Atendente
 - **Papel Ativo:** Engenheiro de Confiabilidade & Arquiteto Front-End
 - **Etapa SDD:** `Fase 3 — CI/CD, Manutenibilidade e Interface do Operador`
