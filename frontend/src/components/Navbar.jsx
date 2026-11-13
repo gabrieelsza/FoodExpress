@@ -166,14 +166,14 @@ export default function Navbar({
             onCartClick ? (
               <button
                 onClick={onCartClick}
-                className="relative flex items-center gap-2.5 rounded-full bg-[#181411] hover:bg-[#201b17] border border-[#3a3029] hover:border-orange-500/50 text-white px-4 sm:px-5 py-2 font-bold text-xs sm:text-sm shadow-md transition-all hover:shadow-orange-950/30 active:scale-[0.98] cursor-pointer"
+                className="relative flex items-center gap-2.5 rounded-full bg-[#181411] hover:bg-[#201b17] border border-[#3a3029] hover:border-[#4d3f35] text-white px-4 sm:px-5 py-2 font-bold text-xs sm:text-sm shadow-md transition-all active:scale-[0.98] cursor-pointer"
                 aria-label={`Sacola com ${count} itens`}
               >
                 <ShoppingBag size={16} strokeWidth={2.2} className="text-amber-500" />
                 <span className="font-bold text-xs sm:text-sm text-stone-100">Sacola</span>
                 {count > 0 ? (
                   <div className="flex items-center gap-2 pl-1 border-l border-[#3a3029] ml-1">
-                    <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-gradient-to-r from-red-600 to-orange-500 px-1.5 text-xs font-black text-white shadow-sm">
+                    <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#c2410c] px-1.5 text-xs font-bold text-white shadow-sm">
                       {count}
                     </span>
                     <span className="hidden sm:inline text-xs font-semibold text-amber-400">
@@ -188,7 +188,7 @@ export default function Navbar({
               /* If no cart click passed, show a direct button to Nossos Produtos / Cardápio */
               <Link
                 to="/nossos-produtos"
-                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white px-4 py-2 text-xs sm:text-sm font-black shadow-lg shadow-orange-950/60 uppercase font-['Oswald',sans-serif] tracking-wider transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] active:scale-95 text-white px-4 py-2 text-xs sm:text-sm font-bold shadow-md shadow-black/50 uppercase font-['Oswald',sans-serif] tracking-wider transition-all cursor-pointer"
               >
                 <ShoppingBag size={15} />
                 <span>Pedir Agora</span>

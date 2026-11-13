@@ -387,7 +387,7 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
         <div className="flex gap-2 px-4 pb-4">
           <button
             onClick={onAdvance}
-            className="flex-1 h-11 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-semibold text-sm rounded-xl transition shadow-lg shadow-orange-500/20 cursor-pointer"
+            className="flex-1 h-11 bg-[#c2410c] hover:bg-[#d9531e] active:bg-[#9a3412] text-white font-semibold text-sm rounded-xl transition shadow-md shadow-black/30 cursor-pointer"
           >
             {getNextStatusLabel(order.status)}
           </button>

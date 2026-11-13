@@ -64,7 +64,7 @@ export default function OrderStatusStepper({ status }) {
                     isCompleted && !isActive
                       ? 'border-emerald-500 bg-emerald-500 text-white'
                       : isActive
-                        ? 'border-orange-500 bg-orange-500 text-white shadow-lg shadow-orange-500/30'
+                        ? 'border-orange-500 bg-orange-500 text-white shadow-md shadow-black/40'
                         : 'border-neutral-700 bg-neutral-900 text-neutral-500'
                   }`}
                 >

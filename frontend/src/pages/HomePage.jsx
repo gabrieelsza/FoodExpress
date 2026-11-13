@@ -173,48 +173,15 @@ export default function HomePage() {
 
                   {/* Floating Steakhouse Experience Tag */}
                   <div className="absolute top-4 left-4 z-20">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-amber-400 border border-orange-500/40 text-[10px] sm:text-xs font-black uppercase font-['Oswald',sans-serif] tracking-wider shadow-xl">
-                      <Flame size={12} className="text-orange-500 fill-orange-500" />
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#181411] text-stone-300 border border-[#382b22] text-[10px] sm:text-xs font-bold uppercase font-['Oswald',sans-serif] tracking-wider shadow-md">
+                      <Flame size={12} className="text-[#c2410c] fill-[#c2410c]" />
                       Steakhouse Experience
                     </span>
                   </div>
                 </div>
 
-                {/* Right Side: Seamless Dark Graphic Canvas with Warm Glow & Organic Accents */}
-                <div className="md:col-span-6 lg:col-span-5 relative h-full flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:p-8 lg:p-12 xl:p-14 bg-gradient-to-b md:bg-gradient-to-r from-[#0c0a08] via-[#120e0b] to-[#0a0807] text-center md:text-left overflow-hidden">
-                  {/* Hearth Fire Warm Glow behind transition */}
-                  <div className="absolute top-1/2 -left-20 -translate-y-1/2 w-72 h-72 bg-orange-600/15 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute -top-24 -right-24 w-80 h-80 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute -bottom-24 right-1/4 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
-
-                  {/* Subtle Outback organic curved wave lines creating fluidity */}
-                  <svg
-                    className="hidden md:block absolute -left-16 top-0 bottom-0 h-full w-36 text-orange-500/20 pointer-events-none z-10"
-                    viewBox="0 0 120 800"
-                    preserveAspectRatio="none"
-                    fill="none"
-                  >
-                    <path
-                      d="M20,0 C90,220 10,380 80,560 C110,660 30,800 20,800"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeDasharray="6 8"
-                      className="opacity-75"
-                    />
-                    <path
-                      d="M50,0 C120,240 40,420 100,600 C130,700 60,800 50,800"
-                      stroke="url(#warmGradient)"
-                      strokeWidth="1.5"
-                      className="opacity-50"
-                    />
-                    <defs>
-                      <linearGradient id="warmGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#ea580c" />
-                        <stop offset="50%" stopColor="#f59e0b" />
-                        <stop offset="100%" stopColor="#dc2626" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
+                {/* Right Side: Seamless Dark Graphic Canvas */}
+                <div className="md:col-span-6 lg:col-span-5 relative h-full flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:p-8 lg:p-12 xl:p-14 bg-[#0c0a08] text-center md:text-left overflow-hidden">
 
                   {/* Content Container with soft stagger animation */}
                   <div className={`relative z-10 space-y-3 sm:space-y-4 md:space-y-4 lg:space-y-5 transition-all duration-700 ease-out transform ${
@@ -249,7 +216,7 @@ export default function HomePage() {
                     <div className="pt-1 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2.5 sm:gap-3">
                       <button
                         onClick={handleNavigateToProducts}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-xs sm:text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-xl shadow-orange-950/80 transition-all cursor-pointer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] active:scale-95 text-white font-bold text-xs sm:text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg shadow-black/50 transition-all cursor-pointer"
                       >
                         <span>{slide.ctaText}</span>
                         <ArrowRight size={16} />
@@ -257,7 +224,7 @@ export default function HomePage() {
 
                       <button
                         onClick={scrollToProducts}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-3.5 rounded-xl bg-[#171310]/90 hover:bg-[#201a15] border border-[#382c23] hover:border-orange-500/70 text-stone-300 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-3.5 rounded-xl bg-[#171310] hover:bg-[#201a15] border border-[#382c23] hover:border-stone-600 text-stone-300 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
                       >
                         <span>Explorar Produtos</span>
                       </button>
@@ -266,7 +233,7 @@ export default function HomePage() {
                     {/* Carousel Navigation Indicators & Outback Signature Seal */}
                     <div className="pt-2 sm:pt-3 border-t border-[#241d18]/70 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 text-stone-500">
                       <div className="flex items-center gap-2.5">
-                        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black border border-orange-500/40 text-orange-500 shrink-0">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-black border border-[#3a2d24] text-[#c2410c] shrink-0">
                           <UtensilsCrossed size={13} />
                         </div>
                         <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-stone-400 font-['Oswald',sans-serif]">
@@ -275,14 +242,14 @@ export default function HomePage() {
                       </div>
 
                       {/* Integrated Slider Dots & Controls (Never overlaps buttons!) */}
-                      <div className="flex items-center gap-2 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#382b22] shadow-lg">
+                      <div className="flex items-center gap-2 bg-[#14100e] px-3 py-1.5 rounded-full border border-[#382b22] shadow-md">
                         <button
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
                             setCurrentSlideIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
                           }}
-                          className="text-stone-400 hover:text-amber-400 transition-colors p-0.5 cursor-pointer"
+                          className="text-stone-400 hover:text-white transition-colors p-0.5 cursor-pointer"
                           aria-label="Slide anterior"
                         >
                           <ChevronLeft size={14} />
@@ -299,7 +266,7 @@ export default function HomePage() {
                               }}
                               className={`h-2 transition-all duration-300 rounded-full cursor-pointer ${
                                 sIdx === currentSlideIndex
-                                  ? 'w-7 bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 shadow-md shadow-orange-500/50'
+                                  ? 'w-6 bg-[#c2410c]'
                                   : 'w-2 bg-stone-700 hover:bg-stone-500'
                               }`}
                               aria-label={`Ir para slide ${sIdx + 1}`}
@@ -313,7 +280,7 @@ export default function HomePage() {
                             e.stopPropagation();
                             setCurrentSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
                           }}
-                          className="text-stone-400 hover:text-amber-400 transition-colors p-0.5 cursor-pointer"
+                          className="text-stone-400 hover:text-white transition-colors p-0.5 cursor-pointer"
                           aria-label="Próximo slide"
                         >
                           <ChevronRight size={14} />
@@ -354,7 +321,7 @@ export default function HomePage() {
             <div
               key={dish.id}
               onClick={() => navigate('/nossos-produtos')}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#14110f] border border-[#2b221c] shadow-xl hover:shadow-2xl hover:shadow-orange-950/40 hover:border-orange-500/60 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#14110f] border border-[#2b221c] shadow-xl hover:shadow-2xl hover:border-[#42342a] transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
             >
               <div>
                 {/* Photo with Dark Overlay */}
@@ -425,7 +392,7 @@ export default function HomePage() {
                   </span>
                 </div>
 
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 text-white text-xs font-black font-['Oswald',sans-serif] uppercase tracking-wider shadow-md shadow-orange-950/60 transition-all">
+                <div className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] text-white text-xs font-bold font-['Oswald',sans-serif] uppercase tracking-wider shadow-sm transition-all">
                   <span>Ver Detalhes</span>
                   <ArrowRight size={13} />
                 </div>
@@ -435,10 +402,10 @@ export default function HomePage() {
         </div>
 
         {/* Bottom CTA to Full Catalog Tab */}
-        <div className="mt-14 rounded-3xl bg-gradient-to-r from-[#17120e] via-[#1c1612] to-[#17120e] border border-[#33261e] p-8 sm:p-10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-14 rounded-3xl bg-[#14100e] border border-[#2b221c] p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-widest font-['Oswald',sans-serif]">
-              <UtensilsCrossed size={14} className="text-orange-500" />
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-stone-400 uppercase tracking-widest font-['Oswald',sans-serif]">
+              <UtensilsCrossed size={14} className="text-[#c2410c]" />
               CARDÁPIO COMPLETO NAS ABAS SUPERIORES
             </div>
             <h3 className="text-2xl sm:text-3xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-wide">
@@ -452,7 +419,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
             <button
               onClick={() => navigate('/nossos-produtos')}
-              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-xl shadow-orange-950/80 transition-all cursor-pointer"
+              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-[#c2410c] hover:bg-[#d9531e] active:scale-95 text-white font-bold text-sm uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg shadow-black/50 transition-all cursor-pointer"
             >
               <UtensilsCrossed size={16} />
               <span>Ver Nossos Produtos</span>
@@ -461,9 +428,9 @@ export default function HomePage() {
 
             <button
               onClick={() => navigate('/restaurante')}
-              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#191411] hover:bg-[#221b16] border border-[#3a2d24] hover:border-orange-500/60 text-stone-200 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
+              className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#191411] hover:bg-[#221b16] border border-[#3a2d24] hover:border-stone-600 text-stone-200 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
             >
-              <UtensilsCrossed size={16} className="text-orange-500" />
+              <UtensilsCrossed size={16} className="text-[#c2410c]" />
               <span>Conhecer o Salão</span>
             </button>
           </div>
@@ -477,7 +444,7 @@ export default function HomePage() {
             {/* Card 1: Delivery */}
             <div className="relative overflow-hidden rounded-3xl bg-[#14100e] border border-[#2b221c] p-8 sm:p-10 flex flex-col justify-between shadow-xl group">
               <div className="space-y-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10 border border-orange-500/30 text-orange-400">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1e1713] border border-[#382b22] text-[#c2410c]">
                   <Bike size={26} />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-black text-white font-['Oswald',sans-serif] uppercase tracking-wide">
@@ -491,7 +458,7 @@ export default function HomePage() {
               <div className="pt-8">
                 <button
                   onClick={handleNavigateToProducts}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-md shadow-black/50 cursor-pointer"
                 >
                   <span>Fazer Pedido Agora</span>
                   <ArrowRight size={15} />

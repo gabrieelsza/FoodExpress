@@ -226,8 +226,8 @@ export default function ProductsPage() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`group relative overflow-hidden rounded-2xl bg-[#14110f] border p-5 flex flex-col justify-between min-h-[190px] shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer ${
                   isSelected
-                    ? 'border-orange-500 shadow-orange-950/50 ring-2 ring-orange-500/30'
-                    : 'border-[#2b221c] hover:border-orange-500/60'
+                    ? 'border-[#c2410c] shadow-lg shadow-black/50 ring-1 ring-[#c2410c]'
+                    : 'border-[#2b221c] hover:border-[#42342a]'
                 }`}
               >
                 <div className="absolute inset-0 opacity-20 group-hover:opacity-35 transition-opacity">
@@ -236,7 +236,7 @@ export default function ProductsPage() {
                 </div>
 
                 <div className="relative z-10 space-y-1.5">
-                  <span className="inline-block px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-red-950/90 text-amber-300 border border-red-800/60 font-['Oswald',sans-serif]">
+                  <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#181310] text-stone-300 border border-[#382b22] font-['Oswald',sans-serif]">
                     {cat.badge}
                   </span>
                   <h3 className="text-lg font-black text-white font-['Oswald',sans-serif] uppercase tracking-wide leading-tight group-hover:text-amber-400 transition-colors">
@@ -267,13 +267,13 @@ export default function ProductsPage() {
               setSelectedCategory('ALL');
               setSearchQuery('');
             }}
-            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-black whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
+            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
               selectedCategory === 'ALL'
-                ? 'bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/80 border border-orange-400/50'
+                ? 'bg-[#c2410c] text-white shadow-md shadow-black/50 border border-[#832604]'
                 : 'bg-[#15110f] text-stone-400 hover:bg-[#1f1915] hover:text-stone-200 border border-[#2b221c]'
             }`}
           >
-            <Flame size={14} className={selectedCategory === 'ALL' ? 'text-white' : 'text-orange-500'} />
+            <Flame size={14} className={selectedCategory === 'ALL' ? 'text-white' : 'text-[#c2410c]'} />
             <span>Todos os Pratos ({allProducts.length})</span>
           </button>
 
@@ -284,9 +284,9 @@ export default function ProductsPage() {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-black whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
+                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold whitespace-nowrap transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer ${
                   isSelected
-                    ? 'bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/80 border border-orange-400/50'
+                    ? 'bg-[#c2410c] text-white shadow-md shadow-black/50 border border-[#832604]'
                     : 'bg-[#15110f] text-stone-400 hover:bg-[#1f1915] hover:text-stone-200 border border-[#2b221c]'
                 }`}
               >

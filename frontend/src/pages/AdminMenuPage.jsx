@@ -260,7 +260,7 @@ export default function AdminMenuPage() {
             {activeTab === 'categories' ? (
               <button
                 onClick={() => handleOpenCategoryModal()}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm rounded-xl shadow-lg shadow-orange-500/25 transition-all active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#c2410c] hover:bg-[#d9531e] text-white font-medium text-sm rounded-xl shadow-md shadow-black/30 transition-all active:scale-95 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
                 Nova Categoria
@@ -268,7 +268,7 @@ export default function AdminMenuPage() {
             ) : (
               <button
                 onClick={() => handleOpenProductModal()}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white font-medium text-sm rounded-xl shadow-lg shadow-orange-500/25 transition-all active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#c2410c] hover:bg-[#d9531e] text-white font-medium text-sm rounded-xl shadow-md shadow-black/30 transition-all active:scale-95 cursor-pointer"
               >
                 <Plus className="w-4 h-4" />
                 Novo Produto

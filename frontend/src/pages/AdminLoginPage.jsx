@@ -45,16 +45,12 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0908] text-stone-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased flex flex-col selection:bg-orange-600">
+    <div className="min-h-screen bg-[#0b0908] text-stone-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased flex flex-col">
       {/* 1. TOP NAVBAR (Consistente com todas as outras abas do FoodExpress) */}
       <Navbar isAdmin={false} />
 
       {/* 2. MAIN LOGIN AREA */}
       <main className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
-        {/* Ambient Warm Ember Glows */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
-
         {/* Dual-Panel Steakhouse Card with User Burger Image */}
         <div className="relative z-10 w-full max-w-4xl rounded-3xl overflow-hidden border border-[#2e231c] bg-[#14100e] shadow-2xl shadow-black/80 grid grid-cols-1 md:grid-cols-12 transition-all duration-300">
           
@@ -69,12 +65,12 @@ export default function AdminLoginPage() {
             {/* Multi-stage feathered dark overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0e0c0a] via-[#0e0c0a]/60 to-black/40" />
             <div className="absolute inset-y-0 right-0 w-28 bg-gradient-to-r from-transparent via-[#14100e]/70 to-[#14100e]" />
-            <div className="absolute inset-0 bg-orange-950/20 mix-blend-color" />
+            <div className="absolute inset-0 bg-[#120d0a]/30" />
 
             {/* Top Badge */}
             <div className="relative z-10">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-amber-400 border border-orange-500/40 text-[10px] font-black uppercase font-['Oswald',sans-serif] tracking-wider shadow-lg">
-                <Flame size={12} className="text-orange-500 fill-orange-500" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#161210] text-stone-300 border border-[#382b22] text-[10px] font-bold uppercase font-['Oswald',sans-serif] tracking-wider shadow-md">
+                <Flame size={12} className="text-[#c2410c] fill-[#c2410c]" />
                 Painel Operacional
               </span>
             </div>
@@ -93,11 +89,11 @@ export default function AdminLoginPage() {
               {/* Status Points */}
               <div className="pt-2 space-y-2 border-t border-white/10 text-[11px] text-stone-300 font-medium">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={13} className="text-orange-500 shrink-0" />
+                  <CheckCircle2 size={13} className="text-[#c2410c] shrink-0" />
                   <span>Fila de pedidos com máquina de estados</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 size={13} className="text-orange-500 shrink-0" />
+                  <CheckCircle2 size={13} className="text-[#c2410c] shrink-0" />
                   <span>Edição de itens, preços e adicionais</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -216,7 +212,7 @@ export default function AdminLoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-12 mt-2 bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-[0.99] text-white font-black text-sm uppercase tracking-wider font-['Oswald',sans-serif] rounded-xl shadow-xl shadow-orange-950/80 transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full h-12 mt-2 bg-[#c2410c] hover:bg-[#d9531e] active:scale-[0.99] text-white font-bold text-sm uppercase tracking-wider font-['Oswald',sans-serif] rounded-xl shadow-lg shadow-black/60 transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
               >
                 {loading ? (
                   <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />

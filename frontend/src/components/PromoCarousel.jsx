@@ -113,7 +113,7 @@ export default function PromoCarousel({ onActionClick }) {
   return (
     <div className="w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
       <div
-        className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#2e231c] bg-[#120e0c] shadow-2xl shadow-orange-950/20 group transition-all duration-300 hover:border-orange-500/30"
+        className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#2e231c] bg-[#120e0c] shadow-xl shadow-black/60 group transition-all duration-300 hover:border-[#3d3127]"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={handleTouchStart}
@@ -135,10 +135,10 @@ export default function PromoCarousel({ onActionClick }) {
               >
                 {/* Left Content Column */}
                 <div className="relative z-10 w-full md:w-3/5 lg:w-7/12 p-6 sm:p-8 lg:p-10 flex flex-col justify-center space-y-3 sm:space-y-4">
-                  {/* Category / Promo Badge (Unified Steakhouse Fire Theme) */}
+                  {/* Category / Promo Badge (Unified Steakhouse Theme) */}
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider bg-orange-950/80 text-amber-400 border border-orange-500/40 shadow-sm font-['Oswald',sans-serif]">
-                      <SlideIcon size={12} className="text-orange-500 shrink-0" />
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-[#1c1714] text-stone-300 border border-[#382b22] shadow-sm font-['Oswald',sans-serif]">
+                      <SlideIcon size={12} className="text-[#c2410c] shrink-0" />
                       {slide.badge}
                     </span>
                     {slide.saveText && (
@@ -166,14 +166,14 @@ export default function PromoCarousel({ onActionClick }) {
                           {slide.originalPrice}
                         </span>
                       )}
-                      <span className="text-xl sm:text-2xl lg:text-3xl font-black text-amber-400 tracking-tight font-['Oswald',sans-serif]">
+                      <span className="text-xl sm:text-2xl lg:text-3xl font-black text-stone-100 tracking-tight font-['Oswald',sans-serif]">
                         {slide.promoPrice}
                       </span>
                     </div>
 
                     <button
                       onClick={() => onActionClick && onActionClick(slide)}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white font-black text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-lg shadow-orange-950/70 transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] active:scale-95 text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-md shadow-black/50 transition-all cursor-pointer"
                     >
                       <span>{slide.ctaText}</span>
                       <ArrowRight size={14} />
@@ -217,7 +217,7 @@ export default function PromoCarousel({ onActionClick }) {
         </button>
 
         {/* Dot Indicators */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-[#382b22] shadow-lg">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#14100e] border border-[#382b22] shadow-md">
           {PROMO_SLIDES.map((_, idx) => (
             <button
               key={idx}
@@ -225,7 +225,7 @@ export default function PromoCarousel({ onActionClick }) {
               aria-label={`Ir para o slide ${idx + 1}`}
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 idx === currentIndex
-                  ? 'w-7 bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 shadow-md shadow-orange-500/50'
+                  ? 'w-6 bg-[#c2410c]'
                   : 'w-2 bg-stone-700 hover:bg-stone-500'
               }`}
             />

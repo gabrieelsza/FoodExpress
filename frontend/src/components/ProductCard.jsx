@@ -17,7 +17,7 @@ export default function ProductCard({ product, onAdd }) {
   return (
     <div
       onClick={() => onAdd(product)}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#14110f] border border-[#2a221c] shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-orange-500/60 hover:shadow-2xl hover:shadow-orange-950/30 hover:-translate-y-1 cursor-pointer text-stone-100"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#14110f] border border-[#2a221c] shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-[#423429] hover:shadow-xl hover:-translate-y-1 cursor-pointer text-stone-100"
     >
       <div>
         {/* Product Image */}
@@ -48,8 +48,8 @@ export default function ProductCard({ product, onAdd }) {
 
           {/* Sabor da Brasa badge on first few items or burgers */}
           <div className="absolute top-2.5 right-2.5 z-10">
-            <span className="inline-flex items-center gap-1 rounded-full bg-red-950/85 backdrop-blur-xs px-2 py-0.5 text-[10px] font-black text-amber-300 border border-red-700/60 shadow-md uppercase font-['Oswald',sans-serif] tracking-wider">
-              <Flame size={11} className="text-orange-500 fill-orange-500" />
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#181310] px-2 py-0.5 text-[10px] font-bold text-stone-300 border border-[#382b22] shadow-sm uppercase font-['Oswald',sans-serif] tracking-wider">
+              <Flame size={11} className="text-[#c2410c] fill-[#c2410c]" />
               Na Brasa
             </span>
           </div>
@@ -57,7 +57,7 @@ export default function ProductCard({ product, onAdd }) {
 
         {/* Content */}
         <div className="p-4 sm:p-4.5">
-          <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-1 font-['Oswald',sans-serif] tracking-wide uppercase">
+          <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-stone-200 transition-colors line-clamp-1 font-['Oswald',sans-serif] tracking-wide uppercase">
             {product.name}
           </h3>
 
@@ -75,7 +75,7 @@ export default function ProductCard({ product, onAdd }) {
               A partir de
             </span>
           )}
-          <span className="text-lg sm:text-xl font-extrabold text-amber-400 font-['Oswald',sans-serif] tracking-wide">
+          <span className="text-lg sm:text-xl font-extrabold text-stone-100 font-['Oswald',sans-serif] tracking-wide">
             {formatPrice(minPrice)}
           </span>
         </div>
@@ -86,7 +86,7 @@ export default function ProductCard({ product, onAdd }) {
             e.stopPropagation();
             onAdd(product);
           }}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-95 text-white px-3.5 py-1.5 text-xs sm:text-sm font-black shadow-md shadow-orange-950/60 transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] active:scale-95 text-white px-3.5 py-1.5 text-xs sm:text-sm font-bold shadow-md shadow-black/50 transition-all uppercase font-['Oswald',sans-serif] tracking-wider cursor-pointer"
         >
           <Plus size={15} strokeWidth={2.5} />
           <span>Pedir</span>

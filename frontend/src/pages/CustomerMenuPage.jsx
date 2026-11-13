@@ -350,16 +350,16 @@ export default function CustomerMenuPage() {
                       key={cat.id}
                       data-active={isSelected}
                       onClick={() => handleCategoryClick(cat.id)}
-                      className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-black whitespace-nowrap transition-all duration-200 cursor-pointer uppercase font-['Oswald',sans-serif] tracking-wider ${
+                      className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer uppercase font-['Oswald',sans-serif] tracking-wider ${
                         isSelected
-                          ? 'bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/70 border border-orange-400/50'
+                          ? 'bg-[#c2410c] text-white shadow-md shadow-black/50 border border-[#832604]'
                           : 'bg-[#161210] text-stone-400 hover:bg-[#1e1915] hover:text-stone-200 border border-[#2b231d]'
                       }`}
                     >
                       <span>{cat.name}</span>
                       <span
                         className={`rounded-md px-1.5 py-0.2 text-[10px] font-bold ${
-                          isSelected ? 'bg-red-950/70 text-amber-200 border border-red-800/50' : 'bg-[#221c17] text-stone-400'
+                          isSelected ? 'bg-black/30 text-white' : 'bg-[#221c17] text-stone-400'
                         }`}
                       >
                         {activeCount}

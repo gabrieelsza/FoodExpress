@@ -17,9 +17,9 @@
   --font-bebas: 'Bebas Neue', sans-serif;
 }
 
-/* Steakhouse Dark Ambient Glow */
+/* Steakhouse Clean Dark Theme */
 .steakhouse-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(234, 88, 12, 0.12) 0%, rgba(185, 28, 28, 0.05) 35%, transparent 70%);
+  background: #0b0908;
 }
 
 /* Custom scrollbar for category tabs */

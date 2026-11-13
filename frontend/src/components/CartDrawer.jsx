@@ -265,7 +265,7 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
             <button
               onClick={handleCheckout}
               disabled={!canCheckout}
-              className="flex h-14 w-full items-center justify-center rounded-xl bg-gradient-to-r from-red-700 via-orange-600 to-amber-500 hover:from-red-600 hover:to-orange-500 active:scale-[0.98] text-base font-black text-white transition-all disabled:cursor-not-allowed disabled:opacity-50 shadow-lg shadow-orange-950/70 font-['Oswald',sans-serif] uppercase tracking-wider cursor-pointer"
+              className="flex h-14 w-full items-center justify-center rounded-xl bg-[#c2410c] hover:bg-[#d9531e] active:scale-[0.98] text-base font-bold text-white transition-all disabled:cursor-not-allowed disabled:opacity-50 shadow-md shadow-black/50 font-['Oswald',sans-serif] uppercase tracking-wider cursor-pointer"
             >
               Finalizar Pedido — {formatPrice(totalPrice)}
             </button>
