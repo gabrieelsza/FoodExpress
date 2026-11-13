@@ -183,33 +183,43 @@ export default function HomePage() {
               <div className="absolute -top-16 right-8 w-88 h-88 bg-amber-600/10 rounded-full blur-[90px] pointer-events-none z-10" />
               <div className="absolute -bottom-16 right-[28%] w-88 h-88 bg-red-600/8 rounded-full blur-[90px] pointer-events-none z-10" />
 
-              {/* Clean Outback organic curved wave lines without neon glow */}
+              {/* Elegant, low-contrast organic design curves (Suaves, sem contraste agressivo ou linhas gêmeas paralelas) */}
               <svg
-                className="hidden md:block absolute left-[46%] lg:left-[52%] -translate-x-1/2 top-0 bottom-0 h-full w-52 pointer-events-none z-20"
-                viewBox="0 0 140 800"
+                className="hidden md:block absolute left-[47%] lg:left-[53%] -translate-x-1/2 top-0 bottom-0 h-full w-56 pointer-events-none z-20"
+                viewBox="0 0 160 800"
                 preserveAspectRatio="none"
                 fill="none"
               >
-                {/* Dashed warm amber organic wave */}
+                {/* Sutil arco tracejado com trajetória orgânica distinta e baixa intensidade de contraste */}
                 <path
-                  d="M30,0 C100,210 20,390 90,570 C120,670 40,800 30,800"
-                  stroke="#f59e0b"
-                  strokeWidth="1.75"
-                  strokeDasharray="6 8"
-                  className="opacity-70"
+                  d="M20,0 C90,180 5,360 65,520 C95,640 30,760 10,800"
+                  stroke="url(#dashedSubtleGrad)"
+                  strokeWidth="1.25"
+                  strokeDasharray="4 6"
+                  className="opacity-40"
                 />
-                {/* Clean solid fire-gradient curve (sem efeito neon!) */}
+                {/* Linha fluida principal — elegante, refinada, com espessura suave e desvanecimento nas extremidades */}
                 <path
-                  d="M60,0 C130,230 50,410 115,600 C145,700 75,800 65,800"
-                  stroke="url(#warmGradientHero)"
-                  strokeWidth="2"
-                  className="opacity-85"
+                  d="M75,0 C145,240 40,430 110,610 C140,710 80,800 65,800"
+                  stroke="url(#mainCurveGrad)"
+                  strokeWidth="1.5"
+                  className="opacity-60"
                 />
                 <defs>
-                  <linearGradient id="warmGradientHero" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#ea580c" />
-                    <stop offset="50%" stopColor="#f59e0b" />
-                    <stop offset="100%" stopColor="#dc2626" />
+                  {/* Gradiente com dissolução elegante no topo e na base para eliminar contraste seco */}
+                  <linearGradient id="mainCurveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.1" />
+                    <stop offset="25%" stopColor="#f59e0b" stopOpacity="0.65" />
+                    <stop offset="60%" stopColor="#ea580c" stopOpacity="0.55" />
+                    <stop offset="85%" stopColor="#c2410c" stopOpacity="0.35" />
+                    <stop offset="100%" stopColor="#78350f" stopOpacity="0.1" />
+                  </linearGradient>
+                  {/* Gradiente suave e difuso para o traço pontilhado */}
+                  <linearGradient id="dashedSubtleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#d97706" stopOpacity="0.05" />
+                    <stop offset="35%" stopColor="#f59e0b" stopOpacity="0.35" />
+                    <stop offset="70%" stopColor="#b45309" stopOpacity="0.25" />
+                    <stop offset="100%" stopColor="#78350f" stopOpacity="0.05" />
                   </linearGradient>
                 </defs>
               </svg>

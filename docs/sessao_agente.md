@@ -762,6 +762,23 @@ pm run build bem-sucedido.
      - `npm run build`: gerado com sucesso em 1.03s.
      - Inspeção visual automatizada via browser subagent confirmando traço vetorizado limpo e autêntico sem distorções de neon.
 
+---
+
+### [2026-11-13 00:48] — Redesenho de Linhas Orgânicas com Trajetórias Distintas e Contraste Suave
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Refinamento de Composição Gráfica (Diferenciação de Trajetórias e Contraste Equilibrado)
+- **Ações Executadas:**
+  1. **Diferenciação das Curvas e Eliminação de Linhas Paralelas Duplicadas (`HomePage.jsx`):**
+     - O traço tracejado recebeu uma trajetória própria com arco mais amplo e suave (`opacity-40`, `strokeWidth="1.25"`), rompendo o padrão de cópia paralela (+30px).
+     - A linha fluida principal foi afinada para `strokeWidth="1.5"` (`opacity-60`), ganhando uma curvatura sinuosa exclusiva.
+  2. **Gradiente com Desvanecimento Progressivo nas Extremidades:**
+     - Implementado gradiente linear com opacidade gradual (`stopOpacity="0.1"` a `0.05"` no topo e base), garantindo que as linhas surjam e se dissipem naturalmente sem cortes bruscos ou contraste metálico/fio elétrico sobre a foto.
+  3. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 1.09s.
+     - Inspeção visual automatizada via browser subagent com evidência em `final_step_429.png`.
+
+
 
 
 
