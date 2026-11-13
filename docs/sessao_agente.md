@@ -807,6 +807,22 @@ pm run build bem-sucedido.
      - `npm run build`: gerado com sucesso em 1.03s.
      - Inspeção visual automatizada via browser subagent com evidência em `final_step_447.png`.
 
+---
+
+### [2026-11-13 01:05] — Restauração de Nitidez e Visibilidade Total das Linhas Orgânicas ("Linhas Aparentes")
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Otimização de Nitidez e Visibilidade das Curvas Decorativas
+- **Ações Executadas:**
+  1. **Restauração da Espessura e Opacidade Plena das Linhas (`HomePage.jsx`):**
+     - Removidos os gradientes atenuados com stops de 5% a 35% que haviam deixado as linhas excessivamente translúcidas e quase invisíveis.
+     - A linha fluida contínua foi definida com `strokeWidth="2.5"` e `opacity-90` sólida, utilizando o gradiente completo de fogo da brasa (`#ea580c` a `#dc2626`), garantindo total nitidez sobre a imagem e o fundo escuro.
+     - A linha ondulada tracejada foi definida com `strokeWidth="2"` e `opacity-80` em âmbar quente (`#f59e0b`, `strokeDasharray="6 8"`), perfeitamente aparente e bem desenhada.
+     - Mantida a ausência de filtros artificiais de neon (`drop-shadow`), resultando em traçados vetoriais limpos, destacados e marcantes.
+  2. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 1.16s.
+
+
 
 
 

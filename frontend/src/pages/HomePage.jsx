@@ -183,43 +183,35 @@ export default function HomePage() {
               <div className="absolute -top-16 right-8 w-72 h-72 bg-amber-600/5 rounded-full blur-[100px] pointer-events-none z-10" />
               <div className="absolute -bottom-16 right-[25%] w-72 h-72 bg-red-600/4 rounded-full blur-[100px] pointer-events-none z-10" />
 
-              {/* Elegant, low-contrast organic design curves closer to the text phrases ("colado nas frases") */}
+              {/* Clear, well-defined organic curves framing the text (Aparente, nítida e sem neon!) */}
               <svg
                 className="hidden md:block absolute left-[51%] lg:left-[58%] -translate-x-1/2 top-0 bottom-0 h-full w-56 pointer-events-none z-20"
                 viewBox="0 0 160 800"
                 preserveAspectRatio="none"
                 fill="none"
               >
-                {/* Sutil arco tracejado com trajetória orgânica distinta e baixa intensidade de contraste */}
+                {/* Arco tracejado em âmbar quente com alta nitidez e visibilidade */}
                 <path
-                  d="M20,0 C90,180 5,360 65,520 C95,640 30,760 10,800"
-                  stroke="url(#dashedSubtleGrad)"
-                  strokeWidth="1.25"
-                  strokeDasharray="4 6"
-                  className="opacity-40"
+                  d="M25,0 C95,190 15,370 75,540 C105,650 35,770 20,800"
+                  stroke="#f59e0b"
+                  strokeWidth="2"
+                  strokeDasharray="6 8"
+                  className="opacity-80"
                 />
-                {/* Linha fluida principal — elegante, refinada, com espessura suave e desvanecimento nas extremidades */}
+                {/* Linha fluida principal em gradiente de fogo da brasa (Nítida, marcante e sem efeito neon) */}
                 <path
-                  d="M75,0 C145,240 40,430 110,610 C140,710 80,800 65,800"
-                  stroke="url(#mainCurveGrad)"
-                  strokeWidth="1.5"
-                  className="opacity-60"
+                  d="M70,0 C140,230 45,420 115,600 C145,700 80,800 65,800"
+                  stroke="url(#warmGradientHero)"
+                  strokeWidth="2.5"
+                  className="opacity-90"
                 />
                 <defs>
-                  {/* Gradiente com dissolução elegante no topo e na base para eliminar contraste seco */}
-                  <linearGradient id="mainCurveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.1" />
-                    <stop offset="25%" stopColor="#f59e0b" stopOpacity="0.65" />
-                    <stop offset="60%" stopColor="#ea580c" stopOpacity="0.55" />
-                    <stop offset="85%" stopColor="#c2410c" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="#78350f" stopOpacity="0.1" />
-                  </linearGradient>
-                  {/* Gradiente suave e difuso para o traço pontilhado */}
-                  <linearGradient id="dashedSubtleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#d97706" stopOpacity="0.05" />
-                    <stop offset="35%" stopColor="#f59e0b" stopOpacity="0.35" />
-                    <stop offset="70%" stopColor="#b45309" stopOpacity="0.25" />
-                    <stop offset="100%" stopColor="#78350f" stopOpacity="0.05" />
+                  {/* Gradiente de fogo vibrante da brasa */}
+                  <linearGradient id="warmGradientHero" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#ea580c" />
+                    <stop offset="40%" stopColor="#f59e0b" />
+                    <stop offset="75%" stopColor="#d97706" />
+                    <stop offset="100%" stopColor="#dc2626" />
                   </linearGradient>
                 </defs>
               </svg>
