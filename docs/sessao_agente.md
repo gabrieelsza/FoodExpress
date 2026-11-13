@@ -534,3 +534,18 @@ pm run build bem-sucedido.
      - 
 pm run lint com 0 erros e 
 pm run build bem-sucedido.
+
+---
+
+### [2026-11-12 22:58] — Limpeza do Fundo da Página de Login (Remoção de Imagem Externa)
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Polimento Visual da Tela de Login
+- **Ações Executadas:**
+  1. **Remoção do Efeito de Fundo Externo (AdminLoginPage.jsx):**
+     - Removida a camada de vazamento/bleed da imagem do hambúrguer que ficava no elemento <main>, tornando o fundo de toda a página preto sólido e limpo (g-black).
+     - A foto do hambúrguer com bacon (/login-burger.jpg) fica restrita exclusivamente ao painel direito do card dual-panel, gerando alto contraste e foco no conteúdo.
+  2. **Validação Visual e CI/CD:**
+     - Verificação visual no navegador comprovando ausência de imagem no fundo externo e isolamento da foto dentro do painel lateral direito.
+     - 
+pm run lint com 0 erros e 
+pm run build bem-sucedido.

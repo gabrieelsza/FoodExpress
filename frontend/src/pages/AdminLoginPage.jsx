@@ -51,17 +51,6 @@ export default function AdminLoginPage() {
 
       {/* 2. MAIN LOGIN AREA */}
       <main className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden bg-black">
-        {/* Subtle Ambient Burger Bleed on Page Background */}
-        <div className="absolute right-0 inset-y-0 w-full md:w-3/5 lg:w-1/2 h-full pointer-events-none overflow-hidden select-none opacity-20">
-          <img
-            src="/login-burger.jpg"
-            alt=""
-            className="w-full h-full object-cover object-center scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-        </div>
-
         {/* Dual-Panel Professional Login Container */}
         <div className="relative z-10 w-full max-w-5xl rounded-3xl border border-zinc-800 bg-[#121214] shadow-2xl shadow-black overflow-hidden grid grid-cols-1 md:grid-cols-12 transition-all">
           
