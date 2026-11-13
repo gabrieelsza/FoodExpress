@@ -1,60 +1,48 @@
 import { useState, useEffect } from 'react';
-import { Flame, Sparkles } from 'lucide-react';
 
-const LOADING_PHRASES = [
-  'Aquecendo as brasas da grelha...',
-  'Selecionando cortes nobres e blends 180g...',
-  'Preparando a autêntica experiência steakhouse...',
-  'Bem-vindo ao FoodExpress!',
-];
-
+/**
+ * High-End Steakhouse Preloader
+ * Minimalist, elegant, quiet-luxury loading experience:
+ * - No percentage numbers
+ * - No neon glows or cartoon bounces
+ * - Refined hairline progress and cinematic focus-out dissolve
+ */
 export default function LoadingScreen({ onFinish }) {
   const [progress, setProgress] = useState(0);
-  const [phraseIndex, setPhraseIndex] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
-    // Lock scroll during loading
+    // Lock scroll during initial load
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    // Progress counter animation
     const startTime = performance.now();
-    const duration = 1500; // 1.5s total loading experience
+    const duration = 1350; // Smooth 1.35s total load
 
     let animationFrame;
     const updateProgress = (currentTime) => {
       const elapsed = currentTime - startTime;
-      const rawProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
+      const t = Math.min(1, elapsed / duration);
+      // Natural cubic deceleration for smooth fill
+      const eased = Math.min(100, Math.round((1 - Math.pow(1 - t, 2.5)) * 100));
 
-      // Ease progress slightly for natural feel
-      setProgress(rawProgress);
+      setProgress(eased);
 
-      if (rawProgress < 30) {
-        setPhraseIndex(0);
-      } else if (rawProgress < 65) {
-        setPhraseIndex(1);
-      } else if (rawProgress < 95) {
-        setPhraseIndex(2);
-      } else {
-        setPhraseIndex(3);
-      }
-
-      if (elapsed < duration) {
+      if (t < 1) {
         animationFrame = requestAnimationFrame(updateProgress);
       } else {
         setProgress(100);
-        // Short pause at 100% before initiating exit curtain
+        // Short pause at 100% before cinematic dissolve
         setTimeout(() => {
           setIsExiting(true);
-          // Complete exit transition after 650ms
+          // Complete transition after 600ms
           setTimeout(() => {
             setIsDone(true);
             document.body.style.overflow = originalOverflow;
             if (onFinish) onFinish();
-          }, 650);
-        }, 220);
+          }, 600);
+        }, 180);
       }
     };
 
@@ -70,67 +58,50 @@ export default function LoadingScreen({ onFinish }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#090706] text-white transition-all duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] select-none pointer-events-auto ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#090706] text-stone-100 select-none pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         isExiting
-          ? '-translate-y-full opacity-90'
-          : 'translate-y-0 opacity-100'
+          ? 'opacity-0 scale-[1.03] pointer-events-none'
+          : 'opacity-100 scale-100'
       }`}
     >
-      {/* Background Ambience: Subtle Warm Charcoal Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(234,88,12,0.14)_0%,rgba(9,7,6,0.98)_70%)] pointer-events-none" />
+      {/* Subtle hairline edge borders */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#3a2c22] to-transparent" />
+      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#2b211a] to-transparent" />
 
-      {/* Decorative Warm Top & Bottom Gradients */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent" />
-      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
-
-      {/* Center Content Box */}
-      <div className="relative z-10 flex flex-col items-center max-w-sm w-full px-6 text-center space-y-6">
-        {/* Pulsing Brand Emblem */}
-        <div className="relative flex items-center justify-center">
-          {/* Outer glowing pulsing ring */}
-          <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-orange-600/30 via-amber-500/20 to-red-600/30 blur-xl animate-pulse" />
-
-          {/* Central Logo Circle */}
-          <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-black border-2 border-orange-500/60 shadow-2xl shadow-orange-950/80">
-            <Flame size={36} className="text-[#ea580c] fill-[#ea580c] animate-bounce" />
-            <Sparkles size={16} className="absolute top-2 right-2 text-amber-400 animate-spin" style={{ animationDuration: '4s' }} />
-          </div>
+      {/* Main Center Brand Card */}
+      <div className="relative z-10 flex flex-col items-center max-w-xs w-full px-6 text-center space-y-5">
+        {/* Official Brand Logo with Fine Bronze Border */}
+        <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-black border border-[#3d2e24] shadow-xl overflow-hidden">
+          <img
+            src="/logo.jpg"
+            alt="FoodExpress"
+            className="w-full h-full object-cover scale-105"
+          />
         </div>
 
-        {/* Brand Name Typography */}
+        {/* Clean Typographic Identity */}
         <div className="space-y-1">
-          <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-wider font-['Oswald',sans-serif] leading-none">
-            Food<span className="bg-gradient-to-r from-orange-500 via-amber-400 to-red-500 bg-clip-text text-transparent">Express</span>
+          <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-[0.2em] font-['Oswald',sans-serif] text-white leading-tight">
+            Food<span className="text-[#ea580c]">Express</span>
           </h1>
-          <p className="text-[11px] font-bold text-amber-500/90 tracking-[0.25em] uppercase font-['Oswald',sans-serif]">
+          <p className="text-[10px] font-bold text-[#b48c65] tracking-[0.3em] uppercase font-['Oswald',sans-serif]">
             Steakhouse &amp; Artisan Burgers
           </p>
         </div>
 
-        {/* Loading Progress Bar & Percentage */}
-        <div className="w-full space-y-2.5 pt-2">
-          {/* Percentage Counter */}
-          <div className="flex items-center justify-between text-xs font-['Oswald',sans-serif] text-stone-400 uppercase tracking-widest px-0.5">
-            <span className="text-stone-500 flex items-center gap-1.5 text-[11px]">
-              <span className="h-1.5 w-1.5 rounded-full bg-orange-500 animate-ping" />
-              Carregando
-            </span>
-            <span className="text-amber-400 font-bold text-sm tracking-wider tabular-nums font-mono">
-              {progress}%
-            </span>
-          </div>
-
-          {/* Progress Track */}
-          <div className="h-1.5 w-full bg-[#1c1613] rounded-full overflow-hidden border border-[#33261e] p-[1px]">
+        {/* Minimalist Hairline Progress Track (No % numbers, No neon) */}
+        <div className="w-44 space-y-3 pt-2">
+          {/* 1.5px Hairline Progress Bar */}
+          <div className="h-[2px] w-full bg-[#1e1713] rounded-full overflow-hidden">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 transition-all duration-150 ease-out shadow-[0_0_12px_rgba(234,88,12,0.8)]"
+              className="h-full rounded-full bg-gradient-to-r from-[#9a3412] via-[#ea580c] to-[#d97706] transition-all duration-100 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
 
-          {/* Dynamic Theme Phrase with soft fade */}
-          <p className="text-xs text-stone-400 font-medium h-5 flex items-center justify-center transition-all duration-300">
-            {LOADING_PHRASES[phraseIndex]}
+          {/* Understated Status Text */}
+          <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-stone-400 font-['Oswald',sans-serif]">
+            {progress < 100 ? 'Carregando experiência' : 'Sabor da brasa'}
           </p>
         </div>
       </div>

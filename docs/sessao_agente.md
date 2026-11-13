@@ -914,6 +914,26 @@ pm run build bem-sucedido.
      - `npm run lint`: 0 erros.
      - `npm run build`: executado com sucesso em 1.08s (`dist/assets/index-D5tp7_8r.css` 97.72 kB, `dist/assets/index-DAxhwkTM.js` 464.54 kB).
 
+---
+
+### [2026-11-13 11:59] — Redesign Minimalista e Sofisticado da Tela de Carregamento (`LoadingScreen.jsx`)
+- **Papel Ativo:** Designer UI/UX & Engenheiro Frontend
+- **Etapa SDD:** Fase 3 — Refinamento de Quiet Luxury (Eliminação de Porcentagens e Efeitos Neon)
+- **Ações Executadas:**
+  1. **Eliminação de Elementos Ruidosos:**
+     - Removidos números e porcentagens (`0% a 100%`).
+     - Removidos todos os efeitos neon, anéis de pulso brilhantes e animações infantis.
+  2. **Estética Minimalista de Restaurante de Alto Padrão:**
+     - Fundo fosco carvão/obsidiana profundo (`#090706`) com linhas divisórias de alta precisão.
+     - Logotipo oficial circular da marca (`/logo.jpg`) com borda fina em bronze escuro (`#3d2e24`).
+     - Tipografia nobre com espaçamento generoso: `FoodExpress` com tracking `0.2em` e `Steakhouse & Artisan Burgers` em bronze quente (`#b48c65`) com tracking `0.3em`.
+     - Barra de progresso ultrafina (apenas 2px de espessura) preenchendo suavemente com transição de fogo orgânica sem neon.
+     - Texto de estado discreto: *"Carregando experiência"* alternando para *"Sabor da brasa"*.
+     - Revelação cinematográfica: a tela se dissolve suavemente (`opacity: 0` e leve expansão `scale-[1.03]` via `cubic-bezier(0.16, 1, 0.3, 1)`), revelando a página sem cortes abruptos.
+  3. **Validação:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: compilado com sucesso em 1.10s (`dist/assets/index-moUntxZ8.css` 94.45 kB, `dist/assets/index-DX_qCVVo.js` 463.28 kB).
+
 
 
 
