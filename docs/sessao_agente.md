@@ -792,6 +792,22 @@ pm run build bem-sucedido.
      - `npm run build`: gerado com sucesso em 1.14s.
      - Inspeção visual automatizada via browser subagent confirmando enquadramento perfeito rente ao texto.
 
+---
+
+### [2026-11-13 00:58] — Escurecimento da Tonalidade de Fundo do Hero Banner
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Ajuste de Luminosidade e Contraste de Fundo (Cor Mais Escura)
+- **Ações Executadas:**
+  1. **Ajuste para Tonalidade Preta Profunda e Carvão Obsidiana (`HomePage.jsx`):**
+     - O degradê de fundo da apresentação foi aprofundado para tons de preto profundo (`bg-gradient-to-r from-black 0% via-[#050404] 35% via-[#080706] 65% to-[#0b0908] 95%`), eliminando o reflexo marrom claro do lado textual.
+     - O overlay de transição foi recalibrado para tons pretos contínuos (`via-black/30 48% via-[#060504]/72 62% via-[#090706]/94 76% to-[#0b0908] 88%`).
+     - A iluminação difusa foi atenuada e aprofundada para brilho sutil de brasa (`blur-[140px]`), garantindo máximo contraste e legibilidade para a tipografia branca e detalhes em âmbar.
+  2. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 1.03s.
+     - Inspeção visual automatizada via browser subagent com evidência em `final_step_447.png`.
+
+
 
 
 

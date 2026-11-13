@@ -144,7 +144,7 @@ export default function HomePage() {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden bg-gradient-to-r from-[#070504] 0% via-[#0b0806] 32% via-[#120d09] 60% via-[#16100b] 78% to-[#1a120c] 95% ${
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden bg-gradient-to-r from-black 0% via-[#050404] 35% via-[#080706] 65% to-[#0b0908] 95% ${
                 isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
@@ -162,9 +162,9 @@ export default function HomePage() {
                   }}
                 />
 
-                {/* Mobile Bottom & Top feathering (Subtle and clean, allowing photo to shine) */}
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#120d09] via-[#0d0906]/70 to-transparent pointer-events-none md:hidden" />
-                <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
+                {/* Mobile Bottom & Top feathering */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0b0908] via-[#070504]/75 to-transparent pointer-events-none md:hidden" />
+                <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/35 to-transparent pointer-events-none" />
 
                 {/* Floating Steakhouse Experience Tag */}
                 <div className="absolute top-4 left-4 z-20">
@@ -175,13 +175,13 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Full-width continuous horizontal degradê overlay (Clean & luminous on left, smooth fade to warm steakhouse on right) */}
-              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent 0% via-transparent 36% via-[#070504]/25 48% via-[#0d0906]/65 62% via-[#130e0a]/90 76% to-[#1a120c] 88% pointer-events-none z-10" />
+              {/* Full-width continuous horizontal degradê overlay in deep dark tones */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent 0% via-transparent 36% via-black/30 48% via-[#060504]/72 62% via-[#090706]/94 76% to-[#0b0908] 88% pointer-events-none z-10" />
 
-              {/* Rich Warm Hearth Atmosphere behind text — Difuso, veludoso e aconchegante */}
-              <div className="absolute top-1/2 right-[12%] -translate-y-1/2 w-[680px] h-[580px] bg-gradient-to-br from-orange-600/15 via-amber-600/10 to-transparent rounded-full blur-[120px] pointer-events-none z-10" />
-              <div className="absolute -top-16 right-8 w-88 h-88 bg-amber-600/10 rounded-full blur-[90px] pointer-events-none z-10" />
-              <div className="absolute -bottom-16 right-[28%] w-88 h-88 bg-red-600/8 rounded-full blur-[90px] pointer-events-none z-10" />
+              {/* Subtle Warm Hearth Atmosphere — Tonalidade mais escura e refinada */}
+              <div className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[550px] h-[480px] bg-gradient-to-br from-orange-600/8 via-amber-600/5 to-transparent rounded-full blur-[140px] pointer-events-none z-10" />
+              <div className="absolute -top-16 right-8 w-72 h-72 bg-amber-600/5 rounded-full blur-[100px] pointer-events-none z-10" />
+              <div className="absolute -bottom-16 right-[25%] w-72 h-72 bg-red-600/4 rounded-full blur-[100px] pointer-events-none z-10" />
 
               {/* Elegant, low-contrast organic design curves closer to the text phrases ("colado nas frases") */}
               <svg
