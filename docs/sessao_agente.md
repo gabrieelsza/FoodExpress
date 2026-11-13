@@ -954,6 +954,24 @@ pm run build bem-sucedido.
      - `npm run lint`: 0 erros.
      - `npm run build`: gerado com sucesso em 1.04s (`dist/assets/index-B7y_YhCC.css` 95.00 kB, `dist/assets/index-BYKGCGgb.js` 464.86 kB).
 
+---
+
+### [2026-11-13 12:09] — Inclusão do Hambúrguer Artesanal Vetorial no Medalhão Central do Loader
+- **Papel Ativo:** Designer Gráfico Vetorial & Engenheiro Frontend
+- **Etapa SDD:** Fase 3 — Customização do Ícone Central do Preloader
+- **Ações Executadas:**
+  1. **Desenho Vetorial do Hambúrguer Artesanal no Medalhão ([`LoadingScreen.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/LoadingScreen.jsx)):**
+     - Substituída a chama simplificada no centro do medalhão por uma ilustração vetorial completa e detalhada de hambúrguer artesanal steakhouse.
+     - **Pão Brioche Superior:** Cúpula dourada com sementes de gergelim realistas em creme claro.
+     - **Cheddar Derretido & Ondas de Sabor:** Camada de queijo cheddar ondulado derretendo sobre o blend.
+     - **Blend Nobre 180g na Brasa:** Hambúrguer espesso com ranhuras sutis de grelha.
+     - **Pão Brioche Base:** Base arredondada dourada perfeitamente balanceada no interior do círculo.
+  2. **Preservação da Órbita Animada:**
+     - A órbita elíptica contínua gira fluidamente ao redor do hambúrguer artesanal, preservando o preenchimento da tipografia em duas camadas e a barra minimalista.
+  3. **Validação:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: gerado com sucesso em 1.15s (`dist/assets/index-B7y_YhCC.css` 95.00 kB, `dist/assets/index-DlMt0oWU.js` 466.55 kB).
+
 
 
 

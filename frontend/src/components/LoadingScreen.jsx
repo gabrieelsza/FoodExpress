@@ -61,14 +61,26 @@ export default function LoadingScreen({ onFinish }) {
             <clipPath id="tc-orbit-front">
               <rect x="0" y="260" width="500" height="240" />
             </clipPath>
-            <linearGradient id="tc-flame-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#ea580c" />
-              <stop offset="50%" stopColor="#f59e0b" />
-              <stop offset="100%" stopColor="#d97706" />
-            </linearGradient>
             <linearGradient id="tc-orbit-grad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#ea580c" />
               <stop offset="100%" stopColor="#f59e0b" />
+            </linearGradient>
+            {/* Gradients for Artisan Burger */}
+            <linearGradient id="tc-bun-top" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#f59e0b" />
+              <stop offset="100%" stopColor="#d97706" />
+            </linearGradient>
+            <linearGradient id="tc-cheddar" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f59e0b" />
+              <stop offset="100%" stopColor="#ea580c" />
+            </linearGradient>
+            <linearGradient id="tc-patty" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#78350f" />
+              <stop offset="100%" stopColor="#451a03" />
+            </linearGradient>
+            <linearGradient id="tc-bun-bottom" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#d97706" />
+              <stop offset="100%" stopColor="#b45309" />
             </linearGradient>
           </defs>
 
@@ -92,7 +104,7 @@ export default function LoadingScreen({ onFinish }) {
             />
           </g>
 
-          {/* Center Brand Emblem: Steakhouse Shield & Flame */}
+          {/* Center Brand Emblem: Medallion with Artisan Burger */}
           <g>
             {/* Outer Hex/Circle Medal */}
             <circle
@@ -112,15 +124,44 @@ export default function LoadingScreen({ onFinish }) {
               strokeWidth="3"
             />
 
-            {/* Stylized Steakhouse Crossed Cleavers / Flame */}
+            {/* ARTISAN BURGER ICON */}
+            {/* 1. Top Brioche Bun */}
             <path
-              d="M250,175 C230,210 205,235 205,270 C205,295 225,315 250,315 C275,315 295,295 295,270 C295,235 270,210 250,175 Z"
-              fill="url(#tc-flame-grad)"
+              d="M196,220 C196,182 218,168 250,168 C282,168 304,182 304,220 C304,224 196,224 196,220 Z"
+              fill="url(#tc-bun-top)"
             />
+
+            {/* Sesame Seeds on Top Bun */}
+            <ellipse cx="230" cy="190" rx="3.5" ry="1.8" transform="rotate(-20 230 190)" fill="#fef3c7" opacity="0.9" />
+            <ellipse cx="250" cy="182" rx="3.5" ry="1.8" transform="rotate(5 250 182)" fill="#fef3c7" opacity="0.9" />
+            <ellipse cx="270" cy="192" rx="3.5" ry="1.8" transform="rotate(25 270 192)" fill="#fef3c7" opacity="0.9" />
+            <ellipse cx="240" cy="205" rx="3" ry="1.6" transform="rotate(10 240 205)" fill="#fef3c7" opacity="0.85" />
+            <ellipse cx="262" cy="204" rx="3" ry="1.6" transform="rotate(-15 262 204)" fill="#fef3c7" opacity="0.85" />
+
+            {/* 2. Melted Cheddar & Lettuce Waves */}
             <path
-              d="M250,220 C240,240 230,252 230,272 C230,285 240,295 250,295 C260,295 270,285 270,272 C270,252 260,240 250,220 Z"
-              fill="#ffedd5"
-              opacity="0.95"
+              d="M192,230 C200,237 208,239 216,233 C226,242 238,245 248,236 C258,244 270,246 282,234 C292,242 302,238 308,230 L308,227 L192,227 Z"
+              fill="url(#tc-cheddar)"
+            />
+
+            {/* 3. Juicy Grilled Blend 180g Patty */}
+            <rect
+              x="190"
+              y="242"
+              width="120"
+              height="22"
+              rx="8"
+              fill="url(#tc-patty)"
+            />
+            {/* Subtle Grill marks */}
+            <line x1="218" y1="246" x2="226" y2="260" stroke="#291203" strokeWidth="2" strokeLinecap="round" />
+            <line x1="246" y1="246" x2="254" y2="260" stroke="#291203" strokeWidth="2" strokeLinecap="round" />
+            <line x1="274" y1="246" x2="282" y2="260" stroke="#291203" strokeWidth="2" strokeLinecap="round" />
+
+            {/* 4. Bottom Brioche Bun */}
+            <path
+              d="M196,270 L304,270 C304,272 304,286 288,296 C274,302 226,302 212,296 C196,286 196,272 196,270 Z"
+              fill="url(#tc-bun-bottom)"
             />
           </g>
 
