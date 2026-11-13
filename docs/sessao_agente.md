@@ -747,5 +747,21 @@ pm run build bem-sucedido.
      - `npm run build`: gerado com sucesso em 1.09s.
      - Inspeção visual automatizada via browser subagent com evidência em `final_step_413.png`.
 
+---
+
+### [2026-11-13 00:44] — Remoção do Efeito Neon da Curva Orgânica do Hero Banner
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Refinamento de Linhas Vetoriais (Remoção de Brilho Artificial)
+- **Ações Executadas:**
+  1. **Remoção do Efeito Neon (`HomePage.jsx`):**
+     - Removido o filtro de sombra difusa (`filter: drop-shadow(...)`) que produzia um halo brilhante estilo neon ao redor da linha ondulada.
+     - Ajustada a espessura da linha sólida para `strokeWidth="2"` e mantido o degradê de brasa limpo (`#ea580c` a `#dc2626`).
+     - A linha ondulada tracejada foi refinada para `strokeWidth="1.75"` em âmbar (`#f59e0b`), resultando em traçados orgânicos nítidos, naturais e sofisticados.
+  2. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 1.03s.
+     - Inspeção visual automatizada via browser subagent confirmando traço vetorizado limpo e autêntico sem distorções de neon.
+
+
 
 

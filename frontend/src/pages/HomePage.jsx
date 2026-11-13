@@ -183,41 +183,32 @@ export default function HomePage() {
               <div className="absolute -top-16 right-8 w-88 h-88 bg-amber-600/10 rounded-full blur-[90px] pointer-events-none z-10" />
               <div className="absolute -bottom-16 right-[28%] w-88 h-88 bg-red-600/8 rounded-full blur-[90px] pointer-events-none z-10" />
 
-              {/* Vibrant Outback organic curved wave lines floating seamlessly across the transition */}
+              {/* Clean Outback organic curved wave lines without neon glow */}
               <svg
-                className="hidden md:block absolute left-[46%] lg:left-[52%] -translate-x-1/2 top-0 bottom-0 h-full w-56 pointer-events-none z-20"
-                viewBox="0 0 160 800"
+                className="hidden md:block absolute left-[46%] lg:left-[52%] -translate-x-1/2 top-0 bottom-0 h-full w-52 pointer-events-none z-20"
+                viewBox="0 0 140 800"
                 preserveAspectRatio="none"
                 fill="none"
               >
-                {/* Delicate background echo wave */}
-                <path
-                  d="M15,0 C85,210 5,390 75,570 C105,670 25,800 15,800"
-                  stroke="rgba(245, 158, 11, 0.2)"
-                  strokeWidth="1.5"
-                  strokeDasharray="4 8"
-                />
                 {/* Dashed warm amber organic wave */}
                 <path
-                  d="M40,0 C110,210 30,390 100,570 C130,670 50,800 40,800"
+                  d="M30,0 C100,210 20,390 90,570 C120,670 40,800 30,800"
                   stroke="#f59e0b"
-                  strokeWidth="2.5"
+                  strokeWidth="1.75"
                   strokeDasharray="6 8"
-                  className="opacity-85"
+                  className="opacity-70"
                 />
-                {/* Glowing solid fire-gradient curve */}
+                {/* Clean solid fire-gradient curve (sem efeito neon!) */}
                 <path
-                  d="M70,0 C140,230 60,410 125,600 C155,700 85,800 75,800"
+                  d="M60,0 C130,230 50,410 115,600 C145,700 75,800 65,800"
                   stroke="url(#warmGradientHero)"
-                  strokeWidth="3"
-                  className="opacity-95"
-                  style={{ filter: 'drop-shadow(0 0 10px rgba(249, 115, 22, 0.5))' }}
+                  strokeWidth="2"
+                  className="opacity-85"
                 />
                 <defs>
                   <linearGradient id="warmGradientHero" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stopColor="#ea580c" />
-                    <stop offset="35%" stopColor="#f59e0b" />
-                    <stop offset="70%" stopColor="#d97706" />
+                    <stop offset="50%" stopColor="#f59e0b" />
                     <stop offset="100%" stopColor="#dc2626" />
                   </linearGradient>
                 </defs>
