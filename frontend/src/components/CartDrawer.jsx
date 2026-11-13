@@ -54,10 +54,10 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
 
       {/* Panel */}
       <div
-        className="relative z-10 flex w-full max-w-lg sm:max-w-md flex-col rounded-t-3xl sm:rounded-t-none sm:rounded-l-3xl bg-[#121214] border-l border-zinc-800 text-zinc-100 shadow-2xl animate-in slide-in-from-bottom sm:slide-in-from-right duration-300 max-h-[92vh] sm:max-h-full sm:h-full"
+        className="relative z-10 flex w-full max-w-lg sm:max-w-md flex-col rounded-t-3xl sm:rounded-t-none sm:rounded-l-3xl bg-[#14110f] border-l border-[#2d241e] text-stone-100 shadow-2xl animate-in slide-in-from-bottom sm:slide-in-from-right duration-300 max-h-[92vh] sm:max-h-full sm:h-full"
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-zinc-800 px-5 py-4">
+        <div className="flex items-center justify-between border-b border-[#26201b] px-5 py-4">
           <div>
             <h2 className="text-xl font-black text-white font-['Oswald',sans-serif] uppercase tracking-wide">Sua Sacola</h2>
             {totalItems > 0 && (
@@ -68,7 +68,7 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
           </div>
           <button
             onClick={onClose}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white cursor-pointer"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-stone-400 transition-colors hover:bg-[#1f1915] hover:text-white cursor-pointer"
             aria-label="Fechar sacola"
           >
             <X size={22} />
@@ -255,7 +255,7 @@ export default function CartDrawer({ isOpen, onClose, onCheckout }) {
 
         {/* Footer: Total + checkout button */}
         {!isEmpty && (
-          <div className="border-t border-zinc-800 bg-[#121214] px-5 py-4">
+          <div className="border-t border-[#26201b] bg-[#14110f] px-5 py-4">
             <div className="mb-3 flex items-center justify-between">
               <span className="text-base font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wide">Total</span>
               <span className="text-2xl font-black text-amber-400 font-['Oswald',sans-serif] tracking-wide">

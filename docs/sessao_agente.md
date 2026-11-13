@@ -571,3 +571,24 @@ pm run build bem-sucedido.
      - 
 pm run lint (0 erros) e 
 pm run build bem-sucedido.
+
+---
+
+### [2026-11-12 23:42] — Restauração do Estilo Rústico Steakhouse Aconchegante nas Páginas Públicas
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Harmonização de Identidade Visual Steakhouse
+- **Ações Executadas:**
+  1. **Restauração dos Tons Amadeirados e Aconchegantes no Lado do Cliente:**
+     - Restaurada a paleta clássica de steakhouse (g-[#0b0908], g-[#161311], bordas rústicas e badges âmbar) nas páginas públicas de clientes:
+       - [HomePage.jsx](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/HomePage.jsx)
+       - [ProductsPage.jsx](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/ProductsPage.jsx)
+       - [RestaurantPage.jsx](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/RestaurantPage.jsx)
+       - [CustomerMenuPage.jsx](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/CustomerMenuPage.jsx)
+       - Componentes relacionados: CartDrawer.jsx, ProductCard.jsx, ProductModal.jsx, PromoCarousel.jsx, Navbar.jsx.
+  2. **Preservação Integral do Acesso do Atendente (AdminLoginPage.jsx):**
+     - A tela de login (/admin/login) permaneceu rigorosamente intacta: fundo preto sólido limpo, container dual-panel corporativo com a foto do hambúrguer artesanal na lateral direita e informações operacionais/métricas.
+  3. **Validação Visual e CI/CD:**
+     - Subagent confirmou tanto a home aconchegante com os 3 cards quanto a tela de login intacta.
+     - 
+pm run lint (0 erros) e 
+pm run build bem-sucedido.

@@ -17,11 +17,11 @@ export default function ProductCard({ product, onAdd }) {
   return (
     <div
       onClick={() => onAdd(product)}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#121214] border border-zinc-800 shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-zinc-700 hover:shadow-xl hover:-translate-y-1 cursor-pointer text-zinc-100"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#14110f] border border-[#2a221c] shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-[#423429] hover:shadow-xl hover:-translate-y-1 cursor-pointer text-stone-100"
     >
       <div>
         {/* Product Image */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0c0a09]">
           <img
             src={safeImageUrl}
             alt={product.name}
@@ -34,12 +34,12 @@ export default function ProductCard({ product, onAdd }) {
           />
 
           {/* Dark gradient overlay for appetizing contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121214] via-transparent to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#14110f] via-transparent to-black/20 pointer-events-none" />
 
           {/* Customization badge */}
           {hasVariations && (
             <div className="absolute bottom-2.5 left-2.5 z-10">
-              <span className="inline-flex items-center gap-1 rounded-full bg-zinc-900/90 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-bold text-orange-400 shadow-md border border-zinc-800 font-['Oswald',sans-serif] uppercase tracking-wider">
+              <span className="inline-flex items-center gap-1 rounded-full bg-[#100d0b]/90 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-bold text-amber-400 shadow-md border border-[#3a3028] font-['Oswald',sans-serif] uppercase tracking-wider">
                 <SlidersHorizontal size={10} className="text-orange-400" />
                 Variações
               </span>
@@ -48,8 +48,8 @@ export default function ProductCard({ product, onAdd }) {
 
           {/* Sabor da Brasa badge on first few items or burgers */}
           <div className="absolute top-2.5 right-2.5 z-10">
-            <span className="inline-flex items-center gap-1 rounded-full bg-zinc-900 px-2 py-0.5 text-[10px] font-bold text-zinc-300 border border-zinc-800 shadow-sm uppercase font-['Oswald',sans-serif] tracking-wider">
-              <Flame size={11} className="text-orange-500 fill-orange-500" />
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#181310] px-2 py-0.5 text-[10px] font-bold text-stone-300 border border-[#382b22] shadow-sm uppercase font-['Oswald',sans-serif] tracking-wider">
+              <Flame size={11} className="text-[#c2410c] fill-[#c2410c]" />
               Na Brasa
             </span>
           </div>

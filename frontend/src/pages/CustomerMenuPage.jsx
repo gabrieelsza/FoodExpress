@@ -228,7 +228,7 @@ export default function CustomerMenuPage() {
   }, [categories, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-black text-zinc-100 antialiased flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="min-h-screen bg-[#0b0908] text-stone-100 antialiased flex flex-col font-['Plus_Jakarta_Sans',sans-serif]">
       <div className="flex-1">
         {/* Top Navbar with integrated search */}
         <Navbar
@@ -240,7 +240,7 @@ export default function CustomerMenuPage() {
         />
 
         {/* Restaurant Header Profile Section */}
-        <div className="relative bg-black border-b border-zinc-800 py-6 sm:py-8 steakhouse-glow">
+        <div className="relative bg-[#100e0c] border-b border-[#241d18] py-6 sm:py-8 steakhouse-glow">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
               <div className="flex items-center gap-4 sm:gap-5">
@@ -328,14 +328,14 @@ export default function CustomerMenuPage() {
 
         {/* Promotional Carousel (Below Restaurant Header) */}
         {!searchQuery && (
-          <div className="w-full bg-black border-b border-zinc-800">
+          <div className="w-full bg-[#0c0a09] border-b border-[#241d18]">
             <PromoCarousel onActionClick={handlePromoAction} />
           </div>
         )}
 
         {/* Sticky Category Tabs Bar */}
         {!filteredProductsBySearch && (
-          <div className="sticky top-16 z-30 bg-black/95 backdrop-blur-md border-b border-zinc-800 shadow-[0_8px_20px_rgba(0,0,0,0.6)]">
+          <div className="sticky top-16 z-30 bg-[#0e0c0a]/95 backdrop-blur-md border-b border-[#26201b] shadow-[0_8px_20px_rgba(0,0,0,0.6)]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div
                 ref={tabsBarRef}
@@ -352,14 +352,14 @@ export default function CustomerMenuPage() {
                       onClick={() => handleCategoryClick(cat.id)}
                       className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer uppercase font-['Oswald',sans-serif] tracking-wider ${
                         isSelected
-                          ? 'bg-orange-600 text-white shadow-md shadow-black/50 border border-orange-700'
-                          : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200 border border-zinc-800'
+                          ? 'bg-[#c2410c] text-white shadow-md shadow-black/50 border border-[#832604]'
+                          : 'bg-[#161210] text-stone-400 hover:bg-[#1e1915] hover:text-stone-200 border border-[#2b231d]'
                       }`}
                     >
                       <span>{cat.name}</span>
                       <span
                         className={`rounded-md px-1.5 py-0.2 text-[10px] font-bold ${
-                          isSelected ? 'bg-black/30 text-white' : 'bg-zinc-800 text-zinc-400'
+                          isSelected ? 'bg-black/30 text-white' : 'bg-[#221c17] text-stone-400'
                         }`}
                       >
                         {activeCount}
@@ -395,7 +395,7 @@ export default function CustomerMenuPage() {
             </div>
 
             {filteredProductsBySearch.length === 0 ? (
-              <div className="py-16 text-center bg-[#121214] rounded-2xl border border-zinc-800 p-8 shadow-md">
+              <div className="py-16 text-center bg-[#14110f] rounded-2xl border border-[#29211b] p-8 shadow-md">
                 <Search size={36} className="mx-auto text-stone-600 mb-2.5" />
                 <h3 className="text-sm font-bold text-stone-200 font-['Oswald',sans-serif] uppercase tracking-wide">Nenhum item encontrado</h3>
                 <p className="text-xs text-stone-400 mt-1 max-w-xs mx-auto">
@@ -430,7 +430,7 @@ export default function CustomerMenuPage() {
                   className="scroll-mt-32"
                 >
                   {/* Category Header */}
-                  <div className="flex items-center justify-between border-b border-zinc-800 pb-3 mb-6">
+                  <div className="flex items-center justify-between border-b border-[#26201b] pb-3 mb-6">
                     <div className="flex items-center gap-3">
                       <div className="h-5 w-1 rounded-full bg-gradient-to-b from-red-600 via-orange-500 to-amber-400"></div>
                       <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-white font-['Oswald',sans-serif]">
@@ -487,12 +487,12 @@ export default function CustomerMenuPage() {
       </div>
 
       {/* Premium Outback Steakhouse Dark Footer */}
-      <footer className="mt-20 w-full bg-black border-t border-zinc-800 text-zinc-300 relative overflow-hidden">
+      <footer className="mt-20 w-full bg-[#090807] border-t border-[#241d18] text-stone-300 relative overflow-hidden">
         {/* Subtle top ember glow line */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent"></div>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-zinc-800">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#1f1915]">
             {/* Col 1: Brand, Logo & Flavor Manifesto */}
             <div className="md:col-span-6 space-y-5">
               <div className="flex items-center gap-3.5">
@@ -509,18 +509,18 @@ export default function CustomerMenuPage() {
                 </div>
               </div>
 
-              <p className="text-sm text-zinc-400 max-w-lg leading-relaxed">
+              <p className="text-sm text-stone-400 max-w-lg leading-relaxed">
                 Hambúrgueres artesanais preparados com cortes nobres grelhados na brasa viva, queijos fundidos e receitas autorais exclusivas no autêntico padrão steakhouse. Sabor marcante e generosidade do início ao fim.
               </p>
 
               <div className="flex flex-wrap gap-2 pt-1">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-300 font-['Oswald',sans-serif] uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14100d] border border-[#2d221a] text-xs font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wider">
                   <Flame size={12} className="text-orange-500 fill-orange-500" /> Grelhado no Fogo
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-300 font-['Oswald',sans-serif] uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14100d] border border-[#2d221a] text-xs font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wider">
                   <Sparkles size={12} className="text-amber-400" /> Blends Nobres 180g
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-300 font-['Oswald',sans-serif] uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14100d] border border-[#2d221a] text-xs font-bold text-stone-300 font-['Oswald',sans-serif] uppercase tracking-wider">
                   <Bike size={12} className="text-emerald-400" /> Entrega Express
                 </span>
               </div>
@@ -535,19 +535,19 @@ export default function CustomerMenuPage() {
                 </h4>
               </div>
 
-              <div className="space-y-3 text-xs text-zinc-400">
-                <div className="rounded-xl bg-zinc-900 border border-zinc-800 p-3.5 space-y-2">
+              <div className="space-y-3 text-xs text-stone-400">
+                <div className="rounded-xl bg-[#13100d] border border-[#261f19] p-3.5 space-y-2">
                   <div className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span className="font-bold text-white uppercase font-['Oswald',sans-serif] tracking-wide">Aberto Hoje</span>
                   </div>
-                  <p className="text-zinc-300">Terça a Domingo: <strong className="text-amber-400 font-['Oswald',sans-serif]">18:00 às 23:30</strong></p>
-                  <p className="text-[11px] text-zinc-500">Segunda-feira: Fechado para descanso da equipe</p>
+                  <p className="text-stone-300">Terça a Domingo: <strong className="text-amber-400 font-['Oswald',sans-serif]">18:00 às 23:30</strong></p>
+                  <p className="text-[11px] text-stone-500">Segunda-feira: Fechado para descanso da equipe</p>
                 </div>
 
-                <div className="flex items-center gap-2 text-zinc-400 text-xs">
+                <div className="flex items-center gap-2 text-stone-400 text-xs">
                   <Clock size={14} className="text-amber-500 shrink-0" />
-                  <span>Tempo médio: <strong className="text-zinc-200">30 a 45 min</strong></span>
+                  <span>Tempo médio: <strong className="text-stone-200">30 a 45 min</strong></span>
                 </div>
               </div>
             </div>
@@ -561,7 +561,7 @@ export default function CustomerMenuPage() {
                 </h4>
               </div>
 
-              <div className="space-y-2 text-xs text-zinc-400">
+              <div className="space-y-2 text-xs text-stone-400">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                   <span>Pix (aprovação instantânea no balcão)</span>
@@ -580,7 +580,7 @@ export default function CustomerMenuPage() {
               <div className="pt-2">
                 <button
                   onClick={() => navigate('/admin/login')}
-                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 hover:border-orange-500/70 text-zinc-200 hover:text-white text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] transition-all shadow-md cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#171310] hover:bg-[#201a15] border border-[#382c23] hover:border-orange-500/70 text-stone-200 hover:text-white text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] transition-all shadow-md cursor-pointer"
                 >
                   <ShieldCheck size={15} className="text-orange-500" />
                   <span>Acesso do Atendente</span>
