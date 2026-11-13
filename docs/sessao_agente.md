@@ -592,3 +592,18 @@ pm run build bem-sucedido.
      - 
 pm run lint (0 erros) e 
 pm run build bem-sucedido.
+
+---
+
+### [2026-11-12 23:52] — Restauração das Linhas e Formas Orgânicas no Banner Hero da Página Inicial
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Polimento Visual do Banner Hero
+- **Ações Executadas:**
+  1. **Restauração dos Elementos Gráficos Fluidos (HomePage.jsx):**
+     - Reativadas as curvas fluidas vetoriais (SVG com gradiente de brasa em degradê âmbar/laranja e linha pontilhada orgânica de acento) na transição entre a fotografia do salão/prato e o bloco de conteúdo textual do banner principal.
+     - Reintroduzida a iluminação sutil de brasa e tons quentes de fundo (g-gradient-to-r from-[#0c0a08] via-[#120e0b] to-[#0a0807]).
+  2. **Validação Visual e CI/CD:**
+     - Screenshot do navegador comprovando o retorno das linhas e curvas decorativas com acabamento artesanal.
+     - 
+pm run lint (0 erros) e 
+pm run build bem-sucedido.
