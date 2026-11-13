@@ -117,27 +117,27 @@ export default function Navbar({
               {/* Admin nav links */}
               <Link
                 to="/admin/pedidos"
-                className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors ${
+                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] transition-colors ${
                   isActive('/admin/pedidos') || isActive('/admin/orders')
-                    ? 'bg-orange-500 text-white'
-                    : 'text-neutral-400 hover:bg-neutral-800 hover:text-white'
+                    ? 'bg-orange-600 text-white shadow-md'
+                    : 'text-zinc-400 hover:bg-zinc-800 hover:text-white'
                 }`}
                 title="Fila de Pedidos"
               >
-                <ClipboardList size={17} />
+                <ClipboardList size={16} />
                 <span>Pedidos</span>
               </Link>
 
               <Link
                 to="/admin/cardapio"
-                className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors ${
+                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] transition-colors ${
                   isActive('/admin/cardapio') || isActive('/admin/menu')
-                    ? 'bg-orange-500 text-white'
-                    : 'text-neutral-400 hover:bg-neutral-800 hover:text-white'
+                    ? 'bg-orange-600 text-white shadow-md'
+                    : 'text-zinc-400 hover:bg-zinc-800 hover:text-white'
                 }`}
                 title="Gerenciar Cardápio"
               >
-                <UtensilsCrossed size={17} />
+                <UtensilsCrossed size={16} />
                 <span>Cardápio</span>
               </Link>
 
@@ -145,7 +145,7 @@ export default function Navbar({
               <Link
                 to="/nossos-produtos"
                 target="_blank"
-                className="hidden lg:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-neutral-400 hover:text-white rounded-lg transition-colors"
+                className="hidden lg:flex items-center gap-1.5 px-3 py-2 text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] text-zinc-400 hover:text-amber-400 rounded-lg transition-colors"
                 title="Abrir cardápio do cliente em nova aba"
               >
                 Ver cardápio
@@ -154,11 +154,11 @@ export default function Navbar({
               {/* Logout button */}
               <button
                 onClick={onLogout}
-                className="ml-1 flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold text-neutral-400 hover:bg-red-950/40 hover:text-red-400 transition-colors cursor-pointer"
+                className="ml-1 flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] text-zinc-400 hover:bg-red-950/40 hover:text-red-400 border border-transparent hover:border-red-900/40 transition-colors cursor-pointer"
                 title="Sair do painel"
               >
-                <LogOut size={17} />
-                <span className="hidden sm:inline text-xs">Sair</span>
+                <LogOut size={16} />
+                <span className="hidden sm:inline">Sair</span>
               </button>
             </>
           ) : (

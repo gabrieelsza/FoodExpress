@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  ChevronDown,
-  ChevronUp,
   ClipboardList,
   PackageOpen,
   RefreshCw,
@@ -11,10 +9,16 @@ import {
   Utensils,
   Bike,
   MapPin,
+  Flame,
+  ChefHat,
+  CheckCircle2,
+  Clock,
+  ArrowRight,
+  Sparkles,
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useOrders } from '../contexts/OrderContext';
-import { ORDER_STATUS, ORDER_STATUS_SEQUENCE } from '../data/mockData';
+import { ORDER_STATUS_SEQUENCE } from '../data/mockData';
 import { formatPrice, formatRelativeTime } from '../utils/helpers';
 import Navbar from '../components/Navbar';
 
@@ -58,7 +62,6 @@ export default function AdminOrdersPage() {
 
   const [activeTab, setActiveTab] = useState('active');
   const [refreshing, setRefreshing] = useState(false);
-  const [expandedOrders, setExpandedOrders] = useState(new Set());
   const [pollMs, setPollMs] = useState(() => {
     const saved = localStorage.getItem(POLL_KEY);
     return saved ? Number(saved) : 300_000;
@@ -96,15 +99,6 @@ export default function AdminOrdersPage() {
     const val = Number(e.target.value);
     setPollMs(val);
     localStorage.setItem(POLL_KEY, String(val));
-  };
-
-  const toggleExpanded = (orderId) => {
-    setExpandedOrders((prev) => {
-      const next = new Set(prev);
-      if (next.has(orderId)) next.delete(orderId);
-      else next.add(orderId);
-      return next;
-    });
   };
 
   const handleAdvance = (order) => {
@@ -149,44 +143,68 @@ export default function AdminOrdersPage() {
     return list;
   }, [adminOrders, activeTab]);
 
+  const countActive = useMemo(
+    () => adminOrders.filter((o) => ['RECEIVED', 'PREPARING', 'READY'].includes(o.status)).length,
+    [adminOrders]
+  );
+  const countDelivered = useMemo(
+    () => adminOrders.filter((o) => o.status === 'DELIVERED').length,
+    [adminOrders]
+  );
+  const countCancelled = useMemo(
+    () => adminOrders.filter((o) => o.status === 'CANCELLED').length,
+    [adminOrders]
+  );
+
   if (!isAuthenticated) return null;
 
   return (
-    <div className="min-h-screen bg-[#0f0f11] text-neutral-100">
+    <div className="min-h-screen bg-black text-zinc-100 font-['Plus_Jakarta_Sans',sans-serif] antialiased flex flex-col selection:bg-orange-600">
       <Navbar isAdmin onLogout={logout} />
 
-      <div className="max-w-5xl mx-auto px-4 pt-6 pb-24">
-        {/* Header */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-          <div>
-            <h1 className="text-2xl font-black text-white flex items-center gap-2.5 tracking-tight">
-              <ClipboardList className="w-7 h-7 text-orange-500" />
-              Painel de Pedidos
-            </h1>
-            <p className="text-xs sm:text-sm text-neutral-400 mt-0.5">
-              Acompanhamento da fila da cozinha e entregas em tempo real
-            </p>
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24">
+        {/* Header com Status em Tempo Real */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7">
+          <div className="flex items-center gap-3.5">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#121214] border border-zinc-800 text-orange-500 shadow-xl shrink-0">
+              <ClipboardList className="w-6 h-6 text-orange-500" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2.5">
+                <h1 className="text-2xl sm:text-3xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-tight leading-none">
+                  Painel de Pedidos
+                </h1>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-bold text-emerald-400 uppercase font-['Oswald',sans-serif] tracking-wider">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Ao Vivo
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-zinc-400 mt-1">
+                Fila de cozinha KDS e entregas com transição em tempo real
+              </p>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          {/* Controles de Atualização */}
+          <div className="flex items-center gap-2.5 shrink-0">
             <button
               onClick={doRefresh}
               disabled={refreshing}
-              className="inline-flex items-center gap-2 px-3.5 py-2 text-sm font-semibold bg-[#18181c] border border-neutral-800 text-neutral-200 rounded-xl hover:bg-neutral-800 active:bg-neutral-700 shadow-xs transition-all disabled:opacity-60 cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-bold uppercase font-['Oswald',sans-serif] tracking-wider bg-[#121214] hover:bg-zinc-900 border border-zinc-800 text-zinc-200 rounded-xl shadow-lg transition-all active:scale-95 disabled:opacity-60 cursor-pointer"
             >
-              <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin text-orange-500' : 'text-neutral-400'}`} />
+              <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin text-orange-500' : 'text-zinc-400'}`} />
               <span>Atualizar</span>
             </button>
 
-            <div className="flex items-center gap-1.5 bg-[#18181c] border border-neutral-800 rounded-xl px-3 py-2 shadow-xs">
+            <div className="flex items-center gap-2 bg-[#121214] border border-zinc-800 rounded-xl px-3 py-2 shadow-lg">
               <Timer className="w-4 h-4 text-orange-500" />
               <select
                 value={pollMs}
                 onChange={handlePollChange}
-                className="text-xs sm:text-sm font-semibold bg-transparent border-none focus:outline-none text-neutral-200 cursor-pointer"
+                className="text-xs sm:text-sm font-bold uppercase font-['Oswald',sans-serif] tracking-wider bg-transparent border-none focus:outline-none text-zinc-300 cursor-pointer"
               >
                 {INTERVAL_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value} className="bg-neutral-900 text-neutral-200">
+                  <option key={opt.value} value={opt.value} className="bg-zinc-900 text-zinc-200">
                     Auto: {opt.label}
                   </option>
                 ))}
@@ -195,88 +213,190 @@ export default function AdminOrdersPage() {
           </div>
         </div>
 
-        {/* Quick KPI Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
-          <div className="bg-[#18181c] p-4 rounded-2xl border border-neutral-800 shadow-xs">
-            <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block">Novos</span>
-            <span className="text-2xl font-black text-blue-400 mt-1 block">
-              {adminOrders.filter((o) => o.status === 'RECEIVED').length}
-            </span>
+        {/* Resumo de Indicadores Operacionais (KPIs) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-7">
+          <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
+            <div>
+              <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
+                Novos Pedidos
+              </span>
+              <span className="text-3xl font-black text-blue-400 mt-0.5 block font-['Oswald',sans-serif]">
+                {adminOrders.filter((o) => o.status === 'RECEIVED').length}
+              </span>
+              <span className="text-[10px] text-zinc-500">Aguardando início</span>
+            </div>
+            <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+              <Flame className="w-5 h-5" />
+            </div>
           </div>
-          <div className="bg-[#18181c] p-4 rounded-2xl border border-neutral-800 shadow-xs">
-            <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block">Em Preparo</span>
-            <span className="text-2xl font-black text-amber-400 mt-1 block">
-              {adminOrders.filter((o) => o.status === 'PREPARING').length}
-            </span>
+
+          <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
+            <div>
+              <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
+                Em Preparo
+              </span>
+              <span className="text-3xl font-black text-amber-400 mt-0.5 block font-['Oswald',sans-serif]">
+                {adminOrders.filter((o) => o.status === 'PREPARING').length}
+              </span>
+              <span className="text-[10px] text-zinc-500">Na grelha / montagem</span>
+            </div>
+            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+              <ChefHat className="w-5 h-5" />
+            </div>
           </div>
-          <div className="bg-[#18181c] p-4 rounded-2xl border border-neutral-800 shadow-xs">
-            <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block">Prontos</span>
-            <span className="text-2xl font-black text-emerald-400 mt-1 block">
-              {adminOrders.filter((o) => o.status === 'READY').length}
-            </span>
+
+          <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
+            <div>
+              <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
+                Prontos
+              </span>
+              <span className="text-3xl font-black text-emerald-400 mt-0.5 block font-['Oswald',sans-serif]">
+                {adminOrders.filter((o) => o.status === 'READY').length}
+              </span>
+              <span className="text-[10px] text-zinc-500">Aguardando entrega</span>
+            </div>
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <CheckCircle2 className="w-5 h-5" />
+            </div>
           </div>
-          <div className="bg-[#18181c] p-4 rounded-2xl border border-neutral-800 shadow-xs">
-            <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block">Finalizados</span>
-            <span className="text-2xl font-black text-neutral-300 mt-1 block">
-              {adminOrders.filter((o) => o.status === 'DELIVERED').length}
-            </span>
+
+          <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
+            <div>
+              <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
+                Finalizados
+              </span>
+              <span className="text-3xl font-black text-zinc-300 mt-0.5 block font-['Oswald',sans-serif]">
+                {adminOrders.filter((o) => o.status === 'DELIVERED').length}
+              </span>
+              <span className="text-[10px] text-zinc-500">Entregues no turno</span>
+            </div>
+            <div className="w-10 h-10 rounded-xl bg-zinc-800/60 border border-zinc-700/40 flex items-center justify-center text-zinc-400">
+              <Sparkles className="w-5 h-5" />
+            </div>
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="flex gap-1.5 bg-[#18181c] rounded-2xl p-1.5 shadow-xs border border-neutral-800 mb-6 overflow-x-auto">
-          {TAB_FILTERS.map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
-              className={`flex-1 min-w-fit px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all whitespace-nowrap cursor-pointer ${
-                activeTab === tab.key
-                  ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-xs'
-                  : 'text-neutral-400 hover:bg-neutral-800 hover:text-white'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* Abas com Contadores */}
+        <div className="flex gap-1.5 bg-[#121214] rounded-2xl p-1.5 border border-zinc-800 mb-7 overflow-x-auto shadow-xl">
+          {TAB_FILTERS.map((tab) => {
+            const count =
+              tab.key === 'active'
+                ? countActive
+                : tab.key === 'all'
+                ? adminOrders.length
+                : tab.key === 'delivered'
+                ? countDelivered
+                : countCancelled;
+
+            const isSelected = activeTab === tab.key;
+            return (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                className={`flex-1 min-w-fit px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider font-['Oswald',sans-serif] rounded-xl transition-all whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 ${
+                  isSelected
+                    ? 'bg-orange-600 text-white shadow-md'
+                    : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
+                }`}
+              >
+                <span>{tab.label}</span>
+                <span
+                  className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
+                    isSelected ? 'bg-black/30 text-white' : 'bg-zinc-800 text-zinc-400'
+                  }`}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Orders list */}
+        {/* Fila de Pedidos */}
         {filteredOrders.length === 0 ? (
-          <div className="text-center py-16">
-            <PackageOpen className="w-16 h-16 text-neutral-600 mx-auto mb-4" />
-            <p className="text-neutral-400 font-medium">Nenhum pedido encontrado</p>
+          <div className="text-center py-20 bg-[#121214] rounded-3xl border border-zinc-800 shadow-xl">
+            <PackageOpen className="w-16 h-16 text-zinc-700 mx-auto mb-4" />
+            <h3 className="text-lg font-bold text-white uppercase font-['Oswald',sans-serif] tracking-wider">
+              Nenhum pedido encontrado
+            </h3>
+            <p className="text-xs sm:text-sm text-zinc-500 mt-1 max-w-sm mx-auto">
+              Nenhum pedido nesta fila no momento. Novos pedidos de mesa ou delivery aparecerão aqui em tempo real.
+            </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             {filteredOrders.map((order) => (
               <OrderCard
                 key={order.id}
                 order={order}
-                expanded={expandedOrders.has(order.id)}
-                onToggleExpanded={() => toggleExpanded(order.id)}
                 onAdvance={() => handleAdvance(order)}
                 onCancel={() => handleCancel(order)}
               />
             ))}
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
 }
 
-/* ---------- Order Card ---------- */
+/* ---------- Card Operacional de Pedido ---------- */
 
-function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
-  const statusConfig = ORDER_STATUS[order.status] || {};
+function OrderCard({ order, onAdvance, onCancel }) {
   const isTerminal = order.status === 'DELIVERED' || order.status === 'CANCELLED';
-  const isReceived = order.status === 'RECEIVED';
+
+  const statusConfig = {
+    RECEIVED: {
+      label: 'Novo Pedido',
+      badgeClass: 'bg-blue-500/10 text-blue-400 border border-blue-500/30',
+      dotClass: 'bg-blue-400',
+      btnBg: 'bg-orange-600 hover:bg-orange-500 shadow-orange-950/50',
+      icon: Flame,
+    },
+    PREPARING: {
+      label: 'Em Preparo',
+      badgeClass: 'bg-amber-500/10 text-amber-400 border border-amber-500/30',
+      dotClass: 'bg-amber-400 animate-pulse',
+      btnBg: 'bg-amber-600 hover:bg-amber-500 shadow-amber-950/50',
+      icon: ChefHat,
+    },
+    READY: {
+      label: 'Pronto p/ Entrega',
+      badgeClass: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30',
+      dotClass: 'bg-emerald-400',
+      btnBg: 'bg-emerald-600 hover:bg-emerald-500 shadow-emerald-950/50',
+      icon: CheckCircle2,
+    },
+    DELIVERED: {
+      label: 'Entregue',
+      badgeClass: 'bg-zinc-800/80 text-zinc-400 border border-zinc-700/50',
+      dotClass: 'bg-zinc-500',
+      btnBg: 'bg-zinc-700',
+      icon: CheckCircle2,
+    },
+    CANCELLED: {
+      label: 'Cancelado',
+      badgeClass: 'bg-red-500/10 text-red-400 border border-red-500/30',
+      dotClass: 'bg-red-500',
+      btnBg: 'bg-zinc-800',
+      icon: X,
+    },
+  }[order.status] || {
+    label: order.status,
+    badgeClass: 'bg-zinc-800 text-zinc-300 border border-zinc-700',
+    dotClass: 'bg-zinc-400',
+    btnBg: 'bg-orange-600',
+    icon: Flame,
+  };
+
+  const ActionIcon = statusConfig.icon;
 
   const addons = (item) => {
     try {
-      const parsed = typeof item.addonsJsonSnapshot === 'string'
-        ? JSON.parse(item.addonsJsonSnapshot)
-        : item.addonsJsonSnapshot;
+      const parsed =
+        typeof item.addonsJsonSnapshot === 'string'
+          ? JSON.parse(item.addonsJsonSnapshot)
+          : item.addonsJsonSnapshot;
       return parsed || [];
     } catch {
       return [];
@@ -284,119 +404,137 @@ function OrderCard({ order, expanded, onToggleExpanded, onAdvance, onCancel }) {
   };
 
   return (
-    <div
-      className={`bg-[#18181c] rounded-2xl border border-neutral-800 shadow-xs hover:shadow-xl transition-all overflow-hidden flex flex-col justify-between ${
-        isReceived ? 'border-l-4 border-l-orange-500' : ''
-      }`}
-    >
-      {/* Card header */}
-      <div className="p-4">
-        <div className="flex items-start justify-between gap-2 mb-2">
+    <div className="bg-[#121214] rounded-2xl sm:rounded-3xl border border-zinc-800 hover:border-zinc-700/80 shadow-2xl transition-all overflow-hidden flex flex-col justify-between">
+      {/* Topo do Card */}
+      <div className="p-5 sm:p-6">
+        <div className="flex items-start justify-between gap-3 mb-3">
           <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="font-bold text-white">#{order.id}</span>
-              <span className="text-xs text-neutral-500">{formatRelativeTime(order.createdAt)}</span>
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl sm:text-2xl font-black text-white uppercase font-['Oswald',sans-serif] tracking-tight">
+                Pedido #{order.id}
+              </span>
+              <span className="text-xs text-zinc-400 flex items-center gap-1 font-medium">
+                <Clock className="w-3.5 h-3.5 text-zinc-500" />
+                {formatRelativeTime(order.createdAt)}
+              </span>
             </div>
-            <div className="text-sm text-neutral-300 mt-0.5 flex items-center gap-1.5">
+
+            {/* Tipo de Atendimento: Salão / Delivery */}
+            <div className="mt-1 flex items-center gap-2">
               {order.orderType === 'DINE_IN' ? (
-                <span className="inline-flex items-center gap-1.5 font-medium">
-                  <Utensils className="w-3.5 h-3.5 text-orange-500" />
-                  Mesa {order.tableNumber}
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/20 text-xs font-bold text-orange-400 uppercase font-['Oswald',sans-serif] tracking-wider">
+                  <Utensils className="w-3.5 h-3.5" />
+                  Salão — Mesa {order.tableNumber}
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1.5 font-medium">
-                  <Bike className="w-3.5 h-3.5 text-blue-400" />
-                  Entrega - {order.customerName}
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/20 text-xs font-bold text-blue-400 uppercase font-['Oswald',sans-serif] tracking-wider">
+                  <Bike className="w-3.5 h-3.5" />
+                  Delivery — {order.customerName}
                 </span>
               )}
             </div>
+
             {order.deliveryAddress && (
-              <p className="text-xs text-neutral-400 mt-0.5 inline-flex items-center gap-1">
-                <MapPin className="w-3 h-3 text-neutral-500 shrink-0" />
-                {order.deliveryAddress}
+              <p className="text-xs text-zinc-400 mt-1.5 flex items-center gap-1.5 leading-tight">
+                <MapPin className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
+                <span>{order.deliveryAddress}</span>
               </p>
             )}
           </div>
+
+          {/* Badge de Status */}
           <span
-            className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${statusConfig.color} text-white`}
+            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider font-['Oswald',sans-serif] shrink-0 ${statusConfig.badgeClass}`}
           >
+            <span className={`w-2 h-2 rounded-full ${statusConfig.dotClass}`} />
             {statusConfig.label}
           </span>
         </div>
 
-        {/* Expandable items */}
-        <button
-          onClick={onToggleExpanded}
-          className="flex items-center gap-1 text-sm text-orange-400 hover:text-orange-300 font-medium mt-1 min-h-[44px] cursor-pointer"
-        >
-          {expanded ? (
-            <>
-              <ChevronUp className="w-4 h-4" /> Ocultar itens
-            </>
-          ) : (
-            <>
-              <ChevronDown className="w-4 h-4" /> Ver itens ({order.items.length})
-            </>
-          )}
-        </button>
-
-        {expanded && (
-          <div className="mt-2 space-y-2 border-t border-neutral-800 pt-3">
+        {/* Lista de Itens do Pedido */}
+        <div className="mt-4 pt-4 border-t border-zinc-800/80">
+          <div className="space-y-3">
             {order.items.map((item) => {
               const itemAddons = addons(item);
               return (
-                <div key={item.id} className="text-sm">
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <span className="font-medium text-neutral-200">
-                        {item.quantity}x {item.productNameSnapshot}
-                        {item.variationNameSnapshot && (
-                          <span className="text-neutral-400"> ({item.variationNameSnapshot})</span>
-                        )}
+                <div
+                  key={item.id}
+                  className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex items-start justify-between gap-3 text-sm"
+                >
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2 py-0.5 rounded-md bg-orange-500/20 text-orange-400 font-black text-xs font-['Oswald',sans-serif]">
+                        {item.quantity}x
                       </span>
-                      {itemAddons.length > 0 && (
-                        <p className="text-xs text-neutral-400 mt-0.5">
-                          + {itemAddons.map((a) => a.name).join(', ')}
-                        </p>
-                      )}
-                      {item.notes && (
-                        <p className="text-xs text-amber-400 italic mt-0.5">
-                          Obs: {item.notes}
-                        </p>
+                      <span className="font-bold text-white text-sm">
+                        {item.productNameSnapshot}
+                      </span>
+                      {item.variationNameSnapshot && (
+                        <span className="text-xs font-medium text-zinc-400">
+                          ({item.variationNameSnapshot})
+                        </span>
                       )}
                     </div>
-                    <span className="text-neutral-300 ml-2 whitespace-nowrap">
-                      {formatPrice(item.subtotal)}
-                    </span>
+
+                    {itemAddons.length > 0 && (
+                      <div className="mt-1 flex flex-wrap gap-1">
+                        {itemAddons.map((addon, idx) => (
+                          <span
+                            key={idx}
+                            className="text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 font-medium"
+                          >
+                            + {addon.name}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {item.notes && (
+                      <div className="mt-1.5 px-2.5 py-1 rounded-lg bg-amber-950/40 border border-amber-800/50 text-xs text-amber-300 flex items-center gap-1.5 font-medium">
+                        <span>⚠️ Obs:</span>
+                        <span>{item.notes}</span>
+                      </div>
+                    )}
                   </div>
+
+                  <span className="font-bold text-zinc-200 text-sm whitespace-nowrap pt-0.5">
+                    {formatPrice(item.subtotal)}
+                  </span>
                 </div>
               );
             })}
           </div>
-        )}
+        </div>
 
-        {/* Total */}
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-neutral-800">
-          <span className="text-sm text-neutral-400">Total</span>
-          <span className="font-bold text-white text-lg">{formatPrice(order.totalAmount)}</span>
+        {/* Totalizador */}
+        <div className="flex items-center justify-between mt-4 pt-4 border-t border-zinc-800/80">
+          <span className="text-xs uppercase font-bold text-zinc-400 font-['Oswald',sans-serif] tracking-wider">
+            Total do Pedido
+          </span>
+          <span className="text-2xl font-black text-white font-['Oswald',sans-serif] tracking-tight">
+            {formatPrice(order.totalAmount)}
+          </span>
         </div>
       </div>
 
-      {/* Action buttons */}
+      {/* Botões de Ação Operacional */}
       {!isTerminal && (
-        <div className="flex gap-2 px-4 pb-4">
+        <div className="flex gap-2.5 p-5 pt-0">
           <button
             onClick={onAdvance}
-            className="flex-1 h-11 bg-[#c2410c] hover:bg-[#d9531e] active:bg-[#9a3412] text-white font-semibold text-sm rounded-xl transition shadow-md shadow-black/30 cursor-pointer"
+            className={`flex-1 h-12 ${statusConfig.btnBg} active:scale-[0.98] text-white font-bold uppercase tracking-wider font-['Oswald',sans-serif] text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer`}
           >
-            {getNextStatusLabel(order.status)}
+            <ActionIcon className="w-4 h-4" />
+            <span>{getNextStatusLabel(order.status)}</span>
+            <ArrowRight className="w-4 h-4 opacity-70" />
           </button>
           <button
             onClick={onCancel}
-            className="h-11 px-4 border-2 border-red-500/40 text-red-400 hover:bg-red-950/30 active:bg-red-900/50 font-semibold text-sm rounded-xl transition flex items-center gap-1.5 cursor-pointer"
+            className="h-12 px-4 rounded-xl border border-zinc-700/80 hover:border-red-500/60 hover:bg-red-950/40 text-zinc-400 hover:text-red-400 font-bold uppercase tracking-wider font-['Oswald',sans-serif] text-xs transition-all flex items-center gap-1.5 cursor-pointer"
+            title="Cancelar este pedido"
           >
             <X className="w-4 h-4" />
-            Cancelar
+            <span className="hidden sm:inline">Cancelar</span>
           </button>
         </div>
       )}

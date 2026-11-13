@@ -549,3 +549,25 @@ pm run build bem-sucedido.
      - 
 pm run lint com 0 erros e 
 pm run build bem-sucedido.
+
+---
+
+### [2026-11-12 23:28] — Redesign Completo do Painel Operacional Administrativo (KDS & Pedidos)
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Refinamento e Padronização Visual do Painel Administrativo
+- **Ações Executadas:**
+  1. **Redesign do Painel de Pedidos (AdminOrdersPage.jsx):**
+     - Alinhada toda a página à paleta escura pura (g-black, #121214, order-zinc-800), eliminando qualquer tom marrom, cinza desbotado ou borda assimétrica.
+     - **Header & Live Pulse:** Título em tipografia Oswald com selo dinâmico de monitoramento 🟢 AO VIVO, controles de atualização rápida e temporizador automático.
+     - **Cards de Indicadores (KPIs):** Indicadores operacionais refinados para *Novos Pedidos*, *Em Preparo*, *Prontos* e *Finalizados*, com ícones contextuais e legendas operacionais.
+     - **Filtros com Contadores:** Abas de navegação com pills de contagem em tempo real (ATIVOS, TODOS, ENTREGUES, CANCELADOS).
+     - **Cards de Pedidos com Itens Diretos:** Exibição clara e legível de todos os produtos do pedido ([ 2x ], variações, adicionais destacados e caixas de observações com alerta ⚠️ Obs:), totalizador e botões de avanço contextual com cores de estado (Novo -> Laranja, Em Preparo -> Âmbar, Pronto -> Esmeralda).
+  2. **Padronização da Barra de Navegação Administrativa (Navbar.jsx):**
+     - Abas administrativas (Pedidos, Cardápio, Ver cardápio, Sair) estilizadas com ont-['Oswald',sans-serif], indicadores ativos em laranja de alta visibilidade e botão de logout refinado.
+  3. **Harmonização do Gerenciador de Cardápio (AdminMenuPage.jsx):**
+     - Cores purificadas para a paleta #121214/zinc-*/laranja da marca.
+  4. **Validação Visual e CI/CD:**
+     - Screenshot do navegador confirmado pelo subagent visual.
+     - 
+pm run lint (0 erros) e 
+pm run build bem-sucedido.
