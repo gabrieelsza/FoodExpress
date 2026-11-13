@@ -709,3 +709,24 @@ pm run build bem-sucedido.
      - `npm run build`: gerado com sucesso em 1.37s.
      - Inspeção visual automatizada via browser subagent com evidência fotográfica em `final_step_395.png`.
 
+---
+
+### [2026-11-13 00:36] — Harmonização de Degradê Luxuoso e Contínuo no Hero Banner
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Refinamento Estético do Degradê ("Degradê Bonito") e Transição Orgânica
+- **Ações Executadas:**
+  1. **Degradê Contínuo e Veludoso de Alto Padrão (`HomePage.jsx`):**
+     - O container e overlay global de cada slide agora utilizam uma curva cromática multi-etapas ultra-suave (`bg-gradient-to-r from-[#070504] 0% via-[#0b0806] 32% via-[#120d09] 60% via-[#16100b] 78% to-[#1a120c] 95%`).
+     - A máscara da fotografia foi sincronizada para desvanecer com suavidade natural (`WebkitMaskImage: linear-gradient(to right, ...)` de 22% a 88%), garantindo que a dissolução visual ocorra como fumaça e luz quente.
+     - Removido qualquer vestígio de neblina esbranquiçada ou corte vertical entre a fotografia (esquerda) e a tela de apresentação (direita).
+  2. **Composição Visual das Ondas e Curvas de Brasa:**
+     - A curva principal com gradiente de fogo (`#ea580c` a `#dc2626`) recebeu sombra luminosa suave (`drop-shadow(0 0 10px rgba(249, 115, 22, 0.5))`).
+     - Acompanhada por curva tracejada em âmbar quente (`#f59e0b`, `strokeDasharray="6 8"`) e linha sutil de eco em segundo plano (`rgba(245, 158, 11, 0.2)`).
+  3. **Iluminação Aconchegante ("Hearth Fire"):**
+     - O fundo do texto recebeu iluminação difusa ampliada (`blur-[120px]`), criando profundidade e sensação aconchegante de steakhouse sem criar blocos de cor artificiais.
+  4. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 982ms.
+     - Inspeção visual automatizada no Slide 1 e Slide 3 com evidência fotográfica em `final_step_407.png`.
+
+

@@ -144,11 +144,11 @@ export default function HomePage() {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden bg-[#090706] ${
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden bg-gradient-to-r from-[#070504] 0% via-[#0b0806] 32% via-[#120d09] 60% via-[#16100b] 78% to-[#1a120c] 95% ${
                 isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
-              {/* Full-width Photo Layer with wide feathered mask fading into the right */}
+              {/* Full-width Photo Layer with wide feathered mask fading softly into the degradê */}
               <div className="absolute inset-y-0 left-0 w-full md:w-3/5 lg:w-[65%] h-[230px] sm:h-[260px] md:h-full overflow-hidden pointer-events-none">
                 <img
                   src={slide.photoUrl}
@@ -157,14 +157,14 @@ export default function HomePage() {
                     isActive ? 'scale-105' : 'scale-100'
                   }`}
                   style={{
-                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 28%, rgba(0,0,0,0.6) 48%, rgba(0,0,0,0.18) 70%, rgba(0,0,0,0) 86%)',
-                    maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 28%, rgba(0,0,0,0.6) 48%, rgba(0,0,0,0.18) 70%, rgba(0,0,0,0) 86%)',
+                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.75) 42%, rgba(0,0,0,0.35) 62%, rgba(0,0,0,0.08) 78%, rgba(0,0,0,0) 88%)',
+                    maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.75) 42%, rgba(0,0,0,0.35) 62%, rgba(0,0,0,0.08) 78%, rgba(0,0,0,0) 88%)',
                   }}
                 />
 
                 {/* Mobile Bottom & Top feathering */}
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#090706] via-[#090706]/80 to-transparent pointer-events-none md:hidden" />
-                <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#120d09] via-[#0d0906]/85 to-transparent pointer-events-none md:hidden" />
+                <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
 
                 {/* Floating Steakhouse Experience Tag */}
                 <div className="absolute top-4 left-4 z-20">
@@ -175,47 +175,55 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Full-width continuous horizontal degradê overlay in pure dark black tones (Seamless fade with ZERO vertical seam!) */}
-              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent 20% via-[#090706]/55 42% via-[#090706]/92 62% to-[#090706] 80% pointer-events-none z-10" />
+              {/* Full-width continuous horizontal degradê overlay: fluido, suave e luxuoso (Sem cortes ou degraus!) */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent 15% via-[#070504]/35 32% via-[#0d0906]/75 52% via-[#130e0a]/92 70% to-[#1a120c] 88% pointer-events-none z-10" />
 
-              {/* Subtle Warm Hearth Atmosphere behind text */}
-              <div className="absolute top-1/2 right-[18%] -translate-y-1/2 w-[580px] h-[520px] bg-gradient-to-br from-orange-600/12 via-amber-600/8 to-transparent rounded-full blur-[100px] pointer-events-none z-10" />
-              <div className="absolute -top-20 right-10 w-80 h-80 bg-amber-600/10 rounded-full blur-3xl pointer-events-none z-10" />
-              <div className="absolute -bottom-20 right-[25%] w-80 h-80 bg-red-600/8 rounded-full blur-3xl pointer-events-none z-10" />
+              {/* Rich Warm Hearth Atmosphere behind text — Difuso, veludoso e aconchegante */}
+              <div className="absolute top-1/2 right-[12%] -translate-y-1/2 w-[680px] h-[580px] bg-gradient-to-br from-orange-600/15 via-amber-600/10 to-transparent rounded-full blur-[120px] pointer-events-none z-10" />
+              <div className="absolute -top-16 right-8 w-88 h-88 bg-amber-600/10 rounded-full blur-[90px] pointer-events-none z-10" />
+              <div className="absolute -bottom-16 right-[28%] w-88 h-88 bg-red-600/8 rounded-full blur-[90px] pointer-events-none z-10" />
 
-              {/* Vibrant Outback organic curved wave lines floating seamlessly across the transition (Prominent, Glowing, Bonitinho!) */}
+              {/* Vibrant Outback organic curved wave lines floating seamlessly across the transition */}
               <svg
-                className="hidden md:block absolute left-[47%] lg:left-[53%] -translate-x-1/2 top-0 bottom-0 h-full w-52 pointer-events-none z-20"
-                viewBox="0 0 140 800"
+                className="hidden md:block absolute left-[46%] lg:left-[52%] -translate-x-1/2 top-0 bottom-0 h-full w-56 pointer-events-none z-20"
+                viewBox="0 0 160 800"
                 preserveAspectRatio="none"
                 fill="none"
               >
-                {/* Dashed wave curve */}
+                {/* Delicate background echo wave */}
                 <path
-                  d="M25,0 C95,200 15,380 85,560 C115,660 35,800 25,800"
+                  d="M15,0 C85,210 5,390 75,570 C105,670 25,800 15,800"
+                  stroke="rgba(245, 158, 11, 0.2)"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 8"
+                />
+                {/* Dashed warm amber organic wave */}
+                <path
+                  d="M40,0 C110,210 30,390 100,570 C130,670 50,800 40,800"
                   stroke="#f59e0b"
                   strokeWidth="2.5"
                   strokeDasharray="6 8"
-                  className="opacity-80"
+                  className="opacity-85"
                 />
                 {/* Glowing solid fire-gradient curve */}
                 <path
-                  d="M55,0 C125,230 45,410 110,600 C140,700 70,800 60,800"
+                  d="M70,0 C140,230 60,410 125,600 C155,700 85,800 75,800"
                   stroke="url(#warmGradientHero)"
                   strokeWidth="3"
                   className="opacity-95"
-                  style={{ filter: 'drop-shadow(0 0 8px rgba(249, 115, 22, 0.45))' }}
+                  style={{ filter: 'drop-shadow(0 0 10px rgba(249, 115, 22, 0.5))' }}
                 />
                 <defs>
                   <linearGradient id="warmGradientHero" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stopColor="#ea580c" />
-                    <stop offset="50%" stopColor="#f59e0b" />
+                    <stop offset="35%" stopColor="#f59e0b" />
+                    <stop offset="70%" stopColor="#d97706" />
                     <stop offset="100%" stopColor="#dc2626" />
                   </linearGradient>
                 </defs>
               </svg>
 
-              {/* Content Grid (Transparent columns allowing the pure black degradê to shine through smoothly) */}
+              {/* Content Grid (Transparent columns allowing the rich degradê to shine through smoothly) */}
               <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 relative z-20">
                 {/* Left Side Spacer on Desktop */}
                 <div className="hidden md:block md:col-span-6 lg:col-span-7 h-full pointer-events-none" />
