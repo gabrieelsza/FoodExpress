@@ -183,26 +183,26 @@ export default function HomePage() {
               <div className="absolute -top-16 right-8 w-72 h-72 bg-amber-600/5 rounded-full blur-[100px] pointer-events-none z-10" />
               <div className="absolute -bottom-16 right-[25%] w-72 h-72 bg-red-600/4 rounded-full blur-[100px] pointer-events-none z-10" />
 
-              {/* Clear, well-defined organic curves framing the text (Aparente, nítida e sem neon!) */}
+              {/* Clear, well-defined organic curves close together framing the text */}
               <svg
                 className="hidden md:block absolute left-[51%] lg:left-[58%] -translate-x-1/2 top-0 bottom-0 h-full w-56 pointer-events-none z-20"
                 viewBox="0 0 160 800"
                 preserveAspectRatio="none"
                 fill="none"
               >
-                {/* Arco tracejado em âmbar quente com alta nitidez e visibilidade */}
+                {/* Linha tracejada em âmbar próxima da linha principal */}
                 <path
-                  d="M25,0 C95,190 15,370 75,540 C105,650 35,770 20,800"
+                  d="M52,0 C122,230 27,420 97,600 C127,700 62,800 47,800"
                   stroke="#f59e0b"
-                  strokeWidth="2"
+                  strokeWidth="1.75"
                   strokeDasharray="6 8"
                   className="opacity-80"
                 />
-                {/* Linha fluida principal em gradiente de fogo da brasa (Nítida, marcante e sem efeito neon) */}
+                {/* Linha fluida principal em gradiente de fogo da brasa (Nítida, sem neon) */}
                 <path
                   d="M70,0 C140,230 45,420 115,600 C145,700 80,800 65,800"
                   stroke="url(#warmGradientHero)"
-                  strokeWidth="2.5"
+                  strokeWidth="2.25"
                   className="opacity-90"
                 />
                 <defs>

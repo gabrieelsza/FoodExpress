@@ -822,6 +822,21 @@ pm run build bem-sucedido.
      - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
      - `npm run build`: gerado com sucesso em 1.16s.
 
+---
+
+### [2026-11-13 01:14] — Aproximação das Linhas Orgânicas entre Si (Dupla Paralela Harmoniosa)
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Ajuste de Distância entre Curvas Decorativas ("Mais Próximos")
+- **Ações Executadas:**
+  1. **Aproximação Mútua das Duas Curvas (`HomePage.jsx`):**
+     - A linha tracejada em âmbar foi recalibrada para acompanhar paralelamente a linha contínua de fogo a uma distância constante e harmoniosa de apenas `18px` (`M52` vs `M70`, etc.).
+     - Eliminado o vão vazio excessivo que separava os dois traços, restaurando a sensação de uma assinatura gráfica única e refinada.
+     - As duas linhas permanecem nítidas, marcantes e sem efeito neon (`strokeWidth="2.25"` e `1.75"`), contornando perfeitamente a lateral do bloco de frases.
+  2. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 990ms.
+
+
 
 
 
