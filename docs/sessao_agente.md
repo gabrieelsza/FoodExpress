@@ -658,3 +658,18 @@ pm run build bem-sucedido.
   3. **Validação e Build:**
      - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
      - `npm run build`: gerado com sucesso em 1.15s.
+
+
+---
+
+### [2026-11-13 00:19] — Implementação de Degradê Horizontal Rico e Contínuo entre as Duas Metades
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Polimento de Transição Cromática no Hero
+- **Ações Executadas:**
+  1. **Aplicação do Degradê Cromático Contínuo (`HomePage.jsx`):**
+     - O container de cada slide agora utiliza um gradiente horizontal contínuo (`bg-gradient-to-r from-[#090706] via-[#0e0b08] 35% via-[#18110b] 65% to-[#1e150e]`), unindo gradualmente o lado escuro da foto à tonalidade aconchegante de madeira/brasa do lado textual.
+     - A sobreposição de máscara da foto agora conecta perfeitamente os mesmos stops do gradiente (`from-black/30 via-transparent 25% via-[#0e0b08]/40 50% via-[#18110b]/80 75% to-[#1e150e]`), garantindo que não haja salto de cor entre o lado esquerdo e o lado direito.
+     - A linha curva fluida em degradê de brasa e os traços pontilhados permanecem harmoniosamente integrados na faixa central do degradê.
+  2. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 1.25s.

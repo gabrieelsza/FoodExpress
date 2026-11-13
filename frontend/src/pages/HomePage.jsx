@@ -144,18 +144,18 @@ export default function HomePage() {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden bg-[#0c0a08] ${
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden bg-gradient-to-r from-[#090706] via-[#0e0b08] 35% via-[#18110b] 65% to-[#1e150e] ${
                 isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
-              {/* Continuous Ambient Hearth Glow across the entire banner (NO vertical seam / column clipping!) */}
-              <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/4 w-[500px] h-[500px] bg-orange-600/12 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -top-24 right-10 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-24 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
+              {/* Wide Hearth Glow seamlessly diffused across the degradê transition */}
+              <div className="absolute top-1/2 left-1/2 -translate-y-1/2 w-[700px] h-[550px] bg-gradient-to-r from-orange-600/10 via-amber-600/12 to-transparent rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -top-20 right-10 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-20 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
 
               {/* Subtle Outback organic curved wave lines creating fluidity across the gradient transition */}
               <svg
-                className="hidden md:block absolute left-[50%] lg:left-[55%] -translate-x-1/2 top-0 bottom-0 h-full w-40 text-orange-500/25 pointer-events-none z-20"
+                className="hidden md:block absolute left-[48%] lg:left-[53%] -translate-x-1/2 top-0 bottom-0 h-full w-44 text-orange-500/25 pointer-events-none z-20"
                 viewBox="0 0 120 800"
                 preserveAspectRatio="none"
                 fill="none"
@@ -192,17 +192,16 @@ export default function HomePage() {
                       isActive ? 'scale-105' : 'scale-100'
                     }`}
                     style={{
-                      WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.15) 88%, rgba(0,0,0,0) 100%)',
-                      maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.15) 88%, rgba(0,0,0,0) 100%)',
+                      WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0) 100%)',
+                      maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0) 100%)',
                     }}
                   />
 
-                  {/* Multi-stage Smooth Feathered Gradients for Desktop */}
-                  <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/25 via-transparent 30% to-[#0c0a08] 98% pointer-events-none" />
-                  <div className="hidden md:block absolute inset-y-0 right-0 w-80 bg-gradient-to-r from-transparent via-[#0c0a08]/70 to-[#0c0a08] pointer-events-none z-10" />
+                  {/* Multi-stage Smooth Feathered Gradients connecting directly to the right side degradê */}
+                  <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/30 via-transparent 25% via-[#0e0b08]/40 50% via-[#18110b]/80 75% to-[#1e150e] pointer-events-none" />
 
                   {/* Bottom & Top feathering for Mobile */}
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0c0a08] via-[#0c0a08]/70 to-transparent pointer-events-none z-10 md:hidden" />
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#090706] via-[#090706]/70 to-transparent pointer-events-none z-10 md:hidden" />
                   <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-black/50 to-transparent pointer-events-none z-10" />
 
                   {/* Floating Steakhouse Experience Tag */}
@@ -214,7 +213,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Right Side: Seamless Dark Graphic Canvas with Warm Glow & Organic Accents (bg-transparent to preserve 100% continuous degradê!) */}
+                {/* Right Side: Seamless Dark Graphic Canvas with Warm Glow & Organic Accents (bg-transparent so the smooth horizontal degradê flows through) */}
                 <div className="md:col-span-6 lg:col-span-5 relative h-full flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:p-8 lg:p-12 xl:p-14 text-center md:text-left">
                   {/* Content Container with soft stagger animation */}
                   <div className={`relative z-10 space-y-3 sm:space-y-4 md:space-y-4 lg:space-y-5 transition-all duration-700 ease-out transform ${
