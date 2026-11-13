@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import SmoothScroll from './components/SmoothScroll'
+import LoadingScreen from './components/LoadingScreen'
 import HomePage from './pages/HomePage'
 import RestaurantPage from './pages/RestaurantPage'
 import CustomerMenuPage from './pages/CustomerMenuPage'
@@ -11,36 +12,39 @@ import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
   return (
-    <SmoothScroll>
-      <Routes>
-        {/* 1. ABA INÍCIO (Tela Demonstrativa Inicial Outback) */}
-        <Route path="/" element={<HomePage />} />
+    <>
+      <LoadingScreen />
+      <SmoothScroll>
+        <Routes>
+          {/* 1. ABA INÍCIO (Tela Demonstrativa Inicial Outback) */}
+          <Route path="/" element={<HomePage />} />
 
-        {/* 2. ABA RESTAURANTE & SALÃO (Página Dedicada ao Espaço Presencial) */}
-        <Route path="/restaurante" element={<RestaurantPage />} />
-        <Route path="/salao" element={<Navigate to="/restaurante" replace />} />
+          {/* 2. ABA RESTAURANTE & SALÃO (Página Dedicada ao Espaço Presencial) */}
+          <Route path="/restaurante" element={<RestaurantPage />} />
+          <Route path="/salao" element={<Navigate to="/restaurante" replace />} />
 
-        {/* 3. ABA NOSSOS PRODUTOS (Cardápio Completo Interativo, Personalizações & Pedidos) */}
-        <Route path="/nossos-produtos" element={<CustomerMenuPage />} />
-        <Route path="/delivery" element={<CustomerMenuPage />} />
-        <Route path="/cardapio" element={<CustomerMenuPage />} />
-        <Route path="/produtos" element={<CustomerMenuPage />} />
-        <Route path="/menu" element={<Navigate to="/nossos-produtos" replace />} />
-        <Route path="/pedido/:orderId" element={<OrderTrackingPage />} />
+          {/* 3. ABA NOSSOS PRODUTOS (Cardápio Completo Interativo, Personalizações & Pedidos) */}
+          <Route path="/nossos-produtos" element={<CustomerMenuPage />} />
+          <Route path="/delivery" element={<CustomerMenuPage />} />
+          <Route path="/cardapio" element={<CustomerMenuPage />} />
+          <Route path="/produtos" element={<CustomerMenuPage />} />
+          <Route path="/menu" element={<Navigate to="/nossos-produtos" replace />} />
+          <Route path="/pedido/:orderId" element={<OrderTrackingPage />} />
 
-        {/* Admin Routes */}
-        <Route path="/admin/login" element={<AdminLoginPage />} />
-        <Route path="/admin/pedidos" element={<AdminOrdersPage />} />
-        <Route path="/admin/cardapio" element={<AdminMenuPage />} />
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin/pedidos" element={<AdminOrdersPage />} />
+          <Route path="/admin/cardapio" element={<AdminMenuPage />} />
 
-        {/* Aliases for English paths */}
-        <Route path="/admin/orders" element={<Navigate to="/admin/pedidos" replace />} />
-        <Route path="/admin/menu" element={<Navigate to="/admin/cardapio" replace />} />
+          {/* Aliases for English paths */}
+          <Route path="/admin/orders" element={<Navigate to="/admin/pedidos" replace />} />
+          <Route path="/admin/menu" element={<Navigate to="/admin/cardapio" replace />} />
 
-        {/* 404 */}
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </SmoothScroll>
+          {/* 404 */}
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </SmoothScroll>
+    </>
   )
 }
 

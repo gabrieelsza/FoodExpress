@@ -894,6 +894,26 @@ pm run build bem-sucedido.
      - `npm run lint`: 0 erros.
      - `npm run build`: compilado com sucesso em 1.89s (`dist/assets/index-DhVG7ljP.css` 92.00 kB, `dist/assets/index-BARk8o3N.js` 460.76 kB).
 
+---
+
+### [2026-11-13 11:56] — Implementação da Tela de Carregamento Imersiva Steakhouse (`LoadingScreen.jsx`)
+- **Papel Ativo:** Engenheiro Frontend Especialista em UI/UX & Creative Development
+- **Etapa SDD:** Fase 3 — Criação do Preloader de Entrada com Animação de Brasa e Progresso
+- **Ações Executadas:**
+  1. **Criação do Componente [`LoadingScreen.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/LoadingScreen.jsx):**
+     - Tela de carregamento imersiva em preto obsidiana profundo com brilho sutil de brasa e fogo (`#090706` com degradê radial).
+     - Emblema central animado com chama ardente pulsante e brilho estelar.
+     - Tipografia oficial `FoodExpress Steakhouse & Artisan Burgers`.
+     - Contador numérico percentual suave (0% a 100%) sincronizado via `requestAnimationFrame` (duração fluida de 1.5s).
+     - Barra de progresso ultrafina em gradiente de fogo (`from-red-600 via-orange-500 to-amber-400`).
+     - Frases temáticas dinâmicas em transição suave (*"Aquecendo as brasas da grelha..."*, *"Selecionando cortes nobres e blends 180g..."*, *"Preparando a autêntica experiência steakhouse..."*, *"Bem-vindo ao FoodExpress!"*).
+     - Efeito cortina (*curtain reveal*): ao atingir 100%, a tela sobe elegantemente (`-translate-y-full`) com aceleração de luxo `cubic-bezier(0.77, 0, 0.175, 1)`.
+  2. **Integração no Nível Raiz ([`App.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/App.jsx)):**
+     - O componente foi posicionado no topo da árvore de componentes, bloqueando o scroll apenas durante a contagem e liberando-o assim que a cortina sobe.
+  3. **Validação:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: executado com sucesso em 1.08s (`dist/assets/index-D5tp7_8r.css` 97.72 kB, `dist/assets/index-DAxhwkTM.js` 464.54 kB).
+
 
 
 
