@@ -836,6 +836,29 @@ pm run build bem-sucedido.
      - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
      - `npm run build`: gerado com sucesso em 990ms.
 
+---
+
+### [2026-11-13 01:45] — Transições e Animações Fluidas de Scroll (Bidirecional: Rolar para Baixo e para Cima)
+- **Papel Ativo:** Engenheiro Frontend & Especialista em Motion UI
+- **Etapa SDD:** Fase 3 — Implementação de Animações de Scroll Bidirecionais (`ScrollReveal`)
+- **Ações Executadas:**
+  1. **Criação do Componente Universal [`ScrollReveal.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/components/ScrollReveal.jsx):**
+     - Implementado com `IntersectionObserver` de alto desempenho nativo do browser.
+     - Suporte nativo à bidirecionalidade (`once: false`): elementos re-animam suavemente tanto na rolagem para baixo quanto ao retornar na rolagem para cima.
+     - Suporte a múltiplas direções (`up`, `down`, `left`, `right`, `zoom`), durações customizadas e atrasos escalonados (*stagger delays*).
+     - Curva de aceleração orgânica e luxuosa `cubic-bezier(0.16, 1, 0.3, 1)` com `willChange: 'opacity, transform'`.
+  2. **Habilitação de Smooth Scrolling Global:**
+     - Inclusão de `html { scroll-behavior: smooth; }` em [`frontend/src/index.css`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/index.css) para navegação fluida ao navegar entre âncoras e ao rolar a página.
+  3. **Integração nas Seções de [`frontend/src/pages/HomePage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/HomePage.jsx):**
+     - **Seção "Destaques da Casa / Viva o Sabor":** Cabeçalho surge com elevação vertical (`up`), e os 3 cards demonstrativos entram com stagger escalonado de 140ms (`delay={idx * 140}`).
+     - **Banner CTA "Quer ver todas as nossas opções?":** Revelação com suave expansão dimensional (`direction="zoom"`, duração 800ms).
+     - **Seção "Salão ou Delivery":** Animação lateral coordenada (Card de Delivery desliza a partir da esquerda `direction="left"`, e Card de Salão desliza a partir da direita `direction="right"`).
+     - **Seção de Avaliações & Rodapé:** Título e os 3 depoimentos entram com fade-up escalonado, e o rodapé institucional surge suavemente.
+  4. **Validação Técnica e Visual Automatizada:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: gerado com sucesso em 1.32s (`dist/assets/index-CBnc5ik8.css` 91.44 kB, `dist/assets/index-Buvf9U99.js` 440.83 kB).
+     - Testes visuais via subagente de browser (`e2d51569-60a8-4762-a6e5-995c269b6a38`): rolagem completa de descida e subida validada em `http://localhost:5173/`, com transições suaves e sem nenhum tipo de flickering ou layout jump.
+
 
 
 
