@@ -242,63 +242,80 @@ export default function CustomerMenuPage() {
 
         {/* Restaurant Header Profile Section */}
         <ScrollReveal direction="up" duration={700}>
-          <div className="relative bg-[#100e0c] border-b border-[#241d18] py-6 sm:py-8 steakhouse-glow">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="relative bg-gradient-to-b from-[#14100c] via-[#0d0b09] to-[#090807] border-b border-[#241c16] py-6 sm:py-8 overflow-hidden">
+            {/* Ambient Lighting Orbs */}
+            <div className="pointer-events-none absolute -top-24 -left-20 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute top-1/2 right-10 -translate-y-1/2 w-80 h-80 bg-amber-600/5 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-orange-500/30 to-transparent" />
+
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-                <div className="flex items-center gap-4 sm:gap-5">
+                <div className="flex items-center gap-4 sm:gap-6">
                   {/* Store Avatar Badge */}
-                  <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-full bg-black border-2 border-orange-500/50 text-white shadow-2xl ring-4 ring-orange-500/20 overflow-hidden">
-                    <img
-                      src="/logo.jpg"
-                      alt="FoodExpress"
-                      className="w-full h-full object-cover scale-105"
-                    />
+                  <div className="relative group shrink-0">
+                    <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-2xl bg-gradient-to-b from-[#1c1612] to-[#0a0807] p-1.5 border border-orange-500/40 shadow-[0_12px_32px_rgba(0,0,0,0.8),0_0_24px_rgba(234,88,12,0.18)] ring-1 ring-white/10 transition-all duration-300 group-hover:scale-105 group-hover:border-orange-500/70">
+                      <img
+                        src="/logo.jpg"
+                        alt="FoodExpress"
+                        className="w-full h-full object-contain rounded-xl"
+                      />
+                    </div>
+                    {/* Small verified mark attached to avatar */}
+                    <span
+                      className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-orange-600 border-2 border-[#0d0b09] text-white shadow-md shadow-orange-950/60"
+                      title="Restaurante Verificado"
+                    >
+                      <CheckCircle2 size={13} className="text-white" />
+                    </span>
                   </div>
 
                   {/* Store Info */}
                   <div className="min-w-0">
-                    <div className="flex items-center gap-2.5">
-                      <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white leading-tight font-['Oswald',sans-serif]">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white leading-tight font-['Oswald',sans-serif] uppercase">
                         FoodExpress
                       </h1>
-                      <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-orange-500/20 text-orange-400" title="Restaurante Verificado">
-                        <CheckCircle2 size={16} className="text-orange-500" />
-                      </span>
-                      <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-red-950/80 text-amber-400 border border-red-800/60 font-['Oswald',sans-serif]">
-                        Steakhouse
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-orange-600 to-amber-600 text-white font-['Oswald',sans-serif] text-[11px] font-bold uppercase tracking-wider shadow-sm shadow-orange-950/50">
+                        <Flame size={12} className="text-white" />
+                        Steakhouse Artesanal
                       </span>
                     </div>
 
-                    <p className="text-xs sm:text-sm font-medium text-stone-400 mt-0.5">
-                      Hamburgueria Artesanal • Porções • Bebidas &amp; Sobremesas
+                    <p className="text-xs sm:text-sm font-medium text-stone-400 mt-1 leading-relaxed">
+                      Hamburgueria Artesanal na Brasa • Porções Nobres • Bebidas &amp; Sobremesas
                     </p>
 
-                    {/* Key Metrics */}
-                    <div className="mt-2.5 flex flex-wrap items-center gap-2.5 text-xs sm:text-sm">
-                      <span className="inline-flex items-center gap-1 font-bold text-white">
-                        <Star size={14} className="fill-amber-400 text-amber-400" />
-                        4.9
-                        <span className="font-normal text-stone-400">(500+ avaliações)</span>
-                      </span>
+                    {/* Harmonious Frosted Glass Chips */}
+                    <div className="mt-3 flex flex-wrap items-center gap-2">
+                      {/* Avaliação */}
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#181310]/90 backdrop-blur-xs border border-[#2e231c] text-xs font-semibold text-white shadow-xs hover:border-amber-500/40 transition-colors">
+                        <Star size={13} className="fill-amber-400 text-amber-400 shrink-0" />
+                        <span>4.9</span>
+                        <span className="text-stone-400 font-normal">(500+ avaliações)</span>
+                      </div>
 
-                      <span className="text-stone-700">•</span>
+                      {/* Tempo */}
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#181310]/90 backdrop-blur-xs border border-[#2e231c] text-xs font-medium text-stone-200 shadow-xs hover:border-amber-500/40 transition-colors">
+                        <Clock size={13} className="text-amber-500 shrink-0" />
+                        <span>30–45 min</span>
+                      </div>
 
-                      <span className="inline-flex items-center gap-1 font-medium text-stone-300">
-                        <Clock size={14} className="text-amber-500" />
-                        30–45 min
-                      </span>
+                      {/* Atendimento */}
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#181310]/90 backdrop-blur-xs border border-[#2e231c] text-xs font-medium text-stone-200 shadow-xs hover:border-orange-500/40 transition-colors">
+                        <Bike size={13} className="text-orange-400 shrink-0" />
+                        <span>Salão &amp; Entrega</span>
+                      </div>
 
-                      <span className="text-stone-700">•</span>
-
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold border border-emerald-500/30">
-                        <Bike size={13} />
-                        Salão &amp; Entrega
-                      </span>
-
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#181411] border border-[#2e251f] text-stone-300 text-xs font-medium">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        Aberto hoje até 23:30
-                      </span>
+                      {/* Status Aberto */}
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/40 backdrop-blur-xs border border-emerald-500/30 text-xs font-medium text-emerald-300 shadow-xs">
+                        <span className="relative flex h-2 w-2 shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span>Aberto agora</span>
+                        <span className="text-emerald-500/70 font-bold">•</span>
+                        <span className="text-emerald-400/90">até 23:30</span>
+                      </div>
                     </div>
                   </div>
                 </div>
