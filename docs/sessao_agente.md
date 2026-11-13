@@ -729,4 +729,23 @@ pm run build bem-sucedido.
      - `npm run build`: gerado com sucesso em 982ms.
      - Inspeção visual automatizada no Slide 1 e Slide 3 com evidência fotográfica em `final_step_407.png`.
 
+---
+
+### [2026-11-13 00:40] — Ampliação de Visibilidade e Luminosidade das Imagens do Hero Banner
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Otimização de Clareza e Destaque Visual das Fotografias
+- **Ações Executadas:**
+  1. **Aumento de Área Útil e Clareza da Fotografia (`HomePage.jsx`):**
+     - A largura do container da imagem foi ampliada de 65% para até 72% (`md:w-[68%] lg:w-[72%]`), permitindo que a cena do restaurante e os pratos ganhem maior protagonismo.
+     - A máscara de desvanecimento (`WebkitMaskImage`) foi ajustada para manter a foto com 100% de opacidade e nitidez até 46% da largura (antes começava a cair aos 22%), garantindo que os detalhes de mesas, balcão, iluminação e pratos fiquem nítidos e vibrantes.
+     - O overlay de transição foi suavizado na porção esquerda (`via-transparent 36%`), removendo o véu escuro que cobria a fotografia antes do início do degradê.
+     - Aplicado sutil ganho de brilho e contraste natural (`brightness-[1.03] contrast-[1.02]`) para destacar as cores acolhedoras dos ambientes e pratos.
+  2. **Manutenção do Degradê Perfeito e Formas Orgânicas:**
+     - O degradê horizontal suave em tons quentes de brasa e as linhas onduladas de fogo permanecem harmoniosamente integrados na faixa central.
+  3. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 1.09s.
+     - Inspeção visual automatizada via browser subagent com evidência em `final_step_413.png`.
+
+
 

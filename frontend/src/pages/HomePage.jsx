@@ -149,22 +149,22 @@ export default function HomePage() {
               }`}
             >
               {/* Full-width Photo Layer with wide feathered mask fading softly into the degradê */}
-              <div className="absolute inset-y-0 left-0 w-full md:w-3/5 lg:w-[65%] h-[230px] sm:h-[260px] md:h-full overflow-hidden pointer-events-none">
+              <div className="absolute inset-y-0 left-0 w-full md:w-[68%] lg:w-[72%] h-[240px] sm:h-[280px] md:h-full overflow-hidden pointer-events-none">
                 <img
                   src={slide.photoUrl}
                   alt={slide.photoAlt}
-                  className={`w-full h-full object-cover object-center transform transition-transform duration-7000 ease-out ${
+                  className={`w-full h-full object-cover object-center brightness-[1.03] contrast-[1.02] transform transition-transform duration-7000 ease-out ${
                     isActive ? 'scale-105' : 'scale-100'
                   }`}
                   style={{
-                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.75) 42%, rgba(0,0,0,0.35) 62%, rgba(0,0,0,0.08) 78%, rgba(0,0,0,0) 88%)',
-                    maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.75) 42%, rgba(0,0,0,0.35) 62%, rgba(0,0,0,0.08) 78%, rgba(0,0,0,0) 88%)',
+                    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 46%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.12) 88%, rgba(0,0,0,0) 96%)',
+                    maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 46%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.12) 88%, rgba(0,0,0,0) 96%)',
                   }}
                 />
 
-                {/* Mobile Bottom & Top feathering */}
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#120d09] via-[#0d0906]/85 to-transparent pointer-events-none md:hidden" />
-                <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
+                {/* Mobile Bottom & Top feathering (Subtle and clean, allowing photo to shine) */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#120d09] via-[#0d0906]/70 to-transparent pointer-events-none md:hidden" />
+                <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-black/30 to-transparent pointer-events-none" />
 
                 {/* Floating Steakhouse Experience Tag */}
                 <div className="absolute top-4 left-4 z-20">
@@ -175,8 +175,8 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Full-width continuous horizontal degradê overlay: fluido, suave e luxuoso (Sem cortes ou degraus!) */}
-              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent 15% via-[#070504]/35 32% via-[#0d0906]/75 52% via-[#130e0a]/92 70% to-[#1a120c] 88% pointer-events-none z-10" />
+              {/* Full-width continuous horizontal degradê overlay (Clean & luminous on left, smooth fade to warm steakhouse on right) */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent 0% via-transparent 36% via-[#070504]/25 48% via-[#0d0906]/65 62% via-[#130e0a]/90 76% to-[#1a120c] 88% pointer-events-none z-10" />
 
               {/* Rich Warm Hearth Atmosphere behind text — Difuso, veludoso e aconchegante */}
               <div className="absolute top-1/2 right-[12%] -translate-y-1/2 w-[680px] h-[580px] bg-gradient-to-br from-orange-600/15 via-amber-600/10 to-transparent rounded-full blur-[120px] pointer-events-none z-10" />
