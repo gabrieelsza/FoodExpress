@@ -1021,3 +1021,24 @@ pm run build bem-sucedido.
      - Screenshot do navegador confirmado pelo subagent visual.
      - `npm run lint`: 0 erros.
      - `npm run build`: 100% bem-sucedido.
+
+
+---
+
+### [2026-11-13 12:32] — Adição da Seção de Localização e Unidade Física na Página Inicial
+- **Papel Ativo:** Designer UI/UX & Engenheiro Frontend
+- **Etapa SDD:** Fase 3 — Expansão de Conteúdo e Conversão Presencial
+- **Ações Executadas:**
+  1. **Seção "Nossa Casa & Localização" em [`HomePage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/HomePage.jsx):**
+     - Criada nova seção dedicada com id `localizacao`, posicionada estrategicamente entre a seção de experiências (Salão vs Delivery) e os depoimentos dos clientes.
+     - **Coluna de Informações:**
+       - Card de endereço destacado: `Av. Paulista dos Burgers, 1200 · Centro Gastronômico, São Paulo - SP` com badge `Fácil Acesso` e detalhes de metrô/estacionamento gratuito.
+       - Card de horários de funcionamento: `Terça a Domingo: das 18h00 às 23h30`.
+       - Grid com 3 pilares de comodidade: `GRÁTIS Estacionamento`, `CLIMATIZADO Ar Central`, `SEM FILA Autoatendimento`.
+       - Botão com rota direta `Como Chegar (Maps)` e botão de navegação `Ver Fotos do Salão`.
+     - **Coluna de Vitrine Visual do Salão:**
+       - Card imersivo da unidade com badge pulsante `FOODEXPRESS • UNIDADE PRINCIPAL`, overlay de destaque para a experiência de chope na caneca congelada e barra de atendimento rápido via WhatsApp.
+  2. **Validação:**
+     - Screenshot do navegador confirmado pelo subagent visual.
+     - `npm run lint`: 0 erros.
+     - `npm run build`: gerado com sucesso em 1.13s.
