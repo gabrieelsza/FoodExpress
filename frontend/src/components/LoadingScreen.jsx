@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 /**
  * LoadingScreen (Convertecom Style Preloader)
  * Faithfully mirrors the exact design and animation system of https://convertecom.com.br/convert-drop:
- * 1. Centered SVG Brand Mark with dynamic orbiting track
+ * 1. Centered SVG Brand Mark with dynamic orbiting track & Artisan Burger
  * 2. Dual-layer Typographic Name with left-to-right sweep fill (Ghost text -> Color sweep)
  * 3. 140px x 3px Minimalist Pill Progress Bar
  * 4. Zero percentage numbers (no %) and zero neon/electric glow
  * 5. Smooth translateY(-40px) + opacity fade-out exit transition
  */
-export default function LoadingScreen({ onFinish }) {
+export default function LoadingScreen({ onFinish, isRouteChange = false }) {
   const [isExiting, setIsExiting] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
@@ -18,22 +18,25 @@ export default function LoadingScreen({ onFinish }) {
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    // 1.2s total presentation time before initiating exit
+    // Snappier on route changes (750ms total), full on initial load (1100ms)
+    const holdDuration = isRouteChange ? 600 : 1050;
+    const exitDuration = isRouteChange ? 450 : 550;
+
     const timer = setTimeout(() => {
       setIsExiting(true);
       const exitTimer = setTimeout(() => {
         setIsDone(true);
         document.body.style.overflow = originalOverflow;
         if (onFinish) onFinish();
-      }, 600);
+      }, exitDuration);
       return () => clearTimeout(exitTimer);
-    }, 1150);
+    }, holdDuration);
 
     return () => {
       clearTimeout(timer);
       document.body.style.overflow = originalOverflow;
     };
-  }, [onFinish]);
+  }, [onFinish, isRouteChange]);
 
   if (isDone) return null;
 
@@ -41,14 +44,14 @@ export default function LoadingScreen({ onFinish }) {
     <div
       role="status"
       aria-label="Carregando FoodExpress"
-      className={`fixed inset-0 z-[9999] grid place-items-center bg-[#090807] text-white select-none transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`fixed inset-0 z-[9999] grid place-items-center bg-[#090807] text-white select-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         isExiting
           ? 'opacity-0 -translate-y-10 pointer-events-none'
           : 'opacity-100 translate-y-0 pointer-events-auto'
       }`}
     >
       <div className="grid justify-items-center gap-5 text-center">
-        {/* 1. BRAND MARK WITH ORBITING PATH (Convertecom Style) */}
+        {/* 1. BRAND MARK WITH ORBITING PATH & ARTISAN BURGER (Convertecom Style) */}
         <svg
           className="w-28 sm:w-36 h-auto overflow-visible"
           viewBox="0 0 500 500"
@@ -194,7 +197,12 @@ export default function LoadingScreen({ onFinish }) {
           </span>
 
           {/* Foreground Fill layer with sweep clip-path animation */}
-          <span className="absolute inset-0 animate-[tc-name_900ms_cubic-bezier(0.16,1,0.3,1)_forwards] overflow-hidden">
+          <span
+            className="absolute inset-0 overflow-hidden"
+            style={{
+              animation: `tc-name ${isRouteChange ? '550ms' : '850ms'} cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+            }}
+          >
             <span className="text-white">Food</span>
             <span className="text-[#ea580c]">Express</span>
           </span>
@@ -207,7 +215,12 @@ export default function LoadingScreen({ onFinish }) {
 
         {/* 3. MINIMALIST 140px x 3px PILL PROGRESS BAR (Convertecom Style) */}
         <div className="w-[140px] h-[3px] rounded-full bg-white/10 overflow-hidden relative">
-          <div className="h-full w-full bg-gradient-to-r from-[#ea580c] via-[#f59e0b] to-[#ea580c] origin-left animate-[tc-bar_1.1s_cubic-bezier(0.16,1,0.3,1)_forwards]" />
+          <div
+            className="h-full w-full bg-gradient-to-r from-[#ea580c] via-[#f59e0b] to-[#ea580c] origin-left"
+            style={{
+              animation: `tc-bar ${isRouteChange ? '650ms' : '950ms'} cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+            }}
+          />
         </div>
       </div>
     </div>

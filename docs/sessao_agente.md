@@ -980,3 +980,22 @@ pm run build bem-sucedido.
 
 
 
+
+
+---
+
+### [2026-11-13 12:22] — Expansão dos Efeitos de Rolagem e Tela de Carregamento para Todo o Site
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Unificação e Consistência Global de Efeitos e Preloader
+- **Ações Executadas:**
+  1. **Tela de Carregamento Global em Transições de Rota ([`App.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/App.jsx)):**
+     - Integrado listener de `location.pathname` com `useLocation` para acionar a tela de carregamento do hambúrguer artesanal em todas as trocas de página (`/`, `/nossos-produtos`, `/restaurante`, `/delivery`, `/pedido/:orderId`, `/admin/login`, `/admin/pedidos`, `/admin/cardapio`).
+     - Transição ágil de ~750ms nas trocas de rota para máxima fluidez e sensação de app nativo, além de carregamento completo na inicialização.
+  2. **Animações de Rolagem Bidirecional (Scroll & Reveal) em Todas as Páginas:**
+     - **Página do Restaurante ([`RestaurantPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/RestaurantPage.jsx)):** Efeitos de desfoque, escala e subida suave no hero, cards de pilares em cascata (staggered delay), blocos de localização e fotos do salão.
+     - **Cardápio Completo / Produtos ([`CustomerMenuPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/CustomerMenuPage.jsx)):** Cabeçalho de perfil, seções de categorias e cards de lanches com animação de foco progressivo.
+     - **Rastreamento de Pedido ([`OrderTrackingPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/OrderTrackingPage.jsx)):** Card de status, stepper, botão do WhatsApp, lista de itens e totalizador com revelação suave.
+     - **Painel Administrativo & Login ([`AdminLoginPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/AdminLoginPage.jsx), [`AdminOrdersPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/AdminOrdersPage.jsx), [`AdminMenuPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/AdminMenuPage.jsx)):** Container de login com zoom-in elegante; cards de KPIs, abas de filtro e cards operacionais de pedidos com revelação progressiva.
+  3. **Validação de Código e Build:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: gerado com sucesso em 1.09s (`dist/assets/index-BisZ_ACP.css` 94.69 kB, `dist/assets/index-3KFv00Fe.js` 468.79 kB).

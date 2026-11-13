@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Lock, User, Eye, EyeOff, ShieldCheck, ArrowRight, Flame, CheckCircle2, Sparkles } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import Navbar from '../components/Navbar';
+import ScrollReveal from '../components/ScrollReveal';
 
 export default function AdminLoginPage() {
   const { isAuthenticated, login } = useAuth();
@@ -52,10 +53,11 @@ export default function AdminLoginPage() {
       {/* 2. MAIN LOGIN AREA */}
       <main className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden bg-black">
         {/* Dual-Panel Professional Login Container */}
-        <div className="relative z-10 w-full max-w-5xl rounded-3xl border border-zinc-800 bg-[#121214] shadow-2xl shadow-black overflow-hidden grid grid-cols-1 md:grid-cols-12 transition-all">
-          
-          {/* Left Column: Form Panel (Painel do Atendente) */}
-          <div className="p-6 sm:p-8 lg:p-10 md:col-span-7 flex flex-col justify-between">
+        <ScrollReveal direction="zoom" duration={700} className="w-full max-w-5xl">
+          <div className="relative z-10 w-full rounded-3xl border border-zinc-800 bg-[#121214] shadow-2xl shadow-black overflow-hidden grid grid-cols-1 md:grid-cols-12 transition-all">
+            
+            {/* Left Column: Form Panel (Painel do Atendente) */}
+            <div className="p-6 sm:p-8 lg:p-10 md:col-span-7 flex flex-col justify-between">
             <div>
               {/* Top Badge */}
               <div className="mb-4">
@@ -252,9 +254,9 @@ export default function AdminLoginPage() {
               </span>
             </div>
           </div>
-
         </div>
-      </main>
-    </div>
-  );
+      </ScrollReveal>
+    </main>
+  </div>
+);
 }

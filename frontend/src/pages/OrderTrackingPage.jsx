@@ -13,6 +13,7 @@ import {
 } from '../utils/helpers';
 import Navbar from '../components/Navbar';
 import OrderStatusStepper from '../components/OrderStatusStepper';
+import ScrollReveal from '../components/ScrollReveal';
 import {
   ArrowLeft,
   MessageCircle,
@@ -136,123 +137,135 @@ export default function OrderTrackingPage() {
         </button>
 
         {/* Order Header Card */}
-        <div className="bg-[#18181c] rounded-2xl shadow-sm border border-neutral-800 p-5 mb-4">
-          <div className="flex items-center justify-between mb-1">
-            <h1 className="text-xl font-bold text-white">Pedido #{order.id}</h1>
-            <span
-              className={`px-3 py-1 rounded-full text-xs font-semibold ${statusConfig.bgLight} ${statusConfig.textColor}`}
-            >
-              {statusConfig.label}
-            </span>
-          </div>
-          <p className="text-sm text-neutral-400">{formatRelativeTime(order.createdAt)}</p>
+        <ScrollReveal direction="up" duration={700}>
+          <div className="bg-[#18181c] rounded-2xl shadow-sm border border-neutral-800 p-5 mb-4">
+            <div className="flex items-center justify-between mb-1">
+              <h1 className="text-xl font-bold text-white">Pedido #{order.id}</h1>
+              <span
+                className={`px-3 py-1 rounded-full text-xs font-semibold ${statusConfig.bgLight} ${statusConfig.textColor}`}
+              >
+                {statusConfig.label}
+              </span>
+            </div>
+            <p className="text-sm text-neutral-400">{formatRelativeTime(order.createdAt)}</p>
 
-          {/* Order type indicator */}
-          <div className="flex items-center gap-2 mt-3 text-sm text-neutral-300">
-            {isDelivery ? (
-              <>
-                <Truck className="w-4 h-4 text-orange-400" />
-                <span>
-                  Entrega — <strong>{order.customerName}</strong>
-                </span>
-              </>
-            ) : (
-              <>
-                <UtensilsCrossed className="w-4 h-4 text-orange-400" />
-                <span>
-                  Mesa <strong>{order.tableNumber}</strong>
-                </span>
-              </>
-            )}
+            {/* Order type indicator */}
+            <div className="flex items-center gap-2 mt-3 text-sm text-neutral-300">
+              {isDelivery ? (
+                <>
+                  <Truck className="w-4 h-4 text-orange-400" />
+                  <span>
+                    Entrega — <strong>{order.customerName}</strong>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <UtensilsCrossed className="w-4 h-4 text-orange-400" />
+                  <span>
+                    Mesa <strong>{order.tableNumber}</strong>
+                  </span>
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Status Stepper */}
-        <div className="bg-[#18181c] rounded-2xl shadow-sm border border-neutral-800 p-5 mb-4">
-          <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-4">
-            Acompanhamento
-          </h2>
-          <OrderStatusStepper currentStatus={order.status} />
-        </div>
+        <ScrollReveal direction="up" delay={100} duration={700}>
+          <div className="bg-[#18181c] rounded-2xl shadow-sm border border-neutral-800 p-5 mb-4">
+            <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-4">
+              Acompanhamento
+            </h2>
+            <OrderStatusStepper currentStatus={order.status} />
+          </div>
+        </ScrollReveal>
 
         {/* WhatsApp button for delivery orders */}
         {isDelivery && !isCancelled && (
-          <button
-            onClick={handleWhatsApp}
-            className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 rounded-xl transition-colors mb-4 min-h-[44px] shadow-lg shadow-emerald-950/40 cursor-pointer"
-          >
-            <MessageCircle className="w-5 h-5" />
-            Enviar pelo WhatsApp
-          </button>
+          <ScrollReveal direction="up" delay={150} duration={600}>
+            <button
+              onClick={handleWhatsApp}
+              className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 rounded-xl transition-colors mb-4 min-h-[44px] shadow-lg shadow-emerald-950/40 cursor-pointer"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Enviar pelo WhatsApp
+            </button>
+          </ScrollReveal>
         )}
 
         {/* Order Items */}
-        <div className="bg-[#18181c] rounded-2xl shadow-sm border border-neutral-800 p-5 mb-4">
-          <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-4">
-            Itens do pedido
-          </h2>
+        <ScrollReveal direction="up" delay={200} duration={700}>
+          <div className="bg-[#18181c] rounded-2xl shadow-sm border border-neutral-800 p-5 mb-4">
+            <h2 className="text-sm font-semibold text-neutral-400 uppercase tracking-wide mb-4">
+              Itens do pedido
+            </h2>
 
-          <div className="space-y-4">
-            {order.items.map((item) => {
-              const addons = parseAddons(item.addonsJsonSnapshot);
-              return (
-                <div
-                  key={item.id}
-                  className="flex justify-between gap-3 pb-4 border-b border-neutral-800/80 last:border-0 last:pb-0"
-                >
-                  <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-white">
-                      {item.quantity}x {item.productNameSnapshot}
+            <div className="space-y-4">
+              {order.items.map((item) => {
+                const addons = parseAddons(item.addonsJsonSnapshot);
+                return (
+                  <div
+                    key={item.id}
+                    className="flex justify-between gap-3 pb-4 border-b border-neutral-800/80 last:border-0 last:pb-0"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-white">
+                        {item.quantity}x {item.productNameSnapshot}
+                      </p>
+                      {item.variationNameSnapshot && (
+                        <p className="text-sm text-neutral-400 mt-0.5">
+                          Variação: {item.variationNameSnapshot}
+                        </p>
+                      )}
+                      {addons.length > 0 && (
+                        <p className="text-sm text-neutral-400 mt-0.5">
+                          + {addons.map((a) => a.name).join(', ')}
+                        </p>
+                      )}
+                      {item.notes && (
+                        <p className="text-sm text-orange-400 italic mt-0.5">Obs: {item.notes}</p>
+                      )}
+                    </div>
+                    <p className="text-sm font-semibold text-neutral-200 whitespace-nowrap">
+                      {formatPrice(item.unitPrice * item.quantity)}
                     </p>
-                    {item.variationNameSnapshot && (
-                      <p className="text-sm text-neutral-400 mt-0.5">
-                        Variação: {item.variationNameSnapshot}
-                      </p>
-                    )}
-                    {addons.length > 0 && (
-                      <p className="text-sm text-neutral-400 mt-0.5">
-                        + {addons.map((a) => a.name).join(', ')}
-                      </p>
-                    )}
-                    {item.notes && (
-                      <p className="text-sm text-orange-400 italic mt-0.5">Obs: {item.notes}</p>
-                    )}
                   </div>
-                  <p className="text-sm font-semibold text-neutral-200 whitespace-nowrap">
-                    {formatPrice(item.unitPrice * item.quantity)}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
 
-          {/* Total */}
-          <div className="flex justify-between items-center mt-4 pt-4 border-t border-neutral-800">
-            <span className="text-base font-bold text-white">Total</span>
-            <span className="text-lg font-bold text-orange-400">
-              {formatPrice(order.totalAmount)}
-            </span>
+            {/* Total */}
+            <div className="flex justify-between items-center mt-4 pt-4 border-t border-neutral-800">
+              <span className="text-base font-bold text-white">Total</span>
+              <span className="text-lg font-bold text-orange-400">
+                {formatPrice(order.totalAmount)}
+              </span>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Cancel Button */}
         {showCancelButton && (
-          <button
-            onClick={handleCancel}
-            className="w-full flex items-center justify-center gap-2 border-2 border-red-500/50 text-red-400 hover:bg-red-950/30 font-semibold py-3.5 rounded-xl transition-colors mb-4 min-h-[44px] cursor-pointer"
-          >
-            <XCircle className="w-5 h-5" />
-            Cancelar pedido ({formatTime(cancelRemaining)})
-          </button>
+          <ScrollReveal direction="up" delay={250} duration={600}>
+            <button
+              onClick={handleCancel}
+              className="w-full flex items-center justify-center gap-2 border-2 border-red-500/50 text-red-400 hover:bg-red-950/30 font-semibold py-3.5 rounded-xl transition-colors mb-4 min-h-[44px] cursor-pointer"
+            >
+              <XCircle className="w-5 h-5" />
+              Cancelar pedido ({formatTime(cancelRemaining)})
+            </button>
+          </ScrollReveal>
         )}
 
         {/* New order link */}
-        <Link
-          to="/"
-          className="block w-full text-center text-orange-400 hover:text-orange-300 font-semibold py-3 transition-colors min-h-[44px]"
-        >
-          Fazer novo pedido
-        </Link>
+        <ScrollReveal direction="up" delay={300} duration={600}>
+          <Link
+            to="/"
+            className="block w-full text-center text-orange-400 hover:text-orange-300 font-semibold py-3 transition-colors min-h-[44px]"
+          >
+            Fazer novo pedido
+          </Link>
+        </ScrollReveal>
       </div>
     </div>
   );

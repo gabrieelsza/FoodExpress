@@ -17,6 +17,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { MOCK_MENU } from '../data/mockData';
 import { formatPrice } from '../utils/helpers';
 import Navbar from '../components/Navbar';
+import ScrollReveal from '../components/ScrollReveal';
 
 const MENU_STORAGE_KEY = 'foodexpress_admin_menu_data';
 
@@ -250,58 +251,62 @@ export default function AdminMenuPage() {
 
       <main className="max-w-5xl mx-auto px-4 py-6">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-          <div>
-            <h1 className="text-2xl font-extrabold text-white tracking-tight">Gestão do Cardápio</h1>
-            <p className="text-sm text-zinc-400">Configure categorias, itens, variações e adicionais do restaurante</p>
-          </div>
+        <ScrollReveal direction="up" duration={600}>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-2xl font-extrabold text-white tracking-tight">Gestão do Cardápio</h1>
+              <p className="text-sm text-zinc-400">Configure categorias, itens, variações e adicionais do restaurante</p>
+            </div>
 
-          <div className="flex items-center gap-2">
-            {activeTab === 'categories' ? (
-              <button
-                onClick={() => handleOpenCategoryModal()}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#ea580c] hover:bg-[#f97316] text-white font-medium text-sm rounded-xl shadow-md shadow-black/30 transition-all active:scale-95 cursor-pointer"
-              >
-                <Plus className="w-4 h-4" />
-                Nova Categoria
-              </button>
-            ) : (
-              <button
-                onClick={() => handleOpenProductModal()}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#ea580c] hover:bg-[#f97316] text-white font-medium text-sm rounded-xl shadow-md shadow-black/30 transition-all active:scale-95 cursor-pointer"
-              >
-                <Plus className="w-4 h-4" />
-                Novo Produto
-              </button>
-            )}
+            <div className="flex items-center gap-2">
+              {activeTab === 'categories' ? (
+                <button
+                  onClick={() => handleOpenCategoryModal()}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#ea580c] hover:bg-[#f97316] text-white font-medium text-sm rounded-xl shadow-md shadow-black/30 transition-all active:scale-95 cursor-pointer"
+                >
+                  <Plus className="w-4 h-4" />
+                  Nova Categoria
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleOpenProductModal()}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#ea580c] hover:bg-[#f97316] text-white font-medium text-sm rounded-xl shadow-md shadow-black/30 transition-all active:scale-95 cursor-pointer"
+                >
+                  <Plus className="w-4 h-4" />
+                  Novo Produto
+                </button>
+              )}
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Tab switch */}
-        <div className="flex border-b border-zinc-800 mb-6 bg-[#121214] rounded-t-2xl px-4 pt-2 shadow-sm">
-          <button
-            onClick={() => setActiveTab('products')}
-            className={`flex items-center gap-2 py-3 px-4 font-semibold text-sm border-b-2 transition-all cursor-pointer ${
-              activeTab === 'products'
-                ? 'border-orange-500 text-orange-400'
-                : 'border-transparent text-zinc-400 hover:text-white'
-            }`}
-          >
-            <Utensils className="w-4 h-4" />
-            Produtos ({allProducts.length})
-          </button>
-          <button
-            onClick={() => setActiveTab('categories')}
-            className={`flex items-center gap-2 py-3 px-4 font-semibold text-sm border-b-2 transition-all cursor-pointer ${
-              activeTab === 'categories'
-                ? 'border-orange-500 text-orange-400'
-                : 'border-transparent text-zinc-400 hover:text-white'
-            }`}
-          >
-            <Layers className="w-4 h-4" />
-            Categorias ({menu.categories.length})
-          </button>
-        </div>
+        <ScrollReveal direction="up" delay={80} duration={600}>
+          <div className="flex border-b border-zinc-800 mb-6 bg-[#121214] rounded-t-2xl px-4 pt-2 shadow-sm">
+            <button
+              onClick={() => setActiveTab('products')}
+              className={`flex items-center gap-2 py-3 px-4 font-semibold text-sm border-b-2 transition-all cursor-pointer ${
+                activeTab === 'products'
+                  ? 'border-orange-500 text-orange-400'
+                  : 'border-transparent text-zinc-400 hover:text-white'
+              }`}
+            >
+              <Utensils className="w-4 h-4" />
+              Produtos ({allProducts.length})
+            </button>
+            <button
+              onClick={() => setActiveTab('categories')}
+              className={`flex items-center gap-2 py-3 px-4 font-semibold text-sm border-b-2 transition-all cursor-pointer ${
+                activeTab === 'categories'
+                  ? 'border-orange-500 text-orange-400'
+                  : 'border-transparent text-zinc-400 hover:text-white'
+              }`}
+            >
+              <Layers className="w-4 h-4" />
+              Categorias ({menu.categories.length})
+            </button>
+          </div>
+        </ScrollReveal>
 
         {/* ================= CATEGORIES VIEW ================= */}
         {activeTab === 'categories' && (

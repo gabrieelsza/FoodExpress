@@ -1,4 +1,5 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import SmoothScroll from './components/SmoothScroll'
 import LoadingScreen from './components/LoadingScreen'
 import HomePage from './pages/HomePage'
@@ -11,9 +12,30 @@ import AdminMenuPage from './pages/AdminMenuPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
+  const location = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isRouteChange, setIsRouteChange] = useState(false);
+  const isInitialMount = useRef(true);
+
+  // Trigger loading screen across the entire site whenever route changes
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    setIsRouteChange(true);
+    setIsLoading(true);
+  }, [location.pathname]);
+
   return (
     <>
-      <LoadingScreen />
+      {isLoading && (
+        <LoadingScreen
+          key={location.pathname}
+          isRouteChange={isRouteChange}
+          onFinish={() => setIsLoading(false)}
+        />
+      )}
       <SmoothScroll>
         <Routes>
           {/* 1. ABA INÍCIO (Tela Demonstrativa Inicial Outback) */}

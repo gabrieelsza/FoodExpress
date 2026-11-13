@@ -22,6 +22,7 @@ import ProductModal from '../components/ProductModal';
 import CartDrawer from '../components/CartDrawer';
 import FloatingCartBar from '../components/FloatingCartBar';
 import PromoCarousel from '../components/PromoCarousel';
+import ScrollReveal from '../components/ScrollReveal';
 
 export default function CustomerMenuPage() {
   const navigate = useNavigate();
@@ -240,91 +241,93 @@ export default function CustomerMenuPage() {
         />
 
         {/* Restaurant Header Profile Section */}
-        <div className="relative bg-[#100e0c] border-b border-[#241d18] py-6 sm:py-8 steakhouse-glow">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-              <div className="flex items-center gap-4 sm:gap-5">
-                {/* Store Avatar Badge */}
-                <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-full bg-black border-2 border-orange-500/50 text-white shadow-2xl ring-4 ring-orange-500/20 overflow-hidden">
-                  <img
-                    src="/logo.jpg"
-                    alt="FoodExpress"
-                    className="w-full h-full object-cover scale-105"
-                  />
-                </div>
-
-                {/* Store Info */}
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2.5">
-                    <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white leading-tight font-['Oswald',sans-serif]">
-                      FoodExpress
-                    </h1>
-                    <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-orange-500/20 text-orange-400" title="Restaurante Verificado">
-                      <CheckCircle2 size={16} className="text-orange-500" />
-                    </span>
-                    <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-red-950/80 text-amber-400 border border-red-800/60 font-['Oswald',sans-serif]">
-                      Steakhouse
-                    </span>
+        <ScrollReveal direction="up" duration={700}>
+          <div className="relative bg-[#100e0c] border-b border-[#241d18] py-6 sm:py-8 steakhouse-glow">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                <div className="flex items-center gap-4 sm:gap-5">
+                  {/* Store Avatar Badge */}
+                  <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-full bg-black border-2 border-orange-500/50 text-white shadow-2xl ring-4 ring-orange-500/20 overflow-hidden">
+                    <img
+                      src="/logo.jpg"
+                      alt="FoodExpress"
+                      className="w-full h-full object-cover scale-105"
+                    />
                   </div>
 
-                  <p className="text-xs sm:text-sm font-medium text-stone-400 mt-0.5">
-                    Hamburgueria Artesanal • Porções • Bebidas &amp; Sobremesas
-                  </p>
+                  {/* Store Info */}
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2.5">
+                      <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white leading-tight font-['Oswald',sans-serif]">
+                        FoodExpress
+                      </h1>
+                      <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-orange-500/20 text-orange-400" title="Restaurante Verificado">
+                        <CheckCircle2 size={16} className="text-orange-500" />
+                      </span>
+                      <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-red-950/80 text-amber-400 border border-red-800/60 font-['Oswald',sans-serif]">
+                        Steakhouse
+                      </span>
+                    </div>
 
-                  {/* Key Metrics */}
-                  <div className="mt-2.5 flex flex-wrap items-center gap-2.5 text-xs sm:text-sm">
-                    <span className="inline-flex items-center gap-1 font-bold text-white">
-                      <Star size={14} className="fill-amber-400 text-amber-400" />
-                      4.9
-                      <span className="font-normal text-stone-400">(500+ avaliações)</span>
-                    </span>
+                    <p className="text-xs sm:text-sm font-medium text-stone-400 mt-0.5">
+                      Hamburgueria Artesanal • Porções • Bebidas &amp; Sobremesas
+                    </p>
 
-                    <span className="text-stone-700">•</span>
+                    {/* Key Metrics */}
+                    <div className="mt-2.5 flex flex-wrap items-center gap-2.5 text-xs sm:text-sm">
+                      <span className="inline-flex items-center gap-1 font-bold text-white">
+                        <Star size={14} className="fill-amber-400 text-amber-400" />
+                        4.9
+                        <span className="font-normal text-stone-400">(500+ avaliações)</span>
+                      </span>
 
-                    <span className="inline-flex items-center gap-1 font-medium text-stone-300">
-                      <Clock size={14} className="text-amber-500" />
-                      30–45 min
-                    </span>
+                      <span className="text-stone-700">•</span>
 
-                    <span className="text-stone-700">•</span>
+                      <span className="inline-flex items-center gap-1 font-medium text-stone-300">
+                        <Clock size={14} className="text-amber-500" />
+                        30–45 min
+                      </span>
 
-                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold border border-emerald-500/30">
-                      <Bike size={13} />
-                      Salão &amp; Entrega
-                    </span>
+                      <span className="text-stone-700">•</span>
 
-                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#181411] border border-[#2e251f] text-stone-300 text-xs font-medium">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                      Aberto hoje até 23:30
-                    </span>
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold border border-emerald-500/30">
+                        <Bike size={13} />
+                        Salão &amp; Entrega
+                      </span>
+
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#181411] border border-[#2e251f] text-stone-300 text-xs font-medium">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Aberto hoje até 23:30
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Mobile Search Input */}
-              <div className="sm:hidden w-full">
-                <div className="relative">
-                  <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-500" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Buscar lanches, porções, bebidas..."
-                    className="w-full rounded-full border border-[#2e251f] bg-[#14110e] pl-9 pr-9 py-2 text-sm text-stone-100 placeholder-stone-500 focus:outline-none focus:border-orange-500"
-                  />
-                  {searchQuery && (
-                    <button
-                      onClick={() => setSearchQuery('')}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400"
-                    >
-                      <X size={14} />
-                    </button>
-                  )}
+                {/* Mobile Search Input */}
+                <div className="sm:hidden w-full">
+                  <div className="relative">
+                    <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-500" />
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Buscar lanches, porções, bebidas..."
+                      className="w-full rounded-full border border-[#2e251f] bg-[#14110e] pl-9 pr-9 py-2 text-sm text-stone-100 placeholder-stone-500 focus:outline-none focus:border-orange-500"
+                    />
+                    {searchQuery && (
+                      <button
+                        onClick={() => setSearchQuery('')}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400"
+                      >
+                        <X size={14} />
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Promotional Carousel (Below Restaurant Header) */}
         {!searchQuery && (
@@ -404,12 +407,19 @@ export default function CustomerMenuPage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-                {filteredProductsBySearch.map((product) => (
-                  <ProductCard
+                {filteredProductsBySearch.map((product, idx) => (
+                  <ScrollReveal
                     key={product.id}
-                    product={product}
-                    onAdd={() => handleProductClick(product)}
-                  />
+                    direction="up"
+                    delay={idx * 60}
+                    duration={700}
+                    className="h-full"
+                  >
+                    <ProductCard
+                      product={product}
+                      onAdd={() => handleProductClick(product)}
+                    />
+                  </ScrollReveal>
                 ))}
               </div>
             )}
@@ -430,26 +440,35 @@ export default function CustomerMenuPage() {
                   className="scroll-mt-32"
                 >
                   {/* Category Header */}
-                  <div className="flex items-center justify-between border-b border-[#26201b] pb-3 mb-6">
-                    <div className="flex items-center gap-3">
-                      <div className="h-5 w-1 rounded-full bg-gradient-to-b from-red-600 via-orange-500 to-amber-400"></div>
-                      <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-white font-['Oswald',sans-serif]">
-                        {cat.name}
-                      </h2>
+                  <ScrollReveal direction="up" duration={700}>
+                    <div className="flex items-center justify-between border-b border-[#26201b] pb-3 mb-6">
+                      <div className="flex items-center gap-3">
+                        <div className="h-5 w-1 rounded-full bg-gradient-to-b from-red-600 via-orange-500 to-amber-400"></div>
+                        <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-white font-['Oswald',sans-serif]">
+                          {cat.name}
+                        </h2>
+                      </div>
+                      <span className="text-xs font-semibold text-stone-400 font-['Oswald',sans-serif] tracking-wider uppercase">
+                        {activeProducts.length} {activeProducts.length === 1 ? 'opção' : 'opções'}
+                      </span>
                     </div>
-                    <span className="text-xs font-semibold text-stone-400 font-['Oswald',sans-serif] tracking-wider uppercase">
-                      {activeProducts.length} {activeProducts.length === 1 ? 'opção' : 'opções'}
-                    </span>
-                  </div>
+                  </ScrollReveal>
 
                   {/* Products Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-                    {activeProducts.map((product) => (
-                      <ProductCard
+                    {activeProducts.map((product, idx) => (
+                      <ScrollReveal
                         key={product.id}
-                        product={product}
-                        onAdd={() => handleProductClick(product)}
-                      />
+                        direction="up"
+                        delay={idx * 60}
+                        duration={700}
+                        className="h-full"
+                      >
+                        <ProductCard
+                          product={product}
+                          onAdd={() => handleProductClick(product)}
+                        />
+                      </ScrollReveal>
                     ))}
                   </div>
                 </section>

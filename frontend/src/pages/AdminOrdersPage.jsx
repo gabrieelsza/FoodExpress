@@ -21,6 +21,7 @@ import { useOrders } from '../contexts/OrderContext';
 import { ORDER_STATUS_SEQUENCE } from '../data/mockData';
 import { formatPrice, formatRelativeTime } from '../utils/helpers';
 import Navbar from '../components/Navbar';
+import ScrollReveal from '../components/ScrollReveal';
 
 const POLL_KEY = 'foodexpress_poll_ms';
 
@@ -214,67 +215,69 @@ export default function AdminOrdersPage() {
         </div>
 
         {/* Resumo de Indicadores Operacionais (KPIs) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-7">
-          <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
-            <div>
-              <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
-                Novos Pedidos
-              </span>
-              <span className="text-3xl font-black text-blue-400 mt-0.5 block font-['Oswald',sans-serif]">
-                {adminOrders.filter((o) => o.status === 'RECEIVED').length}
-              </span>
-              <span className="text-[10px] text-zinc-500">Aguardando início</span>
+        <ScrollReveal direction="up" duration={700}>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-7">
+            <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
+              <div>
+                <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
+                  Novos Pedidos
+                </span>
+                <span className="text-3xl font-black text-blue-400 mt-0.5 block font-['Oswald',sans-serif]">
+                  {adminOrders.filter((o) => o.status === 'RECEIVED').length}
+                </span>
+                <span className="text-[10px] text-zinc-500">Aguardando início</span>
+              </div>
+              <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                <Flame className="w-5 h-5" />
+              </div>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-              <Flame className="w-5 h-5" />
-            </div>
-          </div>
 
-          <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
-            <div>
-              <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
-                Em Preparo
-              </span>
-              <span className="text-3xl font-black text-amber-400 mt-0.5 block font-['Oswald',sans-serif]">
-                {adminOrders.filter((o) => o.status === 'PREPARING').length}
-              </span>
-              <span className="text-[10px] text-zinc-500">Na grelha / montagem</span>
+            <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
+              <div>
+                <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
+                  Em Preparo
+                </span>
+                <span className="text-3xl font-black text-amber-400 mt-0.5 block font-['Oswald',sans-serif]">
+                  {adminOrders.filter((o) => o.status === 'PREPARING').length}
+                </span>
+                <span className="text-[10px] text-zinc-500">Na grelha / montagem</span>
+              </div>
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                <ChefHat className="w-5 h-5" />
+              </div>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-              <ChefHat className="w-5 h-5" />
-            </div>
-          </div>
 
-          <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
-            <div>
-              <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
-                Prontos
-              </span>
-              <span className="text-3xl font-black text-emerald-400 mt-0.5 block font-['Oswald',sans-serif]">
-                {adminOrders.filter((o) => o.status === 'READY').length}
-              </span>
-              <span className="text-[10px] text-zinc-500">Aguardando entrega</span>
+            <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
+              <div>
+                <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
+                  Prontos
+                </span>
+                <span className="text-3xl font-black text-emerald-400 mt-0.5 block font-['Oswald',sans-serif]">
+                  {adminOrders.filter((o) => o.status === 'READY').length}
+                </span>
+                <span className="text-[10px] text-zinc-500">Aguardando entrega</span>
+              </div>
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                <CheckCircle2 className="w-5 h-5" />
+              </div>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-              <CheckCircle2 className="w-5 h-5" />
-            </div>
-          </div>
 
-          <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
-            <div>
-              <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
-                Finalizados
-              </span>
-              <span className="text-3xl font-black text-zinc-300 mt-0.5 block font-['Oswald',sans-serif]">
-                {adminOrders.filter((o) => o.status === 'DELIVERED').length}
-              </span>
-              <span className="text-[10px] text-zinc-500">Entregues no turno</span>
-            </div>
-            <div className="w-10 h-10 rounded-xl bg-zinc-800/60 border border-zinc-700/40 flex items-center justify-center text-zinc-400">
-              <Sparkles className="w-5 h-5" />
+            <div className="bg-[#121214] p-4 sm:p-5 rounded-2xl border border-zinc-800 shadow-xl flex items-center justify-between">
+              <div>
+                <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider font-['Oswald',sans-serif] block">
+                  Finalizados
+                </span>
+                <span className="text-3xl font-black text-zinc-300 mt-0.5 block font-['Oswald',sans-serif]">
+                  {adminOrders.filter((o) => o.status === 'DELIVERED').length}
+                </span>
+                <span className="text-[10px] text-zinc-500">Entregues no turno</span>
+              </div>
+              <div className="w-10 h-10 rounded-xl bg-zinc-800/60 border border-zinc-700/40 flex items-center justify-center text-zinc-400">
+                <Sparkles className="w-5 h-5" />
+              </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Abas com Contadores */}
         <div className="flex gap-1.5 bg-[#121214] rounded-2xl p-1.5 border border-zinc-800 mb-7 overflow-x-auto shadow-xl">
@@ -325,13 +328,14 @@ export default function AdminOrdersPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            {filteredOrders.map((order) => (
-              <OrderCard
-                key={order.id}
-                order={order}
-                onAdvance={() => handleAdvance(order)}
-                onCancel={() => handleCancel(order)}
-              />
+            {filteredOrders.map((order, idx) => (
+              <ScrollReveal key={order.id} direction="up" delay={idx * 60} duration={600}>
+                <OrderCard
+                  order={order}
+                  onAdvance={() => handleAdvance(order)}
+                  onCancel={() => handleCancel(order)}
+                />
+              </ScrollReveal>
             ))}
           </div>
         )}
