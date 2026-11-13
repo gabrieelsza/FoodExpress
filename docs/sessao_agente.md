@@ -641,3 +641,20 @@ pm run build bem-sucedido.
   2. **Validação e Build:**
      - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
      - `npm run build`: gerado com sucesso em 1.15s.
+
+
+---
+
+### [2026-11-13 00:15] — Unificação de Fundo em Degradê Contínuo e Restauração das Curvas Orgânicas
+- **Papel Ativo:** Engenheiro Frontend & Designer UI/UX
+- **Etapa SDD:** Fase 3 — Eliminação de Emendas Verticais e Polimento Visual
+- **Ações Executadas:**
+  1. **Eliminação da Linha Reta de Emenda de Colunas (`HomePage.jsx`):**
+     - Identificada a causa da linha reta vertical: divisão de colunas em grid (`col-span-7` vs `col-span-5`) com backgrounds distintos e círculos de luz ambiente (`blur-3xl`) recortados por `overflow-hidden` na borda da coluna.
+     - Unificado o fundo de todo o banner em `#0c0a08` contínuo e transferida a iluminação ambiente para o container do slide (sem cortes retos).
+     - Aplicada máscara suave e gradiente líquido (`linear-gradient(to right, ...)`) que funde a foto diretamente ao fundo escuro em degradê 100% uniforme.
+  2. **Restauração das Linhas Orgânicas e Curvas Fluidas:**
+     - Trazidas de volta as curvas bezier e ondas pontilhadas decorativas em gradiente de brasa (`warmGradientHero`), posicionadas na zona de transição fluida.
+  3. **Validação e Build:**
+     - `npm run lint`: 0 erros (24 warnings de variáveis não utilizadas pré-existentes).
+     - `npm run build`: gerado com sucesso em 1.15s.

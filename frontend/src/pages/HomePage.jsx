@@ -144,13 +144,47 @@ export default function HomePage() {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out overflow-hidden bg-[#0c0a08] ${
                 isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
-              <div className="w-full h-full grid grid-cols-1 md:grid-cols-12">
+              {/* Continuous Ambient Hearth Glow across the entire banner (NO vertical seam / column clipping!) */}
+              <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/4 w-[500px] h-[500px] bg-orange-600/12 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -top-24 right-10 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
+
+              {/* Subtle Outback organic curved wave lines creating fluidity across the gradient transition */}
+              <svg
+                className="hidden md:block absolute left-[50%] lg:left-[55%] -translate-x-1/2 top-0 bottom-0 h-full w-40 text-orange-500/25 pointer-events-none z-20"
+                viewBox="0 0 120 800"
+                preserveAspectRatio="none"
+                fill="none"
+              >
+                <path
+                  d="M20,0 C90,220 10,380 80,560 C110,660 30,800 20,800"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeDasharray="6 8"
+                  className="opacity-75"
+                />
+                <path
+                  d="M50,0 C120,240 40,420 100,600 C130,700 60,800 50,800"
+                  stroke="url(#warmGradientHero)"
+                  strokeWidth="1.5"
+                  className="opacity-55"
+                />
+                <defs>
+                  <linearGradient id="warmGradientHero" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#ea580c" />
+                    <stop offset="50%" stopColor="#f59e0b" />
+                    <stop offset="100%" stopColor="#dc2626" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <div className="w-full h-full grid grid-cols-1 md:grid-cols-12 relative z-10">
                 {/* Left Side: Photography with seamless organic feathered blend */}
-                <div className="md:col-span-6 lg:col-span-7 relative h-[210px] sm:h-[240px] md:h-full overflow-hidden bg-[#0c0a08] shrink-0">
+                <div className="md:col-span-6 lg:col-span-7 relative h-[210px] sm:h-[240px] md:h-full overflow-hidden shrink-0">
                   <img
                     src={slide.photoUrl}
                     alt={slide.photoAlt}
@@ -158,14 +192,14 @@ export default function HomePage() {
                       isActive ? 'scale-105' : 'scale-100'
                     }`}
                     style={{
-                      WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.7) 72%, rgba(0,0,0,0.2) 90%, rgba(0,0,0,0) 100%)',
-                      maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.7) 72%, rgba(0,0,0,0.2) 90%, rgba(0,0,0,0) 100%)',
+                      WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.15) 88%, rgba(0,0,0,0) 100%)',
+                      maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 45%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.15) 88%, rgba(0,0,0,0) 100%)',
                     }}
                   />
 
-                  {/* Multi-stage Feathered Gradients for Desktop */}
-                  <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/30 via-transparent 30% to-[#0c0a08] 95% pointer-events-none" />
-                  <div className="hidden md:block absolute inset-y-0 right-0 w-64 bg-gradient-to-r from-transparent via-[#0c0a08]/80 to-[#0c0a08] pointer-events-none z-10" />
+                  {/* Multi-stage Smooth Feathered Gradients for Desktop */}
+                  <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/25 via-transparent 30% to-[#0c0a08] 98% pointer-events-none" />
+                  <div className="hidden md:block absolute inset-y-0 right-0 w-80 bg-gradient-to-r from-transparent via-[#0c0a08]/70 to-[#0c0a08] pointer-events-none z-10" />
 
                   {/* Bottom & Top feathering for Mobile */}
                   <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0c0a08] via-[#0c0a08]/70 to-transparent pointer-events-none z-10 md:hidden" />
@@ -180,13 +214,8 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Right Side: Seamless Dark Graphic Canvas with Warm Glow & Organic Accents */}
-                <div className="md:col-span-6 lg:col-span-5 relative h-full flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:p-8 lg:p-12 xl:p-14 bg-gradient-to-b md:bg-gradient-to-r from-[#0c0a08] via-[#120e0b] to-[#0a0807] text-center md:text-left overflow-hidden">
-                  {/* Hearth Fire Warm Glow behind transition */}
-                  <div className="absolute top-1/2 -left-20 -translate-y-1/2 w-72 h-72 bg-orange-600/15 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute -top-24 -right-24 w-80 h-80 bg-amber-600/10 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute -bottom-24 right-1/4 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
-
+                {/* Right Side: Seamless Dark Graphic Canvas with Warm Glow & Organic Accents (bg-transparent to preserve 100% continuous degradê!) */}
+                <div className="md:col-span-6 lg:col-span-5 relative h-full flex flex-col justify-center px-5 py-6 sm:px-8 sm:py-8 md:p-8 lg:p-12 xl:p-14 text-center md:text-left">
                   {/* Content Container with soft stagger animation */}
                   <div className={`relative z-10 space-y-3 sm:space-y-4 md:space-y-4 lg:space-y-5 transition-all duration-700 ease-out transform ${
                     isActive ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
