@@ -633,10 +633,10 @@ export default function HomePage() {
 
       {/* 5. LOCAL DO ESTABELECIMENTO & MAPA */}
       <section id="localizacao" className="w-full bg-[#0b0908] border-b border-[#241d18] py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <ScrollReveal direction="up" duration={700}>
-            <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="text-center max-w-2xl mx-auto mb-8">
               <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#181310] border border-[#2e231b] text-orange-400 text-xs font-bold mb-3 font-['Oswald',sans-serif] uppercase tracking-wider shadow-sm">
                 <MapPin size={13} className="text-orange-500" />
                 <span>Nossa Casa &amp; Localização</span>
@@ -645,146 +645,52 @@ export default function HomePage() {
                 Venha Conhecer Nosso Estabelecimento
               </h2>
               <p className="text-xs sm:text-sm text-stone-400 mt-2 leading-relaxed">
-                Um ambiente acolhedor com cheiro de brasa viva, iluminação intimista, mesas para grupos e estacionamento gratuito no local.
+                Av. Paulista, 1200 · Bela Vista, São Paulo - SP · Aberto de terça a domingo das 18h às 23h30
               </p>
             </div>
           </ScrollReveal>
 
-          {/* Location Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            {/* Left Column: Address, Hours, Highlights */}
-            <ScrollReveal direction="left" duration={750} className="lg:col-span-7 h-full">
-              <div className="h-full rounded-3xl bg-[#14100e] border border-[#2b221c] p-6 sm:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden">
-                {/* Ambient glow */}
-                <div className="pointer-events-none absolute -top-20 -left-20 w-64 h-64 bg-orange-600/10 rounded-full blur-3xl" />
+          {/* Clean Google Map Container */}
+          <ScrollReveal direction="up" delay={100} duration={750}>
+            <div className="rounded-3xl bg-[#14100e] border border-[#2b221c] p-3 sm:p-4 shadow-2xl overflow-hidden relative">
+              <div className="relative w-full h-[400px] sm:h-[460px] rounded-2xl overflow-hidden border border-[#2e231c] bg-[#0c0a08]">
+                <iframe
+                  title="Mapa de Localização FoodExpress"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.097782780654!2d-46.65492162386927!3d-23.565839078796853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%201200%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                  className="w-full h-full border-0"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
 
-                <div className="space-y-6 relative z-10">
-                  {/* Address Card */}
-                  <div className="p-4 sm:p-5 rounded-2xl bg-[#1a1411] border border-[#34271f] flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500/10 border border-orange-500/30 text-orange-400">
-                      <MapPin size={24} />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-[11px] font-bold text-orange-400 uppercase font-['Oswald',sans-serif] tracking-wider">
-                          Endereço Principal
-                        </span>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                          Fácil Acesso
-                        </span>
-                      </div>
-                      <h3 className="text-base sm:text-lg font-bold text-white mt-0.5 leading-snug">
-                        Av. Paulista dos Burgers, 1200 · Centro Gastronômico
-                      </h3>
-                      <p className="text-xs text-stone-400 mt-1">
-                        São Paulo - SP · Próximo à estação de metrô e com estacionamento conveniado gratuito para clientes.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Hours Card */}
-                  <div className="p-4 sm:p-5 rounded-2xl bg-[#1a1411] border border-[#34271f] flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400">
-                      <Clock size={24} />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <span className="text-[11px] font-bold text-amber-400 uppercase font-['Oswald',sans-serif] tracking-wider">
-                        Horários de Funcionamento
-                      </span>
-                      <h4 className="text-sm sm:text-base font-bold text-white mt-0.5">
-                        Terça a Domingo: das 18h00 às 23h30
-                      </h4>
-                      <p className="text-xs text-stone-400 mt-1">
-                        Salão presencial e retirada no balcão. Segundas-feiras fechado para manutenção e descanso da equipe.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Highlights Grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    <div className="p-3 rounded-xl bg-[#100d0b] border border-[#241d18] text-center">
-                      <span className="block text-orange-400 font-black text-sm font-['Oswald',sans-serif]">GRÁTIS</span>
-                      <span className="text-[11px] text-stone-400 font-medium">Estacionamento</span>
-                    </div>
-                    <div className="p-3 rounded-xl bg-[#100d0b] border border-[#241d18] text-center">
-                      <span className="block text-amber-400 font-black text-sm font-['Oswald',sans-serif]">CLIMATIZADO</span>
-                      <span className="text-[11px] text-stone-400 font-medium">Ar Central</span>
-                    </div>
-                    <div className="p-3 rounded-xl bg-[#100d0b] border border-[#241d18] text-center col-span-2 sm:col-span-1">
-                      <span className="block text-emerald-400 font-black text-sm font-['Oswald',sans-serif]">SEM FILA</span>
-                      <span className="text-[11px] text-stone-400 font-medium">Autoatendimento</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTAs */}
-                <div className="pt-6 mt-6 border-t border-[#292019] flex flex-wrap items-center gap-3 relative z-10">
-                  <a
-                    href="https://maps.google.com/?q=Av.+Paulista+dos+Burgers,+1200"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-md shadow-black/50 transition-all cursor-pointer"
-                  >
-                    <Navigation size={14} />
-                    <span>Como Chegar (Maps)</span>
-                  </a>
-
-                  <button
-                    onClick={() => navigate('/restaurante')}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1a1411] hover:bg-[#241d18] border border-[#34271f] text-stone-200 hover:text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] transition-colors cursor-pointer"
-                  >
-                    <UtensilsCrossed size={14} className="text-orange-500" />
-                    <span>Ver Fotos do Salão</span>
-                  </button>
+                {/* Floating Status Badge */}
+                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/90 backdrop-blur-md border border-orange-500/40 text-white text-xs font-bold shadow-xl font-['Oswald',sans-serif] tracking-wider pointer-events-none">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
+                  </span>
+                  <span>FOODEXPRESS • MAPA DA UNIDADE</span>
                 </div>
               </div>
-            </ScrollReveal>
 
-            {/* Right Column: Real Interactive Google Map */}
-            <ScrollReveal direction="right" duration={750} className="lg:col-span-5 h-full">
-              <div className="h-full min-h-[400px] rounded-3xl bg-[#14100e] border border-[#2b221c] p-3 sm:p-4 flex flex-col justify-between shadow-2xl overflow-hidden relative">
-                {/* Interactive Google Maps Iframe */}
-                <div className="relative w-full h-full min-h-[340px] rounded-2xl overflow-hidden border border-[#2e231c] bg-[#0c0a08]">
-                  <iframe
-                    title="Mapa de Localização FoodExpress"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.097782780654!2d-46.65492162386927!3d-23.565839078796853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%201200%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
-                    className="w-full h-full min-h-[340px] border-0"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-
-                  {/* Pulsing Pin Badge */}
-                  <div className="absolute top-3 left-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/90 backdrop-blur-md border border-orange-500/40 text-white text-xs font-bold shadow-xl font-['Oswald',sans-serif] tracking-wider pointer-events-none">
-                    <span className="relative flex h-2.5 w-2.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
-                    </span>
-                    <span>FOODEXPRESS • MAPA DA UNIDADE</span>
-                  </div>
+              {/* Bottom Quick Info Bar */}
+              <div className="p-3.5 mt-3 rounded-xl bg-[#1a1411] border border-[#2e231c] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+                <div className="flex items-center gap-2 text-stone-300">
+                  <MapPin size={15} className="text-orange-500 shrink-0" />
+                  <span className="font-medium">Av. Paulista, 1200 · Bela Vista, São Paulo - SP</span>
                 </div>
-
-                {/* Quick Info Bar below map */}
-                <div className="p-3 mt-3 rounded-xl bg-[#1a1411] border border-[#2e231c] flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-2 text-stone-300">
-                    <MapPin size={14} className="text-orange-500 shrink-0" />
-                    <span className="font-medium">Av. Paulista, 1200 · Bela Vista, SP</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <a
-                      href="https://maps.google.com/?q=Av.+Paulista,+1200,+Bela+Vista,+Sao+Paulo+-+SP"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-orange-400 hover:text-orange-300 font-bold font-['Oswald',sans-serif] tracking-wider uppercase transition-colors"
-                    >
-                      <span>Google Maps</span>
-                      <Navigation size={13} />
-                    </a>
-                  </div>
-                </div>
+                <a
+                  href="https://maps.google.com/?q=Av.+Paulista,+1200,+Bela+Vista,+Sao+Paulo+-+SP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#c2410c] hover:bg-[#d9531e] text-white font-bold text-xs uppercase tracking-wider font-['Oswald',sans-serif] shadow-md shadow-black/50 transition-all cursor-pointer"
+                >
+                  <span>Abrir Rota no Google Maps</span>
+                  <Navigation size={13} />
+                </a>
               </div>
-            </ScrollReveal>
-          </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

@@ -1074,3 +1074,19 @@ pm run build bem-sucedido.
   2. **Validação:**
      - `npm run lint`: 0 erros.
      - `npm run build`: 100% aprovado.
+
+
+---
+
+### [2026-11-13 13:36] — Remoção dos Cards Textuais de Endereço/Horários em Prol do Mapa Centralizado
+- **Papel Ativo:** Designer UI/UX & Engenheiro Frontend
+- **Etapa SDD:** Fase 3 — Simplificação Visual da Seção de Localização
+- **Ações Executadas:**
+  1. **Remoção de Blocos Textuais Repetitivos ([`HomePage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/HomePage.jsx)):**
+     - Removidos os cards volumosos de "Endereço Principal", "Horários de Funcionamento", comodidades (Grátis, Climatizado, Sem Fila) e botões secundários conforme solicitação do usuário.
+  2. **Layout Centralizado e Limpo com o Google Maps:**
+     - O mapa oficial interativo do Google Maps agora assume posição centralizada e de destaque em container `max-w-5xl mx-auto`.
+     - Preservada apenas a barra compacta de rodapé com o endereço em uma única linha e o botão de traçar rota no Maps.
+  3. **Validação:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: gerado com sucesso em 2.66s.
