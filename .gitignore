@@ -1,0 +1,9 @@
+node_modules/
+frontend/node_modules/
+frontend/dist/
+data/*.sqlite
+data/*.sqlite-shm
+data/*.sqlite-wal
+.env
+coverage/
+.DS_Store

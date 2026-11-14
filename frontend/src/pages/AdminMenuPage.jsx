@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Plus,
@@ -14,6 +14,7 @@ import {
   EyeOff,
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { adminApi } from '../services/api';
 import { MOCK_MENU } from '../data/mockData';
 import { formatPrice } from '../utils/helpers';
 import Navbar from '../components/Navbar';
@@ -40,6 +41,23 @@ export default function AdminMenuPage() {
       return MOCK_MENU;
     }
   });
+
+  const syncMenuFromBackend = useCallback(async () => {
+    try {
+      const data = await adminApi.fetchAdminMenu();
+      if (data && Array.isArray(data.categories)) {
+        setMenu({ categories: data.categories });
+      }
+    } catch {
+      // Fallback silencioso para localStorage
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      syncMenuFromBackend();
+    }
+  }, [isAuthenticated, syncMenuFromBackend]);
 
   // Save changes
   useEffect(() => {
@@ -83,9 +101,30 @@ export default function AdminMenuPage() {
     setIsCategoryModalOpen(true);
   };
 
-  const handleSaveCategory = (e) => {
+  const handleSaveCategory = async (e) => {
     e.preventDefault();
     if (!categoryForm.name.trim()) return;
+
+    try {
+      if (editingCategory) {
+        await adminApi.updateCategory(editingCategory.id, {
+          name: categoryForm.name.trim(),
+          displayOrder: Number(categoryForm.displayOrder),
+          active: categoryForm.active,
+        });
+      } else {
+        await adminApi.createCategory({
+          name: categoryForm.name.trim(),
+          displayOrder: Number(categoryForm.displayOrder),
+          active: categoryForm.active,
+        });
+      }
+      await syncMenuFromBackend();
+      setIsCategoryModalOpen(false);
+      return;
+    } catch {
+      // Fallback local
+    }
 
     if (editingCategory) {
       setMenu((prev) => ({
@@ -112,7 +151,17 @@ export default function AdminMenuPage() {
     setIsCategoryModalOpen(false);
   };
 
-  const handleToggleCategory = (catId) => {
+  const handleToggleCategory = async (catId) => {
+    const targetCat = menu.categories.find((c) => c.id === catId);
+    try {
+      if (targetCat) {
+        await adminApi.updateCategory(catId, { active: !targetCat.active });
+        await syncMenuFromBackend();
+        return;
+      }
+    } catch {
+      // Fallback local
+    }
     setMenu((prev) => ({
       ...prev,
       categories: prev.categories.map((c) =>
@@ -151,7 +200,7 @@ export default function AdminMenuPage() {
     setIsProductModalOpen(true);
   };
 
-  const handleSaveProduct = (e) => {
+  const handleSaveProduct = async (e) => {
     e.preventDefault();
     const basePriceNum = parseFloat(productForm.basePrice);
     if (!productForm.name.trim() || isNaN(basePriceNum) || basePriceNum <= 0) {
@@ -183,6 +232,23 @@ export default function AdminMenuPage() {
       })),
     };
 
+    try {
+      if (editingProduct) {
+        await adminApi.updateProduct(editingProduct.id, productPayload);
+      } else {
+        await adminApi.createProduct(productPayload);
+      }
+      await syncMenuFromBackend();
+      setIsProductModalOpen(false);
+      return;
+    } catch (err) {
+      if (err.status === 422) {
+        alert(err.message);
+        return;
+      }
+      // Fallback local se offline
+    }
+
     setMenu((prev) => {
       // First remove product from any category if editing
       const updatedCategories = prev.categories.map((c) => ({
@@ -204,7 +270,14 @@ export default function AdminMenuPage() {
     setIsProductModalOpen(false);
   };
 
-  const handleToggleProduct = (catId, prodId) => {
+  const handleToggleProduct = async (catId, prodId) => {
+    try {
+      await adminApi.toggleProductActive(prodId);
+      await syncMenuFromBackend();
+      return;
+    } catch {
+      // Fallback local
+    }
     setMenu((prev) => ({
       ...prev,
       categories: prev.categories.map((c) =>
@@ -220,8 +293,15 @@ export default function AdminMenuPage() {
     }));
   };
 
-  const handleDeleteProduct = (catId, prodId) => {
+  const handleDeleteProduct = async (catId, prodId) => {
     if (!confirm('Deseja realmente excluir este produto?')) return;
+    try {
+      await adminApi.deleteProduct(prodId);
+      await syncMenuFromBackend();
+      return;
+    } catch {
+      // Fallback local
+    }
     setMenu((prev) => ({
       ...prev,
       categories: prev.categories.map((c) =>

@@ -1090,3 +1090,24 @@ pm run build bem-sucedido.
   3. **Validação:**
      - `npm run lint`: 0 erros.
      - `npm run build`: gerado com sucesso em 2.66s.
+
+---
+
+### [2026-11-13 23:29] — Reconstrução do Backend do Painel Administrativo sobre a Base Atual (`/passo3`)
+- **Papel Ativo:** Engenheiro de Software Sênior Full-Stack & Especialista DevOps (Skill `/passo3`)
+- **Etapa SDD:** `Fase 3 — Backend do Painel Administrativo (SQLite + Drizzle ORM + Auth scrypt/JWT + APIs Admin)`
+- **Escopo Estrito:** Atuação exclusiva no Backend (`src/backend/`, `tests/`, `package.json`) e nas telas do Painel do Atendente (`AdminLoginPage.jsx`, `AdminOrdersPage.jsx`, `AdminMenuPage.jsx`, `frontend/src/services/api.js`, proxy `/api` em `frontend/vite.config.js`), sem alterar qualquer código das páginas públicas/terceiros da equipe.
+- **Ações Executadas:**
+  1. **Camada de Dados SQLite + Drizzle ORM & Seed (`src/backend/db/`):**
+     - `schema.js`, `connection.js` (modo WAL) e `seed.js` / `seedCli.js` com usuário padrão (`admin`/`admin123`), categorias, produtos (ativos e inativos), variações, adicionais e pedidos operacionais (`#101` a `#105`).
+  2. **Segurança e Autenticação (`TR-006` / `API-001` / `RN-010` / `RNF-002`):**
+     - `authService.js` (`node:crypto scrypt` + JWT HMAC-SHA256), `authMiddleware.js` e `authController.js`.
+  3. **APIs Administrativas do Painel (`API-006` a `API-011`):**
+     - Fila de Pedidos (`orderRepo.js`, `orderService.js`, `orderController.js`): `GET /api/admin/orders`, `PATCH /api/admin/orders/:id/advance` (máquina de estados linear estrita `RECEIVED` → `PREPARING` → `READY` → `DELIVERED`, bloqueando pulos com HTTP `422`), `POST /api/admin/orders/:id/cancel` (cancelamento imediato sem justificativa), `POST /api/admin/orders/simulate` e `POST /api/admin/orders/reset`.
+     - Gestão de Cardápio (`categoryRepo.js`, `productRepo.js`, `menuService.js`, `menuController.js`): CRUD completo de categorias e produtos com variações e adicionais, validação `basePrice > 0` e `name` obrigatório (`RN-001`, `RN-011`).
+  4. **Integração Exclusiva com o Painel Administrativo:**
+     - Conectados `AdminLoginPage.jsx`, `AdminOrdersPage.jsx` e `AdminMenuPage.jsx` ao backend via `frontend/src/services/api.js` (com fallback automático caso offline).
+  5. **Validação Automatizada:**
+     - `npm test` (Vitest + Supertest): **7/7 testes passando** (`tests/unit/adminBackend.test.js` e `tests/integration/adminApi.test.js`).
+     - `npm run lint:frontend` (0 erros) e `npm run build:frontend` aprovados.
+
