@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useOrders } from '../contexts/OrderContext';
+import { adminApi } from '../services/api';
 import { ORDER_STATUS_SEQUENCE } from '../data/mockData';
 import { formatPrice, formatRelativeTime } from '../utils/helpers';
 import Navbar from '../components/Navbar';
@@ -63,6 +64,7 @@ export default function AdminOrdersPage() {
 
   const [activeTab, setActiveTab] = useState('active');
   const [refreshing, setRefreshing] = useState(false);
+  const [backendConnected, setBackendConnected] = useState(false);
   const [pollMs, setPollMs] = useState(() => {
     const saved = localStorage.getItem(POLL_KEY);
     return saved ? Number(saved) : 300_000;
@@ -76,19 +78,35 @@ export default function AdminOrdersPage() {
     }
   }, [isAuthenticated, navigate]);
 
-  // Polling / Refresh from localStorage
-  const doRefresh = useCallback(() => {
+  // Polling / Refresh from SQLite Backend (fallback para localStorage)
+  const doRefresh = useCallback(async () => {
     setRefreshing(true);
     try {
-      const saved = localStorage.getItem('foodexpress_orders');
-      if (saved && setAdminOrders) {
-        setAdminOrders(JSON.parse(saved));
+      const data = await adminApi.fetchOrders();
+      if (data && Array.isArray(data.orders) && setAdminOrders) {
+        setAdminOrders(data.orders);
+        setBackendConnected(true);
       }
     } catch {
-      // Ignora erro de parsing no refresh do localStorage
+      setBackendConnected(false);
+      try {
+        const saved = localStorage.getItem('foodexpress_orders');
+        if (saved && setAdminOrders) {
+          setAdminOrders(JSON.parse(saved));
+        }
+      } catch {
+        // Ignora erro de parsing no refresh do localStorage
+      }
+    } finally {
+      setTimeout(() => setRefreshing(false), 300);
     }
-    setTimeout(() => setRefreshing(false), 500);
   }, [setAdminOrders]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      doRefresh();
+    }
+  }, [isAuthenticated, doRefresh]);
 
   useEffect(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -102,17 +120,41 @@ export default function AdminOrdersPage() {
     localStorage.setItem(POLL_KEY, String(val));
   };
 
-  const handleAdvance = (order) => {
+  const handleAdvance = async (order) => {
     const currentIdx = ORDER_STATUS_SEQUENCE.indexOf(order.status);
     if (currentIdx < 0 || currentIdx >= ORDER_STATUS_SEQUENCE.length - 1) return;
     const nextStatus = ORDER_STATUS_SEQUENCE[currentIdx + 1];
+
+    try {
+      const data = await adminApi.advanceOrder(order.id, nextStatus);
+      if (data && data.order && setAdminOrders) {
+        setAdminOrders((prev) =>
+          prev.map((o) => (o.id === order.id ? data.order : o))
+        );
+        setBackendConnected(true);
+        return;
+      }
+    } catch {
+      // Fallback local
+    }
     advanceOrderStatus(order.id, nextStatus);
   };
 
-  const handleCancel = (order) => {
-    if (window.confirm(`Cancelar pedido #${order.id}?`)) {
-      cancelOrder(order.id);
+  const handleCancel = async (order) => {
+    if (!window.confirm(`Cancelar pedido #${order.id}?`)) return;
+    try {
+      const data = await adminApi.cancelOrder(order.id);
+      if (data && data.order && setAdminOrders) {
+        setAdminOrders((prev) =>
+          prev.map((o) => (o.id === order.id ? data.order : o))
+        );
+        setBackendConnected(true);
+        return;
+      }
+    } catch {
+      // Fallback local
     }
+    cancelOrder(order.id);
   };
 
   // Filter + sort
@@ -177,7 +219,7 @@ export default function AdminOrdersPage() {
                 </h1>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-bold text-emerald-400 uppercase font-['Oswald',sans-serif] tracking-wider">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Ao Vivo
+                  {backendConnected ? 'Ao Vivo • API SQLite' : 'Ao Vivo'}
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-zinc-400 mt-1">
