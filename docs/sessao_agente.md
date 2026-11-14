@@ -1090,3 +1090,28 @@ pm run build bem-sucedido.
   3. **Validação:**
      - `npm run lint`: 0 erros.
      - `npm run build`: gerado com sucesso em 2.66s.
+
+
+---
+
+### [2026-11-14 15:04] — Redesign Completo e Harmonização do Gerenciador de Cardápio (/admin/cardapio)
+- **Papel Ativo:** Designer UI/UX & Engenheiro Fullstack
+- **Etapa SDD:** Fase 3 — Modernização do Painel Administrativo de Produtos e Categorias
+- **Ações Executadas:**
+  1. **Correção de Contraste e Legibilidade Crítica ([`AdminMenuPage.jsx`](file:///c:/Users/PICHAU/Documents/foodexpress/frontend/src/pages/AdminMenuPage.jsx)):**
+     - Corrigido o preço base nos cards de produto que utilizava `text-gray-900` (preto sobre fundo escuro, tornando o preço invisível). Agora exibido em dourado/âmbar vibrante (`text-amber-400 font-black text-lg sm:text-xl font-['Oswald',sans-serif]`).
+     - Eliminadas todas as classes residuais de tema claro (`bg-white`, `text-gray-700`, `border-gray-200`, `hover:bg-orange-50`, etc.).
+  2. **Modernização dos Modais de Cadastro e Edição (Dark Theme Steakhouse):**
+     - Tanto o modal de **Novo/Editar Produto** quanto o modal de **Nova/Editar Categoria** foram totalmente reconstruídos no padrão dark escuro (`bg-[#141210]`, `border-zinc-800`, campos em `#0c0a08` e botões estilizados em laranja).
+     - **Pré-visualização de Imagem em Tempo Real:** Criada área de preview da foto com fallbacks automáticos e uma barra de atalhos rápidos com fotos em alta definição prontas para uso (Hambúrguer Artesanal, Smash Burger, Frango Crispy, Batata Rústica, Onion Rings, Brownie, Chopp).
+     - **Variações e Adicionais:** Interface simplificada em cards escuros para adicionar, precificar e remover tamanhos e adicionais com um clique.
+  3. **Barra de Busca Inteligente e Filtro por Categoria:**
+     - Adicionado campo de busca instantânea por nome ou ingrediente do produto.
+     - Indicador dinâmico de quantidade de itens filtrados.
+  4. **Painel de Indicadores Operacionais (KPIs):**
+     - Linha de 4 cards com resumo em tempo real: Total de Produtos, Produtos Ativos (visíveis ao público), Produtos Pausados/Ocultos e Categorias organizadas.
+  5. **Tabela de Categorias e Exclusão Segura:**
+     - Adicionada confirmação inteligente para exclusão de categorias (com aviso caso contenha produtos vinculados).
+  6. **Validação:**
+     - `npm run lint`: 0 erros.
+     - `npm run build`: gerado com sucesso em 1.16s.
